@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view = "http://schemas.android.com/apk/res-auto"
     android:elevation="5dp"
-    card_view:cardCornerRadius="40dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    card_view:cardBackgroundColor="#0F1010"
+    card_view:cardCornerRadius="50dp"
     card_view:cardElevation="8dp"
     card_view:contentPaddingBottom="16dp"
-    card_view:cardBackgroundColor="@color/colorAccent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/langOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="48dp"
-            android:text="sticker text"
-            android:textSize="42dp"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"/>
-        <TextView
-            android:id="@+id/langTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="48dp"
-            android:text="Mirror text"
-            android:textSize="42dp"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"/>
+    card_view:layout_collapseMode="parallax">
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/langOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sticker text"
+        android:textColor="#F4F4F2"
+        android:textSize="42dp"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/langTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="48dp"
+        android:text="Mirror text"
+        android:textColor="#DEE2ED"
+        android:textSize="42dp"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.cardview.widget.CardView>

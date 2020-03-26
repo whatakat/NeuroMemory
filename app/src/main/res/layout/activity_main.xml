@@ -12,18 +12,22 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Sticker"/>
+            android:background="#FFEB3B"
+            app:title="Sticker" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:background="#EFEFFA"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_behavior="@string/fab_transformation_scrim_behavior"
         app:spanCount="1"
         tools:listitem="@layout/item_sticker" />
 
