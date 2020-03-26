@@ -18,13 +18,14 @@
             app:title="Sticker"
             app:layout_scrollFlags="scroll||enterAlways"/>
     </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myRecycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="461dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
         app:layout_behavior="@string/bottom_sheet_behavior"
-        tools:listitem="@layout/item_stick"/>
+        app:spanCount="1"
+        tools:listitem="@layout/item_sticker" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
