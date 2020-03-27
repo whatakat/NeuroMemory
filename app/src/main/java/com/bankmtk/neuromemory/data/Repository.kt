@@ -5,7 +5,12 @@ import com.bankmtk.neuromemory.data.model.Sticker
 object Repository {
     private val stickers: List<Sticker> = listOf(
         Sticker("Простите ребята, кто не успел - тот опоздал",
-        "Sorry fellas waste not wan't not",0xfff06292.toInt())
+        "Sorry fellas waste not wan't not",0xfff06292.toInt()),
+                Sticker("Простите ребята, кто не успел - тот опоздал",
+        "Sorry fellas waste not wan't not",0xfff06292.toInt()),
+        Sticker("Простите ребята, кто не успел - тот опоздал",
+            "Sorry fellas waste not wan't not",0xfff06292.toInt())
+
     )
 
     fun getStickers():List<Sticker>{
