@@ -16,27 +16,36 @@
     card_view:contentPaddingBottom="16dp"
     card_view:layout_collapseMode="parallax">
 
-    <TextView
-        android:id="@+id/langOne"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sticker text"
-        android:textColor="#F4F4F2"
-        android:textSize="42dp"
-        card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/langTwo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="48dp"
-        android:text="Mirror text"
-        android:textColor="#DEE2ED"
-        android:textSize="42dp"
-        card_view:layout_constraintStart_toStartOf="parent"
-        card_view:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/langOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sticker text"
+            android:textColor="#F4F4F2"
+            android:textSize="42dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/langTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="48dp"
+            android:text="Mirror text"
+            android:textColor="#DEE2ED"
+            android:textSize="42dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
 
 
 </androidx.cardview.widget.CardView>
