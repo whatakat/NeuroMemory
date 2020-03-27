@@ -1,7 +1,8 @@
-package com.bankmtk.neuromemory
+package com.bankmtk.neuromemory.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bankmtk.neuromemory.R
 
 class MainActivity : AppCompatActivity() {
 
