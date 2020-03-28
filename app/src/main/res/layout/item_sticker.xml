@@ -5,46 +5,56 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
     android:elevation="5dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    card_view:cardBackgroundColor="#0F1010"
-    card_view:cardCornerRadius="50dp"
+    card_view:cardBackgroundColor="#FAFAFA"
+    card_view:cardCornerRadius="20dp"
     card_view:cardElevation="8dp"
     card_view:contentPaddingBottom="16dp"
     card_view:layout_collapseMode="parallax">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:soundEffectsEnabled="true">
 
         <TextView
             android:id="@+id/langOne"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:text="sticker text"
-            android:textColor="#F4F4F2"
+            android:textColor="#040400"
             android:textSize="42dp"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/langTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="48dp"
-            android:text="Mirror text"
-            android:textColor="#DEE2ED"
-            android:textSize="42dp"
+            android:visibility="visible"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/langTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mirror text"
+            android:textColor="#000209"
+            android:textSize="42dp"
+            android:visibility="invisible"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 
 
 
