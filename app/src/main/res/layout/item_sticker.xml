@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mirror text"
+            android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:textColor="#000209"
             android:textSize="42dp"
             android:visibility="invisible"
