@@ -30,7 +30,7 @@
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:text="sticker text"
             android:textColor="#040400"
-            android:textSize="42dp"
+            android:textSize="23dp"
             android:visibility="visible"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
             android:text="Mirror text"
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:textColor="#000209"
-            android:textSize="42dp"
+            android:textSize="23dp"
             android:visibility="invisible"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
