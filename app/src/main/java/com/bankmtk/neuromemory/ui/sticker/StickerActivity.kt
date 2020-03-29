@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
 import kotlinx.android.synthetic.main.activity_stick.*
 import java.text.SimpleDateFormat
 import java.util.*
