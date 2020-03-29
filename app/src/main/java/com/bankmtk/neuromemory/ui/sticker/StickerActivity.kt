@@ -3,8 +3,10 @@ package com.bankmtk.neuromemory.ui.sticker
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bankmtk.neuromemory.R
+import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 import kotlinx.android.synthetic.main.activity_stick.*
 import java.text.SimpleDateFormat
@@ -40,8 +42,28 @@ class StickerActivity: AppCompatActivity() {
     }
     private fun initView(){
         if (sticker != null){
+            titleEt.setText(sticker?.title ?:"")
             textOne.setText(sticker?.langOne ?:"")
             textTwo.setText(sticker?.langTwo ?:"")
+            val color = when(sticker!!.color){
+                Color.WHITE ->R.color.white
+                Color.VIOLET ->R.color.violet
+                Color.BLUE ->R.color.blue
+                Color.GREEN ->R.color.green
+                Color.PINK ->R.color.pink
+                Color.RED ->R.color.red
+                Color.YELLOW ->R.color.yellow
+            }
+            toolbar.setBackgroundColor(resources.getColor(color))
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when(item.itemId){
+        android.R.id.home ->{
+            onBackPressed()
+            true
+        }
+            else -> super.onOptionsItemSelected(item)
     }
 }
