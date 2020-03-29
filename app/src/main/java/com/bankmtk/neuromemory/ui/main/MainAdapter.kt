@@ -9,7 +9,7 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 
-class MainAdapter:RecyclerView.Adapter<StickerViewHolder>() {
+class MainAdapter(private val onItemClickListener: OnItemClickListener):RecyclerView.Adapter<StickerViewHolder>() {
     var stickers: List<Sticker> = listOf()
     set(value){
         field = value
@@ -48,4 +48,7 @@ class StickerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         itemView.setBackgroundColor(itemView.context.resources.getColor(color))
 
     }
+}
+interface OnItemClickListener{
+    fun onItemClick(sticker: Sticker)
 }
