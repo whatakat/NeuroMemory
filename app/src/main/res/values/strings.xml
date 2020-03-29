@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">NeuroMemory</string>
     <string name="sticker">Sticker</string>
+    <string name="new_sticker_title">New sticker</string>
 </resources>
