@@ -38,4 +38,10 @@ class StickerActivity: AppCompatActivity() {
         }
         initView()
     }
+    private fun initView(){
+        if (sticker != null){
+            textOne.setText(sticker?.langOne ?:"")
+            textTwo.setText(sticker?.langTwo ?:"")
+        }
+    }
 }
