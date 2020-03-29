@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
+import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 
 class MainAdapter:RecyclerView.Adapter<StickerViewHolder>() {
@@ -34,5 +35,17 @@ class StickerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     fun bind(sticker: Sticker){
         langOne.text = sticker.langOne
         langTwo.text = sticker.langTwo
+
+        val color = when(sticker.color){
+            Color.YELLOW->R.color.yellow
+            Color.RED->R.color.red
+            Color.PINK->R.color.pink
+            Color.GREEN->R.color.green
+            Color.BLUE->R.color.blue
+            Color.VIOLET->R.color.violet
+            Color.WHITE->R.color.white
+        }
+        itemView.setBackgroundColor(itemView.context.resources.getColor(color))
+
     }
 }
