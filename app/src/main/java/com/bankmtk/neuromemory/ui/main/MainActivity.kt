@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
+import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,5 +26,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.viewState().observe(this,Observer<MainViewState>{
             t ->t?.let{adapter.stickers = it.stickers}
         })
+    }
+    private fun openStickerScreen(sticker: Sticker?){
+        val intent = StickerActivity.getStartIntent(this,sticker)
+        startActivity(intent)
     }
 }
