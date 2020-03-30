@@ -9,44 +9,45 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 
-class MainAdapter(private val onItemClickListener: OnItemClickListener):RecyclerView.Adapter<StickerViewHolder>() {
+class MainAdapter(private val onItemClickListener: OnItemClickListener):RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
     set(value){
         field = value
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val vew  = inflater.inflate(R.layout.item_sticker,parent,false)
-        return StickerViewHolder(vew)
+        return StickViewHolder(vew)
     }
 
     override fun getItemCount() = stickers.size
 
-    override fun onBindViewHolder(holder: StickerViewHolder, position: Int): Unit{
+    override fun onBindViewHolder(holder: StickViewHolder, position: Int): Unit{
         holder.bind(stickers[position])
     }
-}
-class StickerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-    private val langOne = itemView.findViewById<TextView>(R.id.langOne)
-    private val langTwo = itemView.findViewById<TextView>(R.id.langTwo)
+    inner class StickViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        private val title = itemView.findViewById<TextView>(R.id.titleEt)
+        private val langOne = itemView.findViewById<TextView>(R.id.langOne)
+        private val langTwo = itemView.findViewById<TextView>(R.id.langTwo)
 
-    fun bind(sticker: Sticker){
-        langOne.text = sticker.langOne
-        langTwo.text = sticker.langTwo
-
-        val color = when(sticker.color){
-            Color.YELLOW->R.color.yellow
-            Color.RED->R.color.red
-            Color.PINK->R.color.pink
-            Color.GREEN->R.color.green
-            Color.BLUE->R.color.blue
-            Color.VIOLET->R.color.violet
-            Color.WHITE->R.color.white
+        fun bind(sticker: Sticker){
+            title.text = sticker.title
+            langOne.text = sticker.langOne
+            langTwo.text = sticker.langTwo
+            val color = when(sticker.color){
+            Color.WHITE ->R.color.white
+                Color.VIOLET ->R.color.violet
+                Color.BLUE ->R.color.blue
+                Color.GREEN ->R.color.green
+                Color.PINK ->R.color.pink
+                Color.RED -> R.color.red
+                Color.YELLOW -> R.color.yellow
+            }
+            itemView.setBackgroundColor(itemView.context.resources.getColor(color))
+            itemView.setOnClickListener{onItemClickListener.onItemClick(sticker)}
         }
-        itemView.setBackgroundColor(itemView.context.resources.getColor(color))
-
     }
 }
 interface OnItemClickListener{
