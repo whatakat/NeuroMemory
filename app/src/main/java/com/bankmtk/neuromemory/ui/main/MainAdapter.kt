@@ -49,7 +49,9 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
             itemView.setOnClickListener{onItemClickListener.onItemClick(sticker)}
         }
     }
+    interface OnItemClickListener{
+        fun onItemClick(sticker: Sticker)
+    }
 }
-interface OnItemClickListener{
-    fun onItemClick(sticker: Sticker)
-}
+
+

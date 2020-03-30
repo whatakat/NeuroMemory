@@ -20,7 +20,11 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        adapter = MainAdapter()
+        adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
+            override fun onItemClick(sticker: Sticker) {
+                openStickerScreen(sticker)
+            }
+        })
         myRecycler.adapter = adapter
 
         viewModel.viewState().observe(this,Observer<MainViewState>{
