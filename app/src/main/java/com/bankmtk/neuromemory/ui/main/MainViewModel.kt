@@ -9,8 +9,8 @@ class MainViewModel : ViewModel() {
 
     private val viewStateLiveData: MutableLiveData<MainViewState> = MutableLiveData()
     init {
-        repository.getStickers().observeForever {
-            viewStateLiveData.value = viewStateLiveData.value?.copy(stickers = it!!)?:
+        Repository.getStickers().observeForever {
+            viewStateLiveData.value = viewStateLiveData.value?.copy(stickers = it!!) ?:
                     MainViewState(it!!)
         }
 

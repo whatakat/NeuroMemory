@@ -45,7 +45,7 @@ object Repository {
             if (stickers[i]==sticker){
                 stickers.set(i,sticker)
                 return
-            }
+            }   
         }
         stickers.add(sticker)
     }
