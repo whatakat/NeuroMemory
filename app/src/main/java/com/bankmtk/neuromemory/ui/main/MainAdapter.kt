@@ -18,8 +18,8 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val vew  = inflater.inflate(R.layout.item_sticker,parent,false)
-        return StickViewHolder(vew)
+        val view  = inflater.inflate(R.layout.item_sticker,parent,false)
+        return StickViewHolder(view)
     }
 
     override fun getItemCount() = stickers.size
@@ -28,7 +28,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
         holder.bind(stickers[position])
     }
     inner class StickViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val title = itemView.findViewById<TextView>(R.id.titleEt)
+        private val title = itemView.findViewById<TextView>(R.id.titleStick)
         private val langOne = itemView.findViewById<TextView>(R.id.langOne)
         private val langTwo = itemView.findViewById<TextView>(R.id.langTwo)
 
