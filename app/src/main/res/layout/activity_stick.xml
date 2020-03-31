@@ -11,8 +11,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"/>
+            android:layout_height="wrap_content"/>
     </com.google.android.material.appbar.AppBarLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -31,20 +30,24 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
+
         <EditText
             android:id="@+id/textOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@null"
-            android:hint="Text stick"/>
+            android:hint="Text stick"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
         <EditText
             android:id="@+id/textTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@null"
-            android:hint="Other text stick"/>
+            android:hint="Other text stick"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
     </LinearLayout>
 

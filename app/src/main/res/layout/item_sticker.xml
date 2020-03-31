@@ -9,20 +9,21 @@
     android:layout_marginTop="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginBottom="20dp"
-    android:elevation="5dp"
+    android:elevation="10dp"
     card_view:cardBackgroundColor="#FAFAFA"
-    card_view:cardCornerRadius="20dp"
-    card_view:cardElevation="8dp"
-    card_view:contentPaddingBottom="16dp"
-    card_view:layout_collapseMode="parallax">
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="16dp"
+    card_view:contentPaddingBottom="16dp">
+
     <TextView
         android:id="@+id/titleStick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        tools:text="Some important sticker"/>
+        tools:text="Some important sticker" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -55,8 +56,8 @@
             android:id="@+id/langTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mirror text"
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
+            android:text="Mirror text"
             android:textColor="#000209"
             android:textSize="23dp"
             android:visibility="invisible"
@@ -64,7 +65,6 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
-
 
 
 </androidx.cardview.widget.CardView>

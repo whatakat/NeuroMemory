@@ -28,9 +28,10 @@
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:background="#223C3A"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="@string/fab_transformation_scrim_behavior"
-        app:spanCount="1"
+        app:spanCount="3"
         tools:listitem="@layout/item_sticker" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
