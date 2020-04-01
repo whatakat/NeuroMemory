@@ -15,4 +15,5 @@ class StickerViewModel(private val repository: Repository = Repository): ViewMod
             repository.saveSticker(pendingSticker!!)
         }
     }
+
 }

@@ -91,16 +91,19 @@ class StickerActivity: AppCompatActivity() {
         }
     }
     private fun triggerSaveSticker(){
-        if (titleEt.text == null || titleEt.text!!.length<3)return
+        //if (title.text.length<3)return
         Handler().postDelayed(object : Runnable{
             override fun run() {
                 sticker = sticker?.copy(title = titleEt.text.toString(),
-                langOne= langOne.text.toString(),
-                langTwo = langTwo.text.toString(),
+                langOne= textOne.text.toString(),
+                langTwo = textTwo.text.toString(),
                 lastChanged = Date())
+                    ?:createNewSticker()
 
                 if (sticker != null) viewModel.saveChanges(sticker!!)
             }
         }, SAVE_DELAY)
     }
+    private fun createNewSticker(): Sticker = Sticker(UUID.randomUUID().toString(),
+    titleEt.text.toString(), textOne.text.toString(),textTwo.text.toString())
 }

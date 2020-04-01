@@ -33,5 +33,13 @@
         app:layout_behavior="@string/fab_transformation_scrim_behavior"
         app:spanCount="3"
         tools:listitem="@layout/item_sticker" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="mini"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/ic_add_circle_outline_black_24dp"
+        app:layout_behavior="com.bankmtk.neuromemory.ui.common.FABBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

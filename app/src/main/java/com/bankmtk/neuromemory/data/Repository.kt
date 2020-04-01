@@ -43,7 +43,7 @@ object Repository {
     private fun addOrReplace(sticker: Sticker){
         for (i in 0 until stickers.size){
             if (stickers[i]==sticker){
-                stickers.set(i,sticker)
+                stickers[i] = sticker
                 return
             }   
         }

@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        fab.setOnClickListener{openStickerScreen(null)}
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         sViewModel = ViewModelProviders.of(this).get(StickerViewModel::class.java)
