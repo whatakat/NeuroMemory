@@ -3,6 +3,9 @@ package com.bankmtk.neuromemory.ui.sticker
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.bankmtk.neuromemory.R
@@ -10,12 +13,16 @@ import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
 import kotlinx.android.synthetic.main.activity_stick.*
+import kotlinx.android.synthetic.main.item_sticker.*
 import java.text.SimpleDateFormat
 import java.util.*
+
+private const val SAVE_DELAY = 2000L
 
 class StickerActivity: AppCompatActivity() {
     companion object{
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
+        private lateinit var viewModel: StickerViewModel
 
         fun getStartIntent(context: Context, sticker: Sticker?):Intent{
             val intent = Intent(context, StickerActivity::class.java)
@@ -57,6 +64,9 @@ class StickerActivity: AppCompatActivity() {
             }
             toolbar.setBackgroundColor(resources.getColor(color))
         }
+        titleEt.addTextChangedListener(textChangeListener)
+        textOne.addTextChangedListener(textChangeListener)
+        textTwo.addTextChangedListener(textChangeListener)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
@@ -66,5 +76,31 @@ class StickerActivity: AppCompatActivity() {
             true
         }
             else -> super.onOptionsItemSelected(item)
+    }
+    private val textChangeListener = object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            triggerSaveSticker()
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            //
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            //
+        }
+    }
+    private fun triggerSaveSticker(){
+        if (titleEt.text == null || titleEt.text!!.length<3)return
+        Handler().postDelayed(object : Runnable{
+            override fun run() {
+                sticker = sticker?.copy(title = titleEt.text.toString(),
+                langOne= langOne.text.toString(),
+                langTwo = langTwo.text.toString(),
+                lastChanged = Date())
+
+                if (sticker != null) viewModel.saveChanges(sticker!!)
+            }
+        }, SAVE_DELAY)
     }
 }
