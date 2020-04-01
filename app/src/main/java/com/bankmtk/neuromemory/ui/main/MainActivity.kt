@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         sViewModel = ViewModelProviders.of(this).get(StickerViewModel::class.java)
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemClick(sticker: Sticker) {
-                openStickerScreen(sticker)
+               openStickerScreen(sticker)
             }
         })
         myRecycler.adapter = adapter

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "235814532883",
+    "firebase_url": "https://neuromemory-239d0.firebaseio.com",
+    "project_id": "neuromemory-239d0",
+    "storage_bucket": "neuromemory-239d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235814532883:android:26be996021ba1373368ce6",
+        "android_client_info": {
+          "package_name": "com.bankmtk.neuromemory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235814532883-2pldbg48dsqsdctkkjld9pdfb5g625nd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT1ddO4J1tpkhJuR2WyUoNKt28Xytrjyc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235814532883-2pldbg48dsqsdctkkjld9pdfb5g625nd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
