@@ -1,52 +1,15 @@
 package com.bankmtk.neuromemory.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
-import java.util.*
+import com.bankmtk.neuromemory.data.provider.FireStoreProvider
+import com.bankmtk.neuromemory.data.provider.RemoteDataProvider
 
 object Repository {
-    private val stickersLiveData = MutableLiveData<List<Sticker>>()
-    private val stickers: MutableList<Sticker> = mutableListOf(
-        Sticker(id = UUID.randomUUID().toString(),
-            langOne = "Простите ребята, кто не успел - тот опоздал",
-            langTwo = "Sorry fellas waste not wan't not",
-            color = Color.WHITE,
-        title = ""),
-        Sticker(id = UUID.randomUUID().toString(),
-            langOne = "Что ты думаешь на счет этого",
-            langTwo = "What do you mind about this",
-            color = Color.GREEN,
-        title = ""),
-        Sticker(id = UUID.randomUUID().toString(),
-            langOne = "Ты шутишь?",
-            langTwo = "Are you kidding?",
-            color = Color.WHITE,
-        title = ""),
-        Sticker(id = UUID.randomUUID().toString(),
-            langOne = "Можешь дать мне подсказку",
-            langTwo = "can you give me a clue?",
-            color = Color.WHITE,
-        title = ""))
-    init {
-        stickersLiveData.value = stickers
-    }
 
-    fun getStickers():LiveData<List<Sticker>>{
-        return stickersLiveData
-    }
-    fun saveSticker(sticker: Sticker){
-        addOrReplace(sticker)
-        stickersLiveData.value = stickers
-    }
-    private fun addOrReplace(sticker: Sticker){
-        for (i in 0 until stickers.size){
-            if (stickers[i]==sticker){
-                stickers[i] = sticker
-                return
-            }   
-        }
-        stickers.add(sticker)
-    }
+    private val remoteProvider: RemoteDataProvider = FireStoreProvider()
+
+    fun getNotes() = remoteProvider.subscribeToAllStickers()
+    fun saveSticker(sticker: Sticker)= remoteProvider.saveSticker(sticker)
+    fun getNoteById(id: String) =  remoteProvider.getStickerById(id)
+
 }
