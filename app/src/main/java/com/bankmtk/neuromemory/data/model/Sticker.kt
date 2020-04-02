@@ -5,10 +5,10 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class Sticker (val id: String,
-                    val title: String?,
-                    val langOne: String?,
-                    val langTwo: String?,
+data class Sticker (val id: String="",
+                    val title: String="",
+                    val langOne: String="",
+                    val langTwo: String="",
                     val color: Color = Color.WHITE,
                     val lastChanged: Date = Date()):Parcelable{
     override fun equals(other: Any?): Boolean {
