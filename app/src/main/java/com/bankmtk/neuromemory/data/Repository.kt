@@ -10,6 +10,6 @@ object Repository {
 
     fun getStickers() = remoteProvider.subscribeToAllStickers()
     fun saveSticker(sticker: Sticker)= remoteProvider.saveSticker(sticker)
-    fun getNoteById(id: String) =  remoteProvider.getStickerById(id)
+    fun getStickerById(id: String) =  remoteProvider.getStickerById(id)
 
 }
