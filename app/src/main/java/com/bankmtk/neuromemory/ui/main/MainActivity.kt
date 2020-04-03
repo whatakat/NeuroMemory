@@ -5,45 +5,52 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.ui.base.BaseActivity
+import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
 
-class MainActivity : AppCompatActivity() {
-
-    lateinit var viewModel: MainViewModel
-    lateinit var adapter: MainAdapter
-    lateinit var sViewModel: StickerViewModel
+class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
+    override val viewModel:MainViewModel by lazy {
+        ViewModelProviders.of(this).get(MainViewModel::class.java)}
+    override val layoutRes: Int= R.layout.activity_main
+    private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        fab.setOnClickListener{openStickerScreen(null)}
 
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        sViewModel = ViewModelProviders.of(this).get(StickerViewModel::class.java)
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemClick(sticker: Sticker) {
-               openStickerScreen(sticker)
+                openStickerScreen(sticker)
             }
         })
         myRecycler.adapter = adapter
 
-        viewModel.viewState().observe(this,Observer<MainViewState>{
-            t ->t?.let{adapter.stickers = it.stickers}
+        fab.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                openStickerScreen(null)
+            }
         })
     }
+
+    override fun renderData(data: List<Sticker>?) {
+        if (data==null) return
+        adapter.stickers = data
+    }
     private fun openStickerScreen(sticker: Sticker?){
-        val intent = StickerActivity.getStartIntent(this,sticker)
+        val intent  = StickerActivity.getStartIntent(this, sticker)
         startActivity(intent)
     }
-    }
+}
