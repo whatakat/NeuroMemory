@@ -8,10 +8,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
+import com.bankmtk.neuromemory.ui.base.BaseActivity
+import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
 import java.text.SimpleDateFormat
@@ -19,7 +22,14 @@ import java.util.*
 
 private const val SAVE_DELAY = 2000L
 
-class StickerActivity: AppCompatActivity() {
+class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
+    override val viewModel: StickerViewModel by lazy {
+        ViewModelProviders.of(this).get(StickerViewModel::class.java)}
+    override val layoutRes: Int = R.layout.activity_stick
+    private var sticker: Sticker? = null
+
+
+
     companion object{
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
         private lateinit var viewModel: StickerViewModel
@@ -30,24 +40,25 @@ class StickerActivity: AppCompatActivity() {
             return intent
         }
     }
-    private var sticker: Sticker? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stick)
 
-        sticker = intent.getParcelableExtra(EXTRA_STICKER)
+        val stickerId = intent.getStringExtra(EXTRA_STICKER)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        supportActionBar?.title = if (sticker != null){
-            SimpleDateFormat(DATE_TIME_FORMAT,
-            Locale.getDefault()).format(sticker!!.lastChanged)
-        }else{
-            getString(R.string.new_sticker_title)
+        stickerId.let {
+            viewModel.loadSticker(it)
         }
-        initView()
+        if (stickerId == null) supportActionBar?.title =
+            getString(R.string.new_sticker_title)
+        titleEt.addTextChangedListener(textChangeListener)
+        langOne.addTextChangedListener(textChangeListener)
+        langTwo.addTextChangedListener(textChangeListener)
     }
+
     private fun initView(){
         if (sticker != null){
             titleEt.setText(sticker?.title ?:"")
@@ -67,6 +78,11 @@ class StickerActivity: AppCompatActivity() {
         titleEt.addTextChangedListener(textChangeListener)
         textOne.addTextChangedListener(textChangeListener)
         textTwo.addTextChangedListener(textChangeListener)
+    }
+
+    override fun renderData(data: Sticker?) {
+        this.sticker = data
+        initView()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
@@ -91,7 +107,7 @@ class StickerActivity: AppCompatActivity() {
         }
     }
     private fun triggerSaveSticker(){
-        //if (title.text.length<3)return
+        if (titleEt.text!!.length<3)return //I have one question
         Handler().postDelayed(object : Runnable{
             override fun run() {
                 sticker = sticker?.copy(title = titleEt.text.toString(),
