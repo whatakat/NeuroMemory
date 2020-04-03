@@ -1,19 +1,34 @@
 package com.bankmtk.neuromemory.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.data.Repository
+import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.data.model.StickerResult
+import com.bankmtk.neuromemory.ui.base.BaseViewModel
 
-class MainViewModel : ViewModel() {
+class MainViewModel(val repository: Repository = Repository) : BaseViewModel<List<Sticker>?,MainViewState>() {
+    private val stickersObserver = object : Observer<StickerResult>{
+        override fun onChanged(t: StickerResult?) {
+            if (t==null) return
 
-    private val viewStateLiveData: MutableLiveData<MainViewState> = MutableLiveData()
-    init {
-        Repository.getStickers().observeForever {
-            viewStateLiveData.value = viewStateLiveData.value?.copy(stickers = it!!) ?:
-                    MainViewState(it!!)
+            when(t){
+                is StickerResult.Success<*> ->{
+                    viewStateLiveData.value = MainViewState(stickers = t.data as? List<Sticker>)
+                }
+                is StickerResult.Error ->{
+                    viewStateLiveData.value = MainViewState(error = t.error)
+                }
+            }
         }
-
     }
-    fun viewState(): LiveData<MainViewState> = viewStateLiveData
+    private val repositoryStickers = repository.getStickers()
+
+    init {
+        viewStateLiveData.value = MainViewState()
+        repositoryStickers.observeForever(stickersObserver)
+    }
+
+    override fun onCleared() {
+        repositoryStickers.removeObserver(stickersObserver)
+    }
 }

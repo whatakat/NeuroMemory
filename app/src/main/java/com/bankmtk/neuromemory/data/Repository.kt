@@ -8,7 +8,7 @@ object Repository {
 
     private val remoteProvider: RemoteDataProvider = FireStoreProvider()
 
-    fun getNotes() = remoteProvider.subscribeToAllStickers()
+    fun getStickers() = remoteProvider.subscribeToAllStickers()
     fun saveSticker(sticker: Sticker)= remoteProvider.saveSticker(sticker)
     fun getNoteById(id: String) =  remoteProvider.getStickerById(id)
 
