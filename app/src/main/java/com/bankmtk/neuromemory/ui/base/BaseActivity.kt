@@ -3,14 +3,14 @@ package com.bankmtk.neuromemory.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.R
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 abstract class BaseActivity <T, S : BaseViewState<T>> : AppCompatActivity(){
 
-    abstract val viewModel: BaseViewModel<T,S>
+    abstract val viewModel: BaseViewModel<T, S>
     abstract val layoutRes: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
