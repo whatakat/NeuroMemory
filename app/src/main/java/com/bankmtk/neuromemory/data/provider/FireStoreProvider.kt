@@ -18,46 +18,39 @@ class FireStoreProvider : RemoteDataProvider {
     private val db = FirebaseFirestore.getInstance()
     private val stickersReference = db.collection(STICKERS_COLLECTION)
 
-    override fun saveSticker(sticker: Sticker): LiveData<StickerResult> {
-        val result = MutableLiveData<StickerResult>()
-        stickersReference.document(sticker.id)
-            .set(sticker).addOnSuccessListener {
-                Log.d(TAG, "Sticker $sticker is saved")
-                result.value = StickerResult.Success(sticker)
-            }.addOnFailureListener{
-                OnFailureListener { p0 ->
-                    Log.d(TAG, "Error saving sticker $sticker, message: ${p0.message}")
-                    result.value = StickerResult.Error(p0)
+    override fun saveSticker(sticker: Sticker): LiveData<StickerResult> =
+        MutableLiveData<StickerResult>().apply {
+            stickersReference.document(sticker.id)
+                .set(sticker).addOnSuccessListener {
+                    Log.d(TAG, "Sticker $sticker is saved")
+                    value = StickerResult.Success(sticker)
+                }.addOnFailureListener {
+                    Log.d(TAG, "Error saving sticker $sticker, message: ${it.message}")
+                    value = StickerResult.Error(it)
                 }
-            }
-        return result
-    }
+        }
 
-    override fun getStickerById(id: String): LiveData<StickerResult> {
-        val result = MutableLiveData<StickerResult>()
-        stickersReference.document(id).get()
-            .addOnSuccessListener { snapshot ->
-                result.value =
-                    StickerResult.Success(snapshot.toObject(Sticker::class.java))
-            }.addOnFailureListener{result.value = StickerResult.Error(it)}
-        return result
-    }
-
-    override fun subscribeToAllStickers(): LiveData<StickerResult> {
-        val result = MutableLiveData<StickerResult>()
-
-        stickersReference.addSnapshotListener { snapshot, e ->
-            if (e != null){
-                result.value = StickerResult.Error(e)
-            }else if (snapshot != null){
-                val stickers = mutableListOf<Sticker>()
-
-                for (doc: QueryDocumentSnapshot in snapshot){
-                    stickers.add(doc.toObject(Sticker::class.java))
+    override fun getStickerById(id: String): LiveData<StickerResult> =
+        MutableLiveData<StickerResult>().apply {
+            stickersReference.document(id).get()
+                .addOnSuccessListener {
+                    value =
+                        StickerResult.Success(it.toObject(Sticker::class.java))
+                }.addOnFailureListener {
+                    value = StickerResult.Error(it)
                 }
-                result.value = StickerResult.Success(stickers)
+        }
+
+    override fun subscribeToAllStickers(): LiveData<StickerResult> =
+        MutableLiveData<StickerResult>().apply {
+            stickersReference.addSnapshotListener { snapshot, e ->
+                value = e?.let { StickerResult.Error(it) }
+                    ?: snapshot?.let {
+                        val stickers = it.documents.map {
+                            it.toObject(Sticker::class.java)
+                        }
+                        StickerResult.Success(stickers)
+                    }
             }
         }
-        return result
-    }
 }
