@@ -49,14 +49,17 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
         val stickerId = intent.getStringExtra(EXTRA_STICKER)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        if (stickerId != null){
         stickerId.let {
             viewModel.loadSticker(it)
+        }}
+        else if (stickerId == null) {
+            supportActionBar?.title =
+                getString(R.string.new_sticker_title)
+            titleEt.addTextChangedListener(textChangeListener)
+            textOne.addTextChangedListener(textChangeListener)
+            textTwo.addTextChangedListener(textChangeListener)
         }
-        if (stickerId == null) supportActionBar?.title =
-            getString(R.string.new_sticker_title)
-        titleEt.addTextChangedListener(textChangeListener)
-        langOne.addTextChangedListener(textChangeListener)
-        langTwo.addTextChangedListener(textChangeListener)
     }
 
     private fun initView(){
