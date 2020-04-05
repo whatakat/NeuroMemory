@@ -13,6 +13,8 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
+import com.bankmtk.neuromemory.extentions.format
+import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
@@ -62,25 +64,16 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
         }
     }
 
-    private fun initView(){
-        if (sticker != null){
-            titleEt.setText(sticker?.title ?:"")
-            textOne.setText(sticker?.langOne ?:"")
-            textTwo.setText(sticker?.langTwo ?:"")
-            val color = when(sticker!!.color){
-                Color.WHITE ->R.color.white
-                Color.VIOLET ->R.color.violet
-                Color.BLUE ->R.color.blue
-                Color.GREEN ->R.color.green
-                Color.PINK ->R.color.pink
-                Color.RED ->R.color.red
-                Color.YELLOW ->R.color.yellow
-            }
-            toolbar.setBackgroundColor(resources.getColor(color))
+    private fun initView() {
+        sticker?.run {
+            supportActionBar?.title = lastChanged.format()
+
+            titleEt.setText(title)
+            textOne.setText(langOne)
+            textTwo.setText(langTwo)
+
+            toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity))
         }
-        titleEt.addTextChangedListener(textChangeListener)
-        textOne.addTextChangedListener(textChangeListener)
-        textTwo.addTextChangedListener(textChangeListener)
     }
 
     override fun renderData(data: Sticker?) {
