@@ -3,6 +3,7 @@ package com.bankmtk.neuromemory.data.provider
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.StickerResult
 import com.google.android.gms.tasks.OnFailureListener
@@ -21,6 +22,10 @@ class FireStoreProvider : RemoteDataProvider {
     private val stickersReference = db.collection(STICKERS_COLLECTION)
 
     private val currentUser get() = FirebaseAuth.getInstance().currentUser
+
+    private fun getUserStickersCollection() = currentUser?.let {
+        db.collection(USERS_COLLECTION).document(it.uid).collection(STICKERS_COLLECTION)
+    } ?: throw NoAuthException()
 
     override fun saveSticker(sticker: Sticker): LiveData<StickerResult> =
         MutableLiveData<StickerResult>().apply {
