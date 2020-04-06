@@ -7,6 +7,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.StickerResult
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import java.lang.Exception
 
@@ -18,6 +19,8 @@ class FireStoreProvider : RemoteDataProvider {
 
     private val db = FirebaseFirestore.getInstance()
     private val stickersReference = db.collection(STICKERS_COLLECTION)
+
+    private val currentUser get() = FirebaseAuth.getInstance().currentUser
 
     override fun saveSticker(sticker: Sticker): LiveData<StickerResult> =
         MutableLiveData<StickerResult>().apply {
