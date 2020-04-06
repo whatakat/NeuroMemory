@@ -11,6 +11,7 @@ import com.google.firebase.firestore.*
 import java.lang.Exception
 
 private const val STICKERS_COLLECTION = "stickers"
+private const val USERS_COLLECTION = "users"
 
 class FireStoreProvider : RemoteDataProvider {
     private val TAG = "${FireStoreProvider::class.java.simpleName} :"
