@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.StickerResult
+import com.bankmtk.neuromemory.data.model.User
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
@@ -72,5 +73,10 @@ class FireStoreProvider : RemoteDataProvider {
             }catch (e: Throwable){
                 value = StickerResult.Error(e)
             }
+        }
+
+    override fun getCurrentUser(): LiveData<User?> =
+        MutableLiveData<User?>().apply {
+            value = currentUser?.let { User(it.displayName ?: "", it.email ?: "") }
         }
 }
