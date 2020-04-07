@@ -29,14 +29,18 @@ class FireStoreProvider : RemoteDataProvider {
 
     override fun saveSticker(sticker: Sticker): LiveData<StickerResult> =
         MutableLiveData<StickerResult>().apply {
-            stickersReference.document(sticker.id)
-                .set(sticker).addOnSuccessListener {
-                    Log.d(TAG, "Sticker $sticker is saved")
-                    value = StickerResult.Success(sticker)
-                }.addOnFailureListener {
-                    Log.d(TAG, "Error saving sticker $sticker, message: ${it.message}")
-                    value = StickerResult.Error(it)
-                }
+            try {
+                getUserStickersCollection().document(sticker.id)
+                    .set(sticker).addOnSuccessListener {
+                        Log.d(TAG,"Sticker $sticker is saved")
+                        value = StickerResult.Success(sticker)
+                    }.addOnFailureListener {
+                        Log.d(TAG, "Error saving sticker $sticker, message: ${it.message}")
+                        throw it
+                    }
+            } catch (e: Throwable){
+                value = StickerResult.Error(e)
+            }
         }
 
     override fun getStickerById(id: String): LiveData<StickerResult> =
