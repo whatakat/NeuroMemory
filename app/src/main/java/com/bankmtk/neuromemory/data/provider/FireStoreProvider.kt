@@ -45,13 +45,17 @@ class FireStoreProvider : RemoteDataProvider {
 
     override fun getStickerById(id: String): LiveData<StickerResult> =
         MutableLiveData<StickerResult>().apply {
-            stickersReference.document(id).get()
-                .addOnSuccessListener {
-                    value =
-                        StickerResult.Success(it.toObject(Sticker::class.java))
-                }.addOnFailureListener {
-                    value = StickerResult.Error(it)
-                }
+            try {
+                getUserStickersCollection().document(id).get()
+                    .addOnSuccessListener {
+                        value =
+                            StickerResult.Success(it.toObject(Sticker::class.java))
+                    }.addOnFailureListener {
+                        throw it
+                    }
+            }catch (e: Throwable){
+                value = StickerResult.Error(e)
+            }
         }
 
     override fun subscribeToAllStickers(): LiveData<StickerResult> =
