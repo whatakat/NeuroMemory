@@ -1,5 +1,7 @@
 package com.bankmtk.neuromemory.ui.main
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -52,5 +54,9 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
     private fun openStickerScreen(sticker: Sticker?){
         val intent  = StickerActivity.getStartIntent(this, sticker)
         startActivity(intent)
+    }
+    companion object{
+        fun getStartIntent(context: Context) = Intent(context,
+        MainActivity::class.java)
     }
 }
