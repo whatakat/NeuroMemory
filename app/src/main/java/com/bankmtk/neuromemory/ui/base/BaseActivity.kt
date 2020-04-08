@@ -1,5 +1,8 @@
 package com.bankmtk.neuromemory.ui.base
 
+import android.app.Activity
+import android.app.Instrumentation
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -52,6 +55,13 @@ abstract class BaseActivity<T, S : BaseViewState<T>> : AppCompatActivity() {
         Snackbar.make(myRecycler, error, Snackbar.LENGTH_INDEFINITE).apply {
             setAction(R.string.ok_bth_title) { dismiss() }
             show()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)// may be else
+        if (requestCode == RC_SIGN_IN && resultCode != Activity.RESULT_OK){
+            finish()
         }
     }
 }
