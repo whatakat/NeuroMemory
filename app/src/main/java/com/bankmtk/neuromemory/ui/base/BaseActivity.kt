@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.R
+import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,8 +24,11 @@ abstract class BaseActivity<T, S : BaseViewState<T>> : AppCompatActivity() {
         })
     }
 
-    protected fun renderError(error: Throwable) {
-        error.message?.let { showError(it) }
+    protected open fun renderError(error: Throwable) {
+        when(error){
+            is NoAuthException -> startLoginActivity()
+            else -> error.message?.let { showError(it)}
+         }
     }
 
     abstract fun renderData(data: T)
