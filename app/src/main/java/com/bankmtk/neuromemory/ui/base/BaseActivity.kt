@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.errors.NoAuthException
+import com.firebase.ui.auth.AuthUI
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-
+private const val RC_SIGN_IN = 458
 abstract class BaseActivity<T, S : BaseViewState<T>> : AppCompatActivity() {
 
     abstract val viewModel: BaseViewModel<T, S>
@@ -29,6 +30,20 @@ abstract class BaseActivity<T, S : BaseViewState<T>> : AppCompatActivity() {
             is NoAuthException -> startLoginActivity()
             else -> error.message?.let { showError(it)}
          }
+    }
+
+    private fun startLoginActivity(){
+        val providers = listOf(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build())
+        startActivityForResult(
+            AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setLogo(R.drawable.tree)
+                .setTheme(R.style.LoginStyle)
+                .setAvailableProviders(providers)
+                .build(),
+            RC_SIGN_IN)
     }
 
     abstract fun renderData(data: T)
