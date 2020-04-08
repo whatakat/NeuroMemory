@@ -4,7 +4,7 @@
     <item>
 
         <bitmap
-            android:gravity="center"
+            android:gravity="bottom"
             android:src="@drawable/tree"/>
     </item>
 

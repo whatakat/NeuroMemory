@@ -55,6 +55,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.2'
     //authentication in firebase
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
     //MultiDex
     implementation 'com.android.support:multidex:1.0.3'
 }

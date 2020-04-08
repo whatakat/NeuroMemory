@@ -47,10 +47,10 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val stickerId = intent.getStringExtra(EXTRA_STICKER)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val stickerId = intent.getStringExtra(EXTRA_STICKER)
         if (stickerId != null){
         stickerId.let {
             viewModel.loadSticker(it)
