@@ -1,5 +1,7 @@
 package com.bankmtk.neuromemory.ui.main
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
@@ -20,13 +23,24 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
+import com.bankmtk.neuromemory.ui.splash.SplashActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
+import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
 
-class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
+class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog.LogoutListener {
+    override fun onLogout() {
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener{
+                startActivity(Intent(this, SplashActivity::class.java))
+                finish()
+            }
+    }
+
     override val viewModel:MainViewModel by lazy {
         ViewModelProviders.of(this).get(MainViewModel::class.java)}
     override val layoutRes: Int= R.layout.activity_main
@@ -72,8 +86,29 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
             else -> false
     }
     private fun showLogoutDialog(){
-        supportFragmentManager.findFragmentById(LogOutDialog.TAG) ?:
+        supportFragmentManager.findFragmentByTag(LogOutDialog.TAG) ?:
                 LogOutDialog.createInstance().show(supportFragmentManager,LogOutDialog.TAG)
     }
 
+
+}
+class LogOutDialog: DialogFragment(){
+    companion object{
+        val TAG = LogOutDialog::class.java.name + "TAG"
+        fun createInstance()=LogOutDialog()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
+        AlertDialog.Builder(context!!)
+            .setTitle(R.string.logout_dialog_title)
+            .setMessage(R.string.logout_dialog_message)
+            .setPositiveButton(R.string.ok_bth_title){ _, _ ->
+                (activity as LogoutListener).onLogout()}
+            .setNegativeButton(R.string.logout_dialog_cancel){_, _ ->
+                dismiss()}
+            .create()
+
+    interface LogoutListener{
+        fun onLogout()
+    }
 }
