@@ -3,4 +3,5 @@
     <string name="sticker">Sticker</string>
     <string name="new_sticker_title">New sticker</string>
     <string name="ok_bth_title">ok</string>
+    <string name="logout_menu_title">logout</string>
 </resources>
