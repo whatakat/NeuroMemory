@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -59,4 +61,9 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
         fun getStartIntent(context: Context) = Intent(context,
         MainActivity::class.java)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean =
+        MenuInflater(this).inflate(R.menu.menu_main, menu).let { true }
+
+
 }
