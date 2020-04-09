@@ -71,5 +71,9 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
             R.id.logout -> showLogoutDialog().let{true}
             else -> false
     }
+    private fun showLogoutDialog(){
+        supportFragmentManager.findFragmentById(LogOutDialog.TAG) ?:
+                LogOutDialog.createInstance().show(supportFragmentManager,LogOutDialog.TAG)
+    }
 
 }
