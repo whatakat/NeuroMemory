@@ -32,14 +32,6 @@ import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
 
 class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog.LogoutListener {
-    override fun onLogout() {
-        AuthUI.getInstance()
-            .signOut(this)
-            .addOnCompleteListener{
-                startActivity(Intent(this, SplashActivity::class.java))
-                finish()
-            }
-    }
 
     override val viewModel:MainViewModel by lazy {
         ViewModelProviders.of(this).get(MainViewModel::class.java)}
@@ -88,6 +80,14 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog
     private fun showLogoutDialog(){
         supportFragmentManager.findFragmentByTag(LogOutDialog.TAG) ?:
                 LogOutDialog.createInstance().show(supportFragmentManager,LogOutDialog.TAG)
+    }
+    override fun onLogout() {
+        AuthUI.getInstance()
+            .signOut(this)
+            .addOnCompleteListener{
+                startActivity(Intent(this, SplashActivity::class.java))
+                finish()
+            }
     }
 
 
