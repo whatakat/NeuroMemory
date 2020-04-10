@@ -6,7 +6,7 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.main.MainActivity
 
-private const val START_DELAY = 1000L
+private const val START_DELAY = 2000L
 
 class SplashActivity : BaseActivity<Boolean?, SplashViewState>() {
     override val viewModel: SplashViewModel by lazy {
