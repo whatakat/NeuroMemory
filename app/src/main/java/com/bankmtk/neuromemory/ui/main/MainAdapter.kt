@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.getColorInt
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.activity_stick.*
+import kotlinx.android.synthetic.main.item_sticker.*
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener):RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
@@ -27,25 +31,14 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
     override fun onBindViewHolder(holder: StickViewHolder, position: Int): Unit{
         holder.bind(stickers[position])
     }
-    inner class StickViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val title = itemView.findViewById<TextView>(R.id.titleStick)
-        private val langOne = itemView.findViewById<TextView>(R.id.langOne)
-        private val langTwo = itemView.findViewById<TextView>(R.id.langTwo)
-
+    inner class StickViewHolder(override val containerView: View):
+        RecyclerView.ViewHolder(containerView), LayoutContainer{
         fun bind(sticker: Sticker){
-            title.text = sticker.title
-            langOne.text = sticker.langOne
+            titleStick.text = sticker.title
+            langOne.text = sticker.langTwo
             langTwo.text = sticker.langTwo
-            val color = when(sticker.color){
-            Color.WHITE ->R.color.white
-                Color.VIOLET ->R.color.violet
-                Color.BLUE ->R.color.blue
-                Color.GREEN ->R.color.green
-                Color.PINK ->R.color.pink
-                Color.RED -> R.color.red
-                Color.YELLOW -> R.color.yellow
-            }
-            itemView.setBackgroundColor(itemView.context.resources.getColor(color))
+
+            itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
             itemView.setOnClickListener{onItemClickListener.onItemClick(sticker)}
         }
     }
