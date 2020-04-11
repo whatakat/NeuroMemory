@@ -12,5 +12,6 @@ object Repository {
     fun saveSticker(sticker: Sticker)= remoteProvider.saveSticker(sticker)
     fun getStickerById(id: String) =  remoteProvider.getStickerById(id)
     fun getCurrentUser() = remoteProvider.getCurrentUser()
+    fun deleteSticker(stickerId: String) = remoteProvider.deleteSticker(stickerId)
 
 }
