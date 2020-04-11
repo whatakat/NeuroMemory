@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
 import org.jetbrains.anko.alert
 
-class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog.LogoutListener {
+class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
 
     override val viewModel:MainViewModel by lazy {
         ViewModelProviders.of(this).get(MainViewModel::class.java)}
@@ -62,8 +62,7 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog
         adapter.stickers = data
     }
     private fun openStickerScreen(sticker: Sticker?){
-        val intent  = StickerActivity.getStartIntent(this, sticker)
-        startActivity(intent)
+        StickerActivity.start(this,sticker?.id)
     }
     companion object{
         fun getStartIntent(context: Context) = Intent(context,
@@ -86,7 +85,7 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog
             negativeButton(R.string.logout_dialog_cancel){dialog -> dialog.dismiss()  }
         }.show()
     }
-    override fun onLogout() {
+     fun onLogout() {
         AuthUI.getInstance()
             .signOut(this)
             .addOnCompleteListener{
