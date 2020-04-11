@@ -19,6 +19,7 @@ import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
+import org.jetbrains.anko.startActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,13 +35,8 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
 
     companion object{
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
-        private lateinit var viewModel: StickerViewModel
-
-        fun getStartIntent(context: Context, sticker: Sticker?):Intent{
-            val intent = Intent(context, StickerActivity::class.java)
-            intent.putExtra(EXTRA_STICKER, sticker)
-            return intent
-        }
+        fun start(context: Context, stickerId: String?)=
+            context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
     }
 
 
