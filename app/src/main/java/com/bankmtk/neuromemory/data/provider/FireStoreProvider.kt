@@ -5,13 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.bankmtk.neuromemory.data.model.Sticker
-import com.bankmtk.neuromemory.data.model.StickerResult
+import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.data.model.User
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
-import java.lang.Exception
 
 private const val STICKERS_COLLECTION = "stickers"
 private const val USERS_COLLECTION = "users"
@@ -28,50 +25,50 @@ class FireStoreProvider : RemoteDataProvider {
         db.collection(USERS_COLLECTION).document(it.uid).collection(STICKERS_COLLECTION)
     } ?: throw NoAuthException()
 
-    override fun saveSticker(sticker: Sticker): LiveData<StickerResult> =
-        MutableLiveData<StickerResult>().apply {
+    override fun saveSticker(sticker: Sticker): LiveData<Result> =
+        MutableLiveData<Result>().apply {
             try {
                 getUserStickersCollection().document(sticker.id)
                     .set(sticker).addOnSuccessListener {
                         Log.d(TAG,"Sticker $sticker is saved")
-                        value = StickerResult.Success(sticker)
+                        value = Result.Success(sticker)
                     }.addOnFailureListener {
                         Log.d(TAG, "Error saving sticker $sticker, message: ${it.message}")
                         throw it
                     }
             } catch (e: Throwable){
-                value = StickerResult.Error(e)
+                value = Result.Error(e)
             }
         }
 
-    override fun getStickerById(id: String): LiveData<StickerResult> =
-        MutableLiveData<StickerResult>().apply {
+    override fun getStickerById(id: String): LiveData<Result> =
+        MutableLiveData<Result>().apply {
             try {
                 getUserStickersCollection().document(id).get()
                     .addOnSuccessListener {
                         value =
-                            StickerResult.Success(it.toObject(Sticker::class.java))
+                            Result.Success(it.toObject(Sticker::class.java))
                     }.addOnFailureListener {
                         throw it
                     }
             }catch (e: Throwable){
-                value = StickerResult.Error(e)
+                value = Result.Error(e)
             }
         }
 
-    override fun subscribeToAllStickers(): LiveData<StickerResult> =
-        MutableLiveData<StickerResult>().apply {
+    override fun subscribeToAllStickers(): LiveData<Result> =
+        MutableLiveData<Result>().apply {
             try {
                 getUserStickersCollection().addSnapshotListener{snapshot, e->
                     value = e?.let { throw it }
                         ?: snapshot?.let {
                             val stickers = it.documents.map {
                                 it.toObject(Sticker::class.java)}
-                            StickerResult.Success(stickers)
+                            Result.Success(stickers)
                         }
                 }
             }catch (e: Throwable){
-                value = StickerResult.Error(e)
+                value = Result.Error(e)
             }
         }
 
