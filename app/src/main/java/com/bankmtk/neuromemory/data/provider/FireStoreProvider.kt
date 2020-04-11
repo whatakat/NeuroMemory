@@ -76,4 +76,14 @@ class FireStoreProvider : RemoteDataProvider {
         MutableLiveData<User?>().apply {
             value = currentUser?.let { User(it.displayName ?: "", it.email ?: "") }
         }
+
+    override fun deleteSticker(stickerId: String): LiveData<Result> =
+    MutableLiveData<Result>().apply {
+        getUserStickersCollection().document(stickerId).delete()
+            .addOnSuccessListener {
+                value = Result.Success(null)
+            }.addOnFailureListener{
+                value = Result.Error(it)
+            }
+    }
 }
