@@ -9,4 +9,6 @@
     <string name="logout_dialog_cancel">Cancel</string>
     <string name="change_color_menu_title">Change color</string>
     <string name="delete_menu_title">Delete</string>
+    <string name="delete_dialog_message">Do you want to delete sticker?</string>
+    <string name="cancel_btn_title">Cancel</string>
 </resources>

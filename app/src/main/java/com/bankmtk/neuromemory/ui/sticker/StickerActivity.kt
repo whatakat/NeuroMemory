@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
@@ -19,6 +20,7 @@ import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,8 +41,6 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
     }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
@@ -59,6 +59,10 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
             textTwo.addTextChangedListener(textChangeListener)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean =
+        menuInflater.inflate(R.menu.sticker_menu, menu).let { true}
+
 
     private fun initView() {
         sticker?.run {
@@ -79,12 +83,20 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.itemId){
-        android.R.id.home ->{
-            onBackPressed()
-            true
-        }
+        android.R.id.home ->super.onBackPressed().let { true }
+            R.id.palette -> togglePalette().let {true}
+            R.id.delete -> deleteSticker().let {true}
             else -> super.onOptionsItemSelected(item)
     }
+    private fun togglePalette(){}
+    private fun deleteSticker(){
+        alert {
+            messageResource = R.string.delete_dialog_message
+            negativeButton(R.string.cancel_btn_title){dialog -> dialog.dismiss() }
+            positiveButton(R.string.ok_bth_title){viewModel.deleteSticker()}
+        }.show()
+    }
+
     private val textChangeListener = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             triggerSaveSticker()
