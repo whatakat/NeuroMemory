@@ -10,4 +10,5 @@ interface RemoteDataProvider {
     fun getStickerById(id: String): LiveData<Result>
     fun saveSticker(sticker: Sticker): LiveData<Result>
     fun getCurrentUser() : LiveData<User?>
+    fun deleteSticker(stickerId: String): LiveData<Result>
 }
