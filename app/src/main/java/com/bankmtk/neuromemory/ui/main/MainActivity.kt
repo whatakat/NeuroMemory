@@ -30,6 +30,7 @@ import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
+import org.jetbrains.anko.alert
 
 class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog.LogoutListener {
 
@@ -78,8 +79,12 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog
             else -> false
     }
     private fun showLogoutDialog(){
-        supportFragmentManager.findFragmentByTag(LogOutDialog.TAG) ?:
-                LogOutDialog.createInstance().show(supportFragmentManager,LogOutDialog.TAG)
+        alert {
+            titleResource = R.string.logout_dialog_title
+            messageResource = R.string.logout_dialog_message
+            positiveButton(R.string.ok_bth_title){onLogout()}
+            negativeButton(R.string.logout_dialog_cancel){dialog -> dialog.dismiss()  }
+        }.show()
     }
     override fun onLogout() {
         AuthUI.getInstance()
@@ -90,25 +95,7 @@ class MainActivity : BaseActivity<List<Sticker>?, MainViewState>(), LogOutDialog
             }
     }
 
-
 }
-class LogOutDialog: DialogFragment(){
-    companion object{
-        val TAG = LogOutDialog::class.java.name + "TAG"
-        fun createInstance()=LogOutDialog()
-    }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
-        AlertDialog.Builder(context!!)
-            .setTitle(R.string.logout_dialog_title)
-            .setMessage(R.string.logout_dialog_message)
-            .setPositiveButton(R.string.ok_bth_title){ _, _ ->
-                (activity as LogoutListener).onLogout()}
-            .setNegativeButton(R.string.logout_dialog_cancel){_, _ ->
-                dismiss()}
-            .create()
 
-    interface LogoutListener{
-        fun onLogout()
-    }
-}
+
