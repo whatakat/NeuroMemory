@@ -6,7 +6,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 
-class StickerViewModel(val repository: Repository = Repository): BaseViewModel<Sticker?, StickerViewState>() {
+class StickerViewModel(val repository: Repository = Repository): BaseViewModel<StickerViewState.Data, StickerViewState>() {
     private var pendingSticker: Sticker? = null
     fun saveChanges(sticker: Sticker){
         pendingSticker = sticker
@@ -18,17 +18,14 @@ class StickerViewModel(val repository: Repository = Repository): BaseViewModel<S
         }
     }
     fun loadSticker(stickerId: String){
-        repository.getStickerById(stickerId).observeForever(object : Observer<Result>{
-            override fun onChanged(t: Result?) {
-                if (t == null) return
-                when(t){
-                    is com.bankmtk.neuromemory.data.model.StickerResult.Result.Success<*>->
-                        viewStateLiveData.value = StickerViewState(sticker = t.data as? Sticker)
-                    is com.bankmtk.neuromemory.data.model.StickerResult.Result.Error ->
-                        viewStateLiveData.value = StickerViewState(error = t.error)
+        repository.getStickerById(stickerId).observeForever{ t ->
+            t?.let {
+                viewStateLiveData.value = when (t) {
+                    is Result.Success<*> -> StickerViewState(StickerViewState.Data(sticker = t.data as? Sticker))
+                    is Result.Error-> StickerViewState(error = t.error)
                 }
             }
-        })
+        }
     }
 
 }
