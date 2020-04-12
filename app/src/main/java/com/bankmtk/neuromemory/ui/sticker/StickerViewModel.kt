@@ -27,5 +27,20 @@ class StickerViewModel(val repository: Repository = Repository): BaseViewModel<S
             }
         }
     }
+    private val currentSticker: Sticker?
+        get() = viewStateLiveData.value?.data?.sticker
+
+    fun deleteSticker(){
+        currentSticker?.let{
+            repository.deleteSticker(it.id).observeForever{ t ->
+                t?.let {
+                    viewStateLiveData.value = when(it){
+                        is Result.Success<*> -> StickerViewState(StickerViewState.Data(isDeleted = true))
+                        is Result.Error -> StickerViewState(error = it.error)
+                    }
+                }
+            }
+        }
+    }
 
 }
