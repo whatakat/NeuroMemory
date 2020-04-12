@@ -27,7 +27,7 @@ import java.util.*
 
 private const val SAVE_DELAY = 2000L
 
-class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
+class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
     override val viewModel: StickerViewModel by lazy {
         ViewModelProviders.of(this).get(StickerViewModel::class.java)}
     override val layoutRes: Int = R.layout.activity_stick
@@ -76,8 +76,11 @@ class StickerActivity: BaseActivity<Sticker?, StickerViewState>() {
         }
     }
 
-    override fun renderData(data: Sticker?) {
-        this.sticker = data
+    override fun renderData(data: StickerViewState.Data) {
+        if (data.isDeleted) finish()
+
+        this.sticker = data.sticker
+        //data.sticker?.let { color = it.color }
         initView()
     }
 
