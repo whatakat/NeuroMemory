@@ -129,4 +129,10 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
     }
     private fun createNewSticker(): Sticker = Sticker(UUID.randomUUID().toString(),
     titleEt.text.toString(), textOne.text.toString(),textTwo.text.toString())
+
+    private fun setEditListener(){
+        titleEt.addTextChangedListener(textChangeListener)
+        langOne.addTextChangedListener(textChangeListener)
+        langTwo.addTextChangedListener(textChangeListener)
+    }
 }
