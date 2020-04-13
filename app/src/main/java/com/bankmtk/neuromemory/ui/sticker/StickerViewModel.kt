@@ -9,7 +9,7 @@ import com.bankmtk.neuromemory.ui.base.BaseViewModel
 class StickerViewModel(val repository: Repository = Repository): BaseViewModel<StickerViewState.Data, StickerViewState>() {
     private var pendingSticker: Sticker? = null
     fun saveChanges(sticker: Sticker){
-        pendingSticker = sticker
+        viewStateLiveData.value = StickerViewState(StickerViewState.Data(sticker = sticker))
     }
 
     override fun onCleared() {
