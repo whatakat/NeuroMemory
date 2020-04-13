@@ -67,12 +67,14 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
     private fun initView() {
         sticker?.run {
             supportActionBar?.title = lastChanged.format()
+            toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity)) //? only this
 
+            removeEditListener()
             titleEt.setText(title)
             textOne.setText(langOne)
             textTwo.setText(langTwo)
+            setEditListener()
 
-            toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity))
         }
     }
 
