@@ -44,4 +44,27 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
         field = value
         strokePaint.strokeWidth = value
     }
+    init {
+        val a = context.obtainStyledAttributes(attrs,
+        R.styleable.ColorCircleView)
+
+        val defRadiusPx = dip(defRadiusDp).toFloat()
+        radius = a.getDimension(R.styleable.ColorCircleView_circleRadius,
+        defRadiusPx)
+        fillColorRes = a.getResourceId(
+            R.styleable.ColorCircleView_fillColor, R.color.white)
+        val defStrokeWidthPx = dip(defStrokeWidthDp).toFloat()
+        strokeWidth = a.getDimension(
+            R.styleable.ColorCircleView_strokeWith, defStrokeWidthPx)
+        strokeColorRes = a.getResourceId(
+            R.styleable.ColorCircleView_strokeColor,
+            R.color.color_text_secondary)
+        a.recycle()
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val height = (radius*2 + paddingTop + paddingBottom).toInt()
+        val width = (radius*2 + paddingStart + paddingEnd).toInt()
+        setMeasuredDimension(width,height)
+    }
 }
