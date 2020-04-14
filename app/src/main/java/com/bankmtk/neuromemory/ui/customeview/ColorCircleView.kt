@@ -38,4 +38,10 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
             field = value
             strokePaint.color = ContextCompat.getColor(context,value)
         }
+    @Dimension(unit = PX) var strokeWidth: Float =
+        dip(defStrokeWidthDp).toFloat()
+    set(value){
+        field = value
+        strokePaint.strokeWidth = value
+    }
 }
