@@ -33,4 +33,9 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
         field = value
         fillPaint.color = ContextCompat.getColor(context,value)
     }
+    @ColorRes var strokeColorRes: Int = R.color.black
+        set(value) {
+            field = value
+            strokePaint.color = ContextCompat.getColor(context,value)
+        }
 }
