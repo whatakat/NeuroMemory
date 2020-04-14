@@ -19,4 +19,6 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
     private var strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
     }
+    private var center: Pair<Float, Float> = 0f to 0f
+
 }
