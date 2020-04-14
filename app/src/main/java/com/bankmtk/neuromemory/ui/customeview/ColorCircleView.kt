@@ -16,4 +16,7 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
     private val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL
     }
+    private var strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.STROKE
+    }
 }
