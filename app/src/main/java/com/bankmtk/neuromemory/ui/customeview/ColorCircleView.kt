@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.Dimension
 import androidx.annotation.Dimension.DP
+import androidx.annotation.Dimension.PX
+import org.jetbrains.anko.dip
 
 @Dimension(unit = DP) private const val defRadiusDp = 16
 @Dimension(unit = DP) private const val defStrokeWidthDp = 1
@@ -21,4 +23,5 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
     }
     private var center: Pair<Float, Float> = 0f to 0f
 
+    @Dimension(unit = PX) var radius: Float = dip(defRadiusDp).toFloat()
 }
