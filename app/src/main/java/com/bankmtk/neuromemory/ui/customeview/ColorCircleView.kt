@@ -56,10 +56,10 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
             R.styleable.ColorCircleView_fillColor, R.color.white)
         val defStrokeWidthPx = dip(defStrokeWidthDp).toFloat()
         strokeWidth = a.getDimension(
-            R.styleable.ColorCircleView_strokeWith, defStrokeWidthPx)
+            R.styleable.ColorCircleView_strokeWidth, defStrokeWidthPx)
         strokeColorRes = a.getResourceId(
             R.styleable.ColorCircleView_strokeColor,
-            R.color.color_text_secondary)
+            R.color.black)
         a.recycle()
     }
 
