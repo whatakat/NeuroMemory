@@ -1,6 +1,7 @@
 package com.bankmtk.neuromemory.ui.customeview
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
@@ -71,5 +72,11 @@ defStyleAttr: Int = 0): View(context, attrs, defStyleAttr){
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         center = measuredWidth/2f to measuredHeight/2f
         super.onLayout(changed, left, top, right, bottom)
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        canvas.drawCircle(center.first, center.second, radius,strokePaint)
+        canvas.drawCircle(center.first, center.second,radius-strokeWidth,fillPaint)
     }
 }
