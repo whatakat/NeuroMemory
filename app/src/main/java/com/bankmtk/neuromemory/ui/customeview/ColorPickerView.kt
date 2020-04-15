@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui.customeview
 
+import android.animation.PropertyValuesHolder
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
@@ -75,5 +76,13 @@ class ColorPickerView: LinearLayout {
             layoutParams = it
         }
     }
+
+    fun open(){
+        animator.cancel()
+        animator.setValues(PropertyValuesHolder.ofInt(HEIGHT, measuredHeight,desiredHeight),
+        PropertyValuesHolder.ofFloat(SCALE, getChildAt(0).scaleX, 1f))
+        animator.start()
+    }
+
 
 }
