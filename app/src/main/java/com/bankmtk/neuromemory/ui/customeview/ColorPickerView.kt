@@ -83,6 +83,12 @@ class ColorPickerView: LinearLayout {
         PropertyValuesHolder.ofFloat(SCALE, getChildAt(0).scaleX, 1f))
         animator.start()
     }
+    fun close(){
+        animator.cancel()
+        animator.setValues(PropertyValuesHolder.ofInt(HEIGHT,measuredHeight,0),
+        PropertyValuesHolder.ofFloat(SCALE, getChildAt(0).scaleX, 0f))
+        animator.start()
+    }
 
 
 }
