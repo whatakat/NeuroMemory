@@ -12,13 +12,16 @@ const val DATE_TIME_FORMAT = "dd.MMM.yy HH:mm"
 fun Date.format(): String =
     SimpleDateFormat(DATE_TIME_FORMAT, Locale.getDefault())
         .format(this)
+
 fun Color.getColorInt(context: Context): Int =
-    ContextCompat.getColor(context, when(this){
-        Color.WHITE -> R.color.white
-        Color.GREEN -> R.color.green
-        Color.YELLOW -> R.color.yellow
-        Color.RED -> R.color.red
-        Color.PINK -> R.color.pink
-        Color.BLUE -> R.color.blue
-        Color.VIOLET -> R.color.violet
-    })
+    ContextCompat.getColor(context, getColorRes())
+
+fun Color.getColorRes(): Int = when (this) {
+    Color.WHITE -> R.color.white
+    Color.GREEN -> R.color.green
+    Color.YELLOW -> R.color.yellow
+    Color.RED -> R.color.red
+    Color.PINK -> R.color.pink
+    Color.BLUE -> R.color.blue
+    Color.VIOLET -> R.color.violet
+}
