@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui.customeview
 
+import android.animation.ValueAnimator
 import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.annotation.Dimension.DP
@@ -14,5 +15,15 @@ class ColorPickerView: LinearLayout {
 
     val isOpen: Boolean
     get() = measuredHeight>0
+
+    private var desiredHeight = 0
+
+    private val animator by lazy{
+        ValueAnimator().apply {
+            duration = PALETTE_ANIMATION_DURATION
+            addUpdateListener(updateListener)
+        }
+
+    }
 
 }
