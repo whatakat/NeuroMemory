@@ -12,10 +12,10 @@ class MainViewModel(val repository: Repository = Repository) : BaseViewModel<Lis
             if (t==null) return
 
             when(t){
-                is com.bankmtk.neuromemory.data.model.StickerResult.Result.Success<*> ->{
+                is com.bankmtk.neuromemory.data.model.Result.Success<*> ->{
                     viewStateLiveData.value = MainViewState(stickers = t.data as? List<Sticker>)
                 }
-                is com.bankmtk.neuromemory.data.model.StickerResult.Result.Error ->{
+                is com.bankmtk.neuromemory.data.model.Result.Error ->{
                     viewStateLiveData.value = MainViewState(error = t.error)
                 }
             }
