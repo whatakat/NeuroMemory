@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.annotation.Dimension.DP
 import com.bankmtk.neuromemory.data.model.Color
+import com.bankmtk.neuromemory.extentions.getColorRes
 import org.jetbrains.anko.dip
 
 private const val PALETTE_ANIMATION_DURATION = 150L
