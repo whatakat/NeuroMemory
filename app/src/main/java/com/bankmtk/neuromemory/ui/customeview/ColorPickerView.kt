@@ -65,5 +65,15 @@ class ColorPickerView: LinearLayout {
         }
     }
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+
+        layoutParams.apply {
+            desiredHeight = height
+            height = 0
+        }.let {
+            layoutParams = it
+        }
+    }
 
 }
