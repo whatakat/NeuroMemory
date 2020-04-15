@@ -1,10 +1,14 @@
 package com.bankmtk.neuromemory.ui.customeview
 
 import android.animation.ValueAnimator
+import android.content.Context
+import android.util.AttributeSet
+import android.view.Gravity
 import android.widget.LinearLayout
 import androidx.annotation.Dimension
 import androidx.annotation.Dimension.DP
 import com.bankmtk.neuromemory.data.model.Color
+import org.jetbrains.anko.dip
 
 private const val PALETTE_ANIMATION_DURATION = 150L
 private const val HEIGHT = "height"
@@ -39,6 +43,25 @@ class ColorPickerView: LinearLayout {
                     alpha = scaleFactor
                 }
             }
+        }
+    }
+    constructor(context: Context): this(context, null, 0)
+    constructor(context: Context,attrs:AttributeSet?): this(context,attrs,0)
+    constructor(context: Context,attrs: AttributeSet?, defStyleAttr: Int):
+            super(context, attrs, defStyleAttr){
+        orientation = HORIZONTAL
+        gravity = Gravity.CENTER
+
+        Color.values().forEach { color ->
+            addView(
+                ColorCircleView(context).apply {
+                    fillColorRes = color.getColorRes()
+                    tag= color
+                    dip(COLOR_VIEW_PADDING).let {
+                        setPadding(it,it,it,it)
+                    }
+                    setOnClickListener{onColorClickListener(it.tag as Color)}
+                })
         }
     }
 
