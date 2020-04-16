@@ -116,17 +116,15 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         }
     }
     private fun triggerSaveSticker(){
-        if (titleEt.text!!.length<3)return //I have one question
-        Handler().postDelayed(object : Runnable{
-            override fun run() {
-                sticker = sticker?.copy(title = titleEt.text.toString(),
-                langOne= textOne.text.toString(),
-                langTwo = textTwo.text.toString(),
-                lastChanged = Date())
-                    ?:createNewSticker()
-
-                if (sticker != null) viewModel.saveChanges(sticker!!)
-            }
+        if (titleEt.text!!.length<3 && langOne.text.length<3 && langTwo.text.length<3)return //I have one question
+        Handler().postDelayed({
+            sticker = sticker?.copy(title = titleEt.text.toString(),
+            langOne = langOne.text.toString(),
+            langTwo = langTwo.text.toString(),
+            lastChanged = Date(),
+            color = color)
+                ?:createNewSticker()
+            sticker?.let { viewModel.saveChanges(it) }
         }, SAVE_DELAY)
     }
     private fun createNewSticker(): Sticker = Sticker(UUID.randomUUID().toString(),
