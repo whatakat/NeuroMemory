@@ -107,6 +107,15 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
                 colorPicker.open()
             }
         }
+
+    override fun onBackPressed() {
+        if (colorPicker.isOpen){
+            colorPicker.close()
+            return
+        }
+        super.onBackPressed()
+    }
+
     private fun deleteSticker(){
         alert {
             messageResource = R.string.delete_dialog_message
