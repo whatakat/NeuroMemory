@@ -22,6 +22,6 @@ var splashModule = module{
 val mainModule = module {
     factory { MainViewModel(get()) }
 }
-val noteModule = module {
+val stickerModule = module {
     factory { StickerViewModel(get()) }
 }
