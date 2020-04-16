@@ -6,7 +6,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 
-class MainViewModel(val repository: Repository = Repository) : BaseViewModel<List<Sticker>?,MainViewState>() {
+class MainViewModel(val repository: Repository) : BaseViewModel<List<Sticker>?,MainViewState>() {
     private val stickersObserver = object : Observer<Result>{
         override fun onChanged(t: Result?) {
             if (t==null) return
