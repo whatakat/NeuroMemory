@@ -4,7 +4,7 @@ import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 
-class SplashViewModel(private val repository: Repository = Repository):
+class SplashViewModel(private val repository: Repository):
 BaseViewModel<Boolean?, SplashViewState>(){
     fun requestUser(){
         repository.getCurrentUser().observeForever{
