@@ -64,6 +64,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
             setToolbarColor(it)
             triggerSaveSticker()
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
@@ -99,7 +100,13 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
             R.id.delete -> deleteSticker().let {true}
             else -> super.onOptionsItemSelected(item)
     }
-    private fun togglePalette(){}
+    private fun togglePalette(){
+            if (colorPicker.isOpen){
+                colorPicker.close()
+            }else{
+                colorPicker.open()
+            }
+        }
     private fun deleteSticker(){
         alert {
             messageResource = R.string.delete_dialog_message
@@ -150,4 +157,5 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         langTwo.removeTextChangedListener(textChangeListener)
 
     }
+
 }
