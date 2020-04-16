@@ -13,10 +13,10 @@ import com.google.firebase.firestore.*
 private const val STICKERS_COLLECTION = "stickers"
 private const val USERS_COLLECTION = "users"
 
-class FireStoreProvider : RemoteDataProvider {
+class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:FirebaseFirestore) : RemoteDataProvider {
     private val TAG = "${FireStoreProvider::class.java.simpleName} :"
 
-    private val db = FirebaseFirestore.getInstance()
+   // private val db = FirebaseFirestore.getInstance()
     private val stickersReference = db.collection(STICKERS_COLLECTION)
 
     private val currentUser get() = FirebaseAuth.getInstance().currentUser
