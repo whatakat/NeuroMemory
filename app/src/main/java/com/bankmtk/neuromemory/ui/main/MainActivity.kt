@@ -24,6 +24,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
+import com.bankmtk.neuromemory.ui.splash.SplashViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import com.firebase.ui.auth.AuthUI
@@ -31,11 +32,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
 import org.jetbrains.anko.alert
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
 
-    override val viewModel:MainViewModel by lazy {
-        ViewModelProviders.of(this).get(MainViewModel::class.java)}
+    override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
     private lateinit var adapter: MainAdapter
 

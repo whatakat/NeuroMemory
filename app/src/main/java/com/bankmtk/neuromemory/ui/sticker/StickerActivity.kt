@@ -18,18 +18,20 @@ import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
+import com.bankmtk.neuromemory.ui.splash.SplashViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 private const val SAVE_DELAY = 2000L
 
 class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
-    override val viewModel: StickerViewModel by lazy {
-        ViewModelProviders.of(this).get(StickerViewModel::class.java)}
+    override val model: StickerViewModel by viewModel()
     override val layoutRes: Int = R.layout.activity_stick
     private var sticker: Sticker? = null
     private var color: Color = Color.WHITE
@@ -50,7 +52,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         val stickerId = intent.getStringExtra(EXTRA_STICKER)
         if (stickerId != null){
         stickerId.let {
-            viewModel.loadSticker(it)
+            model.loadSticker(it)
         }}
         else if (stickerId == null) {
             supportActionBar?.title =
@@ -120,7 +122,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         alert {
             messageResource = R.string.delete_dialog_message
             negativeButton(R.string.cancel_btn_title){dialog -> dialog.dismiss() }
-            positiveButton(R.string.ok_bth_title){viewModel.deleteSticker()}
+            positiveButton(R.string.ok_bth_title){model.deleteSticker()}
         }.show()
     }
 
@@ -146,7 +148,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
             lastChanged = Date(),
             color = color)
                 ?:createNewSticker()
-            sticker?.let { viewModel.saveChanges(it) }
+            sticker?.let { model.saveChanges(it) }
         }, SAVE_DELAY)
     }
     private fun setToolbarColor(color: Color){

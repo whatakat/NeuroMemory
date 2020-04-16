@@ -8,6 +8,7 @@ import com.bankmtk.neuromemory.ui.splash.SplashViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val appModule = module {
@@ -17,11 +18,11 @@ val appModule = module {
     single { Repository(get()) }
 }
 var splashModule = module{
-    factory { SplashViewModel(get()) }
+    viewModel { SplashViewModel(get()) }
 }
 val mainModule = module {
-    factory { MainViewModel(get()) }
+    viewModel { MainViewModel(get()) }
 }
 val stickerModule = module {
-    factory { StickerViewModel(get()) }
+    viewModel { StickerViewModel(get()) }
 }
