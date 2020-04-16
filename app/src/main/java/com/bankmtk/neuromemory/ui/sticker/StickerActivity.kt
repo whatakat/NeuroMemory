@@ -32,6 +32,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         ViewModelProviders.of(this).get(StickerViewModel::class.java)}
     override val layoutRes: Int = R.layout.activity_stick
     private var sticker: Sticker? = null
+    private var color: Color = Color.WHITE
 
 
 
@@ -58,6 +59,11 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
             textOne.addTextChangedListener(textChangeListener)
             textTwo.addTextChangedListener(textChangeListener)
         }
+        colorPicker.onColorClickListener = {
+            color = it
+            setToolbarColor(it)
+            triggerSaveSticker()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
@@ -82,7 +88,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         if (data.isDeleted) finish()
 
         this.sticker = data.sticker
-        //data.sticker?.let { color = it.color }
+        data.sticker?.let { color = it.color }
         initView()
     }
 
@@ -126,6 +132,9 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
                 ?:createNewSticker()
             sticker?.let { viewModel.saveChanges(it) }
         }, SAVE_DELAY)
+    }
+    private fun setToolbarColor(color: Color){
+        toolbar.setBackgroundColor(color.getColorInt(this))
     }
     private fun createNewSticker(): Sticker = Sticker(UUID.randomUUID().toString(),
     titleEt.text.toString(), textOne.text.toString(),textTwo.text.toString())
