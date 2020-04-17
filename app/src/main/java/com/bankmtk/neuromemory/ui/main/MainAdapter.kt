@@ -28,15 +28,15 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
 
     override fun getItemCount() = stickers.size
 
-    override fun onBindViewHolder(holder: StickViewHolder, position: Int): Unit{
+    override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
     }
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer{
         fun bind(sticker: Sticker){
             titleStick.text = sticker.title
-            langOne.text = sticker.langOne
-            langTwo.text = sticker.langTwo
+            langOneI.text = sticker.langOne
+            langTwoI.text = sticker.langTwo
 
             itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
             itemView.setOnClickListener{onItemClickListener.onItemClick(sticker)}

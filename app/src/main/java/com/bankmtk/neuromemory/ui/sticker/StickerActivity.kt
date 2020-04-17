@@ -140,11 +140,11 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         }
     }
     private fun triggerSaveSticker(){
-        if (titleEt.text!!.length<3 && langOne.text.length<3 && langTwo.text.length<3)return //I have one question
+        if (titleEt.text!!.length<3 && textOne.text.length<3 && textTwo.text.length<3)return //I have one question
         Handler().postDelayed({
             sticker = sticker?.copy(title = titleEt.text.toString(),
-            langOne = langOne.text.toString(),
-            langTwo = langTwo.text.toString(),
+            langOne = textOne.text.toString(),
+            langTwo = textTwo.text.toString(),
             lastChanged = Date(),
             color = color)
                 ?:createNewSticker()
