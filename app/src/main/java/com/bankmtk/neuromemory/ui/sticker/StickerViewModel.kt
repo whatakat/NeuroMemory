@@ -6,7 +6,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 
-class StickerViewModel(val repository: Repository = Repository): BaseViewModel<StickerViewState.Data, StickerViewState>() {
+class StickerViewModel(val repository: Repository): BaseViewModel<StickerViewState.Data, StickerViewState>() {
 
     fun saveChanges(sticker: Sticker){
         viewStateLiveData.value = StickerViewState(StickerViewState.Data(sticker = sticker))

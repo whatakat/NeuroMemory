@@ -35,7 +35,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
         RecyclerView.ViewHolder(containerView), LayoutContainer{
         fun bind(sticker: Sticker){
             titleStick.text = sticker.title
-            langOne.text = sticker.langTwo
+            langOne.text = sticker.langOne
             langTwo.text = sticker.langTwo
 
             itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))

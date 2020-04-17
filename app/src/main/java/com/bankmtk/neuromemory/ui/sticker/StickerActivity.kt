@@ -159,13 +159,13 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
 
     private fun setEditListener(){
         titleEt.addTextChangedListener(textChangeListener)
-        langOne.addTextChangedListener(textChangeListener)
-        langTwo.addTextChangedListener(textChangeListener)
+        textOne.addTextChangedListener(textChangeListener)
+        textTwo.addTextChangedListener(textChangeListener)
     }
     private fun  removeEditListener(){
         titleEt.removeTextChangedListener(textChangeListener)
-        langOne.removeTextChangedListener(textChangeListener)
-        langTwo.removeTextChangedListener(textChangeListener)
+        textOne.removeTextChangedListener(textChangeListener)
+        textTwo.removeTextChangedListener(textChangeListener)
 
     }
 
