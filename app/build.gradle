@@ -65,4 +65,5 @@ dependencies {
     implementation 'org.koin:koin-android-viewmodel:1.0.1'
     //Test
     testImplementation 'android.arch.core:core-testing:1.1.1'
+    testImplementation 'io.mockk:mockk:1.9.3.kotlin12'
 }
