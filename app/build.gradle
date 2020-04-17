@@ -63,4 +63,6 @@ dependencies {
     //Koin
     implementation 'org.koin:koin-android:1.0.1'
     implementation 'org.koin:koin-android-viewmodel:1.0.1'
+    //Test
+    testImplementation 'android.arch.core:core-testing:1.1.1'
 }
