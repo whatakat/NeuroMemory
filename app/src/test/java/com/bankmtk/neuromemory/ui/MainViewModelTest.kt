@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui
 
+import androidx.annotation.VisibleForTesting
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.bankmtk.neuromemory.data.Repository
@@ -7,9 +8,7 @@ import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
 
-import io.mockk.MockK
 import io.mockk.every
 import io.mockk.verify
 import junit.framework.Assert.assertEquals
@@ -54,6 +53,7 @@ class MainViewModelTest {
         stickerLivedata.value = Result.Success(testData)
         assertEquals(testData,result)
     }
+
     @Test
     fun `should remove observer`(){
         viewModel.onCleared()

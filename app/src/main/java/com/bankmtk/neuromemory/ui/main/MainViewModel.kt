@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui.main
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -28,7 +29,8 @@ class MainViewModel(val repository: Repository) : BaseViewModel<List<Sticker>?,M
         repositoryStickers.observeForever(stickersObserver)
     }
 
-    override fun onCleared() {
+    @VisibleForTesting
+    public override fun onCleared(){
         repositoryStickers.removeObserver(stickersObserver)
     }
 }
