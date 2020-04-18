@@ -11,6 +11,7 @@ import com.nhaarman.mockitokotlin2.verify
 import io.mockk.MockK
 import io.mockk.every
 import io.mockk.verify
+import junit.framework.Assert.assertEquals
 import org.junit.Before
 
 import org.junit.Rule
@@ -33,5 +34,14 @@ class MainViewModelTest {
     @Test
     fun `should call getStickers once` (){
         verify(exactly = 1){mockRepositoty.getStickers()}
+    }
+    @Test
+    fun `should return error`(){
+        var result: Throwable? = null
+        val testData = Throwable("error")
+        viewModel.getViewState().observeForever{result = it?.error}
+        stickerLivedata.value = Result.Error(testData)
+        assertEquals(result,testData)
+
     }
 }
