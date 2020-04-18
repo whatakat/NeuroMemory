@@ -6,12 +6,15 @@ import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
 
 import io.mockk.MockK
 import io.mockk.every
+import io.mockk.verify
 import org.junit.Before
 
 import org.junit.Rule
+import org.junit.Test
 
 class MainViewModelTest {
     @get: Rule
@@ -25,5 +28,10 @@ class MainViewModelTest {
     fun setUp(){
         every { mockRepositoty.getStickers() } returns stickerLivedata
         viewModel = MainViewModel(mockRepositoty)
+    }
+
+    @Test
+    fun `should call getStickers once` (){
+        verify(exactly = 1){mockRepositoty.getStickers()}
     }
 }
