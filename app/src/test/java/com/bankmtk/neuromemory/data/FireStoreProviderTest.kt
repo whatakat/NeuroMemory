@@ -8,7 +8,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
+import io.mockk.clearMocks
+import io.mockk.every
+import org.junit.Before
 import org.junit.Rule
 
 class FireStoreProviderTest {
@@ -24,5 +28,17 @@ class FireStoreProviderTest {
     private val mockDocument3 = mock<DocumentSnapshot>()
     private val testStickers = listOf(Sticker(id = "1"), Sticker(id = "2"), Sticker(id = "3"))
     private val provider: FireStoreProvider = FireStoreProvider(mockAuth, mockDb)
+
+    @Before
+    fun setUp(){
+        clearMocks(mockCollection,mockDocument1, mockDocument2, mockDocument3)
+
+        every { mockAuth.currentUser } returns  mockUser
+        every { mockUser.uid } returns ""
+        every { mockDb.collection(any()).document(any()).collection(any()) } returns mockCollection
+        every { mockDocument1.toObject(Sticker::class.java) } returns testStickers[0]
+        every { mockDocument2.toObject(Sticker::class.java) } returns testStickers[1]
+        every { mockDocument3.toObject(Sticker::class.java) } returns testStickers[2]
+    }
 
 }
