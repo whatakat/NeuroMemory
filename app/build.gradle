@@ -66,4 +66,5 @@ dependencies {
     //Test
     testImplementation 'android.arch.core:core-testing:1.1.1'
     testImplementation 'io.mockk:mockk:1.9.3.kotlin12'
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
 }
