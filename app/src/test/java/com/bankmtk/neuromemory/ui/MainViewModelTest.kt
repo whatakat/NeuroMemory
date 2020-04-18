@@ -8,6 +8,8 @@ import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.nhaarman.mockitokotlin2.mock
 
 import io.mockk.MockK
+import io.mockk.every
+import org.junit.Before
 
 import org.junit.Rule
 
@@ -18,4 +20,10 @@ class MainViewModelTest {
     private val mockRepositoty: Repository = mock<Repository>()
     private val stickerLivedata = MutableLiveData<Result>()
     private lateinit var viewModel: MainViewModel
+
+    @Before
+    fun setUp(){
+        every { mockRepositoty.getStickers() } returns stickerLivedata
+        viewModel = MainViewModel(mockRepositoty)
+    }
 }
