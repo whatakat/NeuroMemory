@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Result
+import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -43,5 +44,13 @@ class MainViewModelTest {
         stickerLivedata.value = Result.Error(testData)
         assertEquals(result,testData)
 
+    }
+    @Test
+    fun `should return Stickers`(){
+        var result:List<Sticker>? = null
+        val testData = listOf(Sticker(id = "1"), Sticker(id = "2"))
+        viewModel.getViewState().observeForever{result = it?.data}
+        stickerLivedata.value = Result.Success(testData)
+        assertEquals(testData,result)
     }
 }
