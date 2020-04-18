@@ -13,6 +13,7 @@ import io.mockk.MockK
 import io.mockk.every
 import io.mockk.verify
 import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertFalse
 import org.junit.Before
 
 import org.junit.Rule
@@ -52,5 +53,10 @@ class MainViewModelTest {
         viewModel.getViewState().observeForever{result = it?.data}
         stickerLivedata.value = Result.Success(testData)
         assertEquals(testData,result)
+    }
+    @Test
+    fun `should remove observer`(){
+        viewModel.onCleared()
+        assertFalse(stickerLivedata.hasObservers())
     }
 }
