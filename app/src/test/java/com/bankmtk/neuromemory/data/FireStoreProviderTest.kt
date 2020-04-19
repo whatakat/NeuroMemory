@@ -1,6 +1,8 @@
 package com.bankmtk.neuromemory.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.bankmtk.neuromemory.data.errors.NoAuthException
+import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.provider.FireStoreProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -11,8 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.nhaarman.mockitokotlin2.mock
 import io.mockk.clearMocks
 import io.mockk.every
+import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 
 class FireStoreProviderTest {
     @get: Rule
@@ -38,6 +42,15 @@ class FireStoreProviderTest {
         every { mockDocument1.toObject(Sticker::class.java) } returns testStickers[0]
         every { mockDocument2.toObject(Sticker::class.java) } returns testStickers[1]
         every { mockDocument3.toObject(Sticker::class.java) } returns testStickers[2]
+    }
+    @Test
+    fun `should throw if no auth`(){
+        var result: Any? = null
+        every { mockAuth.currentUser } returns null
+        provider.subscribeToAllStickers().observeForever{
+            result = (it as? Result.Error)?.error
+        }
+        assertTrue(result is NoAuthException)
     }
 
 }
