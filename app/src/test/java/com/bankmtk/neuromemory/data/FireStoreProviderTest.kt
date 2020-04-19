@@ -7,12 +7,12 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.provider.FireStoreProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 import com.nhaarman.mockitokotlin2.mock
+import io.mockk.MockK
 import io.mockk.clearMocks
 import io.mockk.every
+import io.mockk.slot
 import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
@@ -55,6 +55,9 @@ class FireStoreProviderTest {
 
     @Test
     fun `subscribeAllStickers return stickers`(){
+        var result:List<Sticker> = null
+        var slot =  slot<EventListener<QuerySnapshot>>()
+        val mockSnapshot= mock<QuerySnapshot>()
 
     }
 
