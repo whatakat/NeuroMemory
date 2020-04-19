@@ -55,7 +55,7 @@ class FireStoreProviderTest {
 
     @Test
     fun `subscribeAllStickers return stickers`(){
-        var result:List<Sticker> = null
+        var result:List<Sticker>? = null
         var slot =  slot<EventListener<QuerySnapshot>>()
         val mockSnapshot= mock<QuerySnapshot>()
 
