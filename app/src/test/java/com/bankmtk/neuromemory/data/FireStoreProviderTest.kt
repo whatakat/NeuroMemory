@@ -53,4 +53,9 @@ class FireStoreProviderTest {
         assertTrue(result is NoAuthException)
     }
 
+    @Test
+    fun `subscribeAllStickers return stickers`(){
+
+    }
+
 }
