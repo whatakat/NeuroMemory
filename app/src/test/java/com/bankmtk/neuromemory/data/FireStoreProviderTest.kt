@@ -59,6 +59,9 @@ class FireStoreProviderTest {
         var slot =  slot<EventListener<QuerySnapshot>>()
         val mockSnapshot= mock<QuerySnapshot>()
 
+        every { mockSnapshot.documents }returns
+                listOf(mockDocument1, mockDocument2, mockDocument3)
+
     }
 
 }
