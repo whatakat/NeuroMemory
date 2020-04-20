@@ -13,6 +13,7 @@ import io.mockk.MockK
 import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.slot
+import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
@@ -61,6 +62,16 @@ class FireStoreProviderTest {
 
         every { mockSnapshot.documents }returns
                 listOf(mockDocument1, mockDocument2, mockDocument3)
+        every { mockCollection.addSnapshotListener(capture(slot)) } returns mock()
+
+        provider.subscribeToAllStickers().observeForever{
+            result = (it as? Result.Success<List<Sticker>>)?.data
+        }
+        slot.captured.onEvent(mockSnapshot, null)
+        assertEquals(testStickers,result)
+
+
+
 
     }
 
