@@ -9,10 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.*
 import com.nhaarman.mockitokotlin2.mock
-import io.mockk.MockK
-import io.mockk.clearMocks
-import io.mockk.every
-import io.mockk.slot
+import io.mockk.*
 import junit.framework.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -84,6 +81,15 @@ class FireStoreProviderTest {
 
         assertNotNull(result)
         assertEquals(testError, result)
+    }
+    @Test
+    fun `saveSticker calls document set`(){
+        val mockDocumentReference: DocumentReference = mock()
+        every { mockCollection.document(testStickers[0].id) } returns
+                mockDocumentReference
+        provider.saveSticker(testStickers[0])
+
+        verify(exactly = 1){mockDocumentReference.set(testStickers[0])}
     }
 
 }
