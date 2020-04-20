@@ -13,8 +13,7 @@ import io.mockk.MockK
 import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.slot
-import junit.framework.Assert.assertEquals
-import junit.framework.Assert.assertTrue
+import junit.framework.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -69,10 +68,22 @@ class FireStoreProviderTest {
         }
         slot.captured.onEvent(mockSnapshot, null)
         assertEquals(testStickers,result)
+    }
 
+    @Test
+    fun `subscribeAllStickers return error`(){
+        var result: Throwable? = null
+        val slot = slot<EventListener<QuerySnapshot>>()
+        val testError = mock<FirebaseFirestoreException>()
 
+        every { mockCollection.addSnapshotListener(capture(slot)) } returns mock()
 
+        provider.subscribeToAllStickers().observeForever{result = (it as? Result.Error)?.error}
 
+        slot.captured.onEvent(null, testError)
+
+        assertNotNull(result)
+        assertEquals(testError, result)
     }
 
 }
