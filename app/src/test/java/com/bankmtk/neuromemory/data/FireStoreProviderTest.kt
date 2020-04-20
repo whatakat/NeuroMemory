@@ -99,6 +99,15 @@ class FireStoreProviderTest {
         var result: Sticker? = null
 
         every { mockCollection.document(testStickers[0].id) } returns mockDocumentReference
+        every { mockDocumentReference.set(testStickers[0]).addOnSuccessListener(capture(slot)) } returns mock()
+
+        provider.saveSticker(testStickers[0]).observeForever{
+            result = (it as? Result.Success<Sticker>)?.data
+        }
+        slot.captured.onSuccess(null)
+
+        assertNotNull(result)
+        assertEquals(testStickers[0], result)
 
     }
 
