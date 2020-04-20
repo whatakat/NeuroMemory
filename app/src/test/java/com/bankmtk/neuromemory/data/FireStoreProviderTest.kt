@@ -5,6 +5,7 @@ import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.provider.FireStoreProvider
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.*
@@ -90,6 +91,15 @@ class FireStoreProviderTest {
         provider.saveSticker(testStickers[0])
 
         verify(exactly = 1){mockDocumentReference.set(testStickers[0])}
+    }
+    @Test
+    fun `saveSticker return Sticker`(){
+        val mockDocumentReference: DocumentReference = mock()
+        val slot = slot<OnSuccessListener<in Void>>()
+        var result: Sticker? = null
+
+        every { mockCollection.document(testStickers[0].id) } returns mockDocumentReference
+
     }
 
 }
