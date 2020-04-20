@@ -7,9 +7,12 @@ import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.main.MainViewModel
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.firestore.DocumentReference
 import com.nhaarman.mockitokotlin2.mock
 
 import io.mockk.every
+import io.mockk.slot
 import io.mockk.verify
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertFalse
