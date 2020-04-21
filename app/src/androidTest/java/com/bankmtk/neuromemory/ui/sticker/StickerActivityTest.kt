@@ -3,6 +3,7 @@ package com.bankmtk.neuromemory.ui.sticker
 import androidx.lifecycle.MutableLiveData
 import org.junit.Rule
 import androidx.test.rule.ActivityTestRule
+import com.bankmtk.neuromemory.data.model.Sticker
 import io.mockk.*
 
 
@@ -20,6 +21,9 @@ class StickerActivityTest{
         every { viewModel.saveChanges(any()) } just runs
         every { viewModel.deleteSticker() } just runs
     }
+
+    private val testSticker = Sticker("333","title","langOne","langTwo")
+
 
 
 
