@@ -65,7 +65,7 @@ dependencies {
     implementation 'org.koin:koin-android-viewmodel:1.0.1'
     //Test
     testImplementation 'android.arch.core:core-testing:1.1.1'
-    testImplementation 'io.mockk:mockk:1.9.3.kotlin12'
+    testImplementation 'io.mockk:mockk:1.9.3'
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
     //androidTest
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -73,6 +73,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
-    androidTestImplementation 'io.mockk:mockk:1.9.3.kotlin12'
+    androidTestImplementation 'io.mockk:mockk:1.9.3'
 
 }
