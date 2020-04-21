@@ -3,8 +3,7 @@ package com.bankmtk.neuromemory.ui.sticker
 import androidx.lifecycle.MutableLiveData
 import org.junit.Rule
 import androidx.test.rule.ActivityTestRule
-import io.mockk.mockk
-import io.mockk.spyk
+import io.mockk.*
 
 
 class StickerActivityTest{
@@ -14,6 +13,13 @@ class StickerActivityTest{
     private val viewModel: StickerViewModel = spyk(StickerViewModel(mockk()))
 
     private val viewStateLiveData = MutableLiveData<StickerViewState>()
+
+    fun setUp(){
+        every { viewModel.getViewState() } returns viewStateLiveData
+        every { viewModel.loadSticker(any()) } just  runs
+        every { viewModel.saveChanges(any()) } just runs
+        every { viewModel.deleteSticker() } just runs
+    }
 
 
 
