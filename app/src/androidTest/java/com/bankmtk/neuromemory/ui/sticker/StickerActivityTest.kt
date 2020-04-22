@@ -1,16 +1,21 @@
 package com.bankmtk.neuromemory.ui.sticker
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import org.junit.Rule
 import androidx.test.rule.ActivityTestRule
 import com.bankmtk.neuromemory.R
+import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.getColorInt
+import com.google.common.base.CharMatcher.`is`
+import com.google.common.base.Predicates.not
 import io.mockk.*
+import junit.framework.Assert.assertTrue
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -47,12 +52,31 @@ class StickerActivityTest{
 
     private val testSticker = Sticker("333","title","langOne","langTwo")
 
+//    @Test
+//    fun should_show_color_picker(){
+//        onView(withId(R.id.palette)).perform(click())
+//
+//        onView(withId(R.id.colorPicker)).check(matches(isCompletelyDisplayed()))
+//    }
+//    @Test
+//    fun should_hide_color_picker(){
+//        onView(withId(R.id.palette)).perform(click()).perform(click())
+//        onView(withId(R.id.colorPicker)).check(matches(not(isDisplayed())))
+//    }
     @Test
-    fun should_show_color_picker(){
-        onView(withId(R.id.palette)).perform(click())
+    fun should_set_toolbar_color(){
+    onView(withId(R.id.palette)).perform(click())
+    //onView(withTagValue(`is`(Color.BLUE))).perform(click())
 
-        onView(withId(R.id.colorPicker)).check(matches(isCompletelyDisplayed()))
+    var colorInt = Color.BLUE.getColorInt(activityTestRule.activity)
+
+    onView(withId(R.id.toolbar)).check{view, _ ->
+        assertTrue("toolbar background color does not match",
+            (view.background as? ColorDrawable)?.color == colorInt)
     }
+
+}
+
 
 
 
