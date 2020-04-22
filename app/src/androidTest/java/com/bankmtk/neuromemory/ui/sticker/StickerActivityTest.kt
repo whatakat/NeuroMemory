@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -85,6 +86,16 @@ class StickerActivityTest{
     fun should_call_saveSticker(){
         onView(withId(R.id.titleEt)).perform(typeText(testSticker.title))
         verify(timeout = 1000) {viewModel.saveChanges(any())  }
+    }
+
+    @Test
+    fun should_show_sticker(){
+        activityTestRule.launchActivity(null)
+        viewStateLiveData.postValue(StickerViewState(StickerViewState.Data(sticker = testSticker)))
+
+//        onView(withId(R.id.titleEt)).check(matches(withText(testSticker.title)))
+//        onView(withId(R.id.textOne)).check(matches(withText(testSticker.langOne)))
+//        onView(withId(R.id.textTwo)).check(matches(withText(testSticker.langTwo)))
     }
 
 
