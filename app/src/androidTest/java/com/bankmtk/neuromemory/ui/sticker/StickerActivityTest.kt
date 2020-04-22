@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.matcher.ViewMatchers.*
 import org.junit.Rule
 import androidx.test.rule.ActivityTestRule
@@ -79,6 +80,13 @@ class StickerActivityTest{
     fun should_call_viewModel_loadSticker(){
         verify (exactly =1){viewModel.loadSticker(testSticker.id)}
     }
+
+    @Test
+    fun should_call_saveSticker(){
+        onView(withId(R.id.titleEt)).perform(typeText(testSticker.title))
+        verify(timeout = 1000) {viewModel.saveChanges(any())  }
+    }
+
 
 
 
