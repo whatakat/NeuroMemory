@@ -74,8 +74,11 @@ class StickerActivityTest{
         assertTrue("toolbar background color does not match",
             (view.background as? ColorDrawable)?.color == colorInt)
     }
-
 }
+    @Test
+    fun should_call_viewModel_loadSticker(){
+        verify (exactly =1){viewModel.loadSticker(testSticker.id)}
+    }
 
 
 
