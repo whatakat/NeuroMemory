@@ -6,6 +6,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import io.mockk.mockk
 import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.koin.standalone.StandAloneContext
 
@@ -20,6 +21,11 @@ class MainActivityTest{
     private val testStickers = listOf(Sticker("333","first","langOne","langTwo"),
         Sticker("444","second","langOne1","langTwo1"),
         Sticker("555","third","langOne2","langTwo2"))
+    @Before
+    fun setUp(){
+
+    }
+
     @After
     fun tearDown(){
         StandAloneContext.stopKoin()
