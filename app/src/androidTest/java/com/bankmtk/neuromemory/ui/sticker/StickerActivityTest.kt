@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import androidx.lifecycle.MutableLiveData
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
@@ -96,6 +97,14 @@ class StickerActivityTest{
 //        onView(withId(R.id.titleEt)).check(matches(withText(testSticker.title)))
 //        onView(withId(R.id.textOne)).check(matches(withText(testSticker.langOne)))
 //        onView(withId(R.id.textTwo)).check(matches(withText(testSticker.langTwo)))
+    }
+
+    @Test
+    fun should_call_deleteSticker(){
+        openActionBarOverflowOrOptionsMenu(activityTestRule.activity)
+        onView(withText(R.string.delete_menu_title)).perform(click())
+        onView(withId(R.string.ok_bth_title)).perform(click())
+        verify { viewModel.deleteSticker() }
     }
 
 
