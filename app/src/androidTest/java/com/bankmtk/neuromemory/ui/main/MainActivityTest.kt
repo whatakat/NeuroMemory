@@ -1,7 +1,12 @@
 package com.bankmtk.neuromemory.ui.main
 
 import androidx.lifecycle.MutableLiveData
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.intent.rule.IntentsTestRule
+import androidx.test.espresso.matcher.ViewMatchers.*
+import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
@@ -10,6 +15,7 @@ import io.mockk.mockk
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext
@@ -42,5 +48,11 @@ class MainActivityTest{
     @After
     fun tearDown(){
         StandAloneContext.stopKoin()
+    }
+    @Test
+    fun check_data_is_displayed(){
+        onView(withId(R.id.myRecycler))
+            .perform(scrollToPosition<MainAdapter.StickViewHolder>(1))
+        onView(withText(testStickers[1].langOne)).check(matches(isDisplayed()))
     }
 }
