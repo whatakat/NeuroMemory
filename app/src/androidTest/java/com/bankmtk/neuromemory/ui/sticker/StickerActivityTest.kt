@@ -17,6 +17,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
 import io.mockk.*
 import junit.framework.Assert.assertTrue
+import org.hamcrest.core.IsNot.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -58,11 +59,11 @@ class StickerActivityTest{
 
         onView(withId(R.id.colorPicker)).check(matches(isCompletelyDisplayed()))
     }
-//    @Test
-//    fun should_hide_color_picker(){
-//        onView(withId(R.id.palette)).perform(click()).perform(click())
-//        onView(withId(R.id.colorPicker)).check(matches(not(isDisplayed())))
-//    }
+    @Test
+    fun should_hide_color_picker(){
+        onView(withId(R.id.palette)).perform(click()).perform(click())
+        onView(withId(R.id.colorPicker)).check(matches(not(isDisplayed())))
+    }
     @Test
     fun should_set_toolbar_color(){
     onView(withId(R.id.palette)).perform(click())
