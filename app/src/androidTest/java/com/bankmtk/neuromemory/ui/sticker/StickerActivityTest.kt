@@ -93,9 +93,9 @@ class StickerActivityTest{
         activityTestRule.launchActivity(null)
         viewStateLiveData.postValue(StickerViewState(StickerViewState.Data(sticker = testSticker)))
 
-//        onView(withId(R.id.titleEt)).check(matches(withText(testSticker.title)))
-//        onView(withId(R.id.textOne)).check(matches(withText(testSticker.langOne)))
-//        onView(withId(R.id.textTwo)).check(matches(withText(testSticker.langTwo)))
+        onView(withId(R.id.titleEt)).check(matches(withText(testSticker.title)))
+        onView(withId(R.id.textOne)).check(matches(withText(testSticker.langOne)))
+        onView(withId(R.id.textTwo)).check(matches(withText(testSticker.langTwo)))
     }
 
     @Test
