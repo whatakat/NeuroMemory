@@ -17,6 +17,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
 import io.mockk.*
 import junit.framework.Assert.assertTrue
+import org.hamcrest.core.Is.`is`
 import org.hamcrest.core.IsNot.not
 import org.junit.After
 import org.junit.Before
@@ -67,7 +68,7 @@ class StickerActivityTest{
     @Test
     fun should_set_toolbar_color(){
     onView(withId(R.id.palette)).perform(click())
-    //onView(withTagValue(`is`(Color.BLUE))).perform(click())
+    onView(withTagValue(`is`(Color.BLUE))).perform(click())
 
     var colorInt = Color.BLUE.getColorInt(activityTestRule.activity)
 
