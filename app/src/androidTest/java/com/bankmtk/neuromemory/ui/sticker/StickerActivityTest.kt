@@ -25,6 +25,7 @@ import org.junit.Test
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext.loadKoinModules
+import org.koin.standalone.StandAloneContext.stopKoin
 
 
 class StickerActivityTest{
@@ -50,6 +51,11 @@ class StickerActivityTest{
         }.let {
             activityTestRule.launchActivity(it)
         }
+    }
+
+    @After
+    fun tearDown(){
+        stopKoin()
     }
 
     private val testSticker = Sticker("333","title","langOne","langTwo")
