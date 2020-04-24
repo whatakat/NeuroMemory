@@ -7,7 +7,7 @@ import com.bankmtk.neuromemory.data.model.User
 
 interface RemoteDataProvider {
     fun subscribeToAllStickers(): LiveData<Result>
-    fun getStickerById(id: String): LiveData<Result>
+    suspend fun getStickerById(id: String): Sticker
     fun saveSticker(sticker: Sticker): LiveData<Result>
     fun getCurrentUser() : LiveData<User?>
     fun deleteSticker(stickerId: String): LiveData<Result>
