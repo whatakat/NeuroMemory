@@ -78,10 +78,9 @@ class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:F
             }
         }
 
-    override fun getCurrentUser(): LiveData<User?> =
-        MutableLiveData<User?>().apply {
-            value = currentUser?.let { User(it.displayName ?: "", it.email ?: "") }
-        }
+    override suspend fun getCurrentUser(): User? = suspendCoroutine { continuation ->
+        continuation.resume(currentUser?.let { User(it.displayName ?: "", it.email ?: "") })
+    }
 
     override suspend fun deleteSticker(stickerId: String): Unit =
     suspendCoroutine { continuation ->
