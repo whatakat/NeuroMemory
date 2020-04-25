@@ -10,5 +10,5 @@ interface RemoteDataProvider {
     suspend fun getStickerById(id: String): Sticker
     suspend fun saveSticker(sticker: Sticker): Sticker
     fun getCurrentUser() : LiveData<User?>
-    fun deleteSticker(stickerId: String): LiveData<Result>
+    suspend fun deleteSticker(stickerId: String)
 }
