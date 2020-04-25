@@ -83,13 +83,13 @@ class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:F
             value = currentUser?.let { User(it.displayName ?: "", it.email ?: "") }
         }
 
-    override fun deleteSticker(stickerId: String): LiveData<Result> =
-    MutableLiveData<Result>().apply {
+    override suspend fun deleteSticker(stickerId: String): Unit =
+    suspendCoroutine { continuation ->
         getUserStickersCollection().document(stickerId).delete()
             .addOnSuccessListener {
-                value = Result.Success(null)
+                continuation.resume(Unit)
             }.addOnFailureListener{
-                value = Result.Error(it)
+                continuation.resumeWithException(it)
             }
     }
 }
