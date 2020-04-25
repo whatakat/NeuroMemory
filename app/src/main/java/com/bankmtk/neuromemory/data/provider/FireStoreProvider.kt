@@ -28,21 +28,22 @@ class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:F
         db.collection(USERS_COLLECTION).document(it.uid).collection(STICKERS_COLLECTION)
     } ?: throw NoAuthException()
 
-    override fun saveSticker(sticker: Sticker): LiveData<Result> =
-        MutableLiveData<Result>().apply {
-            try {
-                getUserStickersCollection().document(sticker.id)
-                    .set(sticker).addOnSuccessListener {
-                        Log.d(TAG,"Sticker $sticker is saved")
-                        value = Result.Success(sticker)
-                    }.addOnFailureListener {
-                        Log.d(TAG, "Error saving sticker $sticker, message: ${it.message}")
-                        throw it
-                    }
-            } catch (e: Throwable){
-                value = Result.Error(e)
-            }
+    override suspend fun saveSticker(sticker: Sticker): Sticker =
+    suspendCoroutine { continuation ->
+        try {
+            getUserStickersCollection()
+                .document(sticker.id)
+                .set(sticker).addOnSuccessListener {
+                    Timber.d{"Sticker $sticker is saved"}
+                    continuation.resume(sticker)
+                }.addOnFailureListener {
+                    Timber.e(it){"Error saving sticker $sticker with message: ${it.message}"}
+                    continuation.resumeWithException(it)
+                }
+        }catch (e: Throwable){
+            continuation.resumeWithException(e)
         }
+    }
 
     override suspend fun getStickerById(id: String): Sticker =
         suspendCoroutine { continuation ->
