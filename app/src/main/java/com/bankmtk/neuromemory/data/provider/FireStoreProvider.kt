@@ -10,6 +10,8 @@ import com.bankmtk.neuromemory.data.model.User
 import com.github.ajalt.timberkt.Timber
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.ReceiveChannel
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -60,22 +62,27 @@ class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:F
             }
         }
 
-
-
-    override fun subscribeToAllStickers(): LiveData<Result> =
-        MutableLiveData<Result>().apply {
+    override fun subscribeToAllStickers(): ReceiveChannel<Result> =
+        Channel<Result>(Channel.CONFLATED).apply {
+            var registration: ListenerRegistration? = null
             try {
-                getUserStickersCollection().addSnapshotListener{snapshot, e->
-                    value = e?.let { throw it }
-                        ?: snapshot?.let {
+                registration =
+                    getUserStickersCollection().addSnapshotListener{ snapshot,
+                    e->
+                        var value = e?.let {
+                            Result.Error(it)
+                        } ?: snapshot?.let {
                             val stickers = it.documents.map {
-                                it.toObject(Sticker::class.java)}
+                                it.toObject(Sticker::class.java)
+                            }
                             Result.Success(stickers)
                         }
-                }
+                        value?.let { offer(it) }
+                    }
             }catch (e: Throwable){
-                value = Result.Error(e)
+                offer(Result.Error(e))
             }
+            invokeOnClose { registration?.remove() }
         }
 
     override suspend fun getCurrentUser(): User? = suspendCoroutine { continuation ->
