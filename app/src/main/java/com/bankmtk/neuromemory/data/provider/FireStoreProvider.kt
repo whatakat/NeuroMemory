@@ -7,6 +7,7 @@ import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.data.model.User
+import com.github.ajalt.timberkt.Timber
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 import kotlin.coroutines.resume
