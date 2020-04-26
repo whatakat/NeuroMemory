@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.ReceiveChannel
 import kotlin.coroutines.CoroutineContext
 
 open class BaseViewModel<S>: ViewModel(), CoroutineScope {
@@ -14,5 +15,6 @@ open class BaseViewModel<S>: ViewModel(), CoroutineScope {
     }
     private val viewStateChannel = BroadcastChannel<S>(Channel.CONFLATED)
     private val errorChannel = Channel<Throwable>()
+    fun getViewState():ReceiveChannel<S> = viewStateChannel.openSubscription()
 
 }
