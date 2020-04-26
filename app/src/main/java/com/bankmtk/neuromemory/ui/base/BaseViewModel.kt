@@ -7,6 +7,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 open class BaseViewModel<S>: ViewModel(), CoroutineScope {
@@ -17,5 +18,11 @@ open class BaseViewModel<S>: ViewModel(), CoroutineScope {
     private val errorChannel = Channel<Throwable>()
     fun getViewState():ReceiveChannel<S> = viewStateChannel.openSubscription()
     fun getErrorChannel(): ReceiveChannel<Throwable> = errorChannel
+
+    protected fun setError(e: Throwable){
+        launch {
+            errorChannel.send(e)
+        }
+    }
 
 }
