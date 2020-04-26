@@ -11,10 +11,20 @@ import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-private const val RC_SIGN_IN = 458
-abstract class BaseActivity<T, S : BaseViewState<T>> : AppCompatActivity() {
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
-    abstract val model: BaseViewModel<T, S>
+private const val RC_SIGN_IN = 458
+abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
+
+    override val coroutineContext: CoroutineContext by lazy {
+        Dispatchers.Main + Job()
+    }
+    private lateinit var dataJob: Job
+    private lateinit var errorJob: Job
+    abstract val model: BaseViewModel<T>
     abstract val layoutRes: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
