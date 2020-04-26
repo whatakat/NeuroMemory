@@ -30,12 +30,6 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes)
-        model.getViewState().observe(this, Observer<S> { t ->
-            t?.apply {
-                data?.let { renderData(it) }
-                error?.let { renderError(it) }
-            }
-        })
     }
 
     protected open fun renderError(error: Throwable) {
