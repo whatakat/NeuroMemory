@@ -46,6 +46,11 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
             }
         }
     }
+    override fun onStop() {
+        super.onStop()
+        dataJob.cancel()
+        errorJob.cancel()
+    }
 
     protected open fun renderError(error: Throwable) {
         when(error){
