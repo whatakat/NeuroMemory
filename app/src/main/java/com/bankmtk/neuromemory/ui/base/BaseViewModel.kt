@@ -24,5 +24,10 @@ open class BaseViewModel<S>: ViewModel(), CoroutineScope {
             errorChannel.send(e)
         }
     }
+    protected fun setData(data: S){
+        launch {
+            viewStateChannel.send(data)
+        }
+    }
 
 }
