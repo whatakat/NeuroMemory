@@ -11,11 +11,8 @@ import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.consumeEach
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 private const val RC_SIGN_IN = 458
@@ -50,6 +47,10 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         super.onStop()
         dataJob.cancel()
         errorJob.cancel()
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
     }
 
     protected open fun renderError(error: Throwable) {
