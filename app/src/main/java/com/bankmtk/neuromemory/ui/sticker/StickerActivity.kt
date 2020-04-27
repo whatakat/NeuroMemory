@@ -21,6 +21,8 @@ import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import com.bankmtk.neuromemory.ui.splash.SplashViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
 import org.koin.android.ext.android.inject
@@ -30,7 +32,7 @@ import java.util.*
 
 private const val SAVE_DELAY = 2000L
 
-class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
+class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val model: StickerViewModel by viewModel()
     override val layoutRes: Int = R.layout.activity_stick
     private var sticker: Sticker? = null
@@ -87,7 +89,7 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         }
     }
 
-    override fun renderData(data: StickerViewState.Data) {
+    override fun renderData(data: StickerViewState.StickerData) {
         if (data.isDeleted) finish()
 
         this.sticker = data.sticker
@@ -140,16 +142,18 @@ class StickerActivity: BaseActivity<StickerViewState.Data, StickerViewState>() {
         }
     }
     private fun triggerSaveSticker(){
-        if (titleEt.text!!.length<3 && textOne.text.length<3 && textTwo.text.length<3)return //I have one question
-        Handler().postDelayed({
-            sticker = sticker?.copy(title = titleEt.text.toString(),
+        if (titleEt.textSize<3 && textOne.text.length<3 && textTwo.text.length<3) return
+        launch {
+            delay(SAVE_DELAY)
+            sticker = sticker?.copy(title = titleEt.toString(),
             langOne = textOne.text.toString(),
             langTwo = textTwo.text.toString(),
             lastChanged = Date(),
             color = color)
-                ?:createNewSticker()
+                ?: createNewSticker()
+
             sticker?.let { model.saveChanges(it) }
-        }, SAVE_DELAY)
+        }
     }
     private fun setToolbarColor(color: Color){
         toolbar.setBackgroundColor(color.getColorInt(this))
