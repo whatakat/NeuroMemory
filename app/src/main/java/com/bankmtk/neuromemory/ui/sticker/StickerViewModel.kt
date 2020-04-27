@@ -3,7 +3,7 @@ package com.bankmtk.neuromemory.ui.sticker
 import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Sticker
-import com.bankmtk.neuromemory.data.model.Result
+import com.bankmtk.neuromemory.ui.sticker.StickerViewState.StickerData
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
