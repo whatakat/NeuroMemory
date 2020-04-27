@@ -6,31 +6,26 @@ import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
+import kotlinx.coroutines.channels.consumeEach
+import kotlinx.coroutines.launch
 
-class MainViewModel(val repository: Repository) : BaseViewModel<List<Sticker>?,MainViewState>() {
-    private val stickersObserver = object : Observer<Result>{
-        override fun onChanged(t: Result?) {
-            if (t==null) return
+class MainViewModel(val repository: Repository) : BaseViewModel<List<Sticker>?>() {
+    private val stickerChannel = repository.getStickers()
 
-            when(t){
-                is com.bankmtk.neuromemory.data.model.Result.Success<*> ->{
-                    viewStateLiveData.value = MainViewState(stickers = t.data as? List<Sticker>)
-                }
-                is com.bankmtk.neuromemory.data.model.Result.Error ->{
-                    viewStateLiveData.value = MainViewState(error = t.error)
+    init {
+        launch {
+            stickerChannel.consumeEach {
+                when(it){
+                    is Result.Success<*> -> setData(it.data as? List<Sticker>)
+                    is Result.Error -> setError(it.error)
                 }
             }
         }
     }
-    private val repositoryStickers = repository.getStickers()
-
-    init {
-        viewStateLiveData.value = MainViewState()
-        repositoryStickers.observeForever(stickersObserver)
-    }
 
     @VisibleForTesting
     public override fun onCleared(){
-        repositoryStickers.removeObserver(stickersObserver)
+        stickerChannel.cancel()
+        super.onCleared()
     }
 }
