@@ -35,7 +35,7 @@ import org.jetbrains.anko.alert
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity<List<Sticker>?, MainViewState>() {
+class MainActivity : BaseActivity<List<Sticker>?>() {
 
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
