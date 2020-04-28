@@ -20,7 +20,7 @@ import org.jetbrains.anko.startActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
-private const val SAVE_DELAY = 10000L
+private const val SAVE_DELAY = 100000L
 
 class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val model: StickerViewModel by viewModel()
@@ -43,9 +43,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
         val stickerId = intent.getStringExtra(EXTRA_STICKER)
         if (stickerId != null){
-        stickerId.let {
-            model.loadSticker(it)
-        }}
+            stickerId.let {
+                model.loadSticker(it)
+            }}
         else if (stickerId == null) {
             supportActionBar?.title =
                 getString(R.string.new_sticker_title)
@@ -89,18 +89,18 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.itemId){
-        android.R.id.home ->super.onBackPressed().let { true }
+            android.R.id.home ->super.onBackPressed().let { true }
             R.id.palette -> togglePalette().let {true}
             R.id.delete -> deleteSticker().let {true}
             else -> super.onOptionsItemSelected(item)
-    }
-    private fun togglePalette(){
-            if (colorPicker.isOpen){
-                colorPicker.close()
-            }else{
-                colorPicker.open()
-            }
         }
+    private fun togglePalette(){
+        if (colorPicker.isOpen){
+            colorPicker.close()
+        }else{
+            colorPicker.open()
+        }
+    }
 
     override fun onBackPressed() {
         if (colorPicker.isOpen){
@@ -135,11 +135,12 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         if (titleEt.textSize<3 && textOne.text.length<3 && textTwo.text.length<3) return
         launch {
             delay(SAVE_DELAY)
-            sticker = sticker?.copy(title = titleEt.toString(),
-            langOne = textOne.text.toString(),
-            langTwo = textTwo.text.toString(),
-            lastChanged = Date(),
-            color = color)
+            sticker = sticker?.copy(
+                title = titleEt.text.toString(),
+                langOne = textOne.text.toString(),
+                langTwo = textTwo.text.toString(),
+                lastChanged = Date(),
+                color = color)
                 ?: createNewSticker()
 
             sticker?.let { model.saveChanges(it) }
@@ -149,7 +150,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         toolbar.setBackgroundColor(color.getColorInt(this))
     }
     private fun createNewSticker(): Sticker = Sticker(UUID.randomUUID().toString(),
-    titleEt.text.toString(), textOne.text.toString(),textTwo.text.toString())
+        titleEt.text.toString(), textOne.text.toString(),textTwo.text.toString())
 
     private fun setEditListener(){
         titleEt.addTextChangedListener(textChangeListener)
