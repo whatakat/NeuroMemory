@@ -1,36 +1,26 @@
 package com.bankmtk.neuromemory.ui.sticker
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
-import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
-import com.bankmtk.neuromemory.ui.base.BaseViewModel
-import com.bankmtk.neuromemory.ui.splash.SplashViewModel
 import kotlinx.android.synthetic.main.activity_stick.*
-import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
-private const val SAVE_DELAY = 2000L
+private const val SAVE_DELAY = 10000L
 
 class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val model: StickerViewModel by viewModel()
