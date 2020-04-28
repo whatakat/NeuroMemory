@@ -9,22 +9,16 @@ import android.view.MenuItem
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
-import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
-import com.google.android.material.internal.Experimental
 import kotlinx.android.synthetic.main.activity_stick.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
-import org.jetbrains.annotations.Contract
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-import kotlin.contracts.ExperimentalContracts
 
-private const val SAVE_DELAY = 1000L
 
 class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val model: StickerViewModel by viewModel()
@@ -60,38 +54,35 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         colorPicker.onColorClickListener = {
             color = it
             setToolbarColor(it)
-            triggerSaveSticker()
+            saveSticker()
         }
 
     }
-        @ExperimentalContracts
-        override fun renderData(data: StickerViewState.StickerData){
-            if (data.isDeleted) finish()
-            this.sticker = data.sticker
-            supportActionBar?.title = sticker?.let { sticker ->
-                sticker.lastChanged.format()
-            } ?: getString(R.string.new_sticker_title)
-            initView()
-        }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
         menuInflater.inflate(R.menu.sticker_menu, menu).let { true}
 
 
     private fun initView() {
-        removeEditListener()
         sticker?.run {
             supportActionBar?.title = lastChanged.format()
             toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity)) //? only this
+
+            removeEditListener()
             titleEt.setText(title)
             textOne.setText(langOne)
             textTwo.setText(langTwo)
+            setEditListener()
+
         }
-        setEditListener()
-        colorPicker.onColorClickListener = {color ->
-            this.color = color
-            setToolbarColor(color)
-            triggerSaveSticker()
-        }
+    }
+
+    override fun renderData(data: StickerViewState.StickerData) {
+        if (data.isDeleted) finish()
+
+        this.sticker = data.sticker
+        data.sticker?.let { color = it.color }
+        initView()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
@@ -127,7 +118,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     private val textChangeListener = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
-            triggerSaveSticker()
+            //saveSticker()
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -137,8 +128,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             //
         }
+
     }
-    private fun triggerSaveSticker(){
+    private fun saveSticker(){
         if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
         launch {
             sticker = sticker?.copy(
