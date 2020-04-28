@@ -9,18 +9,22 @@ import android.view.MenuItem
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.DATE_TIME_FORMAT
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
+import com.google.android.material.internal.Experimental
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
+import org.jetbrains.annotations.Contract
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
+import kotlin.contracts.ExperimentalContracts
 
-private const val SAVE_DELAY = 100000L
+private const val SAVE_DELAY = 1000L
 
 class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val model: StickerViewModel by viewModel()
@@ -60,31 +64,34 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
 
     }
-
+        @ExperimentalContracts
+        override fun renderData(data: StickerViewState.StickerData){
+            if (data.isDeleted) finish()
+            this.sticker = data.sticker
+            supportActionBar?.title = sticker?.let { sticker ->
+                sticker.lastChanged.format()
+            } ?: getString(R.string.new_sticker_title)
+            initView()
+        }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
         menuInflater.inflate(R.menu.sticker_menu, menu).let { true}
 
 
     private fun initView() {
+        removeEditListener()
         sticker?.run {
             supportActionBar?.title = lastChanged.format()
             toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity)) //? only this
-
-            removeEditListener()
             titleEt.setText(title)
             textOne.setText(langOne)
             textTwo.setText(langTwo)
-            setEditListener()
-
         }
-    }
-
-    override fun renderData(data: StickerViewState.StickerData) {
-        if (data.isDeleted) finish()
-
-        this.sticker = data.sticker
-        data.sticker?.let { color = it.color }
-        initView()
+        setEditListener()
+        colorPicker.onColorClickListener = {color ->
+            this.color = color
+            setToolbarColor(color)
+            triggerSaveSticker()
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
@@ -132,9 +139,8 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
     }
     private fun triggerSaveSticker(){
-        if (titleEt.textSize<3 && textOne.text.length<3 && textTwo.text.length<3) return
+        if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
         launch {
-            delay(SAVE_DELAY)
             sticker = sticker?.copy(
                 title = titleEt.text.toString(),
                 langOne = textOne.text.toString(),
