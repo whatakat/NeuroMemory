@@ -7,6 +7,8 @@ import android.text.Spannable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -26,8 +28,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val layoutRes: Int = R.layout.activity_stick
     private var sticker: Sticker? = null
     private var color: Color = Color.WHITE
-
-
 
     companion object{
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
@@ -164,5 +164,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         textTwo.removeTextChangedListener(textChangeListener)
 
     }
+
+
 
 }
