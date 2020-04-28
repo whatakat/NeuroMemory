@@ -3,6 +3,7 @@ package com.bankmtk.neuromemory.ui.sticker
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
+import android.text.Spannable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
@@ -105,7 +106,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             colorPicker.close()
             return
         }
+        saveSticker()
         super.onBackPressed()
+
     }
 
     private fun deleteSticker(){
@@ -119,6 +122,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     private val textChangeListener = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             //saveSticker()
+
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -126,7 +130,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            //
         }
 
     }
