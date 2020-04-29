@@ -12,7 +12,7 @@ private const val START_DELAY = 2000L
 
 class SplashActivity : BaseActivity<Boolean?>() {
     override val model: SplashViewModel by viewModel()
-    override val layoutRes: Int = R.layout.activity_splash //activity_splash
+    override val layoutRes: Int = R.layout.activity_splash
     override fun onResume() {
         super.onResume()
         Handler().postDelayed({model.requestUser()}, START_DELAY)
