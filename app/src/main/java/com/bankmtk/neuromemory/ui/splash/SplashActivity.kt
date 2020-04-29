@@ -1,10 +1,12 @@
 package com.bankmtk.neuromemory.ui.splash
 
 import android.os.Handler
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.main.MainActivity
+import com.bankmtk.neuromemory.ui.splash.StarFragment.Companion.newInstance
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 

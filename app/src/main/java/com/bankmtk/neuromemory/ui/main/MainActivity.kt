@@ -16,6 +16,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
@@ -36,6 +37,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<List<Sticker>?>() {
+
 
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
@@ -95,6 +97,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 finish()
             }
     }
+
 
 }
 

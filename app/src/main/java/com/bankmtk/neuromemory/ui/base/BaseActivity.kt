@@ -5,6 +5,7 @@ import android.app.Instrumentation
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.errors.NoAuthException
