@@ -4,16 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/colorAccent"
     android:fitsSystemWindows="true"
     tools:context=".ui.main.MainActivity">
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#009688">
-
+        android:background="@color/colorAccent">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -38,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="mini"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:src="@drawable/ic_add_circle_outline_black_24dp"
         app:layout_behavior="com.bankmtk.neuromemory.ui.common.FABBehavior"/>
 
