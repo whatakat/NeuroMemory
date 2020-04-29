@@ -18,7 +18,6 @@ import kotlin.coroutines.CoroutineContext
 
 private const val RC_SIGN_IN = 458
 abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
-
     override val coroutineContext: CoroutineContext by lazy {
         Dispatchers.Main + Job()
     }

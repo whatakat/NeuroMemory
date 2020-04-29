@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui.splash
 
+import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +16,7 @@ private const val START_DELAY = 2000L
 class SplashActivity : BaseActivity<Boolean?>() {
     override val model: SplashViewModel by viewModel()
     override val layoutRes: Int = R.layout.activity_splash
+
     override fun onResume() {
         super.onResume()
         Handler().postDelayed({model.requestUser()}, START_DELAY)
@@ -22,6 +24,7 @@ class SplashActivity : BaseActivity<Boolean?>() {
 
     override fun renderData(data: Boolean?) {
         data?.takeIf { it }?.let {
+            startStarActivity()
             startMainActivity()
         }
     }
@@ -29,4 +32,9 @@ class SplashActivity : BaseActivity<Boolean?>() {
         startActivity(MainActivity.getStartIntent(this))
         finish()
     }
+    private fun startStarActivity(){
+        startActivity(StarActivity.getStartIntent(this))
+        finish()
+    }
+
 }
