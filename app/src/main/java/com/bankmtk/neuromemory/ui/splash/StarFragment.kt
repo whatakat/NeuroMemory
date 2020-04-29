@@ -56,6 +56,7 @@ class StarFragment: Fragment() {
         animatorSet.start()
     }
 
+
     companion object {
         @JvmStatic
         fun newInstance(): StarFragment {
