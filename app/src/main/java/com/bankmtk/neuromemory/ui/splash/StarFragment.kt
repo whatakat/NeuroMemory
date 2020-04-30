@@ -19,6 +19,8 @@ class StarFragment: Fragment() {
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
     private var mNightSkyColor = 0
+    private var mStarColor = 0
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_splash, container, false)
         mSceneView = view
@@ -28,6 +30,7 @@ class StarFragment: Fragment() {
         mBlackSkyColor = resources.getColor(R.color.black)
         mSunsetSkyColor = resources.getColor(R.color.night_sky)
         mNightSkyColor = resources.getColor(R.color.night_sky)
+        mStarColor = resources.getColor(R.color.yellow)
         mSceneView!!.setOnClickListener { startAnimation() }
         return view
     }
@@ -38,20 +41,25 @@ class StarFragment: Fragment() {
         val sunYEnd = mSkyView!!.height.toFloat()
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
-            .setDuration(2000)
+            .setDuration(1200)
         heightAnimator.interpolator = AccelerateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
-            .setDuration(3000)
+            .setDuration(1500)
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())
+        val starAnimator = ObjectAnimator
+            .ofInt(mSunView, "backgroundColor",  mBlackSkyColor, mStarColor)
+            .setDuration(2000)
+        starAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor",  mNightSkyColor, mBlackSkyColor)
-            .setDuration(3000)
+            .setDuration(1500)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val animatorSet = AnimatorSet()
         animatorSet
             .play(heightAnimator)
             .with(sunsetSkyAnimator)
+            .with(starAnimator)
             .before(nightSkyAnimator)
         animatorSet.start()
     }

@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black">
-    <FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/sky"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:background="@color/black">
         <ImageView
             android:id="@+id/stars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/stars"/>
+            android:src="@drawable/stars"
+            android:contentDescription="@string/app_name"/>
 
         <ImageView
             android:id="@+id/starCenter"
             android:layout_width="1dp"
-            android:layout_height="1dp"
+            android:layout_height="40dp"
             android:layout_gravity="top|center"
-            android:src="@drawable/sun" />
+            android:src="@drawable/sun"
+            android:contentDescription="@string/app_name"/>
 
         <ImageView
             android:id="@+id/tree"
             android:layout_width="wrap_content"
             android:layout_height="180dp"
             android:layout_gravity="bottom"
-            android:src="@drawable/tree"/>
+            android:src="@drawable/tree"
+            android:contentDescription="@string/app_name"/>
     </FrameLayout>
 
-
-</LinearLayout>
