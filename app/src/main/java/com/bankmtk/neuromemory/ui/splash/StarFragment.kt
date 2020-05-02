@@ -20,6 +20,7 @@ class StarFragment: Fragment() {
     private var mSunsetSkyColor = 0
     private var mNightSkyColor = 0
     private var mStarColor = 0
+    private var blueSky = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_splash, container, false)
@@ -31,6 +32,7 @@ class StarFragment: Fragment() {
         mSunsetSkyColor = resources.getColor(R.color.night_sky)
         mNightSkyColor = resources.getColor(R.color.night_sky)
         mStarColor = resources.getColor(R.color.yellow)
+        blueSky = resources.getColor(R.color.blue_sky)
         mSceneView!!.setOnClickListener { startAnimation() }
         return view
     }
@@ -52,7 +54,7 @@ class StarFragment: Fragment() {
             .setDuration(2000)
         starAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
-            .ofInt(mSkyView, "backgroundColor",  mNightSkyColor, mBlackSkyColor)
+            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, blueSky)
             .setDuration(1500)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val animatorSet = AnimatorSet()
