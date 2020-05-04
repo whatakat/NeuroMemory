@@ -17,10 +17,8 @@ class StarFragment: Fragment() {
     private var mSunView: View? = null
     private var mSkyView: View? = null
     private var mTrackView: View? = null
-    private var mBackView: View? = null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
-    private var mNightSkyColor = 0
     private var mStarColor = 0
     private var mBlueSky = 0
     private var mWhiteColor = 0
@@ -31,11 +29,9 @@ class StarFragment: Fragment() {
         mSunView = view.findViewById(R.id.starCenter)
         mSkyView = view.findViewById(R.id.sky)
         mTrackView = view.findViewById(R.id.trackCenter)
-        mBackView = view.findViewById(R.id.back)
         val resources = resources
         mBlackSkyColor = resources.getColor(R.color.black)
         mSunsetSkyColor = resources.getColor(R.color.night_sky)
-        mNightSkyColor = resources.getColor(R.color.night_sky)
         mStarColor = resources.getColor(R.color.yellow)
         mBlueSky = resources.getColor(R.color.blue_sky)
         mWhiteColor = resources.getColor(R.color.white)
@@ -55,10 +51,6 @@ class StarFragment: Fragment() {
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
             .setDuration(1500)
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())
-        val backSkyAnimator = ObjectAnimator
-            .ofInt(mBackView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
-            .setDuration(1500)
-        backSkyAnimator.setEvaluator(ArgbEvaluator())
         val trackAnimator = ObjectAnimator
             .ofInt(mTrackView, "backgroundColor",  mBlackSkyColor, mStarColor,mBlueSky)
             .setDuration(3000)
@@ -71,11 +63,11 @@ class StarFragment: Fragment() {
         animatorSet
             .play(heightAnimator)
             .with(sunsetSkyAnimator)
-            .with(backSkyAnimator)
             .with(trackAnimator)
             .before(nightSkyAnimator)
         animatorSet.start()
     }
+
 
 
     companion object {
