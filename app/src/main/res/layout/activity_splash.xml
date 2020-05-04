@@ -16,10 +16,18 @@
         <ImageView
             android:id="@+id/starCenter"
             android:layout_width="1dp"
-            android:layout_height="15dp"
+            android:layout_height="20dp"
             android:layout_gravity="top|center"
             android:src="@drawable/sun"
             android:contentDescription="@string/app_name"/>
+    <ImageView
+        android:id="@+id/trackCenter"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center"
+        android:src="@drawable/track"
+        android:contentDescription="@string/app_name"/>
+
 
         <ImageView
             android:id="@+id/tree"
