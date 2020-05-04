@@ -16,6 +16,7 @@ class StarFragment: Fragment() {
     private var mSceneView: View? = null
     private var mSunView: View? = null
     private var mSkyView: View? = null
+    private var mTrackView: View? = null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
     private var mNightSkyColor = 0
@@ -28,6 +29,7 @@ class StarFragment: Fragment() {
         mSceneView = view
         mSunView = view.findViewById(R.id.starCenter)
         mSkyView = view.findViewById(R.id.sky)
+        mTrackView = view.findViewById(R.id.trackCenter)
         val resources = resources
         mBlackSkyColor = resources.getColor(R.color.black)
         mSunsetSkyColor = resources.getColor(R.color.night_sky)
@@ -45,16 +47,16 @@ class StarFragment: Fragment() {
         val sunYEnd = mSkyView!!.height.toFloat()
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
-            .setDuration(1500)
+            .setDuration(500)
         heightAnimator.interpolator = AccelerateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
             .setDuration(1500)
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())
-        val starAnimator = ObjectAnimator
-            .ofInt(mSunView, "backgroundColor",  mBlackSkyColor, mWhiteColor)
-            .setDuration(1000)
-        starAnimator.setEvaluator(ArgbEvaluator())
+        val trackAnimator = ObjectAnimator
+            .ofInt(mTrackView, "backgroundColor",  mBlackSkyColor, mStarColor,mBlueSky)
+            .setDuration(5000)
+        trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky)
             .setDuration(1500)
@@ -63,7 +65,7 @@ class StarFragment: Fragment() {
         animatorSet
             .play(heightAnimator)
             .with(sunsetSkyAnimator)
-            .with(starAnimator)
+            .with(trackAnimator)
             .before(nightSkyAnimator)
         animatorSet.start()
     }
