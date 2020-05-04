@@ -29,6 +29,14 @@
         android:layout_gravity="top|center"
         android:contentDescription="@string/app_name"
         android:src="@drawable/sun" />
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="top|center"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/back" />
+
 
     <ImageView
         android:id="@+id/tree"
