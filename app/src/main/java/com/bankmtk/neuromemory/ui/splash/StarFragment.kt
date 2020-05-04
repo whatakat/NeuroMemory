@@ -20,7 +20,8 @@ class StarFragment: Fragment() {
     private var mSunsetSkyColor = 0
     private var mNightSkyColor = 0
     private var mStarColor = 0
-    private var blueSky = 0
+    private var mBlueSky = 0
+    private var mWhiteColor = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_splash, container, false)
@@ -32,7 +33,8 @@ class StarFragment: Fragment() {
         mSunsetSkyColor = resources.getColor(R.color.night_sky)
         mNightSkyColor = resources.getColor(R.color.night_sky)
         mStarColor = resources.getColor(R.color.yellow)
-        blueSky = resources.getColor(R.color.blue_sky)
+        mBlueSky = resources.getColor(R.color.blue_sky)
+        mWhiteColor = resources.getColor(R.color.white)
         mSceneView!!.setOnClickListener { startAnimation() }
         return view
     }
@@ -43,18 +45,18 @@ class StarFragment: Fragment() {
         val sunYEnd = mSkyView!!.height.toFloat()
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
-            .setDuration(1200)
+            .setDuration(1500)
         heightAnimator.interpolator = AccelerateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
             .setDuration(1500)
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())
         val starAnimator = ObjectAnimator
-            .ofInt(mSunView, "backgroundColor",  mBlackSkyColor, mStarColor)
-            .setDuration(2000)
+            .ofInt(mSunView, "backgroundColor",  mBlackSkyColor, mWhiteColor)
+            .setDuration(1000)
         starAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
-            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, blueSky)
+            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky)
             .setDuration(1500)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val animatorSet = AnimatorSet()
