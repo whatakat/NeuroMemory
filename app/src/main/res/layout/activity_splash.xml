@@ -17,18 +17,27 @@
     <ImageView
         android:id="@+id/trackCenter"
         android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="top|center"
+        android:layout_height="500dp"
+        android:paddingVertical="50dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/app_name"
         android:src="@drawable/track" />
 
     <ImageView
         android:id="@+id/starCenter"
-        android:layout_width="3dp"
-        android:layout_height="30dp"
-        android:layout_gravity="top|center"
+        android:layout_width="1dp"
+        android:layout_height="12dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="250dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/sun" />
+    <ImageView
+        android:id="@+id/mars"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|center"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/mars" />
 
 
     <ImageView
