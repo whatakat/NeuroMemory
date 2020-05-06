@@ -37,7 +37,7 @@
         android:layout_height="50dp"
         android:layout_gravity="top|center"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/mars" />
+        android:src="@drawable/star" />
 
 
     <ImageView
