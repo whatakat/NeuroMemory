@@ -33,9 +33,9 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/sun" />
     <ImageView
-        android:id="@+id/mars"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/star"
+        android:layout_width="@dimen/dp"
+        android:layout_height="@dimen/dp"
         android:layout_gravity="top|center"
         android:contentDescription="@string/app_name"
         android:src="@drawable/star" />
@@ -49,8 +49,8 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dp"
+        android:layout_height="@dimen/dp"
         android:layout_gravity="bottom|end"
         android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
         android:background="@color/black"/>
