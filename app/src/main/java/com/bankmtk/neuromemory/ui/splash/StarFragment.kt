@@ -26,7 +26,6 @@ class StarFragment: Fragment() {
     private var mBlueSky = 0
     private var mWhiteColor = 0
     private var mRedColor = 0
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_splash, container, false)
         mSceneView = view
