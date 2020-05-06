@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sky"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -38,8 +39,6 @@
         android:layout_gravity="top|center"
         android:contentDescription="@string/app_name"
         android:src="@drawable/star" />
-
-
     <ImageView
         android:id="@+id/tree"
         android:layout_width="wrap_content"
@@ -47,5 +46,14 @@
         android:layout_gravity="bottom"
         android:contentDescription="@string/app_name"
         android:src="@drawable/tree" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:background="@color/black"/>
+
 </FrameLayout>
 
