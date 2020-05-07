@@ -9,8 +9,8 @@
     android:layout_marginTop="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginBottom="20dp"
+    card_view:cardCornerRadius="17dp"
     card_view:cardBackgroundColor="@color/white"
-    card_view:cardCornerRadius="16dp"
     card_view:contentPaddingBottom="16dp">
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        tools:text="Some important sticker" />
+        tools:text="@string/title" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
-            android:text="sticker text"
+            android:text="@string/text"
             android:textColor="@color/black"
             android:textSize="23sp"
             android:visibility="visible"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
-            android:text="Mirror text"
+            android:text="@string/text"
             android:textColor="@color/black"
             android:textSize="23sp"
             android:visibility="invisible"
