@@ -28,7 +28,7 @@
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="@string/fab_transformation_scrim_behavior"
-        app:spanCount="3"
+        app:spanCount="1"
         tools:listitem="@layout/item_sticker" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

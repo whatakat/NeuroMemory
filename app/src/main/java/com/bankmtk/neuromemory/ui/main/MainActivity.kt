@@ -54,11 +54,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         })
         myRecycler.adapter = adapter
 
-        fab.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                openStickerScreen(null)
-            }
-        })
+        fab.setOnClickListener { openStickerScreen(null) }
     }
 
     override fun renderData(data: List<Sticker>?) {

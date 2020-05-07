@@ -9,10 +9,8 @@
     android:layout_marginTop="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginBottom="20dp"
-    android:elevation="10dp"
     card_view:cardBackgroundColor="@color/white"
     card_view:cardCornerRadius="16dp"
-    card_view:cardElevation="16dp"
     card_view:contentPaddingBottom="16dp">
 
     <TextView
@@ -35,11 +33,11 @@
         <TextView
             android:id="@+id/langOneI"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:text="sticker text"
             android:textColor="@color/black"
-            android:textSize="23dp"
+            android:textSize="23sp"
             android:visibility="visible"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +57,7 @@
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:text="Mirror text"
             android:textColor="@color/black"
-            android:textSize="23dp"
+            android:textSize="23sp"
             android:visibility="invisible"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
