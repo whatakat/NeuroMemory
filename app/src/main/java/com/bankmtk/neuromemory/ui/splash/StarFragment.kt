@@ -9,9 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.AnimationUtils
 import android.widget.ImageButton
-import androidx.core.view.isVisible
+import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import com.bankmtk.neuromemory.R
 
@@ -35,13 +34,12 @@ class StarFragment: Fragment() {
         mSkyView = view.findViewById(R.id.sky)
         mTrackView = view.findViewById(R.id.trackCenter)
         mStarView = view.findViewById(R.id.star)
-        val resources = resources
-        mBlackSkyColor = resources.getColor(R.color.black)
-        mSunsetSkyColor = resources.getColor(R.color.night_sky)
-        mStarColor = resources.getColor(R.color.yellow)
-        mBlueSky = resources.getColor(R.color.blue_sky)
-        mWhiteColor = resources.getColor(R.color.white)
-        mRedColor = resources.getColor(R.color.red)
+        mBlackSkyColor = getColor(resources,R.color.black,null)
+        mSunsetSkyColor = getColor(resources,R.color.night_sky, null)
+        mStarColor = getColor(resources,R.color.yellow,null)
+        mBlueSky = getColor(resources,R.color.blue_sky,null)
+        mWhiteColor = getColor(resources,R.color.white,null)
+        mRedColor = getColor(resources,R.color.red, null)
         //mSceneView!!.setOnClickListener { startAnimation() }
         mButton = view.findViewById(R.id.imageButton)
         mButton!!.setOnClickListener { startAnimation() }
@@ -86,11 +84,8 @@ class StarFragment: Fragment() {
             .before(sunAnimator)
             .before(sunsetSkyAnimator)
             .before(nightSkyAnimator)
-
         animatorSet.start()
     }
-
-
 
     companion object {
         @JvmStatic
@@ -98,4 +93,5 @@ class StarFragment: Fragment() {
             return StarFragment()
         }
     }
+
 }
