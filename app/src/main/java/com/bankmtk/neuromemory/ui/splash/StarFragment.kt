@@ -4,6 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import android.widget.ImageButton
 import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import com.bankmtk.neuromemory.R
+import com.bankmtk.neuromemory.ui.main.MainActivity
 
 class StarFragment: Fragment() {
     private var mButton: ImageButton? =null
@@ -40,9 +42,12 @@ class StarFragment: Fragment() {
         mBlueSky = getColor(resources,R.color.blue_sky,null)
         mWhiteColor = getColor(resources,R.color.white,null)
         mRedColor = getColor(resources,R.color.red, null)
-        //mSceneView!!.setOnClickListener { startAnimation() }
+        mSceneView!!.setOnClickListener { startAnimation() }
         mButton = view.findViewById(R.id.imageButton)
-        mButton!!.setOnClickListener { startAnimation() }
+        mButton!!.setOnClickListener {
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+        }
         return view
     }
 
@@ -87,11 +92,17 @@ class StarFragment: Fragment() {
         animatorSet.start()
     }
 
+    override fun onResume() {
+        super.onResume()
+        onDestroy()
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(): StarFragment {
             return StarFragment()
         }
     }
+
 
 }

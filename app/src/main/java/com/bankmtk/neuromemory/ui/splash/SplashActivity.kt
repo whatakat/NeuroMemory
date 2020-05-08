@@ -24,17 +24,14 @@ class SplashActivity : BaseActivity<Boolean?>() {
 
     override fun renderData(data: Boolean?) {
         data?.takeIf { it }?.let {
-            startMainActivity()
             startStarActivity()
         }
     }
     private fun startMainActivity(){
         startActivity(MainActivity.getStartIntent(this))
-        finish()
     }
     private fun startStarActivity(){
         startActivity(StarActivity.getStartIntent(this))
-        finish()
     }
 
 }
