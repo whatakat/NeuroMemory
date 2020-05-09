@@ -7,7 +7,7 @@ import com.bankmtk.neuromemory.ui.sticker.StickerViewState.StickerData
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import kotlinx.coroutines.launch
 
-class StickerViewModel(val repository: Repository): BaseViewModel<StickerData>() {
+class StickerViewModel(private val repository: Repository): BaseViewModel<StickerData>() {
 
     private val currentSticker: Sticker?
     get() = getViewState().poll()?.sticker

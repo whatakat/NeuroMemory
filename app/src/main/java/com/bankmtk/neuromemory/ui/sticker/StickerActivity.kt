@@ -144,6 +144,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             sticker?.let { model.saveChanges(it) }
         }
     }
+
     private fun setToolbarColor(color: Color){
         toolbar.setBackgroundColor(color.getColorInt(this))
     }
