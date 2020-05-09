@@ -27,11 +27,8 @@ class SplashActivity : BaseActivity<Boolean?>() {
             startStarActivity()
         }
     }
-    private fun startMainActivity(){
-        startActivity(MainActivity.getStartIntent(this))
-    }
     private fun startStarActivity(){
         startActivity(StarActivity.getStartIntent(this))
+        finish()
     }
-
 }
