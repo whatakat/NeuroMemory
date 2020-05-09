@@ -52,8 +52,8 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         colorPicker.onColorClickListener = {
             color = it
             setToolbarColor(it)
-            saveSticker()
         }
+        save_sticker.setOnClickListener { saveSticker() }
 
     }
 
