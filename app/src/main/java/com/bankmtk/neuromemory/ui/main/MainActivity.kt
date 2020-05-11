@@ -16,6 +16,7 @@ import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<List<Sticker>?>() {
@@ -30,8 +31,11 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         setSupportActionBar(toolbar)
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
-            override fun onItemClick(sticker: Sticker) {
+            override fun onItemLongClick(sticker: Sticker) {
                 openStickerScreen(sticker)
+            }
+            override fun onItemClick(sticker: Sticker) {
+                toast("click")
             }
         })
         myRecycler.adapter = adapter

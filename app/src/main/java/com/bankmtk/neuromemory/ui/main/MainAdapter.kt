@@ -3,17 +3,16 @@ package com.bankmtk.neuromemory.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
-import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
 
-class MainAdapter(private val onItemClickListener: OnItemClickListener):RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
+class MainAdapter(private val onItemClickListener: OnItemClickListener)
+    :RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
     set(value){
         field = value
@@ -40,11 +39,19 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener):Recycler
 
             itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
             itemView.setOnClickListener{onItemClickListener.onItemClick(sticker)}
+            itemView.setOnLongClickListener{consume { onItemClickListener.onItemLongClick(sticker) }}
+
+        }
+        private inline fun consume(function:()->Unit):Boolean{
+            function()
+            return true
         }
     }
     interface OnItemClickListener{
         fun onItemClick(sticker: Sticker)
+        fun onItemLongClick(sticker: Sticker)
     }
+
 }
 
 
