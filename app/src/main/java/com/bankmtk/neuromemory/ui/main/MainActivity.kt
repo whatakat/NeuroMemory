@@ -1,39 +1,21 @@
 package com.bankmtk.neuromemory.ui.main
 
-import android.app.AlertDialog
-import android.app.Dialog
+
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.view.View
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
-import com.bankmtk.neuromemory.ui.base.BaseViewModel
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
-import com.bankmtk.neuromemory.ui.splash.SplashViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
-import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_stick.*
 import org.jetbrains.anko.alert
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<List<Sticker>?>() {
