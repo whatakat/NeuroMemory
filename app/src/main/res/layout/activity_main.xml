@@ -28,7 +28,7 @@
         android:background="@color/night_sky"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
+        app:spanCount="5"
         tools:listitem="@layout/item_sticker" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

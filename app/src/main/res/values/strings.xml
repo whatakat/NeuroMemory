@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NeuroMemory</string>
+    <string name="app_name">Neurom</string>
     <string name="sticker">Sticker</string>
     <string name="new_sticker_title">New sticker</string>
     <string name="ok_bth_title">OK</string>
@@ -14,5 +14,7 @@
     <string name="other_text">Other text stick</string>
     <string name="title">Title</string>
     <string name="text">Text stick</string>
-    <string name="save">Save sticker</string>
+    <string name="save">SAVE</string>
+    <string name="front_side">Front side</string>
+    <string name="back">Backside</string>
 </resources>
