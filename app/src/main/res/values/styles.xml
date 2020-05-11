@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/night_sky</item>
+        <item name="android:textColor">@color/bright_sun</item>
     </style>
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
