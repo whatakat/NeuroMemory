@@ -15,6 +15,7 @@ import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_stick.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 openStickerScreen(sticker)
             }
             override fun onItemClick(sticker: Sticker) {
-                toast("click")
+                toast("click")// I have fix it for langTwo
             }
         })
         myRecycler.adapter = adapter
