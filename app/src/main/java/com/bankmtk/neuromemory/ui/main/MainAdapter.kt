@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -22,10 +23,11 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view  = inflater.inflate(R.layout.item_sticker,parent,false)
-        return StickViewHolder(view)
+         return StickViewHolder(view)
     }
 
     override fun getItemCount() = stickers.size
+
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
