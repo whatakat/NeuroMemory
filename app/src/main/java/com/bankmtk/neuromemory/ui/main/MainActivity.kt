@@ -44,8 +44,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                     itemView.langOneI.visibility = View.VISIBLE
                     itemView.langTwoI.visibility = View.INVISIBLE
                 }
-
-
             }
         })
         myRecycler.adapter = adapter
@@ -58,6 +56,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         adapter.stickers = data
     }
     private fun openStickerScreen(sticker: Sticker?){
+
         StickerActivity.start(this,sticker?.id)
     }
     companion object{
@@ -89,8 +88,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 finish()
             }
     }
-
-
 }
 
 

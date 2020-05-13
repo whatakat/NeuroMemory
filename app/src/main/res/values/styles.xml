@@ -5,6 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/night_sky</item>
         <item name="android:textColor">@color/bright_sun</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+    </style>
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/fui_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/fui_slide_out_left</item>
     </style>
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
