@@ -37,8 +37,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
             }
 
             override fun onItemClick(itemView: View) {
-                if (itemView.langOneI.visibility == View.VISIBLE &&
-                    itemView.langTwoI.visibility == View.INVISIBLE){
+                if (itemView.langOneI.visibility == View.VISIBLE){
                     itemView.langOneI.visibility = View.INVISIBLE
                     itemView.langTwoI.visibility = View.VISIBLE
                 }else{
