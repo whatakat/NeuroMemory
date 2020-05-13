@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.view.get
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
+import kotlinx.android.synthetic.main.item_sticker.view.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -37,9 +39,17 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
             override fun onItemLongClick(sticker: Sticker) {
                 openStickerScreen(sticker)
             }
-            override fun onItemClick(sticker: Sticker) {
-                langTwoI.visibility = View.VISIBLE
-                langOneI.visibility = View.INVISIBLE
+
+            override fun onItemClick(itemView: View) {
+                if (itemView.langOneI.visibility == View.VISIBLE &&
+                    itemView.langTwoI.visibility == View.INVISIBLE){
+                    itemView.langOneI.visibility = View.INVISIBLE
+                    itemView.langTwoI.visibility = View.VISIBLE
+                }else{
+                    itemView.langOneI.visibility = View.VISIBLE
+                    itemView.langTwoI.visibility = View.INVISIBLE
+                }
+
 
             }
         })

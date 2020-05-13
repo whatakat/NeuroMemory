@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
+import com.github.ajalt.timberkt.v
 import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_sticker.*
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener)
@@ -40,9 +42,8 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
             langTwoI.text = sticker.langTwo
 
             itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
-            itemView.setOnClickListener{onItemClickListener.onItemClick(sticker)}
+            itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
             itemView.setOnLongClickListener{consume { onItemClickListener.onItemLongClick(sticker) }}
-
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()
@@ -50,7 +51,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
         }
     }
     interface OnItemClickListener{
-        fun onItemClick(sticker: Sticker)
+        fun onItemClick(itemView: View)
         fun onItemLongClick(sticker: Sticker)
     }
 
