@@ -51,9 +51,10 @@
         android:id="@+id/imageButton"
         android:layout_width="@dimen/dp"
         android:layout_height="@dimen/dp"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
-        android:background="@color/black"/>
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="@dimen/dp"
+        android:background="@color/black"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
 </FrameLayout>
 
