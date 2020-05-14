@@ -37,6 +37,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
             }
 
             override fun onItemClick(itemView: View) {
+                itemView.animate().rotationY(360f).start()
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     itemView.langOneI.visibility = View.INVISIBLE
                     itemView.langTwoI.visibility = View.VISIBLE
