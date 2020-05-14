@@ -1,11 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <!-- Customize your theme here. -->
-        <item name="android:colorBackground">@color/night_sky</item>
-        <item name="android:textColor">@color/bright_sun</item>
+        <item name="android:windowBackground">@color/night_sky</item>
+        <item name="android:windowTitleStyle">@style/MyTitleTextStyle</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+    </style>
+    <style name="MyTitleTextStyle">
+        <item name="android:textColor">@color/bright_sun</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name="background">@color/night_sky</item>
     </style>
     <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/fui_slide_in_right</item>
@@ -14,7 +19,6 @@
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
     </style>
     <style name="LoginStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
