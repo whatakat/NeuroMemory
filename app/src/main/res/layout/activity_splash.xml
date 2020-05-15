@@ -26,7 +26,7 @@
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_gravity="center|top"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="@dimen/dps"
         android:layout_marginBottom="@dimen/dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/track" />
@@ -34,9 +34,9 @@
     <ImageView
         android:id="@+id/starCenter"
         android:layout_width="3dp"
-        android:layout_height="20dp"
+        android:layout_height="@dimen/dps"
         android:layout_gravity="center|top"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="@dimen/dps"
         android:contentDescription="@string/app_name"
         android:src="@drawable/sun" />
     <ImageView
@@ -56,8 +56,8 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="@dimen/dps"
+        android:layout_height="@dimen/dps"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="65dp"
         android:background="@color/black"
