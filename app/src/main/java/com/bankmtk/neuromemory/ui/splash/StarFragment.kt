@@ -69,7 +69,7 @@ class StarFragment: Fragment() {
         heightAnimator.interpolator = AccelerateInterpolator(2F)
         val starsAnimator = ObjectAnimator
             .ofFloat(mStarsView, "y", starsYStart,starsYEnd)
-            .setDuration(2000)
+            .setDuration(500)
         starsAnimator.interpolator = AccelerateInterpolator(2F)
         val starAnimator = ObjectAnimator
             .ofFloat(mStarView, "y", marsYStart, marsYEnd)
