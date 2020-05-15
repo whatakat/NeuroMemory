@@ -6,7 +6,7 @@
     android:background="@color/black"
     android:orientation="vertical">
     <ImageView
-        android:id="@+id/starsB"
+        android:id="@+id/starsb"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
         android:layout_gravity="top"
@@ -20,13 +20,22 @@
         android:layout_gravity="top"
         android:contentDescription="@string/app_name"
         android:src="@drawable/stars" />
+    <ImageView
+        android:id="@+id/starsbb"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="180dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/starsbackb" />
+
 
     <ImageView
         android:id="@+id/trackCenter"
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_gravity="center|top"
-        android:layout_marginTop="@dimen/dps"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="@dimen/dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/track" />
@@ -36,7 +45,7 @@
         android:layout_width="3dp"
         android:layout_height="@dimen/dps"
         android:layout_gravity="center|top"
-        android:layout_marginTop="@dimen/dps"
+        android:layout_marginTop="75dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/sun" />
     <ImageView
@@ -46,6 +55,14 @@
         android:layout_gravity="top|center"
         android:contentDescription="@string/app_name"
         android:src="@drawable/star" />
+    <ImageView
+        android:id="@+id/mars"
+        android:layout_width="@dimen/dp"
+        android:layout_height="@dimen/dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/mars" />
     <ImageView
         android:id="@+id/tree"
         android:layout_width="wrap_content"

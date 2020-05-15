@@ -25,6 +25,7 @@ class StarFragment: Fragment() {
     private var mStarView: View? = null
     private var mStarsView: View? =null
     private var mTreeView: View? =null
+    private var mMarsView: View? =null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
     private var mStarColor = 0
@@ -40,6 +41,7 @@ class StarFragment: Fragment() {
         mStarView = view.findViewById(R.id.star)
         mStarsView = view.findViewById(R.id.stars)
         mTreeView = view.findViewById(R.id.tree)
+        mMarsView = view.findViewById(R.id.mars)
         mBlackSkyColor = getColor(resources,R.color.black,null)
         mSunsetSkyColor = getColor(resources,R.color.night_sky, null)
         mStarColor = getColor(resources,R.color.yellow,null)
@@ -61,8 +63,10 @@ class StarFragment: Fragment() {
         val sunYEnd = mSkyView!!.height.toFloat()
         val starsYStart = mStarsView!!.top.toFloat()
         val starsYEnd = mTreeView!!.top.toFloat()
-        val marsYStart = mStarView!!.top.toFloat()
-        val marsYEnd = mStarView!!.bottom.toFloat()
+        val starYStart = mStarView!!.top.toFloat()
+        val starYEnd = mStarView!!.bottom.toFloat()
+        val marsYStart = mMarsView!!.top.toFloat()
+        val marsYEnd = mStarsView!!.bottom.toFloat()
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
             .setDuration(400)
@@ -71,8 +75,16 @@ class StarFragment: Fragment() {
             .ofFloat(mStarsView, "y", starsYStart,starsYEnd)
             .setDuration(1000)
         starsAnimator.interpolator = AccelerateInterpolator(2F)
+        val marsAnimatorY = ObjectAnimator
+            .ofFloat(mMarsView, "y", marsYStart)
+            .setDuration(1000)
+        marsAnimatorY.interpolator = AccelerateInterpolator(2F)
+        val marsAnimatorX = ObjectAnimator
+            .ofFloat(mMarsView, "x", marsYEnd)
+            .setDuration(1000)
+        marsAnimatorX.interpolator = AccelerateInterpolator(2F)
         val starAnimator = ObjectAnimator
-            .ofFloat(mStarView, "y", marsYStart, marsYEnd,marsYStart)
+            .ofFloat(mStarView, "y", starYStart, starYEnd)
             .setDuration(300)
         starAnimator.interpolator = AccelerateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
@@ -108,6 +120,9 @@ class StarFragment: Fragment() {
             .before(nightSkyAnimator)
             .before(buttonAnimator)
         animatorSet.start()
+        val animatorMars = AnimatorSet()
+        animatorMars.playTogether(marsAnimatorX,marsAnimatorY)
+        animatorMars.start()
     }
 
     override fun onResume() {
