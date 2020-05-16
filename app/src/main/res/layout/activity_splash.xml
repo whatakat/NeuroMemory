@@ -57,11 +57,8 @@
         android:src="@drawable/star" />
     <ImageView
         android:id="@+id/mars"
-        android:layout_width="@dimen/dps"
-        android:layout_height="@dimen/dps"
-        android:layout_gravity="bottom|center"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/mars" />
     <ImageView

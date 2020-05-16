@@ -71,7 +71,7 @@ class StarFragment: Fragment() {
         val starYStart = mStarView!!.top.toFloat()
         val starYEnd = mStarView!!.bottom.toFloat()
         val path = Path()
-        path.cubicTo(120F,120F, 500F,120F,590F, 10F)
+        path.cubicTo(1200F,1200F, 436F,44F,240F, 1920F)
 
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
@@ -83,7 +83,7 @@ class StarFragment: Fragment() {
         starsAnimator.interpolator = AccelerateInterpolator(2F)
         val marsAnimator = ObjectAnimator
             .ofFloat(mMarsView, "x", "y",path)
-            .setDuration(5000)
+            .setDuration(8000)
         marsAnimator.interpolator = AccelerateInterpolator(2F)
         val starAnimator = ObjectAnimator
             .ofFloat(mStarView, "y", starYStart, starYEnd)
