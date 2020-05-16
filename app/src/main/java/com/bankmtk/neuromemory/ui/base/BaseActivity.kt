@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Instrumentation
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -88,5 +89,11 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         if (requestCode == RC_SIGN_IN && resultCode != Activity.RESULT_OK){
             finish()
         }
+    }
+    protected fun animateView(view:View){
+        view.animate().rotationY(360F).start()
+    }
+    protected fun animateViewCancel(view:View){
+        view.animate().rotationY(360F).cancel()
     }
 }
