@@ -57,10 +57,11 @@
         android:src="@drawable/star" />
     <ImageView
         android:id="@+id/mars"
-        android:layout_width="@dimen/dp"
-        android:layout_height="@dimen/dp"
+        android:layout_width="@dimen/dps"
+        android:layout_height="@dimen/dps"
         android:layout_gravity="bottom|center"
         android:layout_marginEnd="100dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/mars" />
     <ImageView
@@ -78,7 +79,8 @@
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="65dp"
         android:background="@color/black"
-        android:src="@drawable/ic_touch_app_black_24dp" />
+        android:src="@drawable/ic_touch_app_black_24dp"
+        android:contentDescription="@string/app_name" />
 
 </FrameLayout>
 
