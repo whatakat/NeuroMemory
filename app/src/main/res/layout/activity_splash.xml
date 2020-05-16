@@ -35,8 +35,8 @@
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_gravity="center|top"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="@dimen/dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="75dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/track" />
 
@@ -45,7 +45,7 @@
         android:layout_width="3dp"
         android:layout_height="@dimen/dps"
         android:layout_gravity="center|top"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="100dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/sun" />
     <ImageView
@@ -53,6 +53,7 @@
         android:layout_width="@dimen/dp"
         android:layout_height="@dimen/dp"
         android:layout_gravity="top|center"
+        android:layout_marginTop="25dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/star" />
     <ImageView

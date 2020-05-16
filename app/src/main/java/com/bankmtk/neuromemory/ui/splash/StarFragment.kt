@@ -96,7 +96,7 @@ class StarFragment: Fragment() {
         val buttonAnimator = ObjectAnimator
             .ofInt(mButton, "backgroundColor",
                 mBlackSkyColor, mSunsetSkyColor, mBlueSky,mSunsetSkyColor,mBlackSkyColor)
-            .setDuration(4000)
+            .setDuration(1000)
         buttonAnimator.setEvaluator(ArgbEvaluator())
         val sunAnimator = ObjectAnimator
             .ofInt(mSunView, "backgroundColor", mBlackSkyColor, mWhiteColor)
@@ -120,8 +120,8 @@ class StarFragment: Fragment() {
             .before(sunAnimator)
             .before(sunsetSkyAnimator)
             .before(nightSkyAnimator)
-            .before(buttonAnimator)
             .before(marsAnimator)
+            .after(buttonAnimator)
         animatorSet.start()
     }
 
