@@ -74,8 +74,10 @@ class StarFragment: Fragment() {
         val starYEnd = mStarView!!.bottom.toFloat()
         val moonYStart = mMoonView!!.top.toFloat()
         val moonYEnd = mTreeView!!.bottom.toFloat()
+        val marsYStart = mMarsView!!.top.toFloat()
+        val marsXStart = mMarsView!!.left.toFloat()
         val path = Path()
-        path.cubicTo(1200F,1200F, 400F,400F,1200F, 2500F)
+         path.cubicTo(marsXStart,marsYStart, 400F,400F,1200F, 2500F)
 
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)

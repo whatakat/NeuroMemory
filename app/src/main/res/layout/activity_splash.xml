@@ -61,6 +61,8 @@
         android:layout_width="5dp"
         android:layout_height="5dp"
         android:contentDescription="@string/app_name"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="50dp"
         android:src="@drawable/mars" />
     <ImageView
         android:id="@+id/moon"
@@ -68,7 +70,8 @@
         android:layout_height="75dp"
         android:layout_gravity="center|bottom"
         android:layout_marginEnd="75dp"
-        android:src="@drawable/fullmoon"/>
+        android:src="@drawable/fullmoon"
+        android:contentDescription="@string/app_name"/>
     <ImageView
         android:id="@+id/tree"
         android:layout_width="wrap_content"
