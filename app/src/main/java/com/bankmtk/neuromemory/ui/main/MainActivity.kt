@@ -3,11 +3,13 @@ package com.bankmtk.neuromemory.ui.main
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
@@ -36,13 +38,15 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 openStickerScreen(sticker)
             }
 
+            @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
-                    animateView(itemView)
 
                 if (itemView.langOneI.visibility == View.VISIBLE){
+                    animateView(itemView)
                     itemView.langOneI.visibility = View.INVISIBLE
                     itemView.langTwoI.visibility = View.VISIBLE
                 }else{
+                    animateViewCancel(itemView)
                     itemView.langOneI.visibility = View.VISIBLE
                     itemView.langTwoI.visibility = View.INVISIBLE
                 }

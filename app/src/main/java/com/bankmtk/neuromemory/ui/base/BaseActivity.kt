@@ -3,8 +3,10 @@ package com.bankmtk.neuromemory.ui.base
 import android.app.Activity
 import android.app.Instrumentation
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -31,6 +33,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes)
     }
+    @ExperimentalCoroutinesApi
     override fun onStart() {
         super.onStart()
         dataJob = launch {
@@ -90,10 +93,14 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
             finish()
         }
     }
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     protected fun animateView(view:View){
-        view.animate().rotationY(360F).start()
+        view.animate().rotationY(180F).start()
+        view.animate().translationZ(150F)
     }
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     protected fun animateViewCancel(view:View){
-        view.animate().rotationY(360F).cancel()
+        view.animate().rotationY(0F).start()
+        view.animate().translationZ(0F)
     }
 }
