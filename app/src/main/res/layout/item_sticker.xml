@@ -53,9 +53,10 @@
             android:layout_height="match_parent"
             android:gravity="center|clip_vertical|center_horizontal|center_vertical"
             android:text="@string/text"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14sp"
             android:visibility="gone"
+            android:background="@color/night_sky"
             android:layout_below="@id/titleStick"/>
     </RelativeLayout>
 
