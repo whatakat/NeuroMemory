@@ -45,6 +45,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                     animateView(itemView)
                     itemView.langOneI.visibility = View.INVISIBLE
                     itemView.langTwoI.visibility = View.VISIBLE
+                    itemView.langTwoI.rotationY = 180F
                 }else{
                     animateViewCancel(itemView)
                     itemView.langOneI.visibility = View.VISIBLE
