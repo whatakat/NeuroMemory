@@ -58,8 +58,8 @@
         android:src="@drawable/star" />
     <ImageView
         android:id="@+id/mars"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/mars" />
     <ImageView
