@@ -29,6 +29,7 @@ class StarFragment: Fragment() {
     private var mStarsView: View? =null
     private var mTreeView: View? =null
     private var mMarsView: View? =null
+    private var mMoonView: View? = null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
     private var mStarColor = 0
@@ -46,6 +47,7 @@ class StarFragment: Fragment() {
         mStarsView = view.findViewById(R.id.stars)
         mTreeView = view.findViewById(R.id.tree)
         mMarsView = view.findViewById(R.id.mars)
+        mMoonView = view.findViewById(R.id.moon)
         mBlackSkyColor = getColor(resources,R.color.black,null)
         mSunsetSkyColor = getColor(resources,R.color.night_sky, null)
         mStarColor = getColor(resources,R.color.yellow,null)
@@ -70,8 +72,10 @@ class StarFragment: Fragment() {
         val starsYEnd = mTreeView!!.top.toFloat()
         val starYStart = mStarView!!.top.toFloat()
         val starYEnd = mStarView!!.bottom.toFloat()
+        val moonYStart = mMoonView!!.top.toFloat()
+        val moonYEnd = mTreeView!!.bottom.toFloat()
         val path = Path()
-        path.cubicTo(1200F,1200F, 436F,44F,240F, 1920F)
+        path.cubicTo(1200F,1200F, 400F,400F,1200F, 2500F)
 
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
@@ -83,8 +87,12 @@ class StarFragment: Fragment() {
         starsAnimator.interpolator = AccelerateInterpolator(2F)
         val marsAnimator = ObjectAnimator
             .ofFloat(mMarsView, "x", "y",path)
-            .setDuration(8000)
+            .setDuration(20000)
         marsAnimator.interpolator = AccelerateInterpolator(2F)
+        val moonAnimator = ObjectAnimator
+            .ofFloat(mMoonView, "y", moonYStart,moonYEnd)
+            .setDuration(10000)
+        moonAnimator.interpolator = AccelerateInterpolator(2F)
         val starAnimator = ObjectAnimator
             .ofFloat(mStarView, "y", starYStart, starYEnd)
             .setDuration(300)
@@ -114,13 +122,14 @@ class StarFragment: Fragment() {
         val animatorSet = AnimatorSet()
         animatorSet
             .play(starAnimator)
+            .with(moonAnimator)
+            .with(marsAnimator)
             .before(starsAnimator)
              .before(trackAnimator)
              .before(heightAnimator)
             .before(sunAnimator)
             .before(sunsetSkyAnimator)
             .before(nightSkyAnimator)
-            .before(marsAnimator)
             .after(buttonAnimator)
         animatorSet.start()
     }
