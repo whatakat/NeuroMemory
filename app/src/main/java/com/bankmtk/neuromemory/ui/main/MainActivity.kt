@@ -19,9 +19,10 @@ import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.view.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
-
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
 
@@ -43,13 +44,10 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
 
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
-                    itemView.langOneI.visibility = View.INVISIBLE
-                    itemView.langTwoI.visibility = View.VISIBLE
-                    itemView.langTwoI.rotationY = 180F
+
                 }else{
                     animateViewCancel(itemView)
-                    itemView.langOneI.visibility = View.VISIBLE
-                    itemView.langTwoI.visibility = View.INVISIBLE
+
                 }
             }
         })
