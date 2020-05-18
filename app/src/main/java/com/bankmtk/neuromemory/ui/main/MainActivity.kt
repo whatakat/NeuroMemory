@@ -19,12 +19,9 @@ import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.view.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<List<Sticker>?>() {
-
 
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
@@ -41,13 +38,10 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
-
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
-
                 }else{
                     animateViewCancel(itemView)
-
                 }
             }
         })
