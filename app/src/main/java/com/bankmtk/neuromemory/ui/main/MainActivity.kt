@@ -89,6 +89,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 finish()
             }
     }
+
 }
 
 
