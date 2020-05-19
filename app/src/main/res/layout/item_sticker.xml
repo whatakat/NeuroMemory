@@ -29,7 +29,8 @@
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="@color/bright_sun"
-            android:background="@color/night_sky"/>
+            android:background="@color/night_sky"
+            android:transitionName="@string/title"/>
 
         <Chronometer
             android:layout_width="wrap_content"
