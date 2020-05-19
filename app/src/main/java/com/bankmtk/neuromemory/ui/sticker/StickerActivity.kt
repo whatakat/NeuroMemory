@@ -1,17 +1,20 @@
 package com.bankmtk.neuromemory.ui.sticker
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
+import com.bankmtk.neuromemory.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert

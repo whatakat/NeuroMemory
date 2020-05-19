@@ -30,6 +30,8 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
+        overridePendingTransition(R.anim.slidein,R.anim.slideout)
+
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemLongClick(sticker: Sticker) {
