@@ -166,6 +166,8 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     }
 
-
-
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(R.anim.slidein,R.anim.slideout)
+    }
 }
