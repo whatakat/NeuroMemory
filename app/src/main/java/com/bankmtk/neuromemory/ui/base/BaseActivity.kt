@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.consumeEach
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.seconds
 
 private const val RC_SIGN_IN = 458
 abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
@@ -96,17 +97,18 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     protected fun animateView(view:View){
-            view.animate().rotationY(180F).start()
-            view.animate().translationZ(150F)
-            view.langOneI.visibility = View.INVISIBLE
-            view.langTwoI.visibility = View.VISIBLE
-            view.langTwoI.rotationY = 180F
+        view.animate().rotationY(180F)
+        view.animate().translationZ(150F)
+        view.langTwoI.animate().alpha(1F).startDelay = 50
+        view.langOneI.visibility = View.INVISIBLE
+        view.langTwoI.visibility = View.VISIBLE
+        view.langTwoI.rotationY = 180F
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     protected fun animateViewCancel(view:View){
-        view.animate().rotationY(0F).start()
+        view.animate().rotationY(0F)
         view.animate().translationZ(0F)
+        view.langTwoI.animate().alpha(0.01F).startDelay = 50
         view.langOneI.visibility = View.VISIBLE
-        view.langTwoI.visibility = View.INVISIBLE
     }
 }
