@@ -10,6 +10,7 @@ import com.bankmtk.neuromemory.data.model.User
 import com.github.ajalt.timberkt.Timber
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlin.coroutines.resume
@@ -62,6 +63,7 @@ class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:F
             }
         }
 
+    @ExperimentalCoroutinesApi
     override fun subscribeToAllStickers(): ReceiveChannel<Result> =
         Channel<Result>(Channel.CONFLATED).apply {
             var registration: ListenerRegistration? = null
@@ -69,7 +71,7 @@ class FireStoreProvider(private val firebaseAuth: FirebaseAuth, private val db:F
                 registration =
                     getUserStickersCollection().addSnapshotListener{ snapshot,
                     e->
-                        var value = e?.let {
+                        val value = e?.let {
                             Result.Error(it)
                         } ?: snapshot?.let {
                             val stickers = it.documents.map {

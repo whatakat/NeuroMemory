@@ -6,9 +6,11 @@ import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class MainViewModel(val repository: Repository) : BaseViewModel<List<Sticker>?>() {
     private val stickerChannel = repository.getStickers()
 
