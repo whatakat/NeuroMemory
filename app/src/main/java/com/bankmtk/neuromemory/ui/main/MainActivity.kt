@@ -94,6 +94,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         super.onPause()
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
     }
+
 }
 
 
