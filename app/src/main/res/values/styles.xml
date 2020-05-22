@@ -6,6 +6,7 @@
         <item name="android:windowBackground">@color/night_sky</item>
         <item name="android:windowTitleStyle">@style/MyTitleTextStyle</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:windowActivityTransitions">true</item>
     </style>
     <style name="MyTitleTextStyle">
         <item name="android:textColor">@color/bright_sun</item>

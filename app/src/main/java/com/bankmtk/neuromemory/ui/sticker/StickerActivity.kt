@@ -1,6 +1,5 @@
 package com.bankmtk.neuromemory.ui.sticker
 
-import android.app.ActivityOptions
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
@@ -18,7 +17,6 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.net.StandardSocketOptions
 import java.util.*
 
 
@@ -30,9 +28,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     companion object{
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
-
         fun start(context: Context, stickerId: String?)=
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

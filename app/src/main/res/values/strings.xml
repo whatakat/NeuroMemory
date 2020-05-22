@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">Neurom</string>
-    <string name="sticker">Tree</string>
-    <string name="new_sticker_title">New sticker</string>
+    <string name="sticker">Wall</string>
+    <string name="new_sticker_title">New item</string>
     <string name="ok_bth_title">OK</string>
     <string name="logout_menu_title">Logout</string>
     <string name="logout_dialog_title">Do you want to log out?</string>
-    <string name="logout_dialog_message">Your tree will be saved. You will be able to access them after authorization.</string>
+    <string name="logout_dialog_message">Your wall will be saved. You will be able to access them after authorization.</string>
     <string name="logout_dialog_cancel">Cancel</string>
     <string name="change_color_menu_title">Change color</string>
     <string name="delete_menu_title">Delete</string>
     <string name="delete_dialog_message">Do you want to delete item?</string>
     <string name="cancel_btn_title">Cancel</string>
-    <string name="other_text">Other text stick</string>
+    <string name="other_text">Other text</string>
     <string name="title">Title</string>
-    <string name="text">Text stick</string>
+    <string name="text">Text</string>
     <string name="save">SAVE</string>
-    <string name="front_side">Front side</string>
-    <string name="back">Backside</string>
+    <string name="front_side">FRONT</string>
+    <string name="back">BACK</string>
 </resources>
