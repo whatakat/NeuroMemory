@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.main.MainActivity"/>
+        <activity android:name=".ui.alert.AlertActivity"/>
         <activity android:name=".ui.sticker.StickerActivity"/>
         <activity android:name=".ui.splash.StarActivity"
             android:theme="@style/SplashTheme"/>
