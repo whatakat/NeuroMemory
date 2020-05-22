@@ -12,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
+import android.view.animation.AnticipateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat.getColor
@@ -25,10 +27,9 @@ class StarFragment: Fragment() {
     private var mSunView: View? = null
     private var mSkyView: View? = null
     private var mTrackView: View? = null
-    private var mStarView: View? = null
     private var mStarsView: View? =null
     private var mTreeView: View? =null
-    private var mMarsView: View? =null
+    private var mMeteoriteView: View? =null
     private var mMoonView: View? = null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
@@ -43,10 +44,9 @@ class StarFragment: Fragment() {
         mSunView = view.findViewById(R.id.starCenter)
         mSkyView = view.findViewById(R.id.sky)
         mTrackView = view.findViewById(R.id.trackCenter)
-        mStarView = view.findViewById(R.id.star)
         mStarsView = view.findViewById(R.id.stars)
         mTreeView = view.findViewById(R.id.tree)
-        mMarsView = view.findViewById(R.id.mars)
+        mMeteoriteView = view.findViewById(R.id.meteorite)
         mMoonView = view.findViewById(R.id.moon)
         mBlackSkyColor = getColor(resources,R.color.black,null)
         mSunsetSkyColor = getColor(resources,R.color.night_sky, null)
@@ -70,14 +70,12 @@ class StarFragment: Fragment() {
         val sunYEnd = mSkyView!!.height.toFloat()
         val starsYStart = mStarsView!!.top.toFloat()
         val starsYEnd = mTreeView!!.top.toFloat()
-        val starYStart = mStarView!!.top.toFloat()
-        val starYEnd = mStarView!!.bottom.toFloat()
         val moonYStart = mMoonView!!.top.toFloat()
         val moonYEnd = mTreeView!!.bottom.toFloat()
-        val marsYStart = mMarsView!!.top.toFloat()
-        val marsXStart = mMarsView!!.left.toFloat()
+        val meteoriteYStart = mMeteoriteView!!.top.toFloat()
+        val meteoriteXStart = mMeteoriteView!!.left.toFloat()
         val path = Path()
-         path.cubicTo(marsXStart,marsYStart, 400F,400F,1200F, 2500F)
+         path.cubicTo(meteoriteXStart,meteoriteYStart, 400F,400F,1200F, 2500F)
 
         val heightAnimator = ObjectAnimator
             .ofFloat(mSunView, "y", sunYStart, sunYEnd)
@@ -86,19 +84,15 @@ class StarFragment: Fragment() {
         val starsAnimator = ObjectAnimator
             .ofFloat(mStarsView, "y", starsYStart,starsYEnd)
             .setDuration(1000)
-        starsAnimator.interpolator = AccelerateInterpolator(2F)
-        val marsAnimator = ObjectAnimator
-            .ofFloat(mMarsView, "x", "y",path)
-            .setDuration(20000)
-        marsAnimator.interpolator = AccelerateInterpolator(2F)
+        starsAnimator.interpolator = DecelerateInterpolator(1F)
+        val meteoriteAnimator = ObjectAnimator
+            .ofFloat(mMeteoriteView, "x", "y",path)
+            .setDuration(3000)
+        meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
             .ofFloat(mMoonView, "y", moonYStart,moonYEnd)
-            .setDuration(10000)
-        moonAnimator.interpolator = AccelerateInterpolator(2F)
-        val starAnimator = ObjectAnimator
-            .ofFloat(mStarView, "y", starYStart, starYEnd)
-            .setDuration(300)
-        starAnimator.interpolator = AccelerateInterpolator(2F)
+            .setDuration(2000)
+        moonAnimator.interpolator = AnticipateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
             .setDuration(1500)
@@ -123,9 +117,8 @@ class StarFragment: Fragment() {
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val animatorSet = AnimatorSet()
         animatorSet
-            .play(starAnimator)
+            .play(meteoriteAnimator)
             .with(moonAnimator)
-            .with(marsAnimator)
             .before(starsAnimator)
              .before(trackAnimator)
              .before(heightAnimator)

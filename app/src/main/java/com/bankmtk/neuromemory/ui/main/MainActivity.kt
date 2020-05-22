@@ -1,6 +1,7 @@
 package com.bankmtk.neuromemory.ui.main
 
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -19,10 +20,12 @@ import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.view.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
+    @ExperimentalCoroutinesApi
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
     private lateinit var adapter: MainAdapter
@@ -57,7 +60,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         adapter.stickers = data
     }
     private fun openStickerScreen(sticker: Sticker?){
-
         StickerActivity.start(this,sticker?.id)
     }
     companion object{
