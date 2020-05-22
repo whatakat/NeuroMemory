@@ -17,8 +17,27 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#32B1A643"
-            app:title="@string/sticker"/>
+            android:background="@color/night_sky">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_tree"/>
+            <ImageButton
+                android:id="@+id/button_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:background="@color/night_sky"
+                android:src="@drawable/ic_school_black_24dp"/>
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="10dp"
+                android:text="@string/count"/>
+
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
