@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="#32B1A643"
-            app:title="@string/sticker"/>
+            app:title="@string/item_title"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
