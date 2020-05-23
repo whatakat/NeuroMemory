@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -64,6 +65,13 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     }
     private fun openStickerScreen(sticker: Sticker?){
         StickerActivity.start(this,sticker?.id)
+    }
+
+     fun alertMe(view: View){
+         val alertIntent = Intent(this,AlertActivity::class.java)
+         startActivity(alertIntent)
+//        val myToast = Toast.makeText(this,"You have no item",Toast.LENGTH_SHORT)
+//        myToast.show()
     }
 
     companion object{

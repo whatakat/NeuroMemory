@@ -28,6 +28,7 @@
                 android:layout_marginStart="30dp">
                 <ImageButton
                     android:id="@+id/alert_button"
+                    android:onClick="alertMe"
                     android:layout_width="24dp"
                     android:layout_height="25dp"
                     android:backgroundTint="@color/bright_sun"
