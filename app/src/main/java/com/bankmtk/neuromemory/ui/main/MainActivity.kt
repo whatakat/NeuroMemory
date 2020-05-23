@@ -14,6 +14,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.ui.alert.AlertActivity
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
@@ -63,6 +65,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     private fun openStickerScreen(sticker: Sticker?){
         StickerActivity.start(this,sticker?.id)
     }
+
     companion object{
         fun getStartIntent(context: Context) = Intent(context,
         MainActivity::class.java)

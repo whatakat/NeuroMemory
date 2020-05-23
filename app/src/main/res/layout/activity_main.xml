@@ -32,13 +32,9 @@
                     android:layout_height="25dp"
                     android:backgroundTint="@color/bright_sun"
                     android:layout_marginBottom="5dp"
-                    android:src="@drawable/ic_local_play_black_24dp"/>
+                    android:src="@drawable/ic_local_play_black_24dp"
+                    android:contentDescription="@string/app_name"/>
             </FrameLayout>
-
-
-
-
-
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 

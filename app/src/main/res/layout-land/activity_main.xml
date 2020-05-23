@@ -18,7 +18,24 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="#32B1A643"
-            app:title="@string/sticker"/>
+            app:title="@string/sticker"
+            app:titleTextColor="@color/night_sky">
+            <FrameLayout
+                android:layout_width="24dp"
+                android:layout_height="25dp"
+                android:background="@color/night_sky"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="30dp">
+                <ImageButton
+                    android:id="@+id/alert_button"
+                    android:layout_width="24dp"
+                    android:layout_height="25dp"
+                    android:backgroundTint="@color/bright_sun"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_local_play_black_24dp"
+                    android:contentDescription="@string/app_name"/>
+            </FrameLayout>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
