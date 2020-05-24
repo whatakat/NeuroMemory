@@ -55,6 +55,10 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
         fun onItemLongClick(sticker: Sticker)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
 }
 
 

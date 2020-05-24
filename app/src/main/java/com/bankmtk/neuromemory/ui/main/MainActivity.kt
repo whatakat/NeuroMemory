@@ -110,6 +110,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
     }
 
+
 }
 
 
