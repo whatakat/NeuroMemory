@@ -60,6 +60,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.slideout, R.anim.slidein)
+        overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
     }
 }
