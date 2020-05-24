@@ -70,6 +70,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
      fun alertMe(view: View){
          val alertIntent = Intent(this,AlertActivity::class.java)
          startActivity(alertIntent)
+
 //        val myToast = Toast.makeText(this,"You have no item",Toast.LENGTH_SHORT)
 //        myToast.show()
     }

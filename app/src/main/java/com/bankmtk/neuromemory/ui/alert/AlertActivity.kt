@@ -28,7 +28,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        overridePendingTransition(R.anim.slidein, R.anim.slideout)
+        overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
 
 
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
