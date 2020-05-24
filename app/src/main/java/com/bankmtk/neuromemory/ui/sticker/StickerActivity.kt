@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.time.Period
 import java.util.*
 
 
@@ -132,6 +133,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     }
     private fun saveSticker(){
+
         if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
         launch {
             sticker = sticker?.copy(

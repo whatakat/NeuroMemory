@@ -44,4 +44,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
         fun onItemClick(itemView: View)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 }
