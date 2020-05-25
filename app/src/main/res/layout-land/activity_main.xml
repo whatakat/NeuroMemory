@@ -56,6 +56,8 @@
         android:layout_height="wrap_content"
         app:fabSize="mini"
         android:layout_gravity="bottom|end"
+        app:backgroundTint="@color/night_sky"
+        android:tint="@color/bright_sun"
         android:src="@drawable/ic_add_circle_outline_black_24dp"
         app:layout_behavior="com.bankmtk.neuromemory.ui.common.FABBehavior"/>
 
