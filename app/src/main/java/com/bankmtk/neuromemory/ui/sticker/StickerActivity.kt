@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.time.Period
 import java.util.*
 
 
@@ -31,13 +30,13 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
         fun start(context: Context, stickerId: String?)=
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        overridePendingTransition(R.anim.sticker_slidein,R.anim.sticker_slideout)
 
         val stickerId = intent.getStringExtra(EXTRA_STICKER)
         if (stickerId != null){
@@ -168,6 +167,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.slidein,R.anim.slideout)
+        overridePendingTransition(R.anim.sticker_slidein,R.anim.alert_slideout)
     }
 }
