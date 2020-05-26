@@ -54,7 +54,7 @@ class StarFragment: Fragment() {
         mBlueSky = getColor(resources,R.color.blue_sky,null)
         mWhiteColor = getColor(resources,R.color.white,null)
         mRedColor = getColor(resources,R.color.red, null)
-        mSceneView!!.setOnClickListener { startAnimation() }
+        mSceneView!!.setOnLongClickListener { startAnimation(); true }
         mButton = view.findViewById(R.id.imageButton)
         mButton!!.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)

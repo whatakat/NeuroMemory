@@ -1,11 +1,13 @@
 package com.bankmtk.neuromemory.ui.sticker
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -32,6 +34,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
@@ -99,6 +102,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBackPressed() {
         if (colorPicker.isOpen){
             colorPicker.close()
@@ -131,15 +135,16 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
 
     }
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveSticker(){
-
         if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
+        val date = Date(Date().time.plus(60*60*1000))
         launch {
             sticker = sticker?.copy(
                 title = titleEt.text.toString(),
                 langOne = textOne.text.toString(),
                 langTwo = textTwo.text.toString(),
-                lastChanged = Date(),
+                lastChanged = date,
                 color = color)
                 ?: createNewSticker()
 
