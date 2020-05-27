@@ -3,16 +3,11 @@ package com.bankmtk.neuromemory.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
-import com.github.ajalt.timberkt.v
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_sticker.*
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener)
