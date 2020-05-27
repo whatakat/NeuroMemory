@@ -1,15 +1,12 @@
 package com.bankmtk.neuromemory.ui.base
 
 import android.app.Activity
-import android.app.Instrumentation
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.errors.NoAuthException
 import com.firebase.ui.auth.AuthUI
@@ -19,7 +16,6 @@ import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.consumeEach
 import kotlin.coroutines.CoroutineContext
-import kotlin.time.seconds
 
 private const val RC_SIGN_IN = 458
 abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
@@ -96,7 +92,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         }
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    protected fun animateView(view:View){
+    open fun animateView(view:View){
         view.langTwoI.alpha = 0.03F
         view.animate().rotationY(180F)
         view.animate().translationZ(150F)
@@ -106,7 +102,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         view.langTwoI.rotationY = 180F
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    protected fun animateViewCancel(view:View){
+    open fun animateViewCancel(view:View){
         view.animate().rotationY(0F)
         view.animate().translationZ(0F)
         view.langTwoI.animate().alpha(0.03F)

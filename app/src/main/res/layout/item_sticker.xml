@@ -33,12 +33,14 @@
             android:transitionName="@string/title"/>
 
         <ImageView
+            android:id="@+id/title_stars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="5dp"
-            android:background="@color/bright_sun"/>
+            android:background="@color/bright_sun"
+            android:contentDescription="@string/app_name"/>
 
     <TextView
             android:id="@+id/langOneI"
@@ -61,6 +63,19 @@
             android:visibility="gone"
             android:background="@color/night_sky"
             android:layout_below="@id/titleStick"/>
+
+        <ImageView
+            android:id="@+id/fabOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_check_black_24dp"
+            android:visibility="invisible"
+            android:contentDescription="@string/app_name"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
