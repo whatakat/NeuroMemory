@@ -14,9 +14,11 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     : RecyclerView.Adapter<AlertAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
         set(value){
-            field = value
-            notifyDataSetChanged()
+                field = value
+                notifyDataSetChanged()
         }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,12 +26,13 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
         return StickViewHolder(view)
     }
 
-    override fun getItemCount() = stickers.size
+   override fun getItemCount() = stickers.size
 
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
-        holder.bind(stickers[position])
+            holder.bind(stickers[position])
     }
+
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(sticker: Sticker){
@@ -40,6 +43,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
             itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
         }
     }
+
     interface OnItemClickListener{
         fun onItemClick(itemView: View)
     }
@@ -47,4 +51,5 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     override fun getItemViewType(position: Int): Int {
         return position
     }
+
 }
