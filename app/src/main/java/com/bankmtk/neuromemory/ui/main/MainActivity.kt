@@ -1,8 +1,6 @@
 package com.bankmtk.neuromemory.ui.main
 
 
-import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -11,7 +9,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -25,7 +22,6 @@ import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
