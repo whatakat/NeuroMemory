@@ -1,7 +1,6 @@
 package com.bankmtk.neuromemory.ui.main
 
 import androidx.annotation.VisibleForTesting
-import androidx.lifecycle.Observer
 import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.data.model.Result
