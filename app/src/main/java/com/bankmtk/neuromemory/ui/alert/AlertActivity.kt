@@ -10,21 +10,22 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.main.MainViewModel
-import com.bankmtk.neuromemory.ui.splash.StarActivity
-import com.bankmtk.neuromemory.ui.sticker.StickerActivity
+import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import kotlinx.android.synthetic.main.activity_main.myRecycler
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 
 class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     @ExperimentalCoroutinesApi
     override val model: MainViewModel by viewModel()
+    val modelS: StickerViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_alert
     private lateinit var adapter: AlertAdapter
 
@@ -37,8 +38,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
 
             override fun onItemLongClick(sticker: Sticker) {
-                openStickerScreen(sticker)
-                toast("save")
+                stickerOk(sticker)
             }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -80,7 +80,12 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         super.animateViewCancel(view)
         view.fabOk.visibility = View.INVISIBLE
     }
-    private fun openStickerScreen(sticker: Sticker?){
-        StickerActivity.start(this,sticker?.id)
+    private fun stickerOk(sticker: Sticker?){
+        val date = Date(Date().time.plus(60*60*1000))
+        launch {
+            sticker?.lastChanged =date
+        }
+        sticker?.let { modelS.saveChanges(it) }
+        toast("OK, next date ${date}")
     }
 }

@@ -37,7 +37,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(sticker: Sticker){
-            if (sticker.lastChanged>Date()){
+            if (sticker.lastChanged<Date()){
                 titleStick.text = sticker.title
                 langOneI.text = sticker.langOne
                 langTwoI.text = sticker.langTwo
