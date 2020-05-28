@@ -108,7 +108,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             colorPicker.close()
             return
         }
-        saveSticker()
+        //saveSticker()
         super.onBackPressed()
 
     }

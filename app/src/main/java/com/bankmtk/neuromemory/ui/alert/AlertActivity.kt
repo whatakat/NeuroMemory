@@ -10,9 +10,11 @@ import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.main.MainViewModel
+import com.bankmtk.neuromemory.ui.splash.StarActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import kotlinx.android.synthetic.main.activity_main.myRecycler
 import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -35,6 +37,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
 
             override fun onItemLongClick(sticker: Sticker) {
+                openStickerScreen(sticker)
                 toast("save")
             }
 
@@ -76,5 +79,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     override fun animateViewCancel(view: View) {
         super.animateViewCancel(view)
         view.fabOk.visibility = View.INVISIBLE
+    }
+    private fun openStickerScreen(sticker: Sticker?){
+        StickerActivity.start(this,sticker?.id)
     }
 }
