@@ -44,7 +44,7 @@ class StickerViewModel(private val repository: Repository): BaseViewModel<Sticke
         }
     }
    @ExperimentalCoroutinesApi
-   public override fun onCleared() {
+    override fun onCleared() {
         launch {
             currentSticker?.let { repository.saveSticker(it)}
             super.onCleared()

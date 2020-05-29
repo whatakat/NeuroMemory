@@ -29,6 +29,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     override val layoutRes: Int= R.layout.activity_alert
     private lateinit var adapter: AlertAdapter
 
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
@@ -80,14 +81,15 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         super.animateViewCancel(view)
         view.fabOk.visibility = View.INVISIBLE
     }
+    @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){
-        val date = Date(Date().time.plus(60*60*1000))
+        val date = Date(Date().time.plus(60*60*100))
         launch {
             sticker?.lastChanged =date
             sticker?.let { modelS.saveChanges(it) }
         }
         finish()
-        onRestart()
+        onStart()
         toast("OK, next date ${date}")
 
     }
