@@ -86,7 +86,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             sticker?.lastChanged =date
             sticker?.let { modelS.saveChanges(it) }
         }
-
+        finish()
+        onRestart()
         toast("OK, next date ${date}")
 
     }
