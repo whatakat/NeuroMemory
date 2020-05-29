@@ -5,17 +5,21 @@ import com.bankmtk.neuromemory.data.Repository
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.sticker.StickerViewState.StickerData
 import com.bankmtk.neuromemory.ui.base.BaseViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
 class StickerViewModel(private val repository: Repository): BaseViewModel<StickerData>() {
 
+    @ExperimentalCoroutinesApi
     private val currentSticker: Sticker?
     get() = getViewState().poll()?.sticker
 
+    @ExperimentalCoroutinesApi
     fun saveChanges(sticker: Sticker){
         setData(StickerData(sticker = sticker))
     }
 
+    @ExperimentalCoroutinesApi
     fun loadSticker(stickerId: String){
        launch {
            try {
@@ -27,6 +31,7 @@ class StickerViewModel(private val repository: Repository): BaseViewModel<Sticke
            }
        }
     }
+    @ExperimentalCoroutinesApi
     fun deleteSticker(){
         launch {
             try {
@@ -38,7 +43,8 @@ class StickerViewModel(private val repository: Repository): BaseViewModel<Sticke
             }
         }
     }
-    override fun onCleared() {
+   @ExperimentalCoroutinesApi
+   public override fun onCleared() {
         launch {
             currentSticker?.let { repository.saveSticker(it)}
             super.onCleared()

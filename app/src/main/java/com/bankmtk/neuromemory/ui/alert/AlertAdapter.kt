@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui.alert
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +17,17 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     : RecyclerView.Adapter<AlertAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
         set(value){
-                field = value
-                notifyDataSetChanged()
+
+            val valueDate : MutableList<Sticker> = mutableListOf()
+            var ind  =0
+            for (i in value.indices){
+                if (value[i].lastChanged<Date()){
+                    valueDate.add(ind,value[i])
+                    ind++
+                }
+            }
+            field = valueDate
+            notifyDataSetChanged()
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
@@ -29,7 +39,6 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
    override fun getItemCount()=stickers.size
 
 
-
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
             holder.bind(stickers[position])
     }
@@ -37,14 +46,12 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer {
         fun bind(sticker: Sticker){
-            if (sticker.lastChanged<Date()){
                 titleStick.text = sticker.title
                 langOneI.text = sticker.langOne
                 langTwoI.text = sticker.langTwo
                 itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
                 itemView.fabOk.setOnLongClickListener {consume { onItemClickListener.onItemLongClick(sticker) }  }
-            }
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()

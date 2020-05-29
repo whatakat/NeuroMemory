@@ -25,7 +25,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     @ExperimentalCoroutinesApi
     override val model: MainViewModel by viewModel()
-    val modelS: StickerViewModel by viewModel()
+    private val modelS: StickerViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_alert
     private lateinit var adapter: AlertAdapter
 
@@ -84,8 +84,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         val date = Date(Date().time.plus(60*60*1000))
         launch {
             sticker?.lastChanged =date
+            sticker?.let { modelS.saveChanges(it) }
         }
-        sticker?.let { modelS.saveChanges(it) }
+
         toast("OK, next date ${date}")
+
     }
 }
