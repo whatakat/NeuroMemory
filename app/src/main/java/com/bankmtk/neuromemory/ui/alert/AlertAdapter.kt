@@ -17,7 +17,6 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     : RecyclerView.Adapter<AlertAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
         set(value){
-
             val valueDate : MutableList<Sticker> = mutableListOf()
             var ind  =0
             for (i in value.indices){
@@ -67,5 +66,4 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     override fun getItemViewType(position: Int): Int {
         return position
     }
-
 }

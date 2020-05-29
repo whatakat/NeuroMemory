@@ -55,7 +55,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         myRecycler.adapter = adapter
     }
 
-
     override fun renderData(data: List<Sticker>?) {
         if (data==null) return
         adapter.stickers = data
@@ -71,6 +70,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         super.onPause()
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
     }
+
     override fun animateView(view: View) {
         super.animateView(view)
         view.fabOk.visibility = View.VISIBLE
@@ -87,10 +87,14 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         launch {
             sticker?.lastChanged =date
             sticker?.let { modelS.saveChanges(it) }
+            finish()
         }
-        finish()
-        onStart()
-        toast("OK, next date ${date}")
+        startActivity(this.intent)
+       // toast("OK, next date ${date}")
+    }
 
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slidein,R.anim.slideout)
     }
 }
