@@ -13,6 +13,7 @@ import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import kotlinx.android.synthetic.main.activity_main.myRecycler
 import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -72,13 +73,16 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     override fun animateView(view: View) {
         super.animateView(view)
-        view.fabOk.visibility = View.VISIBLE
+        view.fabOk.alpha = 0.2F
+        view.fabOk.animate().alpha(0.7F)
+        view.fabOk.show()
         view.fabOk.rotationY = 180F
     }
 
     override fun animateViewCancel(view: View) {
         super.animateViewCancel(view)
-        view.fabOk.visibility = View.INVISIBLE
+        view.fabOk.hide()
+        view.fabOk.animate().alpha(0.2F)
     }
     @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){

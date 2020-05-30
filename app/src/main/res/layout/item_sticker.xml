@@ -64,17 +64,16 @@
             android:background="@color/night_sky"
             android:layout_below="@id/titleStick"/>
 
-        <ImageView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="70dp"
             android:src="@drawable/ic_check_black_24dp"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:contentDescription="@string/app_name"/>
     </RelativeLayout>
 
