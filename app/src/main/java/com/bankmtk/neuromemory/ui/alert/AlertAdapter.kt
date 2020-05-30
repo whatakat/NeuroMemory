@@ -50,7 +50,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 langTwoI.text = sticker.langTwo
                 itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
-                itemView.fabOk.setOnLongClickListener {consume { onItemClickListener.onItemLongClick(sticker) }  }
+                itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemLongClick(sticker) }  }
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()

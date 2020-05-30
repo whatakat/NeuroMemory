@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -89,6 +88,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             sticker?.let { modelS.saveChanges(it) }
             finish()
         }
+
         startActivity(this.intent)
        // toast("OK, next date ${date}")
     }
