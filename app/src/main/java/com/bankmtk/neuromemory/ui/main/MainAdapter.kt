@@ -36,6 +36,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
             titleStick.text = sticker.title
             langOneI.text = sticker.langOne
             langTwoI.text = sticker.langTwo
+            status_star.setImageLevel(sticker.progressSt)
             itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
             itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
             itemView.setOnLongClickListener{consume { onItemClickListener.onItemLongClick(sticker) }}

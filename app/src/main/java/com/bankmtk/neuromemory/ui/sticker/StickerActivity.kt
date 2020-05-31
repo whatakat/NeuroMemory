@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
@@ -63,6 +64,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
         save_sticker.setOnClickListener { saveSticker() }
 
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
@@ -74,8 +76,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             supportActionBar?.title = lastChanged.format()
             toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity)) //? only this
             textOne.setBackgroundColor(color.getColorInt(this@StickerActivity))
-
-
             removeEditListener()
             titleEt.setText(title)
             textOne.setText(langOne)
@@ -87,7 +87,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     override fun renderData(data: StickerViewState.StickerData) {
         if (data.isDeleted) finish()
-
         this.sticker = data.sticker
         data.sticker?.let { color = it.color }
 
@@ -116,9 +115,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             colorPicker.close()
             return
         }
-        //saveSticker()
         super.onBackPressed()
-
     }
 
     @ExperimentalCoroutinesApi
