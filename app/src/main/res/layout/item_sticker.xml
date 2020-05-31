@@ -33,6 +33,16 @@
             android:transitionName="@string/title"/>
 
         <ImageView
+            android:id="@+id/status_star"
+            android:layout_width="150dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_toStartOf="@+id/title_stars"
+            android:src="@drawable/ic_stars_zero"
+            android:contentDescription="@string/app_name"/>
+
+        <ImageView
             android:id="@+id/title_stars"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

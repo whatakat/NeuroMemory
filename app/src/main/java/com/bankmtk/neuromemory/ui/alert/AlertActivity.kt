@@ -8,6 +8,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -94,7 +96,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         }
 
         startActivity(this.intent)
-       // toast("OK, next date ${date}")
+        toast("Next date ${date.format()}")
     }
 
     override fun finish() {
