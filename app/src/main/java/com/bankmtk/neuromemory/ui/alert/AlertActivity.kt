@@ -91,6 +91,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         val date = Date(Date().time.plus(60*60*100))
         launch {
             sticker?.lastChanged =date
+            sticker?.progressSt = 1
             sticker?.let { modelS.saveChanges(it) }
             finish()
         }

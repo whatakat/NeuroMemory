@@ -10,7 +10,7 @@ data class Sticker (val id: String="",
                     val langOne: String="",
                     val langTwo: String="",
                     val color: Color = Color.WHITE,
-                    val progress: Int = 0,
+                    var progressSt: Int = 0,
                     var lastChanged: Date = Date()):Parcelable{
     override fun equals(other: Any?): Boolean {
        if (this === other) return true

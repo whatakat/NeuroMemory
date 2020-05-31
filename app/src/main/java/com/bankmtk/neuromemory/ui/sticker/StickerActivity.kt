@@ -1,6 +1,7 @@
 package com.bankmtk.neuromemory.ui.sticker
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -15,6 +16,7 @@ import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_stick.*
+import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
@@ -73,6 +75,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity)) //? only this
             textOne.setBackgroundColor(color.getColorInt(this@StickerActivity))
 
+
             removeEditListener()
             titleEt.setText(title)
             textOne.setText(langOne)
@@ -87,6 +90,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
         this.sticker = data.sticker
         data.sticker?.let { color = it.color }
+
         initView()
     }
 
