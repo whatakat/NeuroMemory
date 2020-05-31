@@ -93,6 +93,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     open fun animateView(view:View){
+        view.titleStick.animate().alpha(0.03F)
         view.langTwoI.alpha = 0.03F
         view.animate().rotationY(180F)
         view.animate().translationZ(150F)
@@ -103,6 +104,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     open fun animateViewCancel(view:View){
+        view.titleStick.animate().alpha(1F)
         view.animate().rotationY(0F)
         view.animate().translationZ(0F)
         view.langTwoI.animate().alpha(0.03F)
