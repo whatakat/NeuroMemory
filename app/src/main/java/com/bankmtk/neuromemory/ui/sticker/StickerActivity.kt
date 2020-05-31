@@ -15,6 +15,7 @@ import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_stick.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
@@ -34,6 +35,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
     }
 
+    @ExperimentalCoroutinesApi
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +71,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         sticker?.run {
             supportActionBar?.title = lastChanged.format()
             toolbar.setBackgroundColor(color.getColorInt(this@StickerActivity)) //? only this
+            textOne.setBackgroundColor(color.getColorInt(this@StickerActivity))
 
             removeEditListener()
             titleEt.setText(title)
@@ -87,6 +90,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         initView()
     }
 
+    @ExperimentalCoroutinesApi
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.itemId){
             android.R.id.home ->super.onBackPressed().let { true }
@@ -113,6 +117,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     }
 
+    @ExperimentalCoroutinesApi
     private fun deleteSticker(){
         alert {
             messageResource = R.string.delete_dialog_message
@@ -135,6 +140,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
 
     }
+    @ExperimentalCoroutinesApi
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveSticker(){
         if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
