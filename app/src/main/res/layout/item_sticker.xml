@@ -39,7 +39,7 @@
             android:layout_marginEnd="0dp"
             android:layout_marginTop="4dp"
             android:layout_toStartOf="@+id/title_stars"
-            android:src="@drawable/ic_stars_zero"
+            android:src="@drawable/ic_stars_seven"
             android:contentDescription="@string/app_name"/>
 
         <ImageView
