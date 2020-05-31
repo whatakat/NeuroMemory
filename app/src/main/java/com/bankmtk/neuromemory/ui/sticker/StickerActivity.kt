@@ -81,7 +81,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             textOne.setText(langOne)
             textTwo.setText(langTwo)
             setEditListener()
-
         }
     }
 
@@ -89,7 +88,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         if (data.isDeleted) finish()
         this.sticker = data.sticker
         data.sticker?.let { color = it.color }
-
         initView()
     }
 
@@ -129,12 +127,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     private val textChangeListener = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
-            //saveSticker()
-
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            //
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -154,7 +149,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
                 lastChanged = date,
                 color = color)
                 ?: createNewSticker()
-
             sticker?.let { model.saveChanges(it) }
         }
     }
