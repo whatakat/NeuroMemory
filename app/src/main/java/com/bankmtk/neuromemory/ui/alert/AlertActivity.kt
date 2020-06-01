@@ -88,20 +88,33 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     }
     @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){
-        val date = Date(Date().time.plus(60*60*100))
         launch {
-            sticker?.lastChanged =date
+            sticker?.lastChanged =nextChange(sticker?.progressSt)
             sticker?.progressSt = 1
             sticker?.let { modelS.saveChanges(it) }
             finish()
         }
 
         startActivity(this.intent)
-        toast("Next date ${date.format()}")
+        toast("Next date ${nextChange(sticker!!.progressSt).format()}")
     }
 
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
+    }
+    private fun nextChange(progressSt:Int?):Date{
+        var nextDate = Date()
+        when(progressSt){
+            0->nextDate = Date(Date().time.plus(60*60*10))
+            1->nextDate = Date(Date().time.plus(60*60*100))
+            2->nextDate = Date(Date().time.plus(60*60*1000))
+            3->nextDate = Date(Date().time.plus(60*60*100))
+            4->nextDate = Date(Date().time.plus(60*60*100))
+            5->nextDate = Date(Date().time.plus(60*60*100))
+            6->nextDate = Date(Date().time.plus(60*60*100))
+            7->nextDate = Date(Date().time.plus(60*60*100))
+        }
+        return nextDate
     }
 }
