@@ -90,7 +90,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     private fun stickerOk(sticker: Sticker?){
         launch {
             sticker?.lastChanged =nextChange(sticker?.progressSt)
-            sticker?.progressSt = 1
+            sticker?.progressSt = nextLevel(sticker?.progressSt)
             sticker?.let { modelS.saveChanges(it) }
             finish()
         }
@@ -116,5 +116,19 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             7->nextDate = Date(Date().time.plus(60*60*100))
         }
         return nextDate
+    }
+    private fun nextLevel(progressSt: Int?):Int{
+        var itemLevel = 0
+        when(progressSt){
+            0->itemLevel =1
+            1->itemLevel =2
+            2->itemLevel =3
+            3->itemLevel =4
+            4->itemLevel =5
+            5->itemLevel =6
+            6->itemLevel =7
+            7->itemLevel =7
+        }
+        return itemLevel
     }
 }
