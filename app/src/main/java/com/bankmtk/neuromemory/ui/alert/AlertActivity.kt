@@ -106,14 +106,14 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     private fun nextChange(progressSt:Int?):Date{
         var nextDate = Date()
         when(progressSt){
-            0->nextDate = Date(Date().time.plus(60*60*10))
-            1->nextDate = Date(Date().time.plus(60*60*100))
-            2->nextDate = Date(Date().time.plus(60*60*1000))
-            3->nextDate = Date(Date().time.plus(60*60*100))
-            4->nextDate = Date(Date().time.plus(60*60*100))
-            5->nextDate = Date(Date().time.plus(60*60*100))
-            6->nextDate = Date(Date().time.plus(60*60*100))
-            7->nextDate = Date(Date().time.plus(60*60*100))
+            0->nextDate = Date(Date().time.plus(10*60*1000))
+            1->nextDate = Date(Date().time.plus(60*60*1000))
+            2->nextDate = Date(Date().time.plus(5*60*60*1000))
+            3->nextDate = Date(Date().time.plus(24*60*60*1000))
+            4->nextDate = Date(Date().time.plus(5*24*60*60*1000))
+            5->nextDate = Date(Date().time.plus(25*24*60*60*1000L))
+            6->nextDate = Date(Date().time.plus(4*30*24*60*60*1000L))
+            7->nextDate = Date(Date().time.plus(12*30*24*60*60*1000L))
         }
         return nextDate
     }
