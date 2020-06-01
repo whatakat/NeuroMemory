@@ -140,13 +140,11 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveSticker(){
         if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
-        val date = Date(Date().time.plus(60*60*1000))
         launch {
             sticker = sticker?.copy(
                 title = titleEt.text.toString(),
                 langOne = textOne.text.toString(),
                 langTwo = textTwo.text.toString(),
-                lastChanged = date,
                 color = color)
                 ?: createNewSticker()
             sticker?.let { model.saveChanges(it) }
