@@ -113,7 +113,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             4->nextDate = Date(Date().time.plus(5*24*60*60*1000))
             5->nextDate = Date(Date().time.plus(25*24*60*60*1000L))
             6->nextDate = Date(Date().time.plus(4*30*24*60*60*1000L))
-            7->nextDate = Date(Date().time.plus(12*30*24*60*60*1000L))
+            7,8,9->nextDate = Date(Date().time.plus(12*30*24*60*60*1000L))
         }
         return nextDate
     }
@@ -127,7 +127,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             4->itemLevel =5
             5->itemLevel =6
             6->itemLevel =7
-            7->itemLevel =7
+            7->itemLevel =8
+            8->itemLevel =9
+            9->itemLevel =9
+
         }
         return itemLevel
     }
