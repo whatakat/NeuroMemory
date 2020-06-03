@@ -128,7 +128,6 @@ class StarFragment: Fragment() {
             .before(nightSkyAnimator)
             .after(buttonAnimator)
         animatorSet.start()
-        imageButton
     }
 
     override fun onResume() {
