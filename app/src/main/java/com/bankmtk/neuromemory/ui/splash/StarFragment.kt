@@ -20,6 +20,7 @@ import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.ui.main.MainActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class StarFragment: Fragment() {
     private var mButton: ImageButton? =null
@@ -87,11 +88,11 @@ class StarFragment: Fragment() {
         starsAnimator.interpolator = DecelerateInterpolator(1F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
-            .setDuration(3000)
+            .setDuration(1500)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
             .ofFloat(mMoonView, "y", moonYStart,moonYEnd)
-            .setDuration(2000)
+            .setDuration(1000)
         moonAnimator.interpolator = AnticipateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
@@ -113,20 +114,21 @@ class StarFragment: Fragment() {
         trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor)
-            .setDuration(2500)
+            .setDuration(1500)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val animatorSet = AnimatorSet()
         animatorSet
             .play(meteoriteAnimator)
-            .with(moonAnimator)
-            .before(starsAnimator)
-             .before(trackAnimator)
-             .before(heightAnimator)
+            .before(moonAnimator)
+            .with(starsAnimator)
+             .with(trackAnimator)
+             .with(heightAnimator)
             .before(sunAnimator)
-            .before(sunsetSkyAnimator)
+            .with(sunsetSkyAnimator)
             .before(nightSkyAnimator)
             .after(buttonAnimator)
         animatorSet.start()
+        imageButton
     }
 
     override fun onResume() {
