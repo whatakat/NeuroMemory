@@ -86,7 +86,7 @@
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="48dp"
         android:layout_marginStart="6dp"
-        app:backgroundTint="@color/black"
+        app:backgroundTint="@color/night_sky"
         android:src="@drawable/star"
         android:contentDescription="@string/app_name" />
 
