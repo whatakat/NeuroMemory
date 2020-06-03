@@ -4,7 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -94,9 +98,19 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             sticker?.let { modelS.saveChanges(it) }
             finish()
         }
-
-        startActivity(this.intent)
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
+        if (isHaveItem(adapter.stickers)){
+            startActivity(this.intent)
+        }else {
+            val myToast = Toast.makeText(this,"Active tasks completed", Toast.LENGTH_SHORT)
+            myToast.setGravity(Gravity.CENTER, 0,0)
+            val toastContainer = myToast.view as LinearLayout
+            val myImage = ImageView(this)
+            myImage.setImageResource(R.drawable.neuron_ok)
+            toastContainer.addView(myImage,0)
+            myToast.show()
+        }
+
     }
 
     override fun finish() {
@@ -130,8 +144,15 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             7->itemLevel =8
             8->itemLevel =9
             9->itemLevel =9
-
         }
         return itemLevel
+    }
+    private fun isHaveItem(data: List<Sticker>?):Boolean {
+        for(i in data!!.indices){
+            if (data[i].lastChanged< Date()&& data.size>1) {
+                return true
+            }
+        }
+        return false
     }
 }

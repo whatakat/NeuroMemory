@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -23,6 +23,8 @@ import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
+
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
     @ExperimentalCoroutinesApi
@@ -65,10 +67,18 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
 
      fun alertMe(view: View){
          val alertIntent = Intent(this,AlertActivity::class.java)
-         startActivity(alertIntent)
-
-//        val myToast = Toast.makeText(this,"You have no item",Toast.LENGTH_SHORT)
-//        myToast.show()
+         if (isHaveItem(adapter.stickers)){
+             startActivity(alertIntent)
+         }else
+         {
+             val myToast = Toast.makeText(this,"You have no active tasks", Toast.LENGTH_SHORT)
+             myToast.setGravity(Gravity.CENTER, 0,0)
+             val toastContainer = myToast.view as LinearLayout
+             val myImage = ImageView(this)
+             myImage.setImageResource(R.drawable.neuron_time)
+             toastContainer.addView(myImage,0)
+             myToast.show()
+         }
     }
 
     companion object{
@@ -104,6 +114,15 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     override fun onPause() {
         super.onPause()
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
+    }
+
+    private fun isHaveItem(data: List<Sticker>?):Boolean {
+        for(i in data!!.indices){
+            if (data[i].lastChanged< Date()) {
+                return true
+            }
+        }
+        return false
     }
 
 

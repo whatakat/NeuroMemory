@@ -57,7 +57,7 @@
         app:fabSize="mini"
         app:backgroundTint="@color/night_sky"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/neuron"
+        android:src="@drawable/neuron_add"
         app:layout_behavior="com.bankmtk.neuromemory.ui.common.FABBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
