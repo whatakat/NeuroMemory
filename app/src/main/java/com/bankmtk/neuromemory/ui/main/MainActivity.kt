@@ -40,6 +40,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
 
 
+
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemLongClick(sticker: Sticker) {
                 openStickerScreen(sticker)
@@ -74,12 +75,13 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
          }else
          {
              val myToast = Toast.makeText(this,R.string.no_active_tasks, Toast.LENGTH_SHORT)
-             myToast.setGravity(Gravity.TOP, 5,20)
+             myToast.setGravity(Gravity.BOTTOM, 5,20)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
              myImage.setImageResource(R.drawable.neuron_time)
              toastContainer.addView(myImage,0)
-             toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+             toastContainer.setBackgroundColor(Color.TRANSPARENT)
+             //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
              myToast.show()
          }
     }

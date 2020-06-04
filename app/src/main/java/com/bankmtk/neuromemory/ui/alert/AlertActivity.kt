@@ -105,12 +105,13 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             startActivity(this.intent)
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
-            myToast.setGravity(Gravity.CENTER, 0,0)
+            myToast.setGravity(Gravity.BOTTOM, 0,0)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
             myImage.setImageResource(R.drawable.neuron_ok)
             toastContainer.addView(myImage,0)
-            toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+            //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+            toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
         }
 
