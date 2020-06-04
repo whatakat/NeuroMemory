@@ -2,6 +2,7 @@ package com.bankmtk.neuromemory.ui.alert
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
@@ -102,12 +103,13 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         if (isHaveItem(adapter.stickers)){
             startActivity(this.intent)
         }else {
-            val myToast = Toast.makeText(this,"Active tasks completed", Toast.LENGTH_SHORT)
+            val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
             myToast.setGravity(Gravity.CENTER, 0,0)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
-            myImage.setImageResource(R.drawable.neuron_ok)
+            myImage.setImageResource(R.drawable.time_completed)
             toastContainer.addView(myImage,0)
+            toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
         }
 

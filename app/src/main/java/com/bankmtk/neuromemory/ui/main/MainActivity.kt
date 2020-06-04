@@ -3,6 +3,7 @@ package com.bankmtk.neuromemory.ui.main
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.*
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
@@ -71,12 +73,13 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
              startActivity(alertIntent)
          }else
          {
-             val myToast = Toast.makeText(this,"You have no active tasks", Toast.LENGTH_SHORT)
-             myToast.setGravity(Gravity.CENTER, 0,0)
+             val myToast = Toast.makeText(this,R.string.no_active_tasks, Toast.LENGTH_SHORT)
+             myToast.setGravity(Gravity.TOP, 5,20)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
              myImage.setImageResource(R.drawable.neuron_time)
              toastContainer.addView(myImage,0)
+             toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
              myToast.show()
          }
     }

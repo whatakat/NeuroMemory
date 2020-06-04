@@ -34,7 +34,7 @@
 
         <ImageView
             android:id="@+id/status_star"
-            android:layout_width="100dp"
+            android:layout_width="30dp"
             android:layout_height="15dp"
             android:layout_marginEnd="0dp"
             android:layout_marginTop="4dp"
@@ -52,7 +52,7 @@
             android:background="@color/bright_sun"
             android:contentDescription="@string/app_name"/>
 
-    <TextView
+        <TextView
             android:id="@+id/langOneI"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,7 +61,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             android:visibility="visible"
-        android:layout_below="@id/titleStick"/>
+            android:layout_below="@id/titleStick"/>
         <TextView
             android:id="@+id/langTwoI"
             android:layout_width="match_parent"
