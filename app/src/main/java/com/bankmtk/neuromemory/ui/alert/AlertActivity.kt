@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.format
@@ -107,9 +108,9 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             myToast.setGravity(Gravity.CENTER, 0,0)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
-            myImage.setImageResource(R.drawable.time_completed)
+            myImage.setImageResource(R.drawable.neuron_ok)
             toastContainer.addView(myImage,0)
-            toastContainer.setBackgroundColor(Color.TRANSPARENT)
+            toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
             myToast.show()
         }
 
