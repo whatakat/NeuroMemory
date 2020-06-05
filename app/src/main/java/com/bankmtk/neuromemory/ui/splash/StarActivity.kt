@@ -27,7 +27,7 @@ class StarActivity: SingleFragmentActivity() {
         myToast.setGravity(Gravity.BOTTOM,0,0)
         val toastContainer = myToast.view as LinearLayout
         val myImage = ImageView(this)
-        myImage.setImageResource(R.drawable.tree)
+        myImage.setImageResource(R.drawable.tree_alert)
         toastContainer.addView(myImage,0)
         toastContainer.setBackgroundColor(Color.TRANSPARENT)
         myToast.show()
