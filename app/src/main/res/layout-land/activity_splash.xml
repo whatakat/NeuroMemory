@@ -66,10 +66,10 @@
         android:src="@drawable/meteorite" />
     <ImageView
         android:id="@+id/moon"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_gravity="center|bottom"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="100dp"
         android:src="@drawable/fullmoon"
         android:contentDescription="@string/app_name"/>
     <ImageView
@@ -82,11 +82,11 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageButton"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:alpha="0.80"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:alpha="0.40"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="41dp"
         android:layout_marginStart="6dp"
         app:backgroundTint="@color/white"
         android:src="@drawable/ic_blur_on_black_24dp"

@@ -68,7 +68,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center|bottom"
-        android:layout_marginEnd="90dp"
+        android:layout_marginEnd="100dp"
         android:src="@drawable/fullmoon"
         android:contentDescription="@string/app_name"/>
     <ImageView
