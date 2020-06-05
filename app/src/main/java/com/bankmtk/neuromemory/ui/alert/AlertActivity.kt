@@ -108,7 +108,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             myToast.setGravity(Gravity.CENTER, 0,30)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
-            myImage.setImageResource(R.drawable.ic_check_black_24dp)
+            myImage.setImageResource(R.drawable.ic_beenhere_black_24dp)
             toastContainer.addView(myImage,0)
             //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
             toastContainer.setBackgroundColor(Color.TRANSPARENT)
