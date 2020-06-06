@@ -78,7 +78,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
              myToast.setGravity(Gravity.BOTTOM, 5,20)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
-             myImage.setImageResource(R.drawable.ic_pan_tool_black_24dp)
+             myImage.setImageResource(R.drawable.ic_visibility_off_black_24dp)
              toastContainer.addView(myImage,0)
              toastContainer.setBackgroundColor(Color.TRANSPARENT)
              //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
