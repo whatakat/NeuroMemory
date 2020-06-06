@@ -105,7 +105,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             startActivity(this.intent)
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
-            myToast.setGravity(Gravity.CENTER, 0,30)
+            myToast.setGravity(Gravity.BOTTOM, 0,200)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
             myImage.setImageResource(R.drawable.ic_beenhere_black_24dp)

@@ -75,7 +75,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
          }else
          {
              val myToast = Toast.makeText(this,R.string.no_active_tasks, Toast.LENGTH_SHORT)
-             myToast.setGravity(Gravity.CENTER, 5,20)
+             myToast.setGravity(Gravity.BOTTOM, 0,200)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
              myImage.setImageResource(R.drawable.ic_visibility_off_black_24dp)
