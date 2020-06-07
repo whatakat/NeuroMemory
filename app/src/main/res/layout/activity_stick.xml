@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:hint="@string/front_side"
-            android:textColorHint="@color/blue_sky"
+            android:textColorHint="@color/night_sky"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:importantForAutofill="no"/>
@@ -63,7 +63,7 @@
             android:background="@color/night_sky"
             android:textColor="@color/white"
             android:hint="@string/back"
-            android:textColorHint="@color/blue_sky"
+            android:textColorHint="@color/white"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:importantForAutofill="no"/>
@@ -83,13 +83,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize" />
         </HorizontalScrollView>
-        <Button
+        <ImageButton
             android:id="@+id/save_sticker"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="@string/save"
             android:textColor="@color/black"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_save_black_24dp"/>
 
     </LinearLayout>
     </ScrollView>
