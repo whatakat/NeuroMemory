@@ -1,6 +1,7 @@
 package com.bankmtk.neuromemory.ui.sticker
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +9,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.view.View.inflate
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
@@ -16,6 +21,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_fragment.*
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -63,9 +69,12 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             setToolbarColor(it)
         }
         save_sticker.setOnClickListener { saveSticker() }
-
-
     }
+    private val stickerInfo: String
+        get() {
+            return getString(R.string.share_stick, sticker!!.title, sticker!!.langOne, sticker!!.langTwo)
+        }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
         menuInflater.inflate(R.menu.sticker_menu, menu).let { true}
@@ -97,6 +106,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             android.R.id.home ->super.onBackPressed().let { true }
             R.id.palette -> togglePalette().let {true}
             R.id.delete -> deleteSticker().let {true}
+            R.id.share_info-> shareStick().let {true}
             else -> super.onOptionsItemSelected(item)
         }
     private fun togglePalette(){
@@ -105,6 +115,13 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }else{
             colorPicker.open()
         }
+    }
+    private fun shareStick(){
+        var i =Intent(Intent.ACTION_SEND)
+        i.type = "text/plain"
+        i.putExtra(Intent.EXTRA_TEXT,stickerInfo)
+        i = Intent.createChooser(i, getString(R.string.report))
+        startActivity(i)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

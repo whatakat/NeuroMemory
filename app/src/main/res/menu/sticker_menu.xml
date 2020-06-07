@@ -5,8 +5,8 @@
         android:title="@string/change_color_menu_title"
         android:icon="@drawable/ic_palette_black_24dp"
         app:showAsAction="ifRoom"/>
-    <item android:id="@+id/share"
-        android:title="send"
+    <item android:id="@+id/share_info"
+        android:title="@string/send"
         android:icon="@drawable/ic_share_black_24dp"
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/delete"

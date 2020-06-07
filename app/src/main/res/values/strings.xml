@@ -21,8 +21,9 @@
     <string name="start_notifications">Notifications started</string>
     <string name="no_active_tasks">"It's not time"</string>
     <string name="time_completed">Completed</string>
-
-
+    <string name="send">send</string>
+    <string name="share_stick">%1$s \n%2$s \n%3$s</string>
+    <string name="report">report</string>
 
 
 </resources>
