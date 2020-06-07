@@ -5,8 +5,12 @@
         android:title="@string/change_color_menu_title"
         android:icon="@drawable/ic_palette_black_24dp"
         app:showAsAction="ifRoom"/>
+    <item android:id="@+id/share"
+        android:title="send"
+        android:icon="@drawable/ic_share_black_24dp"
+        app:showAsAction="ifRoom"/>
     <item android:id="@+id/delete"
         android:title="@string/delete_menu_title"
         android:icon="@drawable/ic_delete_black_24dp"
-        app:showAsAction="never"/>
+        app:showAsAction="ifRoom"/>
 </menu>
