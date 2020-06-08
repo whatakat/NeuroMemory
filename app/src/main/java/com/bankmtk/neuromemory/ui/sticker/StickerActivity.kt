@@ -15,6 +15,7 @@ import android.view.View
 import android.view.View.inflate
 import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -132,8 +133,8 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
           val myImage = ImageView(this)
           myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
           toastContainer.addView(myImage,0)
-          //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
-          toastContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+          toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+          //toastContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
           myToast.show()
       }
 
