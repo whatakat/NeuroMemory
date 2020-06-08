@@ -2,18 +2,18 @@ package com.bankmtk.neuromemory.ui.sticker
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.inflate
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
@@ -28,6 +28,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -67,6 +68,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         colorPicker.onColorClickListener = {
             color = it
             setToolbarColor(it)
+            setTextOneColor(it)
         }
         save_sticker.setOnClickListener { saveSticker() }
     }
@@ -117,11 +119,24 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
     }
     private fun shareStick(){
-        var i =Intent(Intent.ACTION_SEND)
-        i.type = "text/plain"
-        i.putExtra(Intent.EXTRA_TEXT,stickerInfo)
-        i = Intent.createChooser(i, getString(R.string.report))
-        startActivity(i)
+      try {
+          var i =Intent(Intent.ACTION_SEND)
+          i.type = "text/plain"
+          i.putExtra(Intent.EXTRA_TEXT,stickerInfo)
+          i = Intent.createChooser(i, getString(R.string.report))
+          startActivity(i)
+      } catch (e: Exception){
+          val myToast = Toast.makeText(this,R.string.error, Toast.LENGTH_SHORT)
+          myToast.setGravity(Gravity.CENTER, 0,200)
+          val toastContainer = myToast.view as LinearLayout
+          val myImage = ImageView(this)
+          myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
+          toastContainer.addView(myImage,0)
+          //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+          toastContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+          myToast.show()
+      }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -170,6 +185,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     private fun setToolbarColor(color: Color){
         toolbar.setBackgroundColor(color.getColorInt(this))
+    }
+    private fun setTextOneColor(color: Color){
+        textOne.setBackgroundColor(color.getColorInt(this))
     }
     private fun createNewSticker(): Sticker = Sticker(UUID.randomUUID().toString(),
         titleEt.text.toString(), textOne.text.toString(),textTwo.text.toString())
