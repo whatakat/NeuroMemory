@@ -67,6 +67,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             textTwo.addTextChangedListener(textChangeListener)
         }
         colorPicker.onColorClickListener = {
+            saveSticker()
             color = it
             setToolbarColor(it)
             setTextOneColor(it)
@@ -134,12 +135,12 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
           myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
           toastContainer.addView(myImage,0)
           toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
-          //toastContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
           myToast.show()
       }
 
     }
 
+    @ExperimentalCoroutinesApi
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBackPressed() {
         if (colorPicker.isOpen){
@@ -147,6 +148,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             return
         }
         super.onBackPressed()
+        saveSticker()
     }
 
     @ExperimentalCoroutinesApi
