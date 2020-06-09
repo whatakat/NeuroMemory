@@ -3,8 +3,6 @@ package com.bankmtk.neuromemory.ui.sticker
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -14,7 +12,6 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.View.inflate
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -24,15 +21,11 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_fragment.*
 import kotlinx.android.synthetic.main.activity_stick.*
-import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.noHistory
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
