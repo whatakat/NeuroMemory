@@ -24,7 +24,7 @@
     <string name="send">send</string>
     <string name="share_stick">%1$s \n%2$s \n%3$s</string>
     <string name="report">Send using..</string>
-    <string name="error">Error, you did not save data</string>
+    <string name="error">You need to save data</string>
 
 
 </resources>

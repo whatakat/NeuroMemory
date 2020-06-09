@@ -93,12 +93,20 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RECOGNIZER_RESULT && resultCode == Activity.RESULT_OK) {
+            fun checkedField():Int{
+                when(true){
+                    rbt.isChecked->return R.id.titleEt
+                    rbf.isChecked->return R.id.textOne
+                }
+                return R.id.textTwo
+            }
             val matches = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-            val speechText = findViewById<View>(R.id.textOne) as TextView
-            speechText.text = matches?.get(0).toString()
+            val speechText = findViewById<View>(checkedField()) as TextView
+            speechText.text = matches?.get(0).toString().toLowerCase(Locale.ROOT)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
         menuInflater.inflate(R.menu.sticker_menu, menu).let { true}
