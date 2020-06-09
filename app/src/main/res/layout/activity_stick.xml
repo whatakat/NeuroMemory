@@ -92,6 +92,17 @@
             android:background="@color/colorAccent"
             android:src="@drawable/ic_save_black_24dp"
             android:contentDescription="@string/app_name"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/speech"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="normal"
+            android:alpha="0.20"
+            android:layout_marginBottom="55dp"
+            android:src="@drawable/ic_mic_black_24dp"
+            android:layout_gravity="bottom|center"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/app_name"/>
     </LinearLayout>
     </ScrollView>
 

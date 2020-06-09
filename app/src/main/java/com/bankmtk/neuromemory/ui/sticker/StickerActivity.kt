@@ -1,11 +1,13 @@
 package com.bankmtk.neuromemory.ui.sticker
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
@@ -28,6 +30,7 @@ import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.noHistory
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -44,6 +47,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
         fun start(context: Context, stickerId: String?)=
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
+        private const val RECOGNIZER_RESULT = 1234
     }
 
     @ExperimentalCoroutinesApi
@@ -53,6 +57,14 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         overridePendingTransition(R.anim.sticker_slidein,R.anim.sticker_slideout)
+        speech.setOnClickListener {
+            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            intent.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speech to text")
+            startActivityForResult(intent, RECOGNIZER_RESULT)
+        }
 
         val stickerId = intent.getStringExtra(EXTRA_STICKER)
         if (stickerId != null){
@@ -79,6 +91,14 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             return getString(R.string.share_stick, sticker!!.title, sticker!!.langOne, sticker!!.langTwo)
         }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == RECOGNIZER_RESULT && resultCode == Activity.RESULT_OK) {
+            val matches = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            val speechText = findViewById<View>(R.id.textOne) as TextView
+            speechText.text = matches?.get(0).toString()
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
         menuInflater.inflate(R.menu.sticker_menu, menu).let { true}
@@ -148,7 +168,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             return
         }
         super.onBackPressed()
-        saveSticker()
     }
 
     @ExperimentalCoroutinesApi
