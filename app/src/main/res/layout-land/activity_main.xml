@@ -21,11 +21,11 @@
             app:title="@string/sticker"
             app:titleTextColor="@color/night_sky">
             <FrameLayout
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="20dp"
+                android:layout_height="14dp"
                 android:background="@color/night_sky"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="30dp">
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="50dp">
                 <ImageView
                     android:id="@+id/alert_visible"
                     android:layout_width="match_parent"

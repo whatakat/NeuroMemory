@@ -58,11 +58,21 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         myRecycler.adapter = adapter
 
         fab.setOnClickListener { openStickerScreen(null) }
+        if (isHaveItem(adapter.stickers)){
+           alert_visible.setImageLevel(1)
+        }else{
+            alert_visible.setImageLevel(0)
+        }
     }
 
     override fun renderData(data: List<Sticker>?) {
         if (data==null) return
         adapter.stickers = data
+        if (isHaveItem(adapter.stickers)){
+            alert_visible.setImageLevel(1)
+        }else{
+            alert_visible.setImageLevel(0)
+        }
     }
     private fun openStickerScreen(sticker: Sticker?){
         StickerActivity.start(this,sticker?.id)
