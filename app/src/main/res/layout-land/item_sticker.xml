@@ -6,10 +6,10 @@
     card_view:cardCornerRadius="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
+    android:layout_marginLeft="@dimen/dp5"
     android:layout_marginTop="1dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="5dp"
+    android:layout_marginRight="@dimen/dp5"
+    android:layout_marginBottom="@dimen/dp5"
     >
 
     <RelativeLayout
@@ -21,9 +21,9 @@
             android:id="@+id/titleStick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="3dp"
+            android:layout_marginStart="@dimen/dp3"
+            android:layout_marginTop="@dimen/dp3"
+            android:layout_marginEnd="@dimen/dp3"
             tools:text="@string/title"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -33,7 +33,7 @@
 
         <ImageView
             android:id="@+id/status_star"
-            android:layout_width="50dp"
+            android:layout_width="@dimen/dp"
             android:layout_height="15dp"
             android:layout_marginEnd="0dp"
             android:layout_marginTop="4dp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="3dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/dp5"
             android:background="@color/bright_sun"
             android:contentDescription="@string/app_name"/>
 
@@ -79,8 +79,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginStart="@dimen/dp5"
+            android:layout_marginBottom="@dimen/dp5"
             android:alpha="0.70"
             android:backgroundTint="@color/black"
             android:src="@drawable/ic_check_black_24dp"

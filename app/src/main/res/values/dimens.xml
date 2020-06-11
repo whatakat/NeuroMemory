@@ -2,4 +2,6 @@
 <resources>
     <dimen name="dp">50dp</dimen>
     <dimen name="dps">25dp</dimen>
+    <dimen name="dp3">3dp</dimen>
+    <dimen name="dp5">5dp</dimen>
 </resources>
