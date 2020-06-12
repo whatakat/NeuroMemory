@@ -46,5 +46,13 @@
             android:strokeColor="#FCFCB7" android:strokeLineCap="square"
             android:strokeLineJoin="miter" android:strokeWidth="1"/>
         <path android:fillColor="#FCFCB7" android:pathData="M61,26m-8.333,0a8.333,8.333 0,1 1,16.667 0a8.333,8.333 0,1 1,-16.667 0"/>
+        <path android:fillColor="#FF000000"
+            android:pathData="M178.458,24.458L182.083,27.833"
+            android:strokeColor="#000000" android:strokeLineCap="square"
+            android:strokeLineJoin="miter" android:strokeWidth="1"/>
+        <path android:fillColor="#FF000000"
+            android:pathData="M182.306,28.024L191.896,18.302"
+            android:strokeColor="#000000" android:strokeLineCap="square"
+            android:strokeLineJoin="miter" android:strokeWidth="1"/>
     </group>
 </vector>
