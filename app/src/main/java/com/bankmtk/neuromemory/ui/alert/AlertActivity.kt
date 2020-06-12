@@ -67,8 +67,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         if (data==null) return
         adapter.stickers = data
     }
-    private fun deleteStickerScreen(sticker: Sticker?){
-    }
+
     companion object{
         fun getStartIntent(context: Context) = Intent(context,
             AlertActivity::class.java)
@@ -105,13 +104,13 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             startActivity(this.intent)
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
-            myToast.setGravity(Gravity.BOTTOM, 0,200)
+            myToast.setGravity(Gravity.CENTER, 0,200)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
-            myImage.setImageResource(R.drawable.ic_beenhere_black_24dp)
+            myImage.setImageResource(R.drawable.ic_verified_user_black_24dp)
             toastContainer.addView(myImage,0)
-            //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
-            toastContainer.setBackgroundColor(Color.TRANSPARENT)
+            toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+            //toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
         }
 

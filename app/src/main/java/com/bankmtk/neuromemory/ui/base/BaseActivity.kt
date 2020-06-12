@@ -101,10 +101,12 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         view.langOneI.visibility = View.INVISIBLE
         view.langTwoI.visibility = View.VISIBLE
         view.langTwoI.rotationY = 180F
+        view.status_star.animate().alpha(0.03F)
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     open fun animateViewCancel(view:View){
         view.titleStick.animate().alpha(1F)
+        view.status_star.animate().alpha(1F)
         view.animate().rotationY(0F)
         view.animate().translationZ(0F)
         view.langTwoI.animate().alpha(0.03F)

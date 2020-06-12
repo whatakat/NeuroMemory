@@ -17,15 +17,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="#32B1A643"
+            android:background="@color/black"
             app:title="@string/sticker"
-            app:titleTextColor="@color/night_sky">
+            app:titleTextColor="@color/bright_sun">
             <FrameLayout
                 android:layout_width="20dp"
                 android:layout_height="14dp"
-                android:background="@color/night_sky"
-                android:layout_marginBottom="16dp"
-                android:layout_marginStart="50dp">
+                android:layout_marginStart="5dp">
                 <ImageView
                     android:id="@+id/alert_visible"
                     android:layout_width="match_parent"

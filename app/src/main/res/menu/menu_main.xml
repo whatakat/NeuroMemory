@@ -5,5 +5,4 @@
         android:id="@+id/logout"
         android:title="@string/logout_menu_title"
         app:showAsAction="never"/>
-
 </menu>
