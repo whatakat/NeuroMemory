@@ -51,12 +51,24 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         overridePendingTransition(R.anim.sticker_slidein,R.anim.sticker_slideout)
         speech.setOnClickListener {
-            val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-            intent.putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speech to text")
-            startActivityForResult(intent, RECOGNIZER_RESULT)
+            try {
+                val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+                intent.putExtra(
+                    RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speech to text")
+                startActivityForResult(intent, RECOGNIZER_RESULT)
+            } catch (e: Exception){
+                val myToast = Toast.makeText(this,R.string.error_speech, Toast.LENGTH_SHORT)
+                myToast.setGravity(Gravity.CENTER, 0,200)
+                val toastContainer = myToast.view as LinearLayout
+                val myImage = ImageView(this)
+                myImage.setImageResource(R.drawable.ic_mic_off_black_24dp)
+                toastContainer.addView(myImage,0)
+                toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+                myToast.show()
+            }
+
         }
 
         val stickerId = intent.getStringExtra(EXTRA_STICKER)

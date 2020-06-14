@@ -116,10 +116,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:fabSize="normal"
-                    android:alpha="0.20"
+                    android:alpha="0.80"
                     android:src="@drawable/ic_mic_black_24dp"
                     android:layout_gravity="bottom|end"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/black"
                     android:contentDescription="@string/app_name"/>
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/save_sticker"
@@ -127,10 +127,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     app:fabSize="normal"
-                    android:alpha="0.20"
+                    android:alpha="0.80"
                     android:src="@drawable/ic_save_black_24dp"
                     android:layout_gravity="bottom|end"
-                    android:backgroundTint="@color/white"
+                    android:backgroundTint="@color/black"
                     android:contentDescription="@string/app_name"/>
             </RadioGroup>
     </LinearLayout>
