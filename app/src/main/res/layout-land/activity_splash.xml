@@ -60,10 +60,10 @@
         android:src="@drawable/star" />
     <ImageView
         android:id="@+id/meteorite"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/meteorite" />
+        android:src="@drawable/earth" />
     <ImageView
         android:id="@+id/moon"
         android:layout_width="60dp"

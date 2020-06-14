@@ -6,7 +6,7 @@ import com.bankmtk.neuromemory.ui.base.BaseActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.koin.android.viewmodel.ext.android.viewModel
 
-private const val START_DELAY = 0L
+private const val START_DELAY = 100L
 
 class SplashActivity : BaseActivity<Boolean?>() {
     override val model: SplashViewModel by viewModel()
