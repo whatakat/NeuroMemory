@@ -44,7 +44,7 @@
 
     <ImageView
         android:id="@+id/starCenter"
-        android:layout_width="3dp"
+        android:layout_width="1dp"
         android:layout_height="@dimen/dps"
         android:layout_gravity="center|top"
         android:layout_marginTop="100dp"

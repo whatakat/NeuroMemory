@@ -24,7 +24,7 @@
     <ImageView
         android:id="@+id/starsbb"
         android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_height="360dp"
         android:layout_gravity="top"
         android:layout_marginTop="180dp"
         android:contentDescription="@string/app_name"
@@ -41,14 +41,6 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/track" />
 
-    <ImageView
-        android:id="@+id/starCenter"
-        android:layout_width="3dp"
-        android:layout_height="@dimen/dps"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="100dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/sun" />
     <ImageView
         android:id="@+id/star"
         android:layout_width="@dimen/dp"
@@ -78,6 +70,14 @@
         android:layout_gravity="bottom"
         android:contentDescription="@string/app_name"
         android:src="@drawable/tree" />
+    <ImageView
+        android:id="@+id/starCenter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_arrow_drop_down_black_24dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageButton"

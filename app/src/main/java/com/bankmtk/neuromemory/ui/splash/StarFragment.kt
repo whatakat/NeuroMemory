@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AnticipateInterpolator
+import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
@@ -20,12 +21,13 @@ import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.ui.main.MainActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class StarFragment: Fragment() {
-    private var mButton: ImageButton? =null
+    private var mButton: FloatingActionButton? =null
     private var mSceneView: View? = null
-    private var mSunView: View? = null
+    private var mLightView: View? = null
     private var mSkyView: View? = null
     private var mTrackView: View? = null
     private var mStarsView: View? =null
@@ -42,7 +44,7 @@ class StarFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.activity_splash, container, false)
         mSceneView = view
-        mSunView = view.findViewById(R.id.starCenter)
+        mLightView = view.findViewById(R.id.starCenter)
         mSkyView = view.findViewById(R.id.sky)
         mTrackView = view.findViewById(R.id.trackCenter)
         mStarsView = view.findViewById(R.id.stars)
@@ -67,7 +69,7 @@ class StarFragment: Fragment() {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @SuppressLint("ObjectAnimatorBinding")
     private fun startAnimation() {
-        val sunYStart = mSunView!!.top.toFloat()
+        val sunYStart = mLightView!!.top.toFloat()
         val sunYEnd = mSkyView!!.height.toFloat()
         val starsYStart = mStarsView!!.top.toFloat()
         val starsYEnd = mTreeView!!.top.toFloat()
@@ -75,20 +77,22 @@ class StarFragment: Fragment() {
         val moonYEnd = mTreeView!!.bottom.toFloat()
         val meteoriteYStart = mMeteoriteView!!.top.toFloat()
         val meteoriteXStart = mMeteoriteView!!.left.toFloat()
+        val buttonYStart = mButton!!.top.toFloat()
+        val buttonXStart = mButton!!.bottom.toFloat()
         val path = Path()
-         path.cubicTo(meteoriteXStart,meteoriteYStart, 600F,200F,320F, 570F)
+         path.cubicTo(meteoriteXStart,meteoriteYStart, 800F,1800F,496F, 775F)
 
-        val heightAnimator = ObjectAnimator
-            .ofFloat(mSunView, "y", sunYStart, sunYEnd)
-            .setDuration(400)
-        heightAnimator.interpolator = AccelerateInterpolator(2F)
+        val lightAnimator = ObjectAnimator
+            .ofFloat(mLightView, "y", sunYStart, buttonYStart-81F)
+            .setDuration(1500)
+        lightAnimator.interpolator = AccelerateInterpolator(2F)
         val starsAnimator = ObjectAnimator
             .ofFloat(mStarsView, "y", starsYStart,starsYEnd)
             .setDuration(1000)
         starsAnimator.interpolator = DecelerateInterpolator(1F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
-            .setDuration(1500)
+            .setDuration(2000)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
             .ofFloat(mMoonView, "y", moonYStart,moonYEnd)
@@ -96,37 +100,37 @@ class StarFragment: Fragment() {
         moonAnimator.interpolator = AnticipateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
-            .setDuration(1500)
+            .setDuration(1800)
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())
         val buttonAnimator = ObjectAnimator
-            .ofInt(mButton, "backgroundColor",
-                mBlackSkyColor, mSunsetSkyColor, mBlueSky,mSunsetSkyColor,mBlackSkyColor)
-            .setDuration(1000)
-        buttonAnimator.setEvaluator(ArgbEvaluator())
-        val sunAnimator = ObjectAnimator
-            .ofInt(mSunView, "backgroundColor", mBlackSkyColor, mWhiteColor)
-            .setDuration(400)
-        sunAnimator.setEvaluator(ArgbEvaluator())
+            .ofFloat(mButton, "y", buttonXStart, buttonYStart)
+            .setDuration(1600)
+        buttonAnimator.interpolator = BounceInterpolator()
+//        val sunAnimator = ObjectAnimator
+//            .ofInt(mLightView, "backgroundColor", mBlackSkyColor)
+//            .setDuration(2300)
+//        sunAnimator.setEvaluator(ArgbEvaluator())
         val trackAnimator = ObjectAnimator
             .ofInt(mTrackView, "backgroundColor",  mBlackSkyColor,
                 mRedColor,mBlueSky,mSunsetSkyColor)
-            .setDuration(500)
+            .setDuration(900)
         trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
-            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor)
-            .setDuration(1500)
+            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor,mBlueSky)
+            .setDuration(1800)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val animatorSet = AnimatorSet()
         animatorSet
-            .play(meteoriteAnimator)
-            .before(moonAnimator)
+            .play(moonAnimator)
+            .with(meteoriteAnimator)
+            .before(lightAnimator)
+            //.with(sunAnimator)
             .with(starsAnimator)
              .with(trackAnimator)
-             .with(heightAnimator)
-            .before(sunAnimator)
-            .with(sunsetSkyAnimator)
             .before(nightSkyAnimator)
-            .after(buttonAnimator)
+            .with(sunsetSkyAnimator)
+            .before(buttonAnimator)
+
         animatorSet.start()
     }
 
