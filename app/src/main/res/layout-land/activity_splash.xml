@@ -43,14 +43,6 @@
         android:src="@drawable/track" />
 
     <ImageView
-        android:id="@+id/starCenter"
-        android:layout_width="1dp"
-        android:layout_height="@dimen/dps"
-        android:layout_gravity="center|top"
-        android:layout_marginTop="100dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/sun" />
-    <ImageView
         android:id="@+id/star"
         android:layout_width="@dimen/dp"
         android:layout_height="@dimen/dp"
@@ -79,6 +71,14 @@
         android:layout_gravity="bottom"
         android:contentDescription="@string/app_name"
         android:src="@drawable/tree" />
+    <ImageView
+        android:id="@+id/starCenter"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="100dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_arrow_drop_down_black_24dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageButton"
