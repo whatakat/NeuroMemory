@@ -52,10 +52,10 @@
         android:src="@drawable/star" />
     <ImageView
         android:id="@+id/meteorite"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/earthl" />
+        android:src="@drawable/earth" />
     <ImageView
         android:id="@+id/moon"
         android:layout_width="60dp"
@@ -73,12 +73,12 @@
         android:src="@drawable/tree" />
     <ImageView
         android:id="@+id/starCenter"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center|top"
         android:layout_marginTop="100dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_arrow_drop_down_black_24dp" />
+        android:src="@drawable/ic_navigation_black_24dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageButton"
