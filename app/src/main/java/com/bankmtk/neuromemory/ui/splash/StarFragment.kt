@@ -80,10 +80,10 @@ class StarFragment: Fragment() {
         val buttonYStart = mButton!!.top.toFloat()
         val buttonXStart = mButton!!.bottom.toFloat()
         val path = Path()
-         path.cubicTo(meteoriteXStart,meteoriteYStart, 800F,1800F,900F, 875F)
+         path.cubicTo(meteoriteXStart,meteoriteYStart, 800F,1800F,750F, 845F)
 
         val lightAnimator = ObjectAnimator
-            .ofFloat(mLightView, "y", sunYStart, buttonYStart-81F)
+            .ofFloat(mLightView, "y", sunYStart, buttonXStart)
             .setDuration(1500)
         lightAnimator.interpolator = AccelerateInterpolator(2F)
         val starsAnimator = ObjectAnimator
