@@ -11,10 +11,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.AnticipateInterpolator
-import android.view.animation.BounceInterpolator
-import android.view.animation.DecelerateInterpolator
+import android.view.animation.*
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat.getColor
@@ -88,7 +85,7 @@ class StarFragment: Fragment() {
         lightAnimator.interpolator = AccelerateInterpolator(2F)
         val starsAnimator = ObjectAnimator
             .ofFloat(mStarsView, "y", starsYStart,starsYEnd)
-            .setDuration(1000)
+            .setDuration(1500)
         starsAnimator.interpolator = DecelerateInterpolator(1F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
