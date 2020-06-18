@@ -116,6 +116,7 @@ class StarFragment: Fragment() {
             .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor)
             .setDuration(1800)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
+        val rotateArrow = AnimationUtils.loadAnimation(this.context,R.anim.rotate_animation)
         val animatorSet = AnimatorSet()
         animatorSet
             .play(moonAnimator)
@@ -127,8 +128,8 @@ class StarFragment: Fragment() {
             .before(nightSkyAnimator)
             .with(sunsetSkyAnimator)
             .before(buttonAnimator)
-
         animatorSet.start()
+        mLightView!!.animation = rotateArrow
     }
 
     override fun onResume() {

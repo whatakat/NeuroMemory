@@ -70,10 +70,10 @@
         android:src="@drawable/tree" />
     <ImageView
         android:id="@+id/starCenter"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="70dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_navigation_black_24dp" />
 
