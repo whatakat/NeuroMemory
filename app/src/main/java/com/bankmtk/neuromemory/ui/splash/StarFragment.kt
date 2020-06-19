@@ -59,6 +59,8 @@ class StarFragment: Fragment() {
         mButton!!.setOnClickListener {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
+            mButton!!.isEnabled = false
+
         }
         return view
     }
@@ -134,6 +136,7 @@ class StarFragment: Fragment() {
 
     override fun onResume() {
         super.onResume()
+        mButton!!.isEnabled = true
         onDestroy()
     }
 
