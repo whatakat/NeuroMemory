@@ -60,6 +60,7 @@ class StarFragment: Fragment() {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
             mButton!!.isEnabled = false
+            mButton!!.size = FloatingActionButton.SIZE_MINI
 
         }
         return view
@@ -137,6 +138,7 @@ class StarFragment: Fragment() {
     override fun onResume() {
         super.onResume()
         mButton!!.isEnabled = true
+        mButton!!.size = FloatingActionButton.SIZE_NORMAL
         onDestroy()
     }
 
