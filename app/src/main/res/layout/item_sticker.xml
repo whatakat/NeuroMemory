@@ -62,7 +62,7 @@
             android:textColor="@color/black"
             android:textSize="14sp"
             android:visibility="visible"
-        android:layout_below="@id/titleStick"/>
+        android:layout_below="@id/titleStick" />
         <TextView
             android:id="@+id/langTwoI"
             android:layout_width="match_parent"

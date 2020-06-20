@@ -1,6 +1,7 @@
 package com.bankmtk.neuromemory.ui.main
 
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -70,6 +71,10 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         }
     }
     private fun openStickerScreen(sticker: Sticker?){
+//        val titleView = findViewById<View>(R.id.langOneI)
+//        val options = ActivityOptions.makeSceneTransitionAnimation(this,titleView,"Title")
+//        val intent  = Intent(this, StickerActivity::class.java)
+//        startActivity(intent,options.toBundle())
         StickerActivity.start(this,sticker?.id)
     }
 
