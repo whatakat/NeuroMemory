@@ -16,14 +16,14 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/thirty"
             android:background="@color/black"
             app:title="@string/sticker"
             app:titleTextColor="@color/bright_sun">
             <FrameLayout
-                android:layout_width="20dp"
+                android:layout_width="@dimen/twenty"
                 android:layout_height="14dp"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="@dimen/five">
                 <ImageView
                     android:id="@+id/alert_visible"
                     android:layout_width="match_parent"
