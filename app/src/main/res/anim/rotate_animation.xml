@@ -5,9 +5,7 @@
         android:pivotY="65%"
         android:fromDegrees="0"
         android:toDegrees="360"
-        android:duration = "2000"
-        android:startOffset = "1300"
+        android:duration = "2500"
+        android:startOffset = "0"
         android:repeatCount = "1"/>
-
-
 </set>

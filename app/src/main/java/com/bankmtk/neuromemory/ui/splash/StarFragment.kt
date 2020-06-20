@@ -61,7 +61,6 @@ class StarFragment: Fragment() {
             startActivity(intent)
             mButton!!.isEnabled = false
             mButton!!.size = FloatingActionButton.SIZE_MINI
-
         }
         return view
     }
