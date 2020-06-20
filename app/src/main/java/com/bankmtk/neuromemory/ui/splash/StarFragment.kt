@@ -112,7 +112,7 @@ class StarFragment: Fragment() {
         val trackAnimator = ObjectAnimator
             .ofInt(mTrackView, "backgroundColor",  mBlackSkyColor,
                 mRedColor,mBlueSky,mSunsetSkyColor)
-            .setDuration(900)
+            .setDuration(2000)
         trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor)
