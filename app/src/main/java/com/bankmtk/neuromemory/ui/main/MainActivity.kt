@@ -26,6 +26,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
@@ -39,32 +40,13 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     lateinit var builder: Notification.Builder
     private val channelId = "com.bankmtk.neuromemory.service"
     private val description = "Test notification"
+    private val vibrate = arrayListOf(200L,20).toLongArray()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
-       // doWork()
-
-
-        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val intent = Intent(applicationContext, AlertActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(applicationContext,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        notificationChannel = NotificationChannel(channelId,description, NotificationManager.IMPORTANCE_HIGH)
-        notificationChannel.enableLights(true)
-        notificationChannel.enableVibration(true)
-        notificationManager.createNotificationChannel(notificationChannel)
-
-        builder = Notification.Builder(applicationContext,channelId)
-            .setContentTitle("Neurom")
-            .setContentText("open application")
-            .setSmallIcon(R.drawable.tree)
-            .setContentIntent(pendingIntent)
-        notificationManager.notify(1234,builder.build())
-
-
-
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemLongClick(sticker: Sticker) {
@@ -85,10 +67,12 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         fab.setOnClickListener { openStickerScreen(null) }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun renderData(data: List<Sticker>?) {
         if (data==null) return
         adapter.stickers = data
         if (isHaveItem(adapter.stickers)){
+            notifyUser()
             alert_visible.setImageLevel(1)
         }else{
             alert_visible.setImageLevel(0)
@@ -111,7 +95,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
              myImage.setImageResource(R.drawable.ic_visibility_off_black_24dp)
              toastContainer.addView(myImage,0)
              toastContainer.setBackgroundColor(Color.TRANSPARENT)
-             //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
              myToast.show()
          }
     }
@@ -159,8 +142,32 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         }
         return false
     }
+    private fun notifyUser(){
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val intent = Intent(applicationContext, AlertActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(applicationContext,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            notificationChannel = NotificationChannel(channelId,description, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.GREEN
+            notificationChannel.vibrationPattern = vibrate
+            notificationManager.createNotificationChannel(notificationChannel)
 
+            builder = Notification.Builder(this,channelId)
+                .setContentTitle("Status:")
+                .setContentText("confirm items")
+                .setSmallIcon(R.drawable.starsback)
+                .setContentIntent(pendingIntent)
+        } else{
+            builder = Notification.Builder(this)
+                .setContentTitle("Status:")
+                .setContentText("confirm items")
+                .setSmallIcon(R.drawable.starsback)
+                .setContentIntent(pendingIntent)
 
+        }
+        notificationManager.notify(1234,builder.build())
+    }
 }
 
 
