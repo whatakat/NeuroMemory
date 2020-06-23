@@ -1,7 +1,7 @@
 package com.bankmtk.neuromemory.ui.main
 
 
-import android.app.ActivityOptions
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -12,7 +12,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
@@ -35,10 +34,35 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     override val layoutRes: Int= R.layout.activity_main
     private lateinit var adapter: MainAdapter
 
+    lateinit var notificationManager: NotificationManager
+    lateinit var notificationChannel: NotificationChannel
+    lateinit var builder: Notification.Builder
+    private val channelId = "com.bankmtk.neuromemory.service"
+    private val description = "Test notification"
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
+       // doWork()
+
+
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val intent = Intent(applicationContext, AlertActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(applicationContext,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        notificationChannel = NotificationChannel(channelId,description, NotificationManager.IMPORTANCE_HIGH)
+        notificationChannel.enableLights(true)
+        notificationChannel.enableVibration(true)
+        notificationManager.createNotificationChannel(notificationChannel)
+
+        builder = Notification.Builder(applicationContext,channelId)
+            .setContentTitle("Neurom")
+            .setContentText("open application")
+            .setSmallIcon(R.drawable.tree)
+            .setContentIntent(pendingIntent)
+        notificationManager.notify(1234,builder.build())
+
 
 
 
