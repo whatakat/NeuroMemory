@@ -98,10 +98,11 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             sticker?.progressSt = nextLevel(sticker?.progressSt)
             sticker?.let { modelS.saveChanges(it) }
             finish()
+
         }
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
         if (isHaveItem(adapter.stickers)){
-            startActivity(this.intent)
+            startActivity(getStartIntent(this))
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
             myToast.setGravity(Gravity.CENTER, 0,200)
