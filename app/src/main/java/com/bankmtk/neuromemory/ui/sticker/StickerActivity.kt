@@ -99,6 +99,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             return getString(R.string.share_stick, sticker!!.title, sticker!!.langOne, sticker!!.langTwo)
         }
 
+    @ExperimentalStdlibApi
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RECOGNIZER_RESULT && resultCode == Activity.RESULT_OK) {
             fun checkedField():Int{
@@ -110,7 +111,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             }
             val matches = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
             val speechText = findViewById<View>(checkedField()) as TextView
-            speechText.text = matches?.get(0).toString().toLowerCase(Locale.ROOT)
+            speechText.text = matches?.get(0).toString().toLowerCase(Locale.ROOT).capitalize(Locale.ROOT)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
