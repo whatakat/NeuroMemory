@@ -158,15 +158,15 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
             builder = Notification.Builder(this,channelId)
                 .setContentTitle("Status:")
                 .setContentText("confirm items")
-                .setSmallIcon(R.drawable.starsback)
-                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.starsback))
+                .setSmallIcon(R.drawable.notify)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.notify))
                 .setContentIntent(pendingIntent)
         } else{
             builder = Notification.Builder(this)
                 .setContentTitle("Status:")
                 .setContentText("confirm items")
-                .setSmallIcon(R.drawable.starsback)
-                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.starsback))
+                .setSmallIcon(R.drawable.notify)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.notify))
                 .setContentIntent(pendingIntent)
 
         }
