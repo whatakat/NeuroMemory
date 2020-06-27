@@ -24,10 +24,10 @@ class StarActivity: SingleFragmentActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         val myToast = Toast.makeText(this,R.string.start_notifications, Toast.LENGTH_SHORT)
-        myToast.setGravity(Gravity.BOTTOM,0,0)
+        myToast.setGravity(Gravity.CENTER,0,0)
         val toastContainer = myToast.view as LinearLayout
         val myImage = ImageView(this)
-        myImage.setImageResource(R.drawable.tree_alert)
+        myImage.setImageResource(R.drawable.notify_back)
         toastContainer.addView(myImage,0)
         toastContainer.setBackgroundColor(Color.TRANSPARENT)
         myToast.show()
