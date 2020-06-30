@@ -15,7 +15,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     :RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
     set(value){
-        field = value
+        field = value.sortedWith(compareBy {it.progressSt})
         notifyDataSetChanged()
     }
 
