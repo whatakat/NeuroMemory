@@ -41,7 +41,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     lateinit var builder: Notification.Builder
     private val channelId = "com.bankmtk.neuromemory.service"
     private val description = "Test notification"
-    private val vibrate = longArrayOf(0,100,50,100,50,50)
+    private val vibrate = longArrayOf(0,50,100,50,50,50)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

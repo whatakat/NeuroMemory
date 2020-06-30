@@ -43,7 +43,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
         fun start(context: Context, stickerId: String?)=
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
-        private const val RECOGNIZER_RESULT = 1234
+        private const val RECOGNIZER_RESULT = 2234
     }
 
     @ExperimentalCoroutinesApi
@@ -52,7 +52,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        overridePendingTransition(R.anim.sticker_slidein,R.anim.sticker_slideout)
+            // overridePendingTransition(R.anim.sticker_slidein,R.anim.sticker_slideout)
         speech.setOnClickListener {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             intent.putExtra(
