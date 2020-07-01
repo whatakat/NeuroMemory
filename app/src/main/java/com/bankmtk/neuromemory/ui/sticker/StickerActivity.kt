@@ -52,7 +52,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            // overridePendingTransition(R.anim.sticker_slidein,R.anim.sticker_slideout)
+            overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
         speech.setOnClickListener {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             intent.putExtra(
@@ -185,6 +185,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             return
         }
         super.onBackPressed()
+
     }
 
     @ExperimentalCoroutinesApi
@@ -245,6 +246,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.sticker_slidein,R.anim.alert_slideout)
+        overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
     }
 }
