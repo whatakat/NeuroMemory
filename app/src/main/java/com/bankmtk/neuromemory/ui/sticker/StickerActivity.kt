@@ -43,7 +43,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
         fun start(context: Context, stickerId: String?)=
             context.startActivity<StickerActivity>(EXTRA_STICKER to stickerId)
-        private const val RECOGNIZER_RESULT = 2234
+        private const val RECOGNIZER_RESULT = 3234
     }
 
     @ExperimentalCoroutinesApi
@@ -79,7 +79,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             stickerId.let {
                 model.loadSticker(it)
             }}
-        else if (stickerId == null) {
+        else {
             supportActionBar?.title =
                 getString(R.string.new_sticker_title)
             titleEt.addTextChangedListener(textChangeListener)
