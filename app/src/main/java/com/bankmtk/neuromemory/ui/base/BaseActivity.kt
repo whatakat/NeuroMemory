@@ -93,7 +93,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     open fun animateView(view:View){
-        view.titleStick.animate().alpha(0.03F)
+        view.titleStick.animate().alpha(0.16F)
         view.langTwoI.alpha = 0.03F
         view.animate().rotationY(180F)
         view.animate().translationZ(150F)
@@ -101,7 +101,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         view.langOneI.visibility = View.INVISIBLE
         view.langTwoI.visibility = View.VISIBLE
         view.langTwoI.rotationY = 180F
-        view.status_star.animate().alpha(0.03F)
+        view.status_star.animate().alpha(0.16F)
     }
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     open fun animateViewCancel(view:View){
