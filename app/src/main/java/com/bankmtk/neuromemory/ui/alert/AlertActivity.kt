@@ -75,7 +75,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
+        overridePendingTransition(R.anim.alert_slidein,R.anim.sticker_zoom_out)
     }
 
     override fun animateView(view: View) {
@@ -119,7 +119,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.slidein,R.anim.slideout)
+        overridePendingTransition(R.anim.slidein,R.anim.sticker_zoom_out)
     }
     private fun nextChange(progressSt:Int?):Date{
         var nextDate = Date()
