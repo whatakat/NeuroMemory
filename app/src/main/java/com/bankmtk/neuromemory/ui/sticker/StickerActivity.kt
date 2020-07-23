@@ -111,7 +111,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             }
             val matches = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
             val speechText = findViewById<View>(checkedField()) as TextView
-            speechText.text = matches?.get(0).toString().toLowerCase(Locale.ROOT).capitalize(Locale.ROOT)
+            speechText.text =speechText.text.toString().plus(matches?.get(0).toString().toLowerCase(Locale.ROOT).capitalize(Locale.ROOT).plus(". "))
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -211,7 +211,17 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     @ExperimentalCoroutinesApi
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveSticker(){
-        if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) return
+        if (titleEt.text == null || (titleEt.text?.length ?: 0)<3) {
+            val myToast = Toast.makeText(this,R.string.error_save, Toast.LENGTH_SHORT)
+            myToast.setGravity(Gravity.CENTER, 0,200)
+            val toastContainer = myToast.view as LinearLayout
+            val myImage = ImageView(this)
+            myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
+            toastContainer.addView(myImage,0)
+            toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+            myToast.show()
+            return
+        }
         launch {
             sticker = sticker?.copy(
                 title = titleEt.text.toString(),

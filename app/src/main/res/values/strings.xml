@@ -26,6 +26,7 @@
     <string name="report">Send using..</string>
     <string name="error">You need to save data</string>
     <string name="error_speech">Your phone model does not support this feature.</string>
+    <string name="error_save">The field or title must be at least three characters.</string>
 
 
 </resources>
