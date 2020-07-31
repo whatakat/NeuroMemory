@@ -51,7 +51,8 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 status_star.setImageLevel(sticker.progressSt)
                 itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
-                itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemLongClick(sticker) }  }
+                itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemOkClick(sticker) }  }
+                itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick() }  }
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()
@@ -61,7 +62,9 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
 
     interface OnItemClickListener{
         fun onItemClick(itemView: View)
-        fun onItemLongClick(sticker: Sticker)
+        fun onItemOkClick(sticker: Sticker)
+        fun onItemSpeakClick()
+
     }
 
     override fun getItemViewType(position: Int): Int {

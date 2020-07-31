@@ -2,9 +2,9 @@ package com.bankmtk.neuromemory.ui.alert
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -29,25 +29,31 @@ import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
-class AlertActivity:BaseActivity<List<Sticker>?>() {
+class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener {
 
     @ExperimentalCoroutinesApi
     override val model: MainViewModel by viewModel()
     private val modelS: StickerViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_alert
     private lateinit var adapter: AlertAdapter
+    private var myTTS: TextToSpeech? = null
+    private val bundle = Bundle()
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
-
-
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
 
-            override fun onItemLongClick(sticker: Sticker) {
+            override fun onItemOkClick(sticker: Sticker) {
                 stickerOk(sticker)
+            }
+
+            override fun onItemSpeakClick() {
+                val checkIntent = Intent()
+                checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+                startActivityForResult(checkIntent, 1)
             }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -62,6 +68,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         })
         myRecycler.adapter = adapter
     }
+
 
     override fun renderData(data: List<Sticker>?) {
         if (data==null) return
@@ -81,15 +88,21 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     override fun animateView(view: View) {
         super.animateView(view)
         view.fabOk.alpha = 0.2F
+        view.fabVolume.alpha = 0.2F
         view.fabOk.animate().alpha(0.7F)
+        view.fabVolume.animate().alpha(0.7F)
         view.fabOk.show()
+        view.fabVolume.show()
         view.fabOk.rotationY = 180F
+        view.fabVolume.rotationY = 180F
     }
 
     override fun animateViewCancel(view: View) {
         super.animateViewCancel(view)
         view.fabOk.hide()
+        view.fabVolume.hide()
         view.fabOk.animate().alpha(0.2F)
+        view.fabVolume.animate().alpha(0.2F)
     }
     @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){
@@ -114,8 +127,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             //toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
         }
-
     }
+
 
     override fun finish() {
         super.finish()
@@ -158,5 +171,29 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             }
         }
         return false
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                myTTS = TextToSpeech(this, this)
+                myTTS!!.language = Locale.ROOT
+            } else {
+                val ttsLoadIntent = Intent()
+                ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
+                startActivity(ttsLoadIntent)
+            }
+        }
+
+    }
+
+    override fun onInit(status: Int) {
+        bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
+        if (status == TextToSpeech.SUCCESS) {
+            myTTS!!.speak(langTwoI.text.toString(), TextToSpeech.QUEUE_FLUSH,bundle,"speakText")
+        } else if (status == TextToSpeech.ERROR) {
+            myTTS!!.shutdown()
+        }
     }
 }
