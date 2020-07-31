@@ -88,6 +88,19 @@
             android:src="@drawable/ic_check_black_24dp"
             android:visibility="gone"
             android:contentDescription="@string/app_name"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/seventy_five"
+            android:layout_marginBottom="@dimen/five"
+            android:alpha="0.70"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_volume_mute_black_24dp"
+            android:visibility="gone"
+            android:contentDescription="@string/app_name"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
