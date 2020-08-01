@@ -84,7 +84,7 @@
             android:layout_marginStart="@dimen/five"
             android:layout_marginBottom="@dimen/five"
             android:alpha="0.70"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/night_sky"
             android:src="@drawable/ic_check_black_24dp"
             android:visibility="gone"
             android:contentDescription="@string/app_name"/>
@@ -98,7 +98,7 @@
             android:layout_marginBottom="@dimen/five"
             android:alpha="0.40"
             card_view:fabSize="mini"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/night_sky"
             android:src="@drawable/ic_volume_mute_black_24dp"
             android:visibility="gone"
             android:contentDescription="@string/app_name"/>
