@@ -38,6 +38,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private lateinit var adapter: AlertAdapter
     private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
+    private var st:Sticker?=null
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 stickerOk(sticker)
             }
 
-            override fun onItemSpeakClick() {
+            override fun onItemSpeakClick(sticker: Sticker) {
+                st = sticker
                 val checkIntent = Intent()
                 checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                 startActivityForResult(checkIntent, 1)
@@ -182,18 +184,19 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             } else {
                 val ttsLoadIntent = Intent()
                 ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
-                startActivity(ttsLoadIntent)
+                    startActivity(ttsLoadIntent)
             }
         }
 
     }
 
     override fun onInit(status: Int) {
-        bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
-        if (status == TextToSpeech.SUCCESS) {
-            myTTS!!.speak(langTwoI.text.toString(), TextToSpeech.QUEUE_FLUSH,bundle,"speakText")
-        } else if (status == TextToSpeech.ERROR) {
-            myTTS!!.shutdown()
-        }
+            bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
+            if (status == TextToSpeech.SUCCESS) {
+                myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_FLUSH,bundle,"speakText")
+            } else if (status == TextToSpeech.ERROR) {
+                myTTS!!.shutdown()
+            }
+
     }
 }
