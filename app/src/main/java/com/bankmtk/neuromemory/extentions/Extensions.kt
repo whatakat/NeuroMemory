@@ -1,6 +1,9 @@
 package com.bankmtk.neuromemory.extentions
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Context
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
@@ -24,4 +27,11 @@ fun Color.getColorRes(): Int = when (this) {
     Color.PINK -> R.color.pink
     Color.BLUE -> R.color.blue
     Color.VIOLET -> R.color.violet
+}
+fun rotateFab(v: View, rotate: Boolean): Boolean {
+    v.animate().setDuration(200)
+        .setListener(object : AnimatorListenerAdapter() {
+        })
+        .rotation(if (rotate) 235f else 0f)
+    return rotate
 }

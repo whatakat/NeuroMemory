@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.rotateFab
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
@@ -41,6 +42,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     lateinit var builder: Notification.Builder
     private val channelId = "com.bankmtk.neuromemory.service"
     private val description = "Notification"
+    private var isRotate: Boolean = false
     //private val vibrate = longArrayOf(0,50,100,50,50,50)
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -66,6 +68,8 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         myRecycler.adapter = adapter
 
         fab.setOnClickListener { openStickerScreen(null) }
+        main_button!!.setOnClickListener {isRotate = rotateFab(it,!isRotate)  } //I have to correct it for button
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
