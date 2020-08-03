@@ -74,7 +74,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         myRecycler.adapter = adapter
 
         fab.setOnClickListener { openStickerScreen(null) }
-        main_button!!.setOnClickListener (View.OnClickListener { v->
+        main_button!!.setOnClickListener { v->
             isRotate = rotateFab(v, !isRotate)
             if (isRotate) {
                 showIn(fab)
@@ -83,7 +83,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 showOut(fab)
                 showOut(alert_button)
             }
-        })
+        }
 
     }
 

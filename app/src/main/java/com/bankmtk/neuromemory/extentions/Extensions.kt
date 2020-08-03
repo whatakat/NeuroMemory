@@ -32,28 +32,28 @@ fun rotateFab(v: View, rotate: Boolean): Boolean {
     v.animate().setDuration(350)
         .setListener(object : AnimatorListenerAdapter() {
         })
-        .rotation(if (rotate) 460f else 0f)
+        .rotation(if (rotate) -100f else 0f)
     return rotate
 }
 fun showIn(v: View) {
     v.visibility = View.VISIBLE
     v.alpha = 0f
-    v.translationY = v.height.toFloat()
+    v.translationX = v.height.toFloat()
     v.animate()
         .setDuration(360)
-        .translationY(0f)
+        .translationX(0f)
         .setListener(object : AnimatorListenerAdapter() {
         })
-        .alpha(1f)
+        .alpha(0.5f)
         .start()
 }
 fun showOut(v: View) {
     v.visibility = View.VISIBLE
-    v.alpha = 1f
-    v.translationY = 0f
+    v.alpha = 0.5f
+    v.translationX = 0f
     v.animate()
         .setDuration(360)
-        .translationY(v.height.toFloat())
+        .translationX(v.height.toFloat())
         .setListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
                 v.visibility = View.GONE
@@ -64,6 +64,6 @@ fun showOut(v: View) {
 }
 fun init(v: View) {
     v.visibility = View.GONE
-    v.translationY = v.height.toFloat()
+    v.translationX = v.height.toFloat()
     v.alpha = 0f
 }

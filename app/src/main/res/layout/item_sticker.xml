@@ -10,9 +10,8 @@
     android:layout_marginRight="@dimen/five"
     android:layout_marginBottom="@dimen/five"
     card_view:cardElevation="@dimen/five"
-    card_view:cardCornerRadius="10dp"
+    card_view:cardCornerRadius="8dp"
     >
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

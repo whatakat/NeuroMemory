@@ -52,7 +52,7 @@
         app:fabSize="mini"
         android:alpha="0.50"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/fifty"
+        android:layout_marginBottom="@dimen/sixty"
         app:backgroundTint="@color/black"
         android:src="@drawable/ic_add_black_24dp"
         app:layout_behavior="com.bankmtk.neuromemory.ui.common.FABBehavior"/>
@@ -63,9 +63,22 @@
         android:layout_height="wrap_content"
         app:fabSize="normal"
         android:alpha="0.20"
-        android:layout_marginBottom="@dimen/fifty"
+        android:layout_marginBottom="@dimen/thirty_five"
+        android:layout_marginEnd="@dimen/fifty"
         android:src="@drawable/ic_visibility_black_24dp"
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/black"
+        android:contentDescription="@string/app_name"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="mini"
+        android:alpha="0.50"
+        android:layout_marginBottom="@dimen/five"
+        android:layout_marginEnd="@dimen/twenty"
+        android:src="@drawable/ic_bubble_chart_black_24dp"
+        android:layout_gravity="bottom|end"
         android:backgroundTint="@color/black"
         android:contentDescription="@string/app_name"/>
 
