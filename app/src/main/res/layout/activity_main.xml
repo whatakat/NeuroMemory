@@ -42,10 +42,10 @@
         android:layout_marginTop="32dp"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:transitionName="@string/title"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="5"
-        tools:listitem="@layout/item_sticker"
-        android:transitionName="@string/title"/>
+        tools:listitem="@layout/item_sticker" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -63,7 +63,7 @@
         android:onClick="alertMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fabSize="normal"
+        app:fabSize="mini"
         android:alpha="0.20"
         android:layout_marginBottom="55dp"
         android:src="@drawable/ic_visibility_black_24dp"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         app:fabSize="normal"
         android:alpha="0.50"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="@dimen/five"
         android:src="@drawable/ic_bubble_chart_black_24dp"
         android:layout_gravity="bottom|end"
         android:backgroundTint="@color/black"

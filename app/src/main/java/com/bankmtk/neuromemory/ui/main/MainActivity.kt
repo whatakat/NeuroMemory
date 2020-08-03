@@ -15,7 +15,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
+import com.bankmtk.neuromemory.extentions.init
 import com.bankmtk.neuromemory.extentions.rotateFab
+import com.bankmtk.neuromemory.extentions.showIn
+import com.bankmtk.neuromemory.extentions.showOut
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
@@ -50,6 +53,9 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
+        init(fab)
+        init(alert_button)
+
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemLongClick(sticker: Sticker) {
@@ -68,7 +74,16 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         myRecycler.adapter = adapter
 
         fab.setOnClickListener { openStickerScreen(null) }
-        main_button!!.setOnClickListener {isRotate = rotateFab(it,!isRotate)  } //I have to correct it for button
+        main_button!!.setOnClickListener (View.OnClickListener { v->
+            isRotate = rotateFab(v, !isRotate)
+            if (isRotate) {
+                showIn(fab)
+                showIn(alert_button)
+            } else {
+                showOut(fab)
+                showOut(alert_button)
+            }
+        })
 
     }
 
