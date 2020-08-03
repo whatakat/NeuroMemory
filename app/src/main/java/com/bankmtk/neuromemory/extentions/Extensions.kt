@@ -40,7 +40,7 @@ fun showIn(v: View) {
     v.alpha = 0f
     v.translationY = v.height.toFloat()
     v.animate()
-        .setDuration(350)
+        .setDuration(360)
         .translationY(0f)
         .setListener(object : AnimatorListenerAdapter() {
         })
@@ -52,7 +52,7 @@ fun showOut(v: View) {
     v.alpha = 1f
     v.translationY = 0f
     v.animate()
-        .setDuration(350)
+        .setDuration(360)
         .translationY(v.height.toFloat())
         .setListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
