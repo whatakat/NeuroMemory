@@ -54,6 +54,15 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/starsbackbl" />
 
+    <ImageView
+        android:id="@+id/starsbn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="@dimen/one_eighty"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/starsbackbn" />
+
 
     <ImageView
         android:id="@+id/meteorite"
