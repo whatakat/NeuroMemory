@@ -69,7 +69,6 @@ class StarFragment: Fragment() {
     @SuppressLint("ObjectAnimatorBinding")
     private fun startAnimation() {
         val sunYStart = mLightView!!.top.toFloat()
-        val sunYEnd = mSkyView!!.height.toFloat()
         val starsYStart = mStarsView!!.top.toFloat()
         val starsYEnd = mTreeView!!.top.toFloat()
         val moonYStart = mMoonView!!.top.toFloat()
@@ -131,6 +130,7 @@ class StarFragment: Fragment() {
             .with(sunsetSkyAnimator)
             .before(buttonAnimator)
         animatorSet.start()
+        mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow
     }
 
