@@ -132,6 +132,7 @@ class StarFragment: Fragment() {
         animatorSet.start()
         mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow
+        mButton!!.alpha = 0.50F
     }
 
     override fun onResume() {
