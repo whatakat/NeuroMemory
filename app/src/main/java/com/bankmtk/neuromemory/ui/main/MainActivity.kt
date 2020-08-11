@@ -192,6 +192,3 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         notificationManager.notify(1234,builder.build())
     }
 }
-
-
-
