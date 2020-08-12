@@ -60,7 +60,7 @@ class StarFragment: Fragment() {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
             mButton!!.isEnabled = false
-            mButton!!.size = FloatingActionButton.SIZE_MINI
+            mButton!!.alpha = 0.30F
         }
         return view
     }
@@ -104,10 +104,6 @@ class StarFragment: Fragment() {
             .ofFloat(mButton, "y", buttonXStart, buttonYStart)
             .setDuration(1000)
         buttonAnimator.interpolator = BounceInterpolator()
-//        val sunAnimator = ObjectAnimator
-//            .ofInt(mLightView, "backgroundColor", mBlackSkyColor)
-//            .setDuration(2300)
-//        sunAnimator.setEvaluator(ArgbEvaluator())
         val trackAnimator = ObjectAnimator
             .ofInt(mTrackView, "backgroundColor",  mBlackSkyColor,
                 mRedColor,mBlueSky,mSunsetSkyColor,mWhiteColor)
@@ -117,34 +113,27 @@ class StarFragment: Fragment() {
             .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor)
             .setDuration(1800)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
-        val buttonTreeAnimator = ObjectAnimator
-            .ofInt(mButton, "backgroundColor",  mBlackSkyColor,
-                mRedColor,mBlueSky,mSunsetSkyColor,mWhiteColor)
-            .setDuration(2000)
-        buttonTreeAnimator.setEvaluator(ArgbEvaluator())
         val rotateArrow = AnimationUtils.loadAnimation(this.context,R.anim.rotate_animation)
         val animatorSet = AnimatorSet()
         animatorSet
             .play(moonAnimator)
             .with(meteoriteAnimator)
             .before(lightAnimator)
-            //.with(sunAnimator)
             .with(starsAnimator)
              .with(trackAnimator)
             .before(nightSkyAnimator)
             .with(sunsetSkyAnimator)
             .before(buttonAnimator)
-            .with(buttonTreeAnimator)
         animatorSet.start()
         mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow
         mButton!!.alpha = 0.50F
+
     }
 
     override fun onResume() {
         super.onResume()
         mButton!!.isEnabled = true
-        mButton!!.size = FloatingActionButton.SIZE_NORMAL
         onDestroy()
     }
 
