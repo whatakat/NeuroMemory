@@ -60,7 +60,7 @@ class StarFragment: Fragment() {
             val intent = Intent(context, MainActivity::class.java)
             startActivity(intent)
             mButton!!.isEnabled = false
-            mButton!!.alpha = 0.30F
+            mButton!!.alpha = 0.10F
         }
         return view
     }
@@ -127,7 +127,7 @@ class StarFragment: Fragment() {
         animatorSet.start()
         mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow
-        mButton!!.alpha = 0.50F
+        mButton!!.alpha = 0.30F
 
     }
 
