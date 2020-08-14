@@ -20,7 +20,6 @@ import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
 import kotlinx.android.synthetic.main.activity_main.myRecycler
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

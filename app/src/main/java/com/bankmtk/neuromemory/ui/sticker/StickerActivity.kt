@@ -1,7 +1,6 @@
 package com.bankmtk.neuromemory.ui.sticker
 
 import android.app.Activity
-import android.app.ActivityOptions
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -23,7 +22,6 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.extentions.getColorInt
 import com.bankmtk.neuromemory.ui.base.BaseActivity
-import com.bankmtk.neuromemory.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_stick.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -51,7 +49,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
             overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
         speech.setOnClickListener {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)

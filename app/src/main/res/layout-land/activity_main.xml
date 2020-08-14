@@ -19,7 +19,8 @@
             android:layout_height="@dimen/thirty"
             android:background="#32B1A643"
             app:title="@string/sticker"
-            app:titleTextColor="@color/bright_sun">
+            app:titleTextColor="@color/bright_sun"
+            app:logo="@drawable/logon">
             <FrameLayout
                 android:layout_width="@dimen/twenty"
                 android:layout_height="14dp"

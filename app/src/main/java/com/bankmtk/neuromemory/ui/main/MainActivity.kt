@@ -25,13 +25,11 @@ import com.bankmtk.neuromemory.ui.splash.SplashActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity<List<Sticker>?>() {
 
