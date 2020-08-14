@@ -19,7 +19,8 @@
             android:layout_height="@dimen/thirty"
             android:background="@color/black"
             app:title="@string/item_title"
-            app:titleTextColor="@color/bright_sun"/>
+            app:titleTextColor="@color/bright_sun"
+            app:logo="@mipmap/ic_launcher_app"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
