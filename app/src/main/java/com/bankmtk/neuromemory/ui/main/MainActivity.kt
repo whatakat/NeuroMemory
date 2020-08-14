@@ -130,6 +130,8 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.itemId){
             R.id.logout -> showLogoutDialog().let{true}
+            R.id.search_source -> searchByTitle().let{true}
+
             else -> false
     }
     private fun showLogoutDialog(){
@@ -147,6 +149,10 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 startActivity(Intent(this, SplashActivity::class.java))
                 finish()
             }
+    }
+    private fun searchByTitle(){
+        //startActivity(Intent(this, SplashActivity::class.java))
+        //finish()
     }
 
     override fun onPause() {

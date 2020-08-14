@@ -1,7 +1,6 @@
 package com.bankmtk.neuromemory.ui.main
 
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +9,6 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_sticker.*
-import org.jetbrains.anko.collections.forEachByIndex
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener)
     :RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
