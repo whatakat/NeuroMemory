@@ -9,6 +9,7 @@ import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.getColorInt
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_sticker.*
+import kotlinx.android.synthetic.main.item_sticker.view.*
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener)
     :RecyclerView.Adapter<MainAdapter.StickViewHolder>() {

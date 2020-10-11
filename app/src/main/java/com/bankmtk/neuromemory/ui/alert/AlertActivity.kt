@@ -104,6 +104,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.fabVolume.hide()
         view.fabOk.animate().alpha(0.2F)
         view.fabVolume.animate().alpha(0.2F)
+        view.langTwoI.visibility = View.GONE
     }
     @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){
@@ -198,4 +199,5 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             }
 
     }
+
 }

@@ -15,7 +15,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.consumeEach
+import org.jetbrains.anko.withAlpha
 import kotlin.coroutines.CoroutineContext
+import kotlin.time.nanoseconds
 
 private const val RC_SIGN_IN = 458
 abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
