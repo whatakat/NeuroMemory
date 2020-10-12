@@ -87,19 +87,39 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     }
 
     override fun animateView(view: View) {
-        super.animateView(view)
+        //super.animateView(view)
+        view.titleStick.animate().alpha(0.16F)
+        view.langTwoI.alpha = 0.03F
+        view.animate().rotationX(180F)
+        view.animate().translationZ(150F)
+        view.langTwoI.animate().alpha(1F)
+        view.langOneI.visibility = View.INVISIBLE
+        view.langTwoI.visibility = View.VISIBLE
+        view.langTwoI.rotationX = 180F
+        view.status_star.animate().alpha(0.16F)
+
+
         view.fabOk.alpha = 0.2F
         view.fabVolume.alpha = 0.2F
         view.fabOk.animate().alpha(0.7F)
         view.fabVolume.animate().alpha(0.7F)
         view.fabOk.show()
         view.fabVolume.show()
-        view.fabOk.rotationY = 180F
-        view.fabVolume.rotationY = 180F
+        view.fabOk.rotationX = 180F
+        view.fabVolume.rotationX = 180F
+
     }
 
     override fun animateViewCancel(view: View) {
-        super.animateViewCancel(view)
+        //super.animateViewCancel(view)
+        view.titleStick.animate().alpha(1F)
+        view.status_star.animate().alpha(1F)
+        view.animate().rotationX(0F)
+        view.animate().translationZ(0F)
+        view.langTwoI.animate().alpha(0.03F)
+        view.langOneI.visibility = View.VISIBLE
+
+
         view.fabOk.hide()
         view.fabVolume.hide()
         view.fabOk.animate().alpha(0.2F)
