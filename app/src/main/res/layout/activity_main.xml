@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="32dp"
-        android:background="@color/white"
+        android:background="@drawable/title"
         android:orientation="horizontal"
         android:transitionName="@string/title"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
