@@ -3,6 +3,7 @@ package com.bankmtk.neuromemory.ui.main
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -10,6 +11,7 @@ import com.bankmtk.neuromemory.extentions.getColorInt
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
+import kotlinx.coroutines.withContext
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener)
     :RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
@@ -30,6 +32,12 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
+        setAnimation(holder.containerView, position)
+    }
+    fun setAnimation(viewToAnimate: View, position: Int){
+        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
+        viewToAnimate.startAnimation(animation)
+
     }
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer{
@@ -55,6 +63,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     override fun getItemViewType(position: Int): Int {
         return position
     }
+
 
 }
 

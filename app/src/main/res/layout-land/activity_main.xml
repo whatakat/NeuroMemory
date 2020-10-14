@@ -19,8 +19,7 @@
             android:layout_height="@dimen/thirty"
             android:background="#32B1A643"
             app:title="@string/sticker"
-            app:titleTextColor="@color/bright_sun"
-            app:logo="@drawable/logon">
+            app:titleTextColor="@color/bright_sun">
             <FrameLayout
                 android:layout_width="@dimen/twenty"
                 android:layout_height="14dp"
@@ -39,12 +38,11 @@
         android:id="@+id/myRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
-        android:background="@color/black"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/title_land"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="3"
-
         tools:listitem="@layout/item_sticker" />
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

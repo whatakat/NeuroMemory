@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="false"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".ui.main.MainActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -38,7 +38,7 @@
         android:id="@+id/myRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/title"
         android:orientation="horizontal"
         android:transitionName="@string/title"
