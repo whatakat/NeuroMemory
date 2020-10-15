@@ -110,8 +110,8 @@ class StarFragment: Fragment() {
             .setDuration(2000)
         trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
-            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor)
-            .setDuration(1800)
+            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor,mBlueSky,mSunsetSkyColor,mBlackSkyColor)
+            .setDuration(2500)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val rotateArrow = AnimationUtils.loadAnimation(this.context,R.anim.rotate_animation)
         val animatorSet = AnimatorSet()
