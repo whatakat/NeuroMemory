@@ -7,17 +7,6 @@
     android:background="@color/black"
     android:orientation="vertical">
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/web_n" />
-    <ImageView
-        android:layout_width="170dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="@dimen/twenty"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/neurom" />
-    <ImageView
         android:id="@+id/trackCenter"
         android:layout_width="1dp"
         android:layout_height="match_parent"
@@ -26,6 +15,19 @@
         android:layout_marginBottom="@dimen/seventy_five"
         android:contentDescription="@string/app_name"
         android:src="@drawable/track" />
+    <ImageView
+        android:id="@+id/meteorite"
+        android:layout_marginTop="@dimen/fifty"
+        android:layout_gravity="center|top"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/light_b" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/web_nn" />
     <ImageView
         android:id="@+id/stars"
         android:layout_width="wrap_content"
@@ -41,6 +43,15 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/starsback"/>
 
+
+    <ImageView
+        android:id="@+id/moon"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginEnd="@dimen/hundred"
+        android:src="@drawable/light_b"
+        android:contentDescription="@string/app_name"/>
     <ImageView
         android:id="@+id/starsbb"
         android:layout_width="150dp"
@@ -48,22 +59,6 @@
         android:layout_gravity="top|end"
         android:contentDescription="@string/app_name"
         android:src="@drawable/starsbackb" />
-
-
-    <ImageView
-        android:id="@+id/meteorite"
-        android:layout_width="@dimen/thirty_five"
-        android:layout_height="@dimen/thirty_five"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/earth" />
-    <ImageView
-        android:id="@+id/moon"
-        android:layout_width="@dimen/sixty"
-        android:layout_height="@dimen/sixty"
-        android:layout_gravity="center|bottom"
-        android:layout_marginEnd="@dimen/hundred"
-        android:src="@drawable/fullmoon"
-        android:contentDescription="@string/app_name"/>
     <ImageView
         android:id="@+id/tree"
         android:layout_width="wrap_content"

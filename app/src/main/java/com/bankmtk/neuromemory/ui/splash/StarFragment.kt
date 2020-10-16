@@ -72,13 +72,17 @@ class StarFragment: Fragment() {
         val starsYStart = mStarsView!!.top.toFloat()
         val starsYEnd = mTreeView!!.top.toFloat()
         val moonYStart = mMoonView!!.top.toFloat()
-        val moonYEnd = mTreeView!!.bottom.toFloat()
+        val moonXStart = mMoonView!!.left.toFloat()
         val meteoriteYStart = mMeteoriteView!!.top.toFloat()
         val meteoriteXStart = mMeteoriteView!!.left.toFloat()
         val buttonYStart = mButton!!.top.toFloat()
         val buttonXStart = mButton!!.bottom.toFloat()
         val path = Path()
-         path.cubicTo(meteoriteXStart,meteoriteYStart, 900F,4000F,200F, 60F)
+         path.cubicTo(meteoriteXStart,meteoriteYStart, 90F,400F,1000F, 1000F)
+        path.cubicTo(meteoriteXStart,meteoriteYStart, 900F,4000F,1F, 1F)
+        val pathL = Path()
+        pathL.cubicTo(moonXStart,moonYStart, 1F,10F,1000F, 1500F)
+        pathL.cubicTo(moonXStart,moonYStart, 100F,1000F,550F, 150F)
 
         val lightAnimator = ObjectAnimator
             .ofFloat(mLightView, "y", sunYStart, buttonXStart)
@@ -90,12 +94,12 @@ class StarFragment: Fragment() {
         starsAnimator.interpolator = DecelerateInterpolator(1F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
-            .setDuration(3000)
+            .setDuration(5000)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
-            .ofFloat(mMoonView, "y", moonYStart,moonYEnd)
-            .setDuration(1000)
-        moonAnimator.interpolator = AnticipateInterpolator(2F)
+            .ofFloat(mMoonView, "x", "y",pathL)
+            .setDuration(2000)
+        moonAnimator.interpolator = DecelerateInterpolator(2F)
         val sunsetSkyAnimator = ObjectAnimator
             .ofInt(mSkyView, "backgroundColor", mBlackSkyColor, mSunsetSkyColor)
             .setDuration(1800)
@@ -110,8 +114,8 @@ class StarFragment: Fragment() {
             .setDuration(2000)
         trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
-            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor,mBlueSky,mSunsetSkyColor,mBlackSkyColor)
-            .setDuration(2500)
+            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor,mBlackSkyColor)
+            .setDuration(1000)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val rotateArrow = AnimationUtils.loadAnimation(this.context,R.anim.rotate_animation)
         val animatorSet = AnimatorSet()
