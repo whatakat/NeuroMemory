@@ -19,16 +19,16 @@
         android:id="@+id/meteorite"
         android:layout_marginTop="@dimen/seventy_five"
         android:layout_gravity="center|top"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/light_b" />
     <ImageView
         android:id="@+id/meteorite2"
         android:layout_marginTop="80dp"
         android:layout_gravity="center|top"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/light_b" />
     <ImageView
@@ -54,8 +54,8 @@
 
     <ImageView
         android:id="@+id/moon"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="top|center"
         android:layout_marginTop="@dimen/seventy_five"
         android:src="@drawable/light_b"
