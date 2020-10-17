@@ -30,6 +30,7 @@ class StarFragment: Fragment() {
     private var mStarsView: View? =null
     private var mTreeView: View? =null
     private var mMeteoriteView: View? =null
+    private var mMeteoriteView2: View? =null
     private var mMoonView: View? = null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
@@ -47,6 +48,7 @@ class StarFragment: Fragment() {
         mStarsView = view.findViewById(R.id.stars)
         mTreeView = view.findViewById(R.id.tree)
         mMeteoriteView = view.findViewById(R.id.meteorite)
+        mMeteoriteView2 = view.findViewById(R.id.meteorite2)
         mMoonView = view.findViewById(R.id.moon)
         mBlackSkyColor = getColor(resources,R.color.black,null)
         mSunsetSkyColor = getColor(resources,R.color.night_sky, null)
@@ -82,7 +84,10 @@ class StarFragment: Fragment() {
         path.cubicTo(meteoriteXStart,meteoriteYStart, 900F,4000F,1F, 1F)
         val pathL = Path()
         pathL.cubicTo(moonXStart,moonYStart, 1F,10F,1000F, 1500F)
-        pathL.cubicTo(moonXStart,moonYStart, 100F,1000F,550F, 150F)
+        pathL.cubicTo(moonXStart,moonYStart, 100F,1000F,10F, 1F)
+        val pathM = Path()
+        pathM.cubicTo(meteoriteXStart,meteoriteYStart, 100F,100F,1F, 1F)
+        pathM.cubicTo(meteoriteXStart,meteoriteYStart, 1000F,1000F,20F, 1F)
 
         val lightAnimator = ObjectAnimator
             .ofFloat(mLightView, "y", sunYStart, buttonXStart)
@@ -94,6 +99,10 @@ class StarFragment: Fragment() {
         starsAnimator.interpolator = DecelerateInterpolator(1F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
+            .setDuration(5000)
+        meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
+        val meteoriteAnimator2 = ObjectAnimator
+            .ofFloat(mMeteoriteView2, "x", "y",pathM)
             .setDuration(5000)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
@@ -122,6 +131,7 @@ class StarFragment: Fragment() {
         animatorSet
             .play(moonAnimator)
             .with(meteoriteAnimator)
+            .with(meteoriteAnimator2)
             .before(lightAnimator)
             .with(starsAnimator)
              .with(trackAnimator)
