@@ -81,15 +81,15 @@ class StarFragment: Fragment() {
         val buttonXStart = mButton!!.bottom.toFloat()
         val path = Path()
          path.cubicTo(meteoriteXStart,meteoriteYStart, 90F,400F,1000F, 1000F)
-        path.cubicTo(meteoriteXStart,meteoriteYStart, 700F,200F,10F, 60F)
-        path.cubicTo(meteoriteXStart,meteoriteYStart, 900F,4000F,5F, 45F)
+        path.cubicTo(meteoriteXStart,meteoriteYStart, 800F,800F,900F, 600F)
+        path.cubicTo(meteoriteXStart,meteoriteYStart, 670F,700F,600F, 1050F)
         val pathL = Path()
         pathL.cubicTo(moonXStart,moonYStart, 1000F,1000F,10F, 15F)
         pathL.cubicTo(moonXStart,moonYStart, 500F,1000F,520F, 2000F)
         pathL.cubicTo(moonXStart,moonYStart, 800F,700F,520F, 250F)
         val pathM = Path()
         pathM.cubicTo(meteoriteXStart,meteoriteYStart, 100F,100F,600F, 1800F)
-        pathM.cubicTo(meteoriteXStart,meteoriteYStart, 1000F,1000F,110F, 45F)
+        pathM.cubicTo(meteoriteXStart,meteoriteYStart, 700F,50F,700F, 280F)
 
         val lightAnimator = ObjectAnimator
             .ofFloat(mLightView, "y", sunYStart, buttonXStart)
@@ -101,11 +101,11 @@ class StarFragment: Fragment() {
         starsAnimator.interpolator = DecelerateInterpolator(1F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
-            .setDuration(3000)
+            .setDuration(6000)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val meteoriteAnimator2 = ObjectAnimator
             .ofFloat(mMeteoriteView2, "x", "y",pathM)
-            .setDuration(4500)
+            .setDuration(4700)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
             .ofFloat(mMoonView, "x", "y",pathL)
