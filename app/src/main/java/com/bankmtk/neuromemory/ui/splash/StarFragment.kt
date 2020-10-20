@@ -30,7 +30,18 @@ class StarFragment: Fragment() {
     private var mStarsView: View? =null
     private var mTreeView: View? =null
     private var mMeteoriteView: View? =null
+    private var mMeteoriteViewZero: View? =null
+
+    private var mMeteoriteView1: View? =null
     private var mMeteoriteView2: View? =null
+    private var mMeteoriteView3: View? =null
+    private var mMeteoriteView4: View? =null
+    private var mMeteoriteView5: View? =null
+    private var mMeteoriteView6: View? =null
+    private var mMeteoriteView7: View? =null
+    private var mMeteoriteView8: View? =null
+
+
     private var mMoonView: View? = null
     private var mBlackSkyColor = 0
     private var mSunsetSkyColor = 0
@@ -48,7 +59,17 @@ class StarFragment: Fragment() {
         mStarsView = view.findViewById(R.id.stars)
         mTreeView = view.findViewById(R.id.tree)
         mMeteoriteView = view.findViewById(R.id.meteorite)
-        mMeteoriteView2 = view.findViewById(R.id.meteorite2)
+
+        mMeteoriteView1 = view.findViewById(R.id.moon1)
+        mMeteoriteView2 = view.findViewById(R.id.moon2)
+        mMeteoriteView3 = view.findViewById(R.id.moon3)
+        mMeteoriteView4 = view.findViewById(R.id.moon4)
+        mMeteoriteView5 = view.findViewById(R.id.moon5)
+        mMeteoriteView6 = view.findViewById(R.id.moon6)
+        mMeteoriteView7 = view.findViewById(R.id.moon7)
+        mMeteoriteView8 = view.findViewById(R.id.moon8)
+
+        mMeteoriteViewZero = view.findViewById(R.id.meteorite2)
         mMoonView = view.findViewById(R.id.moon)
         mBlackSkyColor = getColor(resources,R.color.black,null)
         mSunsetSkyColor = getColor(resources,R.color.night_sky, null)
@@ -88,8 +109,82 @@ class StarFragment: Fragment() {
         pathL.cubicTo(moonXStart,moonYStart, 500F,1000F,520F, 2000F)
         pathL.cubicTo(moonXStart,moonYStart, 800F,700F,520F, 250F)
         val pathM = Path()
-        pathM.cubicTo(meteoriteXStart,meteoriteYStart, 100F,100F,600F, 1800F)
-        pathM.cubicTo(meteoriteXStart,meteoriteYStart, 700F,50F,700F, 280F)
+        pathM.cubicTo(620F,200F, 1F,1F,1F, 1F)
+        pathM.cubicTo(1F,1F, 1F,150F,1F, 1F)
+
+        val path1 = Path()
+        path1.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path1.cubicTo(35F,35F, 100F,1F,165F, 35F)
+        path1.cubicTo(200F,100F, 165F,165F,100F, 200F)
+        path1.cubicTo(35F,165F, 1F,100F,35F, 35F)
+        val path2 = Path()
+        path2.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path2.cubicTo(100F,1F, 165F,35F,200F, 100F)
+        path2.cubicTo(165F,165F, 100F,200F,35F, 165F)
+        path2.cubicTo(1F,100F, 35F,35F,100F, 1F)
+        val path3 = Path()
+        path3.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path3.cubicTo(165F,35F, 200F,100F,165F, 165F)
+        path3.cubicTo(100F,200F, 35F,165F,1F, 100F)
+        path3.cubicTo(35F,35F, 100F,1F,165F, 35F)
+        val path4 = Path()
+        path4.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path4.cubicTo(200F,100F, 165F,165F,100F, 200F)
+        path4.cubicTo(35F,165F, 1F,100F,35F, 35F)
+        path4.cubicTo(100F,1F, 165F,35F,200F, 100F)
+        val path5 = Path()
+        path5.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path5.cubicTo(165F,165F, 100F,200F,35F, 165F)
+        path5.cubicTo(1F,100F, 35F,35F,100F, 1F)
+        path5.cubicTo(165F,35F, 200F,100F,165F, 165F)
+        val path6 = Path()
+        path6.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path6.cubicTo(100F,200F, 35F,165F,1F, 100F)
+        path6.cubicTo(35F,35F, 100F,1F,165F, 35F)
+        path6.cubicTo(200F,100F, 165F,165F,100F, 200F)
+        val path7 = Path()
+        path7.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path7.cubicTo(35F, 165F,1F,100F,35F, 35F)
+        path7.cubicTo(100F,1F, 165F,35F,200F, 100F)
+        path7.cubicTo(165F,165F, 100F,200F,35F, 165F)
+        val path8 = Path()
+        path8.cubicTo(520F,250F, 500F,200F,520F, 250F)
+        path8.cubicTo(1F,100F, 35F,35F,100F, 1F)
+        path8.cubicTo(165F,35F, 200F,100F,165F, 165F)
+        path8.cubicTo(100F,200F, 35F,165F,1F, 100F)
+
+        val iconAnimator1 = ObjectAnimator
+            .ofFloat(mMeteoriteView1, "x", "y",path1)
+            .setDuration(6000)
+        iconAnimator1.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator2 = ObjectAnimator
+            .ofFloat(mMeteoriteView2, "x", "y",path2)
+            .setDuration(6000)
+        iconAnimator2.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator3 = ObjectAnimator
+            .ofFloat(mMeteoriteView3, "x", "y",path3)
+            .setDuration(6000)
+        iconAnimator3.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator4 = ObjectAnimator
+            .ofFloat(mMeteoriteView4, "x", "y",path4)
+            .setDuration(6000)
+        iconAnimator4.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator5 = ObjectAnimator
+            .ofFloat(mMeteoriteView5, "x", "y",path5)
+            .setDuration(6000)
+        iconAnimator5.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator6 = ObjectAnimator
+            .ofFloat(mMeteoriteView6, "x", "y",path6)
+            .setDuration(6000)
+        iconAnimator6.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator7 = ObjectAnimator
+            .ofFloat(mMeteoriteView7, "x", "y",path7)
+            .setDuration(6000)
+        iconAnimator7.interpolator = DecelerateInterpolator(2F)
+        val iconAnimator8 = ObjectAnimator
+            .ofFloat(mMeteoriteView8, "x", "y",path8)
+            .setDuration(6000)
+        iconAnimator8.interpolator = DecelerateInterpolator(2F)
 
         val lightAnimator = ObjectAnimator
             .ofFloat(mLightView, "y", sunYStart, buttonXStart)
@@ -104,9 +199,9 @@ class StarFragment: Fragment() {
             .setDuration(6000)
         meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
         val meteoriteAnimator2 = ObjectAnimator
-            .ofFloat(mMeteoriteView2, "x", "y",pathM)
-            .setDuration(4700)
-        meteoriteAnimator.interpolator = DecelerateInterpolator(2F)
+            .ofFloat(mMeteoriteViewZero, "x", "y",pathM)
+            .setDuration(5500)
+        meteoriteAnimator2.interpolator = DecelerateInterpolator(2F)
         val moonAnimator = ObjectAnimator
             .ofFloat(mMoonView, "x", "y",pathL)
             .setDuration(2500)
@@ -134,6 +229,14 @@ class StarFragment: Fragment() {
             .play(moonAnimator)
             .with(meteoriteAnimator)
             .with(meteoriteAnimator2)
+            .with(iconAnimator1)
+            .with(iconAnimator2)
+            .with(iconAnimator3)
+            .with(iconAnimator4)
+            .with(iconAnimator5)
+            .with(iconAnimator6)
+            .with(iconAnimator7)
+            .with(iconAnimator8)
             .before(lightAnimator)
             .with(starsAnimator)
              .with(trackAnimator)
