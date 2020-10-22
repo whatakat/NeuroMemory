@@ -19,8 +19,8 @@
         android:id="@+id/meteorite"
         android:layout_marginTop="@dimen/seventy_five"
         android:layout_gravity="center|top"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/light_b" />
     <ImageView
@@ -35,7 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/web_nn" />
+        android:src="@drawable/web_nn"
+        android:scaleType="fitXY"/>
     <ImageView
         android:id="@+id/stars"
         android:layout_width="wrap_content"
@@ -51,15 +52,6 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/starsback"/>
 
-
-    <ImageView
-        android:id="@+id/moon"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="top|center"
-        android:layout_marginTop="@dimen/seventy_five"
-        android:src="@drawable/light_b"
-        android:contentDescription="@string/app_name"/>
     <ImageView
         android:id="@+id/moon1"
         android:layout_width="10dp"
@@ -148,6 +140,14 @@
         android:alpha="0.001"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_navigation_black_24dp" />
+    <ImageView
+        android:id="@+id/moon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="@dimen/seventy_five"
+        android:src="@drawable/light_b"
+        android:contentDescription="@string/app_name"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/imageButton"
