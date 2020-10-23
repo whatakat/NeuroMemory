@@ -212,16 +212,16 @@ class StarFragment: Fragment() {
         sunsetSkyAnimator.setEvaluator(ArgbEvaluator())
         val buttonAnimator = ObjectAnimator
             .ofFloat(mButton, "y", buttonXStart, buttonYStart)
-            .setDuration(1000)
-        buttonAnimator.interpolator = BounceInterpolator()
+            .setDuration(3000)
+        buttonAnimator.interpolator = DecelerateInterpolator()
         val trackAnimator = ObjectAnimator
             .ofInt(mTrackView, "backgroundColor",  mBlackSkyColor,
                 mRedColor,mBlueSky,mSunsetSkyColor,mBlackSkyColor)
             .setDuration(2000)
         trackAnimator.setEvaluator(ArgbEvaluator())
         val nightSkyAnimator = ObjectAnimator
-            .ofInt(mSkyView, "backgroundColor",  mSunsetSkyColor, mBlueSky,mWhiteColor,mBlackSkyColor)
-            .setDuration(1000)
+            .ofInt(mSkyView, "backgroundColor", mSunsetSkyColor,mBlackSkyColor)
+            .setDuration(6000)
         nightSkyAnimator.setEvaluator(ArgbEvaluator())
         val rotateArrow = AnimationUtils.loadAnimation(this.context,R.anim.rotate_animation)
         val animatorSet = AnimatorSet()
@@ -237,12 +237,12 @@ class StarFragment: Fragment() {
             .with(iconAnimator6)
             .with(iconAnimator7)
             .with(iconAnimator8)
-            .before(lightAnimator)
+            .with(lightAnimator)
             .with(starsAnimator)
              .with(trackAnimator)
-            .before(nightSkyAnimator)
+            .with(nightSkyAnimator)
             .with(sunsetSkyAnimator)
-            .before(buttonAnimator)
+            .with(buttonAnimator)
         animatorSet.start()
         mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow

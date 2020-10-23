@@ -7,23 +7,8 @@
         app:showAsAction="ifRoom">
         <menu>
             <item
-                android:id="@+id/title_english"
-                android:title="ENGLISH"
-                app:showAsAction="never"
-                />
-            <item
-                android:id="@+id/title_android"
-                android:title="Android"
-                app:showAsAction="never"
-                />
-            <item
-                android:id="@+id/title_java"
-                android:title="Java"
-                app:showAsAction="never"
-                />
-            <item
-                android:id="@+id/title_kotlin"
-                android:title="Kotlin"
+                android:id="@+id/title"
+                android:title="list items"
                 app:showAsAction="never"
                 />
         </menu>
