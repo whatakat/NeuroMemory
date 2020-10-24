@@ -28,13 +28,14 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     }
 
     override fun getItemCount() = stickers.size
+    fun getTitleList():Set<String> = stickers.map { stickerTitle->stickerTitle.title }.toSet()
 
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
-        setAnimation(holder.containerView, position)
+        setAnimation(holder.containerView)
     }
-    fun setAnimation(viewToAnimate: View, position: Int){
+    fun setAnimation(viewToAnimate: View){
         val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
         viewToAnimate.startAnimation(animation)
 

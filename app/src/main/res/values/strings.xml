@@ -28,6 +28,7 @@
     <string name="error_speech">Your phone model does not support this feature.</string>
     <string name="error_save">Title and note must be at least three characters</string>
     <string name="source">Selection by title</string>
+    <string name="all_items">All items</string>
 
 
 </resources>

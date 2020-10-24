@@ -120,16 +120,17 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         fun getStartIntent(context: Context) = Intent(context,
         MainActivity::class.java)
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean =
-        MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+           adapter.getTitleList().map { tit->menu?.add(tit) }.let { true }
+        return MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
+    }
+
 
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.itemId){
             R.id.logout -> showLogoutDialog().let{true}
-            R.id.search_source -> searchByTitle().let{true}
-
             else -> false
     }
     private fun showLogoutDialog(){
