@@ -44,7 +44,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     private val channelId = "com.bankmtk.neuromemory.service"
     private val description = "Notification"
     private var isRotate: Boolean = false
-    //private val vibrate = longArrayOf(0,50,100,50,50,50)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -121,9 +120,10 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         fun getStartIntent(context: Context) = Intent(context,
         MainActivity::class.java)
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =
-        MenuInflater(this).inflate(R.menu.menu_main, menu).let { true }
+        MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.itemId){
@@ -173,8 +173,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
             notificationChannel = NotificationChannel(channelId,description, NotificationManager.IMPORTANCE_HIGH)
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.GREEN
-//            notificationChannel.enableVibration(true)
-//            notificationChannel.vibrationPattern = vibrate
             notificationManager.createNotificationChannel(notificationChannel)
 
             builder = Notification.Builder(this,channelId)
