@@ -8,7 +8,7 @@
         <menu>
             <item
                 android:id="@+id/title"
-                android:title="list items"
+                android:title="All items"
                 app:showAsAction="never"
                 />
         </menu>

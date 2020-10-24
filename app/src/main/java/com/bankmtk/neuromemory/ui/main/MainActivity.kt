@@ -149,8 +149,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
             }
     }
     private fun searchByTitle(){
-        //startActivity(Intent(this, SplashActivity::class.java))
-        //finish()
+
     }
 
     override fun onPause() {
