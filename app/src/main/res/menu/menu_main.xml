@@ -6,8 +6,10 @@
         android:title="@string/all_items"
         app:showAsAction="never"
         />
-    <item android:id="@+id/logout"
-        android:icon="@drawable/ic_exit_to_app_black_24dp"
-        android:title="@string/logout_menu_title"
-        app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/logout_menu_title"
+            app:showAsAction="ifRoom"
+            />
 </menu>

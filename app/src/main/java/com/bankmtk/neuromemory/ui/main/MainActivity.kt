@@ -44,6 +44,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     private val channelId = "com.bankmtk.neuromemory.service"
     private val description = "Notification"
     private var isRotate: Boolean = false
+    private var listTitleName:Set<String> = setOf()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,6 +88,7 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun renderData(data: List<Sticker>?) {
         if (data==null) return
+        listTitleName =data.map { item->item.title }.toSortedSet()
         adapter.stickers = data
         if (isHaveItem(adapter.stickers)){
             notifyUser()
@@ -121,18 +123,25 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
         MainActivity::class.java)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-           adapter.getTitleList().map { tit->menu?.add(tit) }.let { true }
+        listTitleName.map { tit->menu?.add(tit) }.let { true }
         return MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
     }
 
-
-
+// create list for title in that moment
+//    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+//        adapter.getTitleList().map { tit->menu?.add(tit) }.let { true }
+//        return super.onMenuOpened(featureId, menu)
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        when(item.itemId){
-            R.id.logout -> showLogoutDialog().let{true}
+        when(item.title.toString()){
+            "Logout" -> showLogoutDialog().let{true}
             else -> false
-    }
+        }
+//        when(item.itemId){
+//            R.id.logout -> showLogoutDialog().let{true}
+//            else -> false
+//    }
     private fun showLogoutDialog(){
         alert {
             titleResource = R.string.logout_dialog_title

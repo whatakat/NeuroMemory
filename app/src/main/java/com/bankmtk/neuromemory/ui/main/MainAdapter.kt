@@ -35,7 +35,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
         holder.bind(stickers[position])
         setAnimation(holder.containerView)
     }
-    fun setAnimation(viewToAnimate: View){
+    private fun setAnimation(viewToAnimate: View){
         val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
         viewToAnimate.startAnimation(animation)
 
