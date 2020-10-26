@@ -136,12 +136,27 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         when(item.title.toString()){
             "Logout" -> showLogoutDialog().let{true}
-            else -> false
+            else -> updateSearch(item.title.toString(),data=adapter.stickers ).let { true }
         }
 //        when(item.itemId){
 //            R.id.logout -> showLogoutDialog().let{true}
 //            else -> false
 //    }
+
+private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
+
+    if (selectedTitle == "All items") {
+        if (data != null) {
+            adapter.stickers = data
+        }
+    } else {
+        adapter.stickers = data?.filter {
+            it.title==selectedTitle
+        } as List
+    }
+    adapter.notifyDataSetChanged()
+}
+
     private fun showLogoutDialog(){
         alert {
             titleResource = R.string.logout_dialog_title
@@ -157,9 +172,6 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 startActivity(Intent(this, SplashActivity::class.java))
                 finish()
             }
-    }
-    private fun searchByTitle(){
-
     }
 
     override fun onPause() {
