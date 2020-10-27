@@ -1,5 +1,6 @@
 package com.bankmtk.neuromemory.ui.main
 
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,12 +29,13 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     }
 
     override fun getItemCount() = stickers.size
-    fun getTitleList():Set<String> = stickers.map { stickerTitle->stickerTitle.title }.toSet()
+    fun getTitleList():List<Sticker> = stickers
 
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
-        setAnimation(holder.containerView)
+        Handler().postDelayed({setAnimation(holder.containerView)},50*position.toLong())
+
     }
     private fun setAnimation(viewToAnimate: View){
         val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)

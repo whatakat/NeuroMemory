@@ -128,16 +128,19 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     }
 
 // create list for title in that moment
-//    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
-//        adapter.getTitleList().map { tit->menu?.add(tit) }.let { true }
-//        return super.onMenuOpened(featureId, menu)
-//    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        when(item.title.toString()){
+    @ExperimentalCoroutinesApi
+    override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
+        onStart()
+        return super.onMenuOpened(featureId, menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.title.toString()){
             "Logout" -> showLogoutDialog().let{true}
-            else -> updateSearch(item.title.toString(),data=adapter.stickers ).let { true }
+            else ->  updateSearch(item.title.toString(),adapter.stickers ).let { true }
+
         }
+    }
+
 //        when(item.itemId){
 //            R.id.logout -> showLogoutDialog().let{true}
 //            else -> false
