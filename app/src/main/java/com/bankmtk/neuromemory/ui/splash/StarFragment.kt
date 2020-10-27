@@ -32,6 +32,7 @@ class StarFragment: Fragment() {
     private var mMeteoriteView: View? =null
     private var mMeteoriteViewZero: View? =null
 
+    private var mMeteoriteView0: View? =null
     private var mMeteoriteView1: View? =null
     private var mMeteoriteView2: View? =null
     private var mMeteoriteView3: View? =null
@@ -60,6 +61,7 @@ class StarFragment: Fragment() {
         mTreeView = view.findViewById(R.id.tree)
         mMeteoriteView = view.findViewById(R.id.meteorite)
 
+        mMeteoriteView0 = view.findViewById(R.id.moon0)
         mMeteoriteView1 = view.findViewById(R.id.moon1)
         mMeteoriteView2 = view.findViewById(R.id.moon2)
         mMeteoriteView3 = view.findViewById(R.id.moon3)
@@ -101,9 +103,13 @@ class StarFragment: Fragment() {
         val buttonYStart = mButton!!.top.toFloat()
         val buttonXStart = mButton!!.bottom.toFloat()
         val path = Path()
-         path.cubicTo(1F,1700F, 300F,1300F,1F, 1000F)
-        path.cubicTo(700F,1600F, 1F,1500F,1F, 1600F)
-        path.cubicTo(700F,1700F, 700F,1800F,450F, 100F)
+        path.cubicTo(520F,1750F, 385F,1885F,345F, 1925F)
+        path.cubicTo(385F,2060F, 529F,2100F,560F, 2060F)
+        path.cubicTo(695F,1925F, 560F,1885F,450F, 100F)
+        val path0 = Path()
+        path0.cubicTo(520F,1750F, 385F,1885F,345F, 1925F)
+        path0.cubicTo(385F,2060F, 529F,2100F,560F, 2060F)
+        path0.cubicTo(695F,1925F, 560F,1885F,670F, 520F)
         val pathL = Path()
         pathL.cubicTo(520F,1750F, 385F,1885F,345F, 1925F)
         pathL.cubicTo(385F,2060F, 529F,2100F,560F, 2060F)
@@ -194,6 +200,10 @@ class StarFragment: Fragment() {
             .ofFloat(mStarsView, "y", starsYStart,starsYEnd)
             .setDuration(1000)
         starsAnimator.interpolator = DecelerateInterpolator(1F)
+        val meteoriteAnimator0 = ObjectAnimator
+            .ofFloat(mMeteoriteView0, "x", "y",path0)
+            .setDuration(6000)
+        meteoriteAnimator0.interpolator = DecelerateInterpolator(2F)
         val meteoriteAnimator = ObjectAnimator
             .ofFloat(mMeteoriteView, "x", "y",path)
             .setDuration(6000)
@@ -227,6 +237,7 @@ class StarFragment: Fragment() {
         val animatorSet = AnimatorSet()
         animatorSet
             .play(moonAnimator)
+            .with(meteoriteAnimator0)
             .with(meteoriteAnimator)
             .with(meteoriteAnimator2)
             .with(iconAnimator1)

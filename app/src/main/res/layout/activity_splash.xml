@@ -45,6 +45,15 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/stars" />
     <ImageView
+        android:id="@+id/moon0"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="@dimen/fifty"
+        android:src="@drawable/light_b"
+        android:alpha="0.4"
+        android:contentDescription="@string/app_name"/>
+    <ImageView
         android:id="@+id/starsb"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/one_eighty"
