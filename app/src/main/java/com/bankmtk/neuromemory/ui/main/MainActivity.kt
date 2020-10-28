@@ -49,6 +49,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
     private var st:Sticker?=null
+    private var statusSp =0
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,10 +66,18 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             }
 
             override fun onItemSpeakClick(sticker: Sticker) {
-                st = sticker
-                val checkIntent = Intent()
-                checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
-                startActivityForResult(checkIntent, 1)
+                if (statusSp ==0){
+                    st = sticker
+                    val checkIntent = Intent()
+                    checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+                    startActivityForResult(checkIntent, 1)
+                    statusSp=1
+                }else {
+                    myTTS!!.stop()
+                    myTTS!!.shutdown()
+                    statusSp = 0
+                }
+
             }
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
@@ -260,7 +269,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         } else if (status == TextToSpeech.ERROR) {
             myTTS!!.shutdown()
         }
-
     }
 
 }

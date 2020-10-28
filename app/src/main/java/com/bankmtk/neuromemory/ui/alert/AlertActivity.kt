@@ -102,7 +102,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.fabOk.alpha = 0.2F
         view.fabVolume.alpha = 0.2F
         view.fabOk.animate().alpha(0.45F)
-        view.fabVolume.animate().alpha(0.45F)
+        view.fabVolume.animate().alpha(0.05F)
         view.fabOk.show()
         view.fabVolume.show()
         view.fabOk.rotationX = 180F
@@ -121,7 +121,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
 
 
         view.fabOk.hide()
-        view.fabVolume.hide()
         view.fabOk.animate().alpha(0.2F)
         view.fabVolume.animate().alpha(0.2F)
         view.langTwoI.visibility = View.GONE
