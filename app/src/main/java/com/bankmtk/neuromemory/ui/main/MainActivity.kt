@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -31,7 +32,7 @@ import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
-class MainActivity : BaseActivity<List<Sticker>?>() {
+class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener {
 
     @ExperimentalCoroutinesApi
     override val model:MainViewModel by viewModel()
@@ -45,6 +46,9 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
     private val description = "Notification"
     private var isRotate: Boolean = false
     private var listTitleName:Set<String> = setOf()
+    private var myTTS: TextToSpeech? = null
+    private val bundle = Bundle()
+    private var st:Sticker?=null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +64,12 @@ class MainActivity : BaseActivity<List<Sticker>?>() {
                 openStickerScreen(sticker)
             }
 
+            override fun onItemSpeakClick(sticker: Sticker) {
+                st = sticker
+                val checkIntent = Intent()
+                checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+                startActivityForResult(checkIntent, 1)
+            }
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
                 if (itemView.langOneI.visibility == View.VISIBLE){
@@ -182,6 +192,17 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
     }
 
+    override fun animateView(view: View) {
+        view.fabVolume.hide()
+        super.animateView(view)
+    }
+
+    override fun animateViewCancel(view: View) {
+        view.fabVolume.show()
+        view.fabVolume.animate().alpha(0.03F)
+        super.animateViewCancel(view)
+    }
+
     private fun isHaveItem(data: List<Sticker>?):Boolean {
         for(i in data!!.indices){
             if (data[i].lastChanged< Date()) {
@@ -217,4 +238,29 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         }
         notificationManager.notify(1234,builder.build())
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                myTTS = TextToSpeech(this, this)
+                myTTS!!.language = Locale.ROOT
+            } else {
+                val ttsLoadIntent = Intent()
+                ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
+                startActivity(ttsLoadIntent)
+            }
+        }
+
+    }
+
+    override fun onInit(status: Int) {
+        bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
+        if (status == TextToSpeech.SUCCESS) {
+            myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_FLUSH,bundle,"speakText")
+        } else if (status == TextToSpeech.ERROR) {
+            myTTS!!.shutdown()
+        }
+
+    }
+
 }

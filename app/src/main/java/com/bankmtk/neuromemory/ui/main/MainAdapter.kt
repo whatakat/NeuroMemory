@@ -52,6 +52,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
             itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
             itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
             itemView.setOnLongClickListener{consume { onItemClickListener.onItemLongClick(sticker) }}
+            itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(sticker) }  }
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()
@@ -61,6 +62,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     interface OnItemClickListener{
         fun onItemClick(itemView: View)
         fun onItemLongClick(sticker: Sticker)
+        fun onItemSpeakClick(sticker: Sticker)
     }
 
     override fun getItemViewType(position: Int): Int {
