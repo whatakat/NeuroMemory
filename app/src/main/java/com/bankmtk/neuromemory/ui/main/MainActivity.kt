@@ -66,13 +66,15 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             }
 
             override fun onItemSpeakClick(sticker: Sticker) {
+
                 if (statusSp ==0){
                     st = sticker
+                    statusSp=1
                     val checkIntent = Intent()
                     checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                     startActivityForResult(checkIntent, 1)
-                    statusSp=1
-                }else {
+
+                }else if (statusSp ==1){
                     myTTS!!.stop()
                     myTTS!!.shutdown()
                     statusSp = 0
@@ -199,6 +201,15 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     override fun onPause() {
         super.onPause()
         overridePendingTransition(R.anim.slidein,R.anim.slideout)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (myTTS!=null){
+            myTTS!!.stop()
+            myTTS!!.shutdown()
+            statusSp = 0
+        }
     }
 
     override fun animateView(view: View) {
