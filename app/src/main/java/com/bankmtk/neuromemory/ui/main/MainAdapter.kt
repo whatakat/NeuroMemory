@@ -29,12 +29,11 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
     }
 
     override fun getItemCount() = stickers.size
-    fun getTitleList():List<Sticker> = stickers
 
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
-        Handler().postDelayed({setAnimation(holder.containerView)},50*position.toLong())
+        Handler().postDelayed({setAnimation(holder.containerView)},30*position.toLong())
 
     }
     private fun setAnimation(viewToAnimate: View){

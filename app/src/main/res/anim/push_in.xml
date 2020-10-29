@@ -3,8 +3,8 @@
     <scale
         android:duration="700"
         android:fillAfter="false"
-        android:fromXScale="0.95"
-        android:fromYScale="0.95"
+        android:fromXScale="0.99"
+        android:fromYScale="0.99"
         android:pivotX="50%"
         android:pivotY="50%"
         android:startOffset="0"
@@ -14,8 +14,8 @@
         android:toAlpha="1.0"
         android:duration="700"/>
     <translate
-        android:fromXDelta="5"
-        android:fromYDelta="-5"
+        android:fromXDelta="1"
+        android:fromYDelta="-1"
         android:toYDelta="0"
         android:toXDelta="0"
         android:duration="1000"/>

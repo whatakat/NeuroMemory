@@ -3,8 +3,11 @@ package com.bankmtk.neuromemory.extentions
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.view.contains
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import java.text.SimpleDateFormat
@@ -67,3 +70,10 @@ fun init(v: View) {
     v.translationX = v.height.toFloat()
     v.alpha = 0f
 }
+fun Menu.isContains(str: String):Boolean{
+    (0 until this.size()).map {
+        if (this.getItem(it).title==str){
+                return true
+            }}
+    return false
+    }

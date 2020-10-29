@@ -16,10 +16,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
-import com.bankmtk.neuromemory.extentions.init
-import com.bankmtk.neuromemory.extentions.rotateFab
-import com.bankmtk.neuromemory.extentions.showIn
-import com.bankmtk.neuromemory.extentions.showOut
+import com.bankmtk.neuromemory.extentions.*
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
@@ -49,7 +46,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
     private var st:Sticker?=null
-    private var statusSp =0
+    private var statusSp:Boolean = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,25 +56,24 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(fab)
         init(alert_button)
 
-
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
             override fun onItemLongClick(sticker: Sticker) {
                 openStickerScreen(sticker)
             }
-
             override fun onItemSpeakClick(sticker: Sticker) {
-
-                if (statusSp ==0){
-                    st = sticker
-                    statusSp=1
-                    val checkIntent = Intent()
-                    checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
-                    startActivityForResult(checkIntent, 1)
-
-                }else if (statusSp ==1){
-                    myTTS!!.stop()
-                    myTTS!!.shutdown()
-                    statusSp = 0
+                when (statusSp){
+                    false ->{
+                        st = sticker
+                        statusSp=true
+                        val checkIntent = Intent()
+                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+                        startActivityForResult(checkIntent, 1)
+                    }
+                    true ->{
+                        myTTS!!.stop()
+                        myTTS!!.shutdown()
+                        statusSp = false
+                    }
                 }
 
             }
@@ -139,16 +135,23 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
          }
     }
 
+
     companion object{
         fun getStartIntent(context: Context) = Intent(context,
         MainActivity::class.java)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        listTitleName.map { tit->menu?.add(tit) }.let { true }
+        //listTitleName.map { tit->menu?.add(tit) }.let { true }
         return MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
     }
 
-// create list for title in that moment
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        listTitleName.map { tit->if(!menu!!.isContains(tit)) menu.add(tit) }.let { true }
+
+        return super.onPrepareOptionsMenu(menu)
+    }
+
+    // create list for title in that moment
     @ExperimentalCoroutinesApi
     override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
         onStart()
@@ -157,7 +160,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.title.toString()){
             "Logout" -> showLogoutDialog().let{true}
-            else ->  updateSearch(item.title.toString(),adapter.stickers ).let { true }
+             else->  updateSearch(item.title.toString(),adapter.stickers ).let { true }
 
         }
     }
@@ -208,7 +211,7 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         if (myTTS!=null){
             myTTS!!.stop()
             myTTS!!.shutdown()
-            statusSp = 0
+            statusSp = false
         }
     }
 
@@ -218,8 +221,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun animateViewCancel(view: View) {
+        view.fabVolume.animate().alpha(0.07F)
         view.fabVolume.show()
-        view.fabVolume.animate().alpha(0.03F)
         super.animateViewCancel(view)
     }
 

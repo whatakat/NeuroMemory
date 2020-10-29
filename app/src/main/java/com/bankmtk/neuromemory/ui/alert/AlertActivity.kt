@@ -38,6 +38,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
     private var st:Sticker?=null
+    private var statusSp:Boolean = false
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,10 +52,20 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             }
 
             override fun onItemSpeakClick(sticker: Sticker) {
-                st = sticker
-                val checkIntent = Intent()
-                checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
-                startActivityForResult(checkIntent, 1)
+                when (statusSp){
+                    false ->{
+                        st = sticker
+                        statusSp=true
+                        val checkIntent = Intent()
+                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+                        startActivityForResult(checkIntent, 1)
+                    }
+                    true ->{
+                        myTTS!!.stop()
+                        myTTS!!.shutdown()
+                        statusSp = false
+                    }
+                }
             }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -85,6 +96,14 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         super.onPause()
         overridePendingTransition(R.anim.alert_slidein,R.anim.sticker_zoom_out)
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        if (myTTS!=null){
+            myTTS!!.stop()
+            myTTS!!.shutdown()
+            statusSp = false
+        }
+    }
 
     override fun animateView(view: View) {
         //super.animateView(view)
@@ -102,7 +121,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.fabOk.alpha = 0.2F
         view.fabVolume.alpha = 0.2F
         view.fabOk.animate().alpha(0.45F)
-        view.fabVolume.animate().alpha(0.05F)
+        view.fabVolume.animate().alpha(0.07F)
         view.fabOk.show()
         view.fabVolume.show()
         view.fabOk.rotationX = 180F
