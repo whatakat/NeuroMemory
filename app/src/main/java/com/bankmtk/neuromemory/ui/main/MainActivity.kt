@@ -141,7 +141,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         MainActivity::class.java)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        //listTitleName.map { tit->menu?.add(tit) }.let { true }
         return MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
     }
 
@@ -151,7 +150,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         return super.onPrepareOptionsMenu(menu)
     }
 
-    // create list for title in that moment
     @ExperimentalCoroutinesApi
     override fun onMenuOpened(featureId: Int, menu: Menu): Boolean {
         onStart()
@@ -165,10 +163,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         }
     }
 
-//        when(item.itemId){
-//            R.id.logout -> showLogoutDialog().let{true}
-//            else -> false
-//    }
 
 private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
