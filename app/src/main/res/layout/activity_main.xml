@@ -33,13 +33,17 @@
             </FrameLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
+    <ImageView
+        android:id="@+id/title_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
-        android:background="@drawable/title"
         android:orientation="horizontal"
         android:transitionName="@string/title"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

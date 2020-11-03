@@ -1,11 +1,15 @@
 package com.bankmtk.neuromemory.ui.main
 
 
-import android.app.*
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -47,41 +51,52 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private val bundle = Bundle()
     private var st:Sticker?=null
     private var statusSp:Boolean = false
+    private var animationDrawable: AnimationDrawable? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        overridePendingTransition(R.anim.slidein,R.anim.slideout)
+        overridePendingTransition(R.anim.slidein, R.anim.slideout)
         init(fab)
         init(alert_button)
 
-        adapter = MainAdapter(object : MainAdapter.OnItemClickListener{
+        val imageView = findViewById<ImageView>(R.id.title_background)
+        imageView.setBackgroundResource(R.drawable.title_animation)
+
+        animationDrawable = imageView.background as AnimationDrawable
+
+
+        adapter = MainAdapter(object : MainAdapter.OnItemClickListener {
             override fun onItemLongClick(sticker: Sticker) {
                 openStickerScreen(sticker)
             }
+
             override fun onItemSpeakClick(sticker: Sticker) {
-                when (statusSp){
-                    false ->{
+                when (statusSp) {
+                    false -> {
                         st = sticker
-                        statusSp=true
+                        statusSp = true
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
+                        animationDrawable?.start()
                     }
-                    true ->{
+                    true -> {
                         myTTS!!.stop()
                         myTTS!!.shutdown()
                         statusSp = false
+                        animationDrawable?.stop()
                     }
                 }
 
             }
+
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
-                if (itemView.langOneI.visibility == View.VISIBLE){
+                if (itemView.langOneI.visibility == View.VISIBLE) {
                     animateView(itemView)
-                }else{
+                } else {
                     animateViewCancel(itemView)
                 }
             }
@@ -115,21 +130,21 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         }
     }
     private fun openStickerScreen(sticker: Sticker?){
-        StickerActivity.start(this,sticker?.id)
+        StickerActivity.start(this, sticker?.id)
     }
 
      fun alertMe(view: View){
-         val alertIntent = Intent(this,AlertActivity::class.java)
+         val alertIntent = Intent(this, AlertActivity::class.java)
          if (isHaveItem(adapter.stickers)){
              startActivity(alertIntent)
          }else
          {
-             val myToast = Toast.makeText(this,R.string.no_active_tasks, Toast.LENGTH_SHORT)
-             myToast.setGravity(Gravity.BOTTOM, 0,200)
+             val myToast = Toast.makeText(this, R.string.no_active_tasks, Toast.LENGTH_SHORT)
+             myToast.setGravity(Gravity.BOTTOM, 0, 200)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
              myImage.setImageResource(R.drawable.ic_visibility_off_black_24dp)
-             toastContainer.addView(myImage,0)
+             toastContainer.addView(myImage, 0)
              toastContainer.setBackgroundColor(Color.TRANSPARENT)
              myToast.show()
          }
@@ -137,11 +152,13 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
 
     companion object{
-        fun getStartIntent(context: Context) = Intent(context,
-        MainActivity::class.java)
+        fun getStartIntent(context: Context) = Intent(
+            context,
+            MainActivity::class.java
+        )
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return MenuInflater(this ).inflate(R.menu.menu_main, menu).let { true }
+        return MenuInflater(this).inflate(R.menu.menu_main, menu).let { true }
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
@@ -157,8 +174,8 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.title.toString()){
-            "Logout" -> showLogoutDialog().let{true}
-             else->  updateSearch(item.title.toString(),adapter.stickers ).let { true }
+            "Logout" -> showLogoutDialog().let { true }
+             else->  updateSearch(item.title.toString(), adapter.stickers).let { true }
 
         }
     }
@@ -183,7 +200,7 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
             titleResource = R.string.logout_dialog_title
             messageResource = R.string.logout_dialog_message
             positiveButton(R.string.ok_bth_title){onLogout()}
-            negativeButton(R.string.logout_dialog_cancel){dialog -> dialog.dismiss()  }
+            negativeButton(R.string.logout_dialog_cancel){ dialog -> dialog.dismiss()  }
         }.show()
     }
      fun onLogout() {
@@ -197,7 +214,7 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
     override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.slidein,R.anim.slideout)
+        overridePendingTransition(R.anim.slidein, R.anim.slideout)
     }
 
     override fun onDestroy() {
@@ -231,29 +248,38 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     private fun notifyUser(){
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val intent = Intent(applicationContext, AlertActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(applicationContext,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent = PendingIntent.getActivity(
+            applicationContext,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            notificationChannel = NotificationChannel(channelId,description, NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel = NotificationChannel(
+                channelId,
+                description,
+                NotificationManager.IMPORTANCE_HIGH
+            )
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.GREEN
             notificationManager.createNotificationChannel(notificationChannel)
 
-            builder = Notification.Builder(this,channelId)
+            builder = Notification.Builder(this, channelId)
                 .setContentTitle("Status:")
                 .setContentText("confirm items")
                 .setSmallIcon(R.drawable.notify_back)
-                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.notify_back))
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.notify_back))
                 .setContentIntent(pendingIntent)
         } else{
             builder = Notification.Builder(this)
                 .setContentTitle("Status:")
                 .setContentText("confirm items")
                 .setSmallIcon(R.drawable.notify_back)
-                .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.notify_back))
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.notify_back))
                 .setContentIntent(pendingIntent)
 
         }
-        notificationManager.notify(1234,builder.build())
+        notificationManager.notify(1234, builder.build())
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -271,9 +297,9 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun onInit(status: Int) {
-        bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
+        bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "speakText")
         if (status == TextToSpeech.SUCCESS) {
-            myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_FLUSH,bundle,"speakText")
+            myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_FLUSH, bundle, "speakText")
         } else if (status == TextToSpeech.ERROR) {
             myTTS!!.shutdown()
         }
