@@ -36,7 +36,7 @@
             android:id="@+id/status_star"
             android:layout_width="@dimen/seventy_five"
             android:layout_height="24dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginTop="4dp"
             android:layout_toStartOf="@+id/title_stars"
             android:src="@drawable/progress"
