@@ -33,16 +33,6 @@
             android:background="@color/night_sky"
             android:transitionName="@string/title"/>
 
-        <ImageView
-            android:id="@+id/status_star"
-            android:layout_width="85dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginTop="4dp"
-            android:layout_toStartOf="@+id/title_stars"
-            android:src="@drawable/progress"
-            android:background="@drawable/ic_st_zero"
-            android:contentDescription="@string/app_name"/>
 
         <ImageView
             android:id="@+id/title_stars"
@@ -64,6 +54,16 @@
             android:textSize="14sp"
             android:visibility="visible"
         android:layout_below="@id/titleStick" />
+        <ImageView
+            android:id="@+id/status_star"
+            android:layout_width="85dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_toStartOf="@+id/title_stars"
+            android:src="@drawable/progress"
+            android:background="@drawable/ic_st_zero"
+            android:contentDescription="@string/app_name"/>
         <TextView
             android:id="@+id/langTwoI"
             android:layout_width="match_parent"
