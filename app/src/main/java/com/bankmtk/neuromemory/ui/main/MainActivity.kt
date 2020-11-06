@@ -18,6 +18,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -41,7 +42,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
     private lateinit var adapter: MainAdapter
-    private var  snapHelper = PagerSnapHelper()
+    private var  snapHelper = LinearSnapHelper()
 
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
@@ -106,7 +107,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         })
         myRecycler.adapter = adapter
         snapHelper.attachToRecyclerView(myRecycler)
-
         fab.setOnClickListener { openStickerScreen(null) }
         main_button!!.setOnClickListener { v->
             isRotate = rotateFab(v, !isRotate)
@@ -120,6 +120,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         }
 
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun renderData(data: List<Sticker>?) {
