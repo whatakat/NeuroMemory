@@ -18,6 +18,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.*
@@ -27,6 +28,7 @@ import com.bankmtk.neuromemory.ui.splash.SplashActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_stick.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
@@ -39,6 +41,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
     private lateinit var adapter: MainAdapter
+    private var  snapHelper = PagerSnapHelper()
 
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
@@ -102,6 +105,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             }
         })
         myRecycler.adapter = adapter
+        snapHelper.attachToRecyclerView(myRecycler)
 
         fab.setOnClickListener { openStickerScreen(null) }
         main_button!!.setOnClickListener { v->

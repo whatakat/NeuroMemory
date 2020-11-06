@@ -33,7 +33,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
-        Handler().postDelayed({setAnimation(holder.containerView)},30*position.toLong())
+        Handler().postDelayed({setAnimation(holder.containerView)},5*position.toLong())
 
     }
     private fun setAnimation(viewToAnimate: View){

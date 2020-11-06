@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
-    card_view:cardCornerRadius="10dp"
+    card_view:cardCornerRadius="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/five"
@@ -32,6 +32,16 @@
             android:background="@color/night_sky"
             android:transitionName="@string/title"/>
 
+        <TextView
+            android:id="@+id/langOneI"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/text"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:visibility="visible"
+            android:layout_below="@id/titleStick"/>
         <ImageView
             android:id="@+id/status_star"
             android:layout_width="@dimen/seventy_five"
@@ -42,7 +52,6 @@
             android:src="@drawable/progress"
             android:background="@drawable/ic_st_zero"
             android:contentDescription="@string/app_name"/>
-
         <ImageView
             android:id="@+id/title_stars"
             android:layout_width="wrap_content"
@@ -52,22 +61,11 @@
             android:layout_marginEnd="@dimen/five"
             android:background="@color/bright_sun"
             android:contentDescription="@string/app_name"/>
-
-        <TextView
-            android:id="@+id/langOneI"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|clip_vertical|center_horizontal|center_vertical"
-            android:text="@string/text"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:visibility="visible"
-            android:layout_below="@id/titleStick"/>
         <TextView
             android:id="@+id/langTwoI"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center|clip_vertical|center_horizontal|center_vertical"
+            android:gravity="center"
             android:text="@string/text"
             android:textColor="@color/white"
             android:textSize="14sp"

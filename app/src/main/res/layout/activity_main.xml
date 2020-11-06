@@ -12,7 +12,8 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:alpha="0.9">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -43,11 +44,10 @@
         android:id="@+id/myRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:transitionName="@string/title"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="5"
+        app:spanCount="1"
         tools:listitem="@layout/item_sticker"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
