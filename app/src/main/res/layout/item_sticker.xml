@@ -8,7 +8,7 @@
     android:layout_height="220dp"
     android:layout_marginStart="90dp"
     card_view:cardElevation="@dimen/twenty"
-    android:layout_marginTop="400dp"
+    android:layout_marginTop="350dp"
     card_view:cardCornerRadius="110dp"
     android:alpha="0.9"
     >
@@ -18,7 +18,9 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:alpha="0.9"
-        android:background="@drawable/neurom_stickb">
+        android:background="@drawable/neurom_stickb"
+        android:backgroundTint="@color/night_sky"
+        >
         <TextView
             android:id="@+id/titleStick"
             android:layout_width="match_parent"
@@ -50,9 +52,9 @@
             android:gravity="center|clip_vertical"
             android:text="@string/text"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:visibility="visible"
-        android:layout_below="@id/titleStick" />
+            android:layout_below="@id/titleStick" />
         <ImageView
             android:id="@+id/status_star"
             android:layout_width="85dp"
@@ -70,7 +72,7 @@
             android:gravity="center|clip_vertical"
             android:text="@string/text"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:visibility="gone"
             android:background="@color/night_sky"
             android:layout_below="@id/titleStick"/>
@@ -81,11 +83,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_marginEnd="55dp"
+            android:layout_marginTop="10dp"
             android:alpha="0.35"
             card_view:fabSize="mini"
+            android:visibility="gone"
             android:backgroundTint="@color/night_sky"
             android:src="@drawable/ic_check_black_24dp"
-            android:visibility="gone"
             android:contentDescription="@string/app_name"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabVolume"

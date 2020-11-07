@@ -1,9 +1,11 @@
 package com.bankmtk.neuromemory.ui.alert
 
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -40,6 +42,11 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
             holder.bind(stickers[position])
+        Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
+    }
+    private fun setAnimation(viewToAnimate: View,){
+        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
+        viewToAnimate.startAnimation(animation)
     }
 
     inner class StickViewHolder(override val containerView: View):
@@ -49,7 +56,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 langOneI.text = sticker.langOne
                 langTwoI.text = sticker.langTwo
                 status_star.setImageLevel(sticker.progressSt)
-                itemView.setBackgroundColor(sticker.color.getColorInt(itemView.context))
+                itemView.langOneI.setBackgroundColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
                 itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemOkClick(sticker) }  }
                 itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(sticker) }  }

@@ -2,6 +2,7 @@ package com.bankmtk.neuromemory.ui.alert
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -40,12 +41,18 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private val bundle = Bundle()
     private var st:Sticker?=null
     private var statusSp:Boolean = false
+    private var animationDrawableAlert: AnimationDrawable? = null
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
+        val alertImageView = findViewById<ImageView>(R.id.alert_title_background)
+        alertImageView.setBackgroundResource(R.drawable.title_animation_alert)
+
+        animationDrawableAlert = alertImageView.background as AnimationDrawable
+
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
 
 
@@ -61,6 +68,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
+                        animationDrawableAlert?.start()
                     }
                     true ->{
                         myTTS!!.stop()
