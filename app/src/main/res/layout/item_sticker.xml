@@ -8,7 +8,7 @@
     android:layout_height="220dp"
     android:layout_marginStart="90dp"
     card_view:cardElevation="@dimen/twenty"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="400dp"
     card_view:cardCornerRadius="110dp"
     android:alpha="0.9"
     >

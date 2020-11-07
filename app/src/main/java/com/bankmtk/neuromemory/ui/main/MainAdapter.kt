@@ -12,7 +12,6 @@ import com.bankmtk.neuromemory.extentions.getColorInt
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
-import kotlinx.coroutines.withContext
 
 class MainAdapter(private val onItemClickListener: OnItemClickListener)
     :RecyclerView.Adapter<MainAdapter.StickViewHolder>() {
@@ -33,13 +32,12 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
         holder.bind(stickers[position])
-        Handler().postDelayed({setAnimation(holder.containerView)},5*position.toLong())
+        Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
 
     }
-    private fun setAnimation(viewToAnimate: View){
-        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
-        viewToAnimate.startAnimation(animation)
-
+    private fun setAnimation(viewToAnimate: View,){
+            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
+            viewToAnimate.startAnimation(animation)
     }
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer{
