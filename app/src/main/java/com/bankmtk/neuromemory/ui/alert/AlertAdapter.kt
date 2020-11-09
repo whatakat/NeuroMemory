@@ -45,7 +45,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
         Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
     }
     private fun setAnimation(viewToAnimate: View,){
-        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
+        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_zoom_in)
         viewToAnimate.startAnimation(animation)
     }
 
@@ -56,7 +56,8 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 langOneI.text = sticker.langOne
                 langTwoI.text = sticker.langTwo
                 status_star.setImageLevel(sticker.progressSt)
-                itemView.langOneI.setBackgroundColor(sticker.color.getColorInt(itemView.context))
+                itemView.titleStick.setTextColor(sticker.color.getColorInt(itemView.context))
+                itemView.langOneI.setTextColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
                 itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemOkClick(sticker) }  }
                 itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(sticker) }  }
