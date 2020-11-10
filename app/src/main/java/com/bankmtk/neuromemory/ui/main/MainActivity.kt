@@ -98,7 +98,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
-                if (itemView.langOneI.visibility == View.VISIBLE) {
+                if (itemView.langOneI.alpha > 0F) {
                     animateView(itemView)
                 } else {
                     animateViewCancel(itemView)
@@ -233,13 +233,26 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
     override fun animateView(view: View) {
         view.fabVolume.hide()
-        super.animateView(view)
+        view.titleStick.animate().alpha(0.16F)
+        view.animate().rotationY(180F)
+        view.animate().translationZ(150F)
+        view.langOneI.animate().alpha(0F)
+        view.langTwoI.animate().alpha(0.9F)
+        view.langTwoI.visibility = View.VISIBLE
+        view.langTwoI.rotationY = 180F
+        view.status_star.animate().alpha(0.16F)
     }
 
     override fun animateViewCancel(view: View) {
         view.fabVolume.animate().alpha(0.07F)
         view.fabVolume.show()
-        super.animateViewCancel(view)
+        view.titleStick.animate().alpha(1F)
+        view.status_star.animate().alpha(1F)
+        view.animate().rotationY(0F)
+        view.animate().translationZ(0F)
+        view.langTwoI.animate().alpha(0F)
+        view.langOneI.animate().alpha(0.9F)
+        view.langTwoI.visibility = View.INVISIBLE
     }
 
     private fun isHaveItem(data: List<Sticker>?):Boolean {
@@ -309,5 +322,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
             myTTS!!.shutdown()
         }
     }
+
 
 }

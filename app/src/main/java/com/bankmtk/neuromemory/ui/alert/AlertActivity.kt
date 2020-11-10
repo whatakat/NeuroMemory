@@ -19,6 +19,7 @@ import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
+import kotlinx.android.synthetic.main.activity_alert.*
 import kotlinx.android.synthetic.main.activity_main.myRecycler
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.item_sticker.*
@@ -159,8 +160,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         launch {
             sticker?.lastChanged =nextChange(sticker?.progressSt)
             sticker?.progressSt = nextLevel(sticker?.progressSt)
-            sticker?.let { modelS.saveChanges(it) }
+            sticker?.let { modelS.saveChanges(it)}
             finish()
+
+
 
         }
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")

@@ -76,8 +76,8 @@
             android:text="@string/text"
             android:textColor="@color/white"
             android:textSize="13sp"
-            android:visibility="gone"
-            android:alpha="0.7"
+
+            android:alpha="0"
             android:layout_below="@id/titleStick"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
