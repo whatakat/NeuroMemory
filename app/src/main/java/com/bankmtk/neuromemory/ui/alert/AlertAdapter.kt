@@ -29,8 +29,8 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
             }
             field = valueDate
             notifyDataSetChanged()
-        }
 
+}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view  = inflater.inflate(R.layout.item_sticker,parent,false)
@@ -38,6 +38,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     }
 
    override fun getItemCount()=stickers.size
+
 
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){

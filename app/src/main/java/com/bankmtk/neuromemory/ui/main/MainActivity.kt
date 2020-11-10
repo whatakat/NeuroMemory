@@ -29,6 +29,7 @@ import com.bankmtk.neuromemory.ui.splash.SplashActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_stick.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -56,6 +57,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var st:Sticker?=null
     private var statusSp:Boolean = false
     private var animationDrawable: AnimationDrawable? = null
+    private val START ="All elements will be voiced"
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,6 +66,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         overridePendingTransition(R.anim.slidein, R.anim.slideout)
         init(fab)
         init(alert_button)
+        init(alert_button_play)
 
         val imageView = findViewById<ImageView>(R.id.title_background)
         imageView.setBackgroundResource(R.drawable.title_animation)
@@ -85,12 +88,14 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
                         animationDrawable?.start()
+                        showIn(alert_button_play)
                     }
                     true -> {
                         myTTS!!.stop()
                         myTTS!!.shutdown()
                         statusSp = false
                         animationDrawable?.stop()
+                        showOut(alert_button_play)
                     }
                 }
 
@@ -108,6 +113,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         myRecycler.adapter = adapter
         snapHelper.attachToRecyclerView(myRecycler)
         fab.setOnClickListener { openStickerScreen(null) }
+
         main_button!!.setOnClickListener { v->
             isRotate = rotateFab(v, !isRotate)
             if (isRotate) {
@@ -153,6 +159,15 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
              toastContainer.setBackgroundColor(Color.TRANSPARENT)
              myToast.show()
          }
+    }
+    fun playMeNow(view: View){
+        showOut(alert_button_play)
+        myTTS!!.speak(START, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+        for (i in adapter.stickers){
+            myTTS!!.speak(i.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+            myTTS!!.speak(i.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+        }
+        //myTTS!!.playSilentUtterance(1000,2,"Silence")
     }
 
 
@@ -299,6 +314,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         }
         notificationManager.notify(1234, builder.build())
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
@@ -317,7 +334,9 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     override fun onInit(status: Int) {
         bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "speakText")
         if (status == TextToSpeech.SUCCESS) {
-            myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_FLUSH, bundle, "speakText")
+            myTTS!!.speak(st!!.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+            myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+
         } else if (status == TextToSpeech.ERROR) {
             myTTS!!.shutdown()
         }

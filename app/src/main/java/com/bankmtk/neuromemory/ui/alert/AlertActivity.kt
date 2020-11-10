@@ -176,7 +176,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             val myImage = ImageView(this)
             myImage.setImageResource(R.drawable.ic_verified_user_black_24dp)
             toastContainer.addView(myImage,0)
-            toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+            //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
             //toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
         }
@@ -185,7 +185,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.slidein,R.anim.sticker_zoom_out)
+     //   overridePendingTransition(R.anim.slidein,R.anim.sticker_zoom_out)
     }
     private fun nextChange(progressSt:Int?):Date{
         var nextDate = Date()
@@ -244,7 +244,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     override fun onInit(status: Int) {
             bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
             if (status == TextToSpeech.SUCCESS) {
-                myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_FLUSH,bundle,"speakText")
+                myTTS!!.speak(st!!.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+                myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
             } else if (status == TextToSpeech.ERROR) {
                 myTTS!!.shutdown()
             }

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorAccent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:logo="@mipmap/ic_launcher_app"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title"
+                android:textColorHint="@color/bright_sun">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/titleEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/bright_sun"
+                    android:transitionName="@string/title"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:id="@+id/textOne"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:lines="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:hint="@string/front_side"
+                android:textColorHint="@color/night_sky"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:importantForAutofill="no"/>
+
+            <EditText
+                android:id="@+id/textTwo"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:lines="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/night_sky"
+                android:textColor="@color/white"
+                android:hint="@string/back"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:importantForAutofill="no"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <com.bankmtk.neuromemory.ui.customeview.ColorPickerView
+                    android:id="@+id/colorPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize" />
+            </HorizontalScrollView>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <RadioButton
+                    android:id="@+id/rbt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:layout_weight="1"
+                    android:text="@string/title"
+                    android:textColor="@color/bright_sun"/>
+                <RadioButton
+                    android:id="@+id/rbf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/front_side"
+                    android:textColor="@color/bright_sun"/>
+                <RadioButton
+                    android:id="@+id/rbb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/back"
+                    android:textColor="@color/bright_sun"/>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/speech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:fabSize="normal"
+                    android:alpha="0.80"
+                    android:src="@drawable/ic_mic_black_24dp"
+                    android:layout_gravity="bottom|end"
+                    android:backgroundTint="@color/black"
+                    android:contentDescription="@string/app_name"/>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/save_sticker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:fabSize="normal"
+                    android:alpha="0.80"
+                    android:src="@drawable/ic_save_black_24dp"
+                    android:layout_gravity="bottom|end"
+                    android:backgroundTint="@color/black"
+                    android:contentDescription="@string/app_name"/>
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
