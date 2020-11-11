@@ -61,7 +61,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 itemView.langOneI.setTextColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
                 itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemOkClick(sticker) }  }
-                itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(sticker) }  }
+                //itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(sticker) }  }
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()
@@ -72,7 +72,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     interface OnItemClickListener{
         fun onItemClick(itemView: View)
         fun onItemOkClick(sticker: Sticker)
-        fun onItemSpeakClick(sticker: Sticker)
+        //fun onItemSpeakClick(sticker: Sticker)
 
     }
 

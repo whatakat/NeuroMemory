@@ -31,16 +31,16 @@ import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
-class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener {
+class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     @ExperimentalCoroutinesApi
     override val model: MainViewModel by viewModel()
     private val modelS: StickerViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_alert
     private lateinit var adapter: AlertAdapter
-    private var myTTS: TextToSpeech? = null
+    //private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
-    private var st:Sticker?=null
+    //private var st:Sticker?=null
     private var statusSp:Boolean = false
     private var animationDrawableAlert: AnimationDrawable? = null
 
@@ -61,28 +61,29 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 stickerOk(sticker)
             }
 
-            override fun onItemSpeakClick(sticker: Sticker) {
-                when (statusSp){
-                    false ->{
-                        st = sticker
-                        statusSp=true
-                        val checkIntent = Intent()
-                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
-                        startActivityForResult(checkIntent, 1)
-                        animationDrawableAlert?.start()
-                    }
-                    true ->{
-                        myTTS!!.stop()
-                        myTTS!!.shutdown()
-                        statusSp = false
-                    }
-                }
-            }
+//            override fun onItemSpeakClick(sticker: Sticker) {
+//                when (statusSp){
+//                    false ->{
+//                        st = sticker
+//                        statusSp=true
+//                        val checkIntent = Intent()
+//                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+//                        startActivityForResult(checkIntent, 1)
+//                        Thread { animationDrawableAlert?.start() }.start()
+//                    }
+//                    true ->{
+//                        myTTS!!.stop()
+//                        myTTS!!.shutdown()
+//                        statusSp = false
+//                    }
+//                }
+//            }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
+                    animationDrawableAlert?.start()
                 }else{
                     animateViewCancel(itemView)
                 }
@@ -109,34 +110,34 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     }
     override fun onDestroy() {
         super.onDestroy()
-        if (myTTS!=null){
-            myTTS!!.stop()
-            myTTS!!.shutdown()
-            statusSp = false
-        }
+//        if (myTTS!=null){
+//            myTTS!!.stop()
+//            myTTS!!.shutdown()
+//            statusSp = false
+//        }
     }
 
     override fun animateView(view: View) {
         //super.animateView(view)
         view.titleStick.animate().alpha(0.16F)
         view.langTwoI.alpha = 0.03F
-        view.animate().rotationX(180F)
+        //view.animate().rotationX(180F)
         view.animate().translationZ(150F)
         view.langTwoI.animate().alpha(1F)
         view.langOneI.visibility = View.INVISIBLE
         view.langTwoI.visibility = View.VISIBLE
-        view.langTwoI.rotationX = 180F
+       // view.langTwoI.rotationX = 180F
         view.status_star.animate().alpha(0.16F)
 
 
         view.fabOk.alpha = 0.2F
-        view.fabVolume.alpha = 0.2F
+       // view.fabVolume.alpha = 0.2F
         view.fabOk.animate().alpha(0.45F)
-        view.fabVolume.animate().alpha(0.07F)
+       // view.fabVolume.animate().alpha(0.07F)
         view.fabOk.show()
-        view.fabVolume.show()
-        view.fabOk.rotationX = 180F
-        view.fabVolume.rotationX = 180F
+        //view.fabVolume.show()
+//        view.fabOk.rotationX = 180F
+//        view.fabVolume.rotationX = 180F
 
     }
 
@@ -144,7 +145,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         //super.animateViewCancel(view)
         view.titleStick.animate().alpha(1F)
         view.status_star.animate().alpha(1F)
-        view.animate().rotationX(0F)
+       // view.animate().rotationX(0F)
         view.animate().translationZ(0F)
         view.langTwoI.animate().alpha(0.03F)
         view.langOneI.visibility = View.VISIBLE
@@ -152,7 +153,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
 
         view.fabOk.hide()
         view.fabOk.animate().alpha(0.2F)
-        view.fabVolume.animate().alpha(0.2F)
+        view.fabVolume.animate().alpha(0F)
         view.langTwoI.visibility = View.GONE
     }
     @ExperimentalCoroutinesApi
@@ -161,6 +162,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             sticker?.lastChanged =nextChange(sticker?.progressSt)
             sticker?.progressSt = nextLevel(sticker?.progressSt)
             sticker?.let { modelS.saveChanges(it)}
+//            if(myTTS!=null){
+//                myTTS!!.stop()
+//                myTTS!!.shutdown()
+//            }
             finish()
 
 
@@ -226,30 +231,30 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         return false
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1) {
-            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-                myTTS = TextToSpeech(this, this)
-                myTTS!!.language = Locale.ROOT
-            } else {
-                val ttsLoadIntent = Intent()
-                ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
-                    startActivity(ttsLoadIntent)
-            }
-        }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == 1) {
+//            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+//                myTTS = TextToSpeech(this, this)
+//                myTTS!!.language = Locale.ROOT
+//            } else {
+//                val ttsLoadIntent = Intent()
+//                ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
+//                    startActivity(ttsLoadIntent)
+//            }
+//        }
+//
+//    }
 
-    }
-
-    override fun onInit(status: Int) {
-            bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
-            if (status == TextToSpeech.SUCCESS) {
-                myTTS!!.speak(st!!.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
-                myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
-            } else if (status == TextToSpeech.ERROR) {
-                myTTS!!.shutdown()
-            }
-
-    }
+//    override fun onInit(status: Int) {
+//            bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
+//            if (status == TextToSpeech.SUCCESS) {
+//                myTTS!!.speak(st!!.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+//                myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+//            } else if (status == TextToSpeech.ERROR) {
+//                myTTS!!.shutdown()
+//            }
+//
+//    }
 
 }

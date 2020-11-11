@@ -6,19 +6,11 @@
     <item android:drawable="@drawable/alert_backgrount_front3" android:duration="30"/>
     <item android:drawable="@drawable/alert_backgrount_front4" android:duration="30"/>
     <item android:drawable="@drawable/alert_backgrount_front5" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front6" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front7" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front8" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front9" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front10" android:duration="30"/>
+    <item android:drawable="@drawable/alert_backgrount_front6" android:duration="60"/>
+    <item android:drawable="@drawable/alert_backgrount_front7" android:duration="90"/>
+    <item android:drawable="@drawable/alert_backgrount_front8" android:duration="100"/>
+    <item android:drawable="@drawable/alert_backgrount_front9" android:duration="60"/>
+    <item android:drawable="@drawable/alert_backgrount_front10" android:duration="40"/>
     <item android:drawable="@drawable/alert_backgrount_front11" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front12" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front13" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front14" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front15" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front16" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front17" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front18" android:duration="30"/>
-    <item android:drawable="@drawable/alert_backgrount_front1" android:duration="30"/>
-
+    <item android:drawable="@drawable/alert_backgrount_front1" android:duration="60"/>
 </animation-list>
