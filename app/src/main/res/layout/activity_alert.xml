@@ -25,8 +25,9 @@
     </com.google.android.material.appbar.AppBarLayout>
     <ImageView
         android:id="@+id/alert_title_background"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:contentDescription="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView
