@@ -30,6 +30,7 @@ import kotlinx.coroutines.launch
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
+import kotlin.time.toDuration
 
 class AlertActivity:BaseActivity<List<Sticker>?>() {
 
@@ -121,14 +122,15 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         //super.animateView(view)
         view.titleStick.animate().alpha(0.16F)
         view.langTwoI.alpha = 0.03F
-        view.animate().rotationX(180F).duration = 400
+        view.animate().rotationX(180F).duration = 500
         view.animate().translationZ(150F)
-        view.langTwoI.animate().alpha(1F)
-        view.langOneI.visibility = View.INVISIBLE
+        view.langTwoI.animate().alpha(1F).duration=800
+        view.langOneI.animate().alpha(0F).duration=800
         view.langTwoI.visibility = View.VISIBLE
         view.langTwoI.alpha = 1F//add
         view.langTwoI.rotationX = 180F
-        view.status_star.animate().alpha(0.16F)
+        view.status_star.animate().alpha(0.16F).duration=800
+        view.langOneI.visibility = View.INVISIBLE
 
 
         view.fabOk.alpha = 0F
@@ -144,18 +146,18 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
     override fun animateViewCancel(view: View) {
         //super.animateViewCancel(view)
-        view.titleStick.animate().alpha(1F)
-        view.status_star.animate().alpha(1F)
-        view.animate().rotationX(0F).duration=400
+        view.titleStick.animate().alpha(1F).duration = 800
+        view.status_star.animate().alpha(1F).duration = 800
+        view.animate().rotationX(0F).duration=500
         view.animate().translationZ(0F)
-        view.langTwoI.animate().alpha(0.03F)
-        view.langOneI.animate().alpha(1F)
+        view.langTwoI.animate().alpha(0.03F).duration = 800
+        view.langOneI.animate().alpha(1F).duration = 800
         view.langOneI.visibility = View.VISIBLE
 
 
         view.fabOk.hide()
-        view.fabOk.animate().alpha(0F)
-        view.fabVolume.animate().alpha(0F)
+        view.fabOk.animate().alpha(0F).duration = 800
+        view.fabVolume.animate().alpha(0F).duration = 800
         view.langTwoI.visibility = View.GONE//del
     }
     @ExperimentalCoroutinesApi
