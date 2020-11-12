@@ -122,7 +122,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         //super.animateView(view)
         view.titleStick.animate().alpha(0.16F)
         view.langTwoI.alpha = 0.03F
-        view.animate().rotationX(180F).duration = 500
+        view.animate().rotationX(180F).duration = 300
         view.animate().translationZ(150F)
         view.langTwoI.animate().alpha(1F).duration=800
         view.langOneI.animate().alpha(0F).duration=800
@@ -141,14 +141,13 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         //view.fabVolume.show()
         view.fabOk.rotationX = 180F
 //        view.fabVolume.rotationX = 180F
-
     }
 
     override fun animateViewCancel(view: View) {
         //super.animateViewCancel(view)
         view.titleStick.animate().alpha(1F).duration = 800
         view.status_star.animate().alpha(1F).duration = 800
-        view.animate().rotationX(0F).duration=500
+        view.animate().rotationX(0F).duration=300
         view.animate().translationZ(0F)
         view.langTwoI.animate().alpha(0.03F).duration = 800
         view.langOneI.animate().alpha(1F).duration = 800

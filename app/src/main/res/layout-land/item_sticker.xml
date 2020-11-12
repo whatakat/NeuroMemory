@@ -40,7 +40,7 @@
             android:gravity="center"
             android:text="@string/text"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:visibility="visible"
             android:layout_below="@id/titleStick"/>
         <ImageView
@@ -69,7 +69,7 @@
             android:gravity="center"
             android:text="@string/text"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:visibility="gone"
             android:background="@color/night_sky"
             android:layout_below="@id/titleStick"/>
@@ -82,7 +82,7 @@
             android:layout_alignParentTop="true"
             android:alpha="0.35"
             card_view:fabSize="mini"
-            android:backgroundTint="@color/night_sky"
+            android:backgroundTint="@color/white"
             android:src="@drawable/ic_check_black_24dp"
             android:visibility="gone"
             android:contentDescription="@string/app_name"/>
@@ -92,11 +92,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="45dp"
-            android:alpha="0.12"
+            android:layout_marginEnd="43dp"
+            android:alpha="0.2"
             card_view:fabSize="mini"
             android:backgroundTint="@color/black"
-            android:src="@drawable/ic_volume_mute_black_24dp"
+            android:src="@drawable/status_volume"
             android:contentDescription="@string/app_name"/>
     </RelativeLayout>
 

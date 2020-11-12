@@ -54,7 +54,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var listTitleName:Set<String> = setOf()
     private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
-    private var st:Sticker?=null
+    private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawable: AnimationDrawable? = null
     private val START ="All elements will be voiced"
@@ -79,16 +79,19 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 openStickerScreen(sticker)
             }
 
-            override fun onItemSpeakClick(sticker: Sticker) {
+            override fun onItemSpeakClick(view: View) {
                 when (statusSp) {
                     false -> {
-                        st = sticker
+                        st = view
                         statusSp = true
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
                         animationDrawable?.start()
                         showIn(alert_button_play)
+                        view.fabVolume.setImageLevel(1)
+
+
                     }
                     true -> {
                         myTTS!!.stop()
@@ -96,6 +99,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                         statusSp = false
                         animationDrawable?.stop()
                         showOut(alert_button_play)
+                        view.fabVolume.setImageLevel(0)
                     }
                 }
 
@@ -259,7 +263,7 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun animateViewCancel(view: View) {
-        view.fabVolume.animate().alpha(0.07F)
+        view.fabVolume.animate().alpha(0.2F)
         view.fabVolume.show()
         view.titleStick.animate().alpha(1F)
         view.status_star.animate().alpha(1F)
@@ -334,8 +338,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     override fun onInit(status: Int) {
         bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "speakText")
         if (status == TextToSpeech.SUCCESS) {
-            myTTS!!.speak(st!!.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
-            myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+            myTTS!!.speak(st!!.langOneI.text, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+            myTTS!!.speak(st!!.langTwoI.text, TextToSpeech.QUEUE_ADD, bundle, "speakText")
 
         } else if (status == TextToSpeech.ERROR) {
             myTTS!!.shutdown()
