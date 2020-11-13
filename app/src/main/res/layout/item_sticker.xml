@@ -22,6 +22,12 @@
         android:background="@drawable/neurom_stickb"
         android:backgroundTint="@color/white"
         >
+        <ImageView
+            android:id="@+id/pulse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.09"
+            android:contentDescription="@string/app_name" />
         <TextView
             android:id="@+id/titleStick"
             android:layout_width="match_parent"
@@ -90,8 +96,8 @@
             android:alpha="0.35"
             card_view:fabSize="mini"
             android:visibility="gone"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/ic_check_black_24dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/alert_animation_icon"
             android:contentDescription="@string/app_name"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabVolume"

@@ -8,14 +8,14 @@ androidExtensions {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.bankmtk.neuromemory"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "2.2"
+        versionCode 4
+        versionName "2.3"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

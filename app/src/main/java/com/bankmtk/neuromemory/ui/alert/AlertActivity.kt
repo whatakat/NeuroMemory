@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.Gravity
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -44,6 +45,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     //private var st:Sticker?=null
     private var statusSp:Boolean = false
     private var animationDrawableAlert: AnimationDrawable? = null
+    private var animationDrawablePulse: AnimationDrawable? = null
+
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,8 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
         val alertImageView = findViewById<ImageView>(R.id.alert_title_background)
         alertImageView.setBackgroundResource(R.drawable.title_animation_alert)
+
+
 
         animationDrawableAlert = alertImageView.background as AnimationDrawable
 
@@ -85,6 +90,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
                     animationDrawableAlert?.start()
+                    animationDrawablePulse?.start()
                 }else{
                     animateViewCancel(itemView)
                 }
@@ -119,45 +125,43 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     }
 
     override fun animateView(view: View) {
-        //super.animateView(view)
+        val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
+        view.startAnimation(animationAlertBack)
+
+        val alertImageViewPulse = findViewById<ImageView>(R.id.pulse)
+        alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
+        animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
+        animationDrawablePulse!!.start()
+
         view.titleStick.animate().alpha(0.16F)
-        view.langTwoI.alpha = 0.03F
-        view.animate().rotationX(180F).duration = 300
-        view.animate().translationZ(150F)
-        view.langTwoI.animate().alpha(1F).duration=800
-        view.langOneI.animate().alpha(0F).duration=800
+        view.langTwoI.animate().alpha(1F)//.duration=800
+        view.langOneI.animate().alpha(0F)//.duration=800
         view.langTwoI.visibility = View.VISIBLE
-        view.langTwoI.alpha = 1F//add
-        view.langTwoI.rotationX = 180F
-        view.status_star.animate().alpha(0.16F).duration=800
+        view.langTwoI.alpha = 1F
+        view.status_star.animate().alpha(0.16F)//.duration=800
         view.langOneI.visibility = View.INVISIBLE
 
-
         view.fabOk.alpha = 0F
-       // view.fabVolume.alpha = 0.2F
-        view.fabOk.animate().alpha(0.8F)
+        view.fabOk.animate().alpha(0.5F)
         view.fabVolume.animate().alpha(0F)
         view.fabOk.show()
-        //view.fabVolume.show()
-        view.fabOk.rotationX = 180F
-//        view.fabVolume.rotationX = 180F
+        //super.animateView(view)
     }
 
     override fun animateViewCancel(view: View) {
-        //super.animateViewCancel(view)
-        view.titleStick.animate().alpha(1F).duration = 800
-        view.status_star.animate().alpha(1F).duration = 800
-        view.animate().rotationX(0F).duration=300
-        view.animate().translationZ(0F)
-        view.langTwoI.animate().alpha(0.03F).duration = 800
-        view.langOneI.animate().alpha(1F).duration = 800
+        val animationAlertFront = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
+        view.startAnimation(animationAlertFront)
+        view.titleStick.animate().alpha(1F)
+        view.status_star.animate().alpha(1F)
+        view.langTwoI.animate().alpha(0.03F)
+        view.langOneI.animate().alpha(1F)
         view.langOneI.visibility = View.VISIBLE
-
 
         view.fabOk.hide()
         view.fabOk.animate().alpha(0F).duration = 800
         view.fabVolume.animate().alpha(0F).duration = 800
         view.langTwoI.visibility = View.GONE//del
+        //super.animateViewCancel(view)
     }
     @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){
