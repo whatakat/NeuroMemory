@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
@@ -128,21 +129,21 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
         view.startAnimation(animationAlertBack)
 
-        val alertImageViewPulse = findViewById<ImageView>(R.id.pulse)
+        val alertImageViewPulse = view.pulse
         alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
         animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
         animationDrawablePulse!!.start()
 
         view.titleStick.animate().alpha(0.16F)
-        view.langTwoI.animate().alpha(1F)//.duration=800
-        view.langOneI.animate().alpha(0F)//.duration=800
+        view.langTwoI.animate().alpha(1F)
+        view.langOneI.animate().alpha(0F)
         view.langTwoI.visibility = View.VISIBLE
         view.langTwoI.alpha = 1F
-        view.status_star.animate().alpha(0.16F)//.duration=800
+        view.status_star.animate().alpha(0.16F)
         view.langOneI.visibility = View.INVISIBLE
 
         view.fabOk.alpha = 0F
-        view.fabOk.animate().alpha(0.5F)
+        view.fabOk.animate().alpha(1F)
         view.fabVolume.animate().alpha(0F)
         view.fabOk.show()
         //super.animateView(view)
@@ -161,6 +162,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         view.fabOk.animate().alpha(0F).duration = 800
         view.fabVolume.animate().alpha(0F).duration = 800
         view.langTwoI.visibility = View.GONE//del
+        animationDrawablePulse!!.stop()
         //super.animateViewCancel(view)
     }
     @ExperimentalCoroutinesApi
@@ -173,14 +175,14 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 //                myTTS!!.stop()
 //                myTTS!!.shutdown()
 //            }
-            finish()
-
-
-
+            onBackPressed()
+            //finish()
         }
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
+
         if (isHaveItem(adapter.stickers)){
-            startActivity(getStartIntent(this))
+            android.os.Handler().postDelayed({startActivity(getStartIntent(this))},1000)
+
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
             myToast.setGravity(Gravity.CENTER, 0,200)
@@ -194,11 +196,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         }
     }
 
-
-    override fun finish() {
-        super.finish()
-     //   overridePendingTransition(R.anim.slidein,R.anim.sticker_zoom_out)
-    }
     private fun nextChange(progressSt:Int?):Date{
         var nextDate = Date()
         when(progressSt){
@@ -238,7 +235,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         return false
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 //        super.onActivityResult(requestCode, resultCode, data)
 //        if (requestCode == 1) {
 //            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {

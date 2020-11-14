@@ -43,7 +43,9 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
             holder.bind(stickers[position])
-        Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
+            Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
+
+
     }
     private fun setAnimation(viewToAnimate: View,){
         val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_zoom_in)

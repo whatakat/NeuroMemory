@@ -26,7 +26,7 @@
             android:id="@+id/pulse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.09"
+            android:alpha="0.7"
             android:contentDescription="@string/app_name" />
         <TextView
             android:id="@+id/titleStick"
@@ -91,13 +91,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="55dp"
+            android:layout_marginEnd="50dp"
             android:layout_marginTop="10dp"
-            android:alpha="0.35"
+            android:alpha="1"
             card_view:fabSize="mini"
             android:visibility="gone"
             android:backgroundTint="@color/black"
-            android:src="@drawable/alert_animation_icon"
+            android:src="@drawable/ic_beenhere_black_24dp"
             android:contentDescription="@string/app_name"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabVolume"
