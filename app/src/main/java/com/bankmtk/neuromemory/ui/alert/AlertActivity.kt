@@ -2,7 +2,10 @@ package com.bankmtk.neuromemory.ui.alert
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -47,7 +50,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
     private var statusSp:Boolean = false
     private var animationDrawableAlert: AnimationDrawable? = null
     private var animationDrawablePulse: AnimationDrawable? = null
-
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,18 +114,19 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             AlertActivity::class.java)
     }
 
-    override fun onPause() {
+
+        override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.alert_slidein,R.anim.sticker_zoom_out)
+        overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
     }
-    override fun onDestroy() {
-        super.onDestroy()
+//    override fun onDestroy() {
+//        super.onDestroy()
 //        if (myTTS!=null){
 //            myTTS!!.stop()
 //            myTTS!!.shutdown()
 //            statusSp = false
 //        }
-    }
+//    }
 
     override fun animateView(view: View) {
         val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
@@ -131,6 +134,9 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
         val alertImageViewPulse = view.pulse
         alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
+
+
+
         animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
         animationDrawablePulse!!.start()
 
@@ -146,6 +152,14 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         view.fabOk.animate().alpha(1F)
         view.fabVolume.animate().alpha(0F)
         view.fabOk.show()
+        val drawable: Drawable =  view.fabOk.drawable
+        if (drawable is Animatable ){
+            drawable.start()
+        }
+        val drawableRing: Drawable? =  view.ring!!.drawable
+        if (drawableRing is Animatable ){
+            drawableRing.start()
+        }
         //super.animateView(view)
     }
 
@@ -175,9 +189,9 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 //                myTTS!!.stop()
 //                myTTS!!.shutdown()
 //            }
-            onBackPressed()
-            //finish()
         }
+        finish()
+        overridePendingTransition(R.anim.alert_slideout,R.anim.alert_slidein)
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
 
         if (isHaveItem(adapter.stickers)){

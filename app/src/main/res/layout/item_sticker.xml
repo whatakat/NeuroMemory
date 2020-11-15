@@ -23,6 +23,13 @@
         android:backgroundTint="@color/white"
         >
         <ImageView
+            android:id="@+id/ring"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="1"
+            card_view:srcCompat ="@drawable/ic_draw_back_move"
+            android:contentDescription="@string/app_name" />
+        <ImageView
             android:id="@+id/pulse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -97,7 +104,7 @@
             card_view:fabSize="mini"
             android:visibility="gone"
             android:backgroundTint="@color/black"
-            android:src="@drawable/ic_beenhere_black_24dp"
+            card_view:srcCompat="@drawable/ic_icon_ok"
             android:contentDescription="@string/app_name"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabVolume"

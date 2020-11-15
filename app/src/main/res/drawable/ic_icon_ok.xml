@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+<vector
+    android:autoMirrored="true"
+    android:height="400dp"
+    android:viewportHeight="400"
+    android:viewportWidth="400"
+    android:width="400dp">
+
+    <group android:name="point1">
+        <path android:fillAlpha="1" android:fillColor="#fbf7f7" android:pathData="M160.47,336.3L174.7,336.3L180.8,325.04L174.7,313.7L160.47,313.7L154.19,325.04L160.47,336.3Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M160.47,336.3L174.7,336.3L180.8,325.04L174.7,313.7L160.47,313.7L154.19,325.04L160.47,336.3Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+
+    <group android:name="point2">
+        <path android:fillAlpha="1" android:fillColor="#fbf8f8" android:pathData="M192.97,300L207.21,300L213.31,288.74L207.21,277.4L192.97,277.4L186.69,288.74L192.97,300Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M192.97,300L207.21,300L213.31,288.74L207.21,277.4L192.97,277.4L186.69,288.74L192.97,300Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point3">
+        <path android:fillAlpha="0.8" android:fillColor="#fcf9f9" android:pathData="M217.12,263.93L231.35,263.93L237.46,252.67L231.35,241.34L217.12,241.34L210.84,252.67L217.12,263.93Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M217.12,263.93L231.35,263.93L237.46,252.67L231.35,241.34L217.12,241.34L210.84,252.67L217.12,263.93Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point4">
+        <path android:fillAlpha="0.7" android:fillColor="#ffffff" android:pathData="M243.79,226.91L258.02,226.91L264.13,215.65L258.02,204.32L243.79,204.32L237.51,215.65L243.79,226.91Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M243.79,226.91L258.02,226.91L264.13,215.65L258.02,204.32L243.79,204.32L237.51,215.65L243.79,226.91Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point5">
+        <path android:fillAlpha="0.6" android:fillColor="#ffffff" android:pathData="M265.97,196.6L280.21,196.6L286.31,185.34L280.21,174L265.97,174L259.69,185.34L265.97,196.6Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M265.97,196.6L280.21,196.6L286.31,185.34L280.21,174L265.97,174L259.69,185.34L265.97,196.6Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point6">
+        <path android:fillAlpha="0.5" android:fillColor="#ffffff" android:pathData="M284.04,169.94L298.27,169.94L304.38,158.68L298.27,147.34L284.04,147.34L277.76,158.68L284.04,169.94Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M284.04,169.94L298.27,169.94L304.38,158.68L298.27,147.34L284.04,147.34L277.76,158.68L284.04,169.94Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point7">
+        <path android:fillAlpha="0.3" android:fillColor="#ffffff" android:pathData="M302.28,143.95L316.51,143.95L322.62,132.69L316.51,121.35L302.28,121.35L296,132.69L302.28,143.95Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M302.28,143.95L316.51,143.95L322.62,132.69L316.51,121.35L302.28,121.35L296,132.69L302.28,143.95Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point8">
+        <path android:fillAlpha="0.1" android:fillColor="#ffffff" android:pathData="M320.79,117.94L335.02,117.94L341.13,106.68L335.02,95.34L320.79,95.34L314.51,106.68L320.79,117.94Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M320.79,117.94L335.02,117.94L341.13,106.68L335.02,95.34L320.79,95.34L314.51,106.68L320.79,117.94Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point9">
+        <path android:fillAlpha="0.17" android:fillColor="#f9f7f7" android:pathData="M62.59,186.77L76.82,186.77L82.92,175.51L76.82,164.18L62.59,164.18L56.3,175.51L62.59,186.77Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M62.59,186.77L76.82,186.77L82.92,175.51L76.82,164.18L62.59,164.18L56.3,175.51L62.59,186.77Z"
+            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point10">
+        <path android:fillAlpha="0.3" android:fillColor="#fbf8f8" android:pathData="M79,213.52L93.23,213.52L99.33,202.26L93.23,190.92L79,190.92L72.71,202.26L79,213.52Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M79,213.52L93.23,213.52L99.33,202.26L93.23,190.92L79,190.92L72.71,202.26L79,213.52Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point11">
+        <path android:fillAlpha="0.3" android:fillColor="#fbf8f8" android:pathData="M97.08,241.34L111.31,241.34L117.41,230.08L111.31,218.74L97.08,218.74L90.8,230.08L97.08,241.34Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M97.08,241.34L111.31,241.34L117.41,230.08L111.31,218.74L97.08,218.74L90.8,230.08L97.08,241.34Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point12">
+        <path android:fillAlpha="0.4" android:fillColor="#fbf8f8" android:pathData="M117.17,271.93L131.4,271.93L137.51,260.67L131.4,249.34L117.17,249.34L110.89,260.67L117.17,271.93Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M117.17,271.93L131.4,271.93L137.51,260.67L131.4,249.34L117.17,249.34L110.89,260.67L117.17,271.93Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+    <group android:name="point13">
+        <path android:fillAlpha="0.72" android:fillColor="#fcf9f9" android:pathData="M137.11,304.07L151.34,304.07L157.45,292.81L151.34,281.48L137.11,281.48L130.83,292.81L137.11,304.07Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M137.11,304.07L151.34,304.07L157.45,292.81L151.34,281.48L137.11,281.48L130.83,292.81L137.11,304.07Z"
+            android:strokeAlpha="1" android:strokeColor="#fbf8f8" android:strokeWidth="1"/>
+    </group>
+</vector>
+    </aapt:attr>
+    <target android:name="point1">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateX"
+                android:valueFrom="0"
+                android:valueTo="-10"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-10"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point2">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-50"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-50"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point3">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-100"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-100"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point4">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="600"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-160"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="600"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-160"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point5">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="700"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-200"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="700"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-200"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point6">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-240"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-240"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point7">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="900"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-280"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="900"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-280"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point8">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="-320"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="-320"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point9">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="700"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="180"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="700"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="180"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point10">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="600"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="600"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point11">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="120"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="120"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point12">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="80"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="80"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="point13">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="0"
+                    android:valueTo="40"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateX"
+                    android:valueFrom="40"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

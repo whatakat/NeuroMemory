@@ -91,7 +91,7 @@
             card_view:fabSize="mini"
             android:visibility="gone"
             android:backgroundTint="@color/black"
-            android:src="@drawable/ic_beenhere_black_24dp"
+            android:src="@drawable/ic_icon_ok"
             android:contentDescription="@string/app_name"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabVolume"

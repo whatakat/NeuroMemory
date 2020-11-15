@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+<vector android:autoMirrored="true" android:height="250dp"
+    android:viewportHeight="250" android:viewportWidth="250"
+    android:width="250dp">
+    <group android:name="ring1">
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M67.72,17.99L176.64,13.73L243.38,93.75L225.38,199.79L125,247.16L25.53,200.75L5.68,93.75L67.72,17.99Z"
+            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="1"/>
+    </group>
+    <group android:name="ring2">
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M50.09,33.74L155.65,6.54L237.81,70.62L242.66,178.07L154.57,245.6L47.53,221.29L5.5,120.91L50.09,33.74Z"
+            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="2"/>
+    </group>
+    <group android:name="ring3">
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M19.67,61.51L114.1,7.08L210.41,46.86L243.81,149.1L176.98,237.73L67.34,242.92L0,157.44L19.67,61.51Z"
+            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="2"/>
+    </group>
+    <group android:name="ring4">
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M6.91,158.69L31.24,52.43L125.91,8.9L223.57,53.96L243.09,163.23L172.32,247.13L63.85,238.35L6.91,158.69Z"
+            android:strokeAlpha="1" android:strokeColor="#fefbfb" android:strokeWidth="3"/>
+    </group>
+</vector>
+    </aapt:attr>
+
+    <target android:name="ring1">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="1"
+                android:valueTo="360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="1000"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="ring2">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="-360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="1000"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="ring3">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="1000"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="ring4">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="-360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="1000"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+
+</animated-vector>
