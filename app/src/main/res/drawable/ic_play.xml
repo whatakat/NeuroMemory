@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+<vector android:autoMirrored="true" android:height="200dp"
+    android:viewportHeight="200" android:viewportWidth="50"
+    android:width="50dp">
+    <group android:name="top_point">
+        <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M10.87,6.73C10.87,9 9,10.84 6.69,10.84C4.38,10.84 2.5,9 2.5,6.73C2.5,4.46 4.38,2.62 6.69,2.62C9,2.62 10.87,4.46 10.87,6.73Z"/>
+    </group>
+    <group android:name="right_point">
+        <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M46.88,28.13C46.88,30.39 45,32.23 42.69,32.23C40.38,32.23 38.5,30.39 38.5,28.13C38.5,25.86 40.38,24.02 42.69,24.02C45,24.02 46.88,25.86 46.88,28.13Z"/>
+    </group>
+    <group android:name="button_point">
+        <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M10.44,49.02C10.44,51.29 8.56,53.13 6.25,53.13C3.94,53.13 2.06,51.29 2.06,49.02C2.06,46.75 3.94,44.91 6.25,44.91C8.56,44.91 10.44,46.75 10.44,49.02Z"/>
+    </group>
+    <group android:name="middle_left">
+        <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M7.75,28.13C7.75,29.39 6.71,30.42 5.44,30.42C4.16,30.42 3.13,29.39 3.13,28.13C3.13,26.86 4.16,25.83 5.44,25.83C6.71,25.83 7.75,26.86 7.75,28.13Z"/>
+    </group>
+    <group android:name="middle_top">
+        <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M27.31,17.92C27.31,19.18 26.28,20.21 25,20.21C23.72,20.21 22.69,19.18 22.69,17.92C22.69,16.65 23.72,15.62 25,15.62C26.28,15.62 27.31,16.65 27.31,17.92Z"/>
+    </group>
+    <group android:name="middle_button">
+        <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M27.31,38.33C27.31,39.6 26.28,40.63 25,40.63C23.72,40.63 22.69,39.6 22.69,38.33C22.69,37.07 23.72,36.04 25,36.04C26.28,36.04 27.31,37.07 27.31,38.33Z"/>
+    </group>
+</vector>
+    </aapt:attr>
+    <target android:name="top_point">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+            android:duration="1500"
+            android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+            android:propertyName="translateY"
+            android:valueFrom="250"
+            android:valueTo="0"
+            android:repeatCount="0"
+            android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="right_point">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1800"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="button_point">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="2100"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="middle_left">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="middle_top">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="700"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="middle_button">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="900"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+</animated-vector>

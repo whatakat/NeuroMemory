@@ -1,5 +1,7 @@
 package com.bankmtk.neuromemory.ui.main
 
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
@@ -31,16 +33,16 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
 
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
-        holder.bind(stickers[position])
-        if (position!=0){
+       holder.bind(stickers[position])
             Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
-        }
-
-
     }
-    private fun setAnimation(viewToAnimate: View,){
+    private fun setAnimation(viewToAnimate: View){
             val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.push_in)
             viewToAnimate.startAnimation(animation)
+        val drawableRing: Drawable? =  viewToAnimate.ring!!.drawable
+        if (drawableRing is Animatable){
+            drawableRing.start()
+        }
     }
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer{

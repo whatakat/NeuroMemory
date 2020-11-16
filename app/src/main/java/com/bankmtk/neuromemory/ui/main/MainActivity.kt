@@ -9,7 +9,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimationDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -37,7 +39,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-
+private const val START ="All elements will be voiced"
 class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener {
 
     @ExperimentalCoroutinesApi
@@ -58,7 +60,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawable: AnimationDrawable? = null
-    private val START ="All elements will be voiced"
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,25 +85,54 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 when (statusSp) {
                     false -> {
                         st = view
-                        statusSp = true
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
                         animationDrawable?.start()
                         showIn(alert_button_play)
                         view.fabVolume.setImageLevel(1)
+                        statusSp = true
 
-
+                        val myToast = Toast.makeText(this@MainActivity, R.string.play, Toast.LENGTH_LONG)
+                        myToast.setGravity(Gravity.TOP, 0, 400)
+                        val toastContainer = myToast.view as LinearLayout
+                        val myImage = ImageView(this@MainActivity)
+                        myImage.setImageResource(R.drawable.ic_play)
+                        toastContainer.addView(myImage, 0)
+                        toastContainer.setBackgroundColor(Color.TRANSPARENT)
+                        myToast.show()
+                        val drawablePlay: Drawable =  myImage.drawable
+                        if (drawablePlay is Animatable){
+                            drawablePlay.start()
+                        }
                     }
                     true -> {
-                        myTTS!!.stop()
-                        myTTS!!.shutdown()
-                        statusSp = false
-                        animationDrawable?.stop()
-                        showOut(alert_button_play)
-                        view.fabVolume.setImageLevel(0)
+                        if (myTTS!=null){
+                            myTTS!!.stop()
+                            myTTS!!.shutdown()
+                            statusSp = false
+                            animationDrawable?.stop()
+                            showOut(alert_button_play)
+                            view.fabVolume.setImageLevel(0)
+
+                            val myToast = Toast.makeText(this@MainActivity, R.string.stop, Toast.LENGTH_SHORT)
+                            myToast.setGravity(Gravity.TOP, 0, 400)
+                            val toastContainer = myToast.view as LinearLayout
+                            val myImage = ImageView(this@MainActivity)
+                            myImage.setImageResource(R.drawable.ic_stop)
+                            toastContainer.addView(myImage, 0)
+                            toastContainer.setBackgroundColor(Color.TRANSPARENT)
+                            myToast.show()
+                            val drawableStop: Drawable =  myImage.drawable
+                            if (drawableStop is Animatable){
+                                drawableStop.start()
+                            }
+                        }
+
                     }
+
                 }
+
 
             }
 
@@ -176,6 +206,18 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         for (i in adapter.stickers){
             myTTS!!.speak(i.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
             myTTS!!.speak(i.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+        }
+        val myToast = Toast.makeText(this@MainActivity, R.string.all_elements, Toast.LENGTH_SHORT)
+        myToast.setGravity(Gravity.TOP, 0, 400)
+        val toastContainer = myToast.view as LinearLayout
+        val myImage = ImageView(this@MainActivity)
+        myImage.setImageResource(R.drawable.ic_inclusive)
+        toastContainer.addView(myImage, 0)
+        toastContainer.setBackgroundColor(Color.TRANSPARENT)
+        myToast.show()
+        val drawablePlayAll: Drawable =  myImage.drawable
+        if (drawablePlayAll is Animatable){
+            drawablePlayAll.start()
         }
         //myTTS!!.playSilentUtterance(1000,2,"Silence")
     }
@@ -266,6 +308,7 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         view.langTwoI.visibility = View.VISIBLE
         view.langTwoI.rotationY = 180F
         view.status_star.animate().alpha(0.16F)
+
     }
 
     override fun animateViewCancel(view: View) {

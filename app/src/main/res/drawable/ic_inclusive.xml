@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector android:autoMirrored="true" android:height="200dp"
+    android:viewportHeight="200" android:viewportWidth="50"
+    android:width="50dp">
+            <group android:name="one">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M29.19,8.39C29.19,10.66 27.31,12.5 25,12.5C22.69,12.5 20.81,10.66 20.81,8.39C20.81,6.13 22.69,4.29 25,4.29C27.31,4.29 29.19,6.13 29.19,8.39Z"/>
+            </group>
+            <group android:name="two">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M27.31,25C27.31,26.27 26.28,27.29 25,27.29C23.72,27.29 22.69,26.27 22.69,25C22.69,23.73 23.72,22.71 25,22.71C26.28,22.71 27.31,23.73 27.31,25Z"/>
+            </group>
+            <group android:name="three">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M29.19,41.61C29.19,43.87 27.31,45.71 25,45.71C22.69,45.71 20.81,43.87 20.81,41.61C20.81,39.34 22.69,37.5 25,37.5C27.31,37.5 29.19,39.34 29.19,41.61Z"/>
+            </group>
+            <group android:name="four">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M27.31,57.49C27.31,58.76 26.28,59.78 25,59.78C23.72,59.78 22.69,58.76 22.69,57.49C22.69,56.22 23.72,55.2 25,55.2C26.28,55.2 27.31,56.22 27.31,57.49Z"/>
+            </group>
+            <group android:name="five">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M29.19,70.89C29.19,73.16 27.31,75 25,75C22.69,75 20.81,73.16 20.81,70.89C20.81,68.63 22.69,66.79 25,66.79C27.31,66.79 29.19,68.63 29.19,70.89Z"/>
+            </group>
+            <group android:name="six">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M27.31,87.5C27.31,88.77 26.28,89.79 25,89.79C23.72,89.79 22.69,88.77 22.69,87.5C22.69,86.23 23.72,85.21 25,85.21C26.28,85.21 27.31,86.23 27.31,87.5Z"/>
+            </group>
+            <group android:name="seven">
+                <path android:fillAlpha="1" android:fillColor="#ffffff" android:pathData="M29.19,102.14C29.19,104.41 27.31,106.25 25,106.25C22.69,106.25 20.81,104.41 20.81,102.14C20.81,99.88 22.69,98.04 25,98.04C27.31,98.04 29.19,99.88 29.19,102.14Z"/>
+            </group>
+</vector>
+    </aapt:attr>
+    <target android:name="one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="700"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+    <target android:name="two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="900"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+    <target android:name="three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1200"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+    <target android:name="four">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1500"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+    <target android:name="five">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1700"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+    <target android:name="six">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1900"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+    <target android:name="seven">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="2100"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="translateY"
+                android:valueFrom="250"
+                android:valueTo="0"
+                android:repeatCount="0"
+                android:valueType="floatType"
+                />
+        </aapt:attr>
+    </target>
+</animated-vector>

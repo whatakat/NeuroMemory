@@ -99,7 +99,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
                     animationDrawableAlert?.start()
-                    animationDrawablePulse?.start()
                 }else{
                     animateViewCancel(itemView)
                 }
@@ -157,8 +156,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
 
         val alertImageViewPulse = view.pulse
         alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
-
-
 
         animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
         animationDrawablePulse!!.start()
