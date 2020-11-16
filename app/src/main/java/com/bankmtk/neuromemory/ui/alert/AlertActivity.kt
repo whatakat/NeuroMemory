@@ -37,16 +37,16 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.time.toDuration
 
-class AlertActivity:BaseActivity<List<Sticker>?>() {
+class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener {
 
     @ExperimentalCoroutinesApi
     override val model: MainViewModel by viewModel()
     private val modelS: StickerViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_alert
     private lateinit var adapter: AlertAdapter
-    //private var myTTS: TextToSpeech? = null
+    private var myTTS: TextToSpeech? = null
     private val bundle = Bundle()
-    //private var st:Sticker?=null
+    private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawableAlert: AnimationDrawable? = null
     private var animationDrawablePulse: AnimationDrawable? = null
@@ -68,17 +68,23 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
 
             override fun onItemOkClick(sticker: Sticker) {
                 stickerOk(sticker)
+                if(myTTS!=null){
+                    myTTS!!.stop()
+                    myTTS!!.shutdown()
+                    statusSp = false
+                }
+
             }
 
-//            override fun onItemSpeakClick(sticker: Sticker) {
+//            override fun onItemSpeakClick(view: View) {
 //                when (statusSp){
 //                    false ->{
-//                        st = sticker
+//                        st = view
 //                        statusSp=true
 //                        val checkIntent = Intent()
 //                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
 //                        startActivityForResult(checkIntent, 1)
-//                        Thread { animationDrawableAlert?.start() }.start()
+//                        //Thread { animationDrawableAlert?.start() }.start()
 //                    }
 //                    true ->{
 //                        myTTS!!.stop()
@@ -97,11 +103,28 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
                 }else{
                     animateViewCancel(itemView)
                 }
+                when (statusSp){
+                    false ->{
+                        st = itemView
+                        statusSp=true
+                        val checkIntent = Intent()
+                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
+                        startActivityForResult(checkIntent, 1)
+                        //Thread { animationDrawableAlert?.start() }.start()
+                    }
+                    true ->{
+                        myTTS!!.stop()
+                        myTTS!!.shutdown()
+                        statusSp = false
+                    }
+                }
             }
+
 
         })
         myRecycler.adapter = adapter
     }
+
 
 
     override fun renderData(data: List<Sticker>?) {
@@ -119,14 +142,14 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         super.onPause()
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
     }
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        if (myTTS!=null){
-//            myTTS!!.stop()
-//            myTTS!!.shutdown()
-//            statusSp = false
-//        }
-//    }
+    override fun onDestroy() {
+        super.onDestroy()
+        if (myTTS!=null){
+            myTTS!!.stop()
+            myTTS!!.shutdown()
+            statusSp = false
+        }
+    }
 
     override fun animateView(view: View) {
         val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
@@ -185,10 +208,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
             sticker?.lastChanged =nextChange(sticker?.progressSt)
             sticker?.progressSt = nextLevel(sticker?.progressSt)
             sticker?.let { modelS.saveChanges(it)}
-//            if(myTTS!=null){
-//                myTTS!!.stop()
-//                myTTS!!.shutdown()
-//            }
+            if(myTTS!=null){
+                myTTS!!.stop()
+                myTTS!!.shutdown()
+            }
         }
         finish()
         overridePendingTransition(R.anim.alert_slideout,R.anim.alert_slidein)
@@ -249,30 +272,29 @@ class AlertActivity:BaseActivity<List<Sticker>?>() {
         return false
     }
 
-    //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == 1) {
-//            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
-//                myTTS = TextToSpeech(this, this)
-//                myTTS!!.language = Locale.ROOT
-//            } else {
-//                val ttsLoadIntent = Intent()
-//                ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
-//                    startActivity(ttsLoadIntent)
-//            }
-//        }
-//
-//    }
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                myTTS = TextToSpeech(this, this)
+                myTTS!!.language = Locale.ROOT
+            } else {
+                val ttsLoadIntent = Intent()
+                ttsLoadIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
+                    startActivity(ttsLoadIntent)
+            }
+        }
 
-//    override fun onInit(status: Int) {
-//            bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
-//            if (status == TextToSpeech.SUCCESS) {
-//                myTTS!!.speak(st!!.langOne, TextToSpeech.QUEUE_ADD, bundle, "speakText")
-//                myTTS!!.speak(st!!.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
-//            } else if (status == TextToSpeech.ERROR) {
-//                myTTS!!.shutdown()
-//            }
-//
-//    }
+    }
+
+    override fun onInit(status: Int) {
+            bundle.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID,"speakText")
+            if (status == TextToSpeech.SUCCESS) {
+                myTTS!!.speak(st!!.langTwoI.text, TextToSpeech.QUEUE_ADD, bundle, "speakText")
+            } else if (status == TextToSpeech.ERROR) {
+                myTTS!!.shutdown()
+            }
+
+    }
 
 }

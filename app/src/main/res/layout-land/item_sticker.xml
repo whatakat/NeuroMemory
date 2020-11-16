@@ -20,10 +20,16 @@
         android:gravity="center"
         android:orientation="horizontal">
         <ImageView
+            android:id="@+id/ring"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="1"
+            android:contentDescription="@string/app_name" />
+        <ImageView
             android:id="@+id/pulse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.7"
+            android:alpha="0.4"
             android:src="@drawable/alert_animation_icon"
             android:contentDescription="@string/app_name" />
         <TextView
@@ -78,7 +84,6 @@
             android:textColor="@color/white"
             android:textSize="16sp"
             android:visibility="gone"
-            android:background="@color/night_sky"
             android:layout_below="@id/titleStick"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

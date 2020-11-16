@@ -153,6 +153,11 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
          val alertIntent = Intent(this, AlertActivity::class.java)
          if (isHaveItem(adapter.stickers)){
              startActivity(alertIntent)
+             if (myTTS!=null){
+                 myTTS!!.stop()
+                 myTTS!!.shutdown()
+                 statusSp = false
+             }
          }else
          {
              val myToast = Toast.makeText(this, R.string.no_active_tasks, Toast.LENGTH_SHORT)

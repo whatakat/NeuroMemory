@@ -110,6 +110,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -129,6 +145,22 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="translateX"
                     android:valueFrom="-50"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
@@ -154,6 +186,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -173,6 +221,22 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="translateX"
                     android:valueFrom="-160"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
@@ -198,6 +262,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -217,6 +297,22 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="translateX"
                     android:valueFrom="-240"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
@@ -242,6 +338,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -261,6 +373,22 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="translateX"
                     android:valueFrom="-320"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
@@ -286,6 +414,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -305,6 +449,22 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="translateX"
                     android:valueFrom="150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
@@ -330,6 +490,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -352,6 +528,22 @@
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
@@ -371,6 +563,22 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="translateX"
                     android:valueFrom="40"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-150"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="3000"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="-150"
                     android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />

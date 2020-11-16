@@ -6,25 +6,36 @@
 <vector android:autoMirrored="true" android:height="250dp"
     android:viewportHeight="250" android:viewportWidth="250"
     android:width="250dp">
-    <group android:name="ring1">
+    <group android:name="ring1" android:pivotX="125" android:pivotY="125">
+
         <path android:fillAlpha="0" android:fillColor="#FF000000"
-            android:pathData="M67.72,17.99L176.64,13.73L243.38,93.75L225.38,199.79L125,247.16L25.53,200.75L5.68,93.75L67.72,17.99Z"
-            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="1"/>
+            android:pathData="M230.34,185.73L246.47,122.85L229.58,63.51L181.71,19.46L125,4.65L59.88,23.88L17.67,67.8L2.41,131.38L2.8,131.7L24.72,188.03L69.03,232.48L129.68,246.95L189.38,230.67L230.34,185.73Z"
+            android:strokeAlpha="0.2" android:strokeColor="#ffffff" android:strokeWidth="1"/>
     </group>
-    <group android:name="ring2">
+    <group android:name="ring2" android:pivotX="125" android:pivotY="125">
         <path android:fillAlpha="0" android:fillColor="#FF000000"
-            android:pathData="M50.09,33.74L155.65,6.54L237.81,70.62L242.66,178.07L154.57,245.6L47.53,221.29L5.5,120.91L50.09,33.74Z"
-            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="2"/>
+            android:pathData="M207.09,213.55L240.94,158.88L242.49,97.79L210.18,41.98L160.85,11.21L93.51,10.12L40.56,39.15L7.32,94.74L7.6,95.16L11.71,154.9L40.53,210.02L93.69,241.65L155.03,243.92L207.09,213.55Z"
+            android:strokeAlpha="0.2" android:strokeColor="#ffffff" android:strokeWidth="1"/>
     </group>
-    <group android:name="ring3">
+    <group android:name="ring3" android:pivotX="125" android:pivotY="125">
         <path android:fillAlpha="0" android:fillColor="#FF000000"
-            android:pathData="M19.67,61.51L114.1,7.08L210.41,46.86L243.81,149.1L176.98,237.73L67.34,242.92L0,157.44L19.67,61.51Z"
-            android:strokeAlpha="1" android:strokeColor="#fcf9f9" android:strokeWidth="2"/>
+            android:pathData="M228.95,183.73L244.56,122.1L227.72,64.07L180.48,21.14L124.66,6.88L60.71,25.99L19.38,69.17L4.63,131.49L5.01,131.81L26.79,186.87L70.53,230.2L130.22,244.11L188.86,227.91L228.95,183.73Z"
+            android:strokeAlpha="0.2" android:strokeColor="#ffffff" android:strokeWidth="1"/>
     </group>
-    <group android:name="ring4">
+    <group android:name="ring4" android:pivotX="125" android:pivotY="125">
         <path android:fillAlpha="0" android:fillColor="#FF000000"
-            android:pathData="M6.91,158.69L31.24,52.43L125.91,8.9L223.57,53.96L243.09,163.23L172.32,247.13L63.85,238.35L6.91,158.69Z"
-            android:strokeAlpha="1" android:strokeColor="#fefbfb" android:strokeWidth="3"/>
+            android:pathData="M244.41,127.9L229.5,66.09L187.57,22.59L125.77,6.61L69.73,20.01L22.05,66.72L5.6,124.18L21.59,186.2L22.08,186.29L67,224.87L125.89,242.83L185.19,227.32L229.53,185.66L244.41,127.9Z"
+            android:strokeAlpha="0.2" android:strokeColor="#ffffff" android:strokeWidth="1"/>
+    </group>
+    <group android:name="atom" android:pivotX="110" android:pivotY="100">
+        <path android:fillAlpha="0.4" android:fillColor="#fcf9f9" android:pathData="M75.26,125.88C75.26,126.73 74.59,127.42 73.76,127.42C72.93,127.42 72.25,126.73 72.25,125.88C72.25,125.04 72.93,124.35 73.76,124.35C74.59,124.35 75.26,125.04 75.26,125.88Z"/>
+
+    </group>
+    <group android:name="atom_two" android:pivotX="125" android:pivotY="125">
+        <path android:fillAlpha="0.5" android:fillColor="#fcf9f9" android:pathData="M159.26,93.88C159.26,94.73 158.59,95.42 157.76,95.42C156.93,95.42 156.25,94.73 156.25,93.88C156.25,93.04 156.93,92.35 157.76,92.35C158.59,92.35 159.26,93.04 159.26,93.88Z"/>
+    </group>
+    <group android:name="atom_three" android:pivotX="140" android:pivotY="140">
+        <path android:fillAlpha="1" android:fillColor="#fcf9f9" android:pathData="M177.26,182.88C177.26,183.73 176.59,184.42 175.76,184.42C174.93,184.42 174.25,183.73 174.25,182.88C174.25,182.04 174.93,181.35 175.76,181.35C176.59,181.35 177.26,182.04 177.26,182.88Z"/>
     </group>
 </vector>
     </aapt:attr>
@@ -38,7 +49,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="1000"
+                android:duration="6100"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -51,7 +62,7 @@
                 android:valueTo="-360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="1000"
+                android:duration="6000"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -64,7 +75,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="1000"
+                android:duration="6300"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -77,7 +88,46 @@
                 android:valueTo="-360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="1000"
+                android:duration="6400"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="atom">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="-360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="2000"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="atom_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="1500"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+    <target android:name="atom_three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="infinite"
+                android:repeatMode="restart"
+                android:duration="1800"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
