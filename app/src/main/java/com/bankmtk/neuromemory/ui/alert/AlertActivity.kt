@@ -169,7 +169,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.langOneI.visibility = View.INVISIBLE
 
         view.fabOk.alpha = 0F
-        view.fabOk.animate().alpha(1F)
+        view.fabOk.animate().alpha(0.6F)
         view.fabVolume.animate().alpha(0F)
         view.fabOk.show()
         val drawable: Drawable =  view.fabOk.drawable

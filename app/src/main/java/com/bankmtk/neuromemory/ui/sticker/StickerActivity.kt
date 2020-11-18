@@ -49,7 +49,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
             overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
         speech.setOnClickListener {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
@@ -76,7 +76,8 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         if (stickerId != null){
             stickerId.let {
                 model.loadSticker(it)
-            }}
+            }
+        }
         else {
             supportActionBar?.title =
                 getString(R.string.new_sticker_title)

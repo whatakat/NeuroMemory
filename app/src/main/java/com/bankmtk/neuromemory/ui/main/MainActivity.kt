@@ -16,6 +16,7 @@ import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -299,6 +300,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun animateView(view: View) {
+        val animationBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
+        view.startAnimation(animationBack)
         view.fabVolume.hide()
         view.titleStick.animate().alpha(0.16F)
         view.animate().rotationY(180F)
@@ -312,6 +315,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun animateViewCancel(view: View) {
+        val animationFront = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
+        view.startAnimation(animationFront)
         view.fabVolume.animate().alpha(0.2F)
         view.fabVolume.show()
         view.titleStick.animate().alpha(1F)
