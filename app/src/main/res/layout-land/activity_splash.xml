@@ -153,12 +153,13 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0.01"
+        android:alpha="0.4"
         app:fabSize="normal"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="49dp"
         android:layout_marginStart="6dp"
         android:src="@drawable/ic_blur_on_black_24dp"
+        android:backgroundTint="@color/black"
         android:contentDescription="@string/app_name" />
 
 </FrameLayout>

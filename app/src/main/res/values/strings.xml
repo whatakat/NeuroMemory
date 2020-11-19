@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">NeuroM</string>
     <string name="sticker">status</string>
-    <string name="new_sticker_title">New item</string>
+    <string name="new_sticker_title">New neuron</string>
     <string name="ok_bth_title">OK</string>
     <string name="logout_menu_title">Logout</string>
     <string name="logout_dialog_title">Do you want to log out?</string>
-    <string name="logout_dialog_message">Your wall will be saved. You will be able to access them after authorization.</string>
+    <string name="logout_dialog_message">Your neurons will be saved. You will be able to access them after authorization.</string>
     <string name="logout_dialog_cancel">Cancel</string>
     <string name="change_color_menu_title">Change color</string>
     <string name="delete_menu_title">Delete</string>
-    <string name="delete_dialog_message">Do you want to delete item?</string>
+    <string name="delete_dialog_message">Do you want to delete neuron?</string>
     <string name="cancel_btn_title">Cancel</string>
     <string name="other_text">Other text</string>
     <string name="title">Title</string>
@@ -28,10 +28,8 @@
     <string name="error_speech">Your phone model does not support this feature.</string>
     <string name="error_save">Title and note must be at least three characters</string>
     <string name="source">Selection by title</string>
-    <string name="all_items">All items</string>
+    <string name="all_items">All neurons</string>
     <string name="play">Play</string>
     <string name="stop">stop</string>
     <string name="all_elements">All neurons</string>
-
-
 </resources>

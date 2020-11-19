@@ -154,7 +154,16 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             isRotate = rotateFab(v, !isRotate)
             if (isRotate) {
                 showIn(fab)
+                val drawablePlus: Drawable =  fab.drawable
+                if (drawablePlus is Animatable){
+                    drawablePlus.start()
+                }
+
                 showIn(alert_button)
+                val drawableEye: Drawable =  alert_button.drawable
+                if (drawableEye is Animatable){
+                    drawableEye.start()
+                }
             } else {
                 showOut(fab)
                 showOut(alert_button)
@@ -191,14 +200,18 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
              }
          }else
          {
-             val myToast = Toast.makeText(this, R.string.no_active_tasks, Toast.LENGTH_SHORT)
-             myToast.setGravity(Gravity.BOTTOM, 0, 200)
+             val myToast = Toast.makeText(this, R.string.no_active_tasks, Toast.LENGTH_LONG)
+             myToast.setGravity(Gravity.TOP, 0, 200)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
-             myImage.setImageResource(R.drawable.ic_visibility_off_black_24dp)
+             myImage.setImageResource(R.drawable.ic_no_item_visible)
              toastContainer.addView(myImage, 0)
              toastContainer.setBackgroundColor(Color.TRANSPARENT)
              myToast.show()
+             val drawableShowI: Drawable =  myImage.drawable
+             if (drawableShowI is Animatable){
+                 drawableShowI.start()
+             }
          }
     }
     fun playMeNow(view: View){

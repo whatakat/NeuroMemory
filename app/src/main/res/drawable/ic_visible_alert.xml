@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector android:autoMirrored="true" android:height="25dp"
+    android:viewportHeight="25" android:viewportWidth="25"
+    android:width="25dp">
+            <group android:name="line_one" android:pivotY="12.5" android:pivotX="12.5">
+                <path android:fillAlpha="1" android:fillColor="#1e7ac7" android:pathData="M14.0148,0.2057A12.3872,12.3872 0,0 1,24.794 10.9833L23.0818,11.1945A10.662,10.662 45,0 0,13.8038 1.918Z"/>
+            </group>
+            <group android:name="line_two" android:pivotY="12.5" android:pivotX="12.5">
+                <path android:fillAlpha="1" android:fillColor="#1e7ac7" android:pathData="M10.3111,24.693A12.3879,12.3879 0,0 1,0.3251 14.7873L2.0732,14.4589A10.6092,10.6092 0,0 0,10.6254 22.9423Z"/>
+            </group>
+            <group android:name="line_three" android:pivotY="12.5" android:pivotX="12.5">
+            <path android:fillAlpha="1" android:fillColor="#1e7ac7" android:pathData="M24.7524,14.3339A12.3889,12.3889 45,0 1,14.8693 24.6602L14.5381,22.9607A10.6574,10.6574 135,0 0,23.04 14.0776Z"/>
+        </group>
+            <group android:name="clamp_one" android:pivotY="12.5" android:pivotX="12.5">
+                <path android:fillAlpha="0.48" android:fillColor="#FFFFFF" android:pathData="M0.152,11.4488A12.3927,12.3927 0,0 1,11.5844 0.1412L12.2282,8.8317A3.6785,3.6785 0,0 0,8.8348 12.188Z"/>
+            </group>
+            <group android:name="clamp_two" android:pivotY="12.5" android:pivotX="12.5">
+                <path android:fillAlpha="0.41" android:fillColor="#FFFFFF" android:pathData="M0.152,11.5133A12.3927,12.3927 0,0 1,11.5844 0.2057L11.9233,4.7803A7.8056,7.8056 45,0 0,4.7225 11.9025Z"/>
+            </group>
+
+            <group android:name="eye" android:pivotY="12.5" android:pivotX="12.5">
+                <path android:fillColor="#FFF59D" android:pathData="M12.5,12.5m-2.906,0a2.906,2.906 0,1 1,5.812 0a2.906,2.906 0,1 1,-5.812 0"/>
+            </group>
+</vector>
+    </aapt:attr>
+
+    <target android:name="clamp_one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="600"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="1"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="clamp_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1000"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="1"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="line_one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1800"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="line_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1200"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="line_three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="600"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="eye">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "together">
+            <objectAnimator
+                android:duration="2800"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="scaleY"
+                android:valueFrom="-1"
+                android:valueTo="1"
+                android:repeatCount="3"
+                android:valueType="floatType" />
+        <objectAnimator
+            android:duration="2800"
+            android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+            android:propertyName="scaleX"
+            android:valueFrom="-1"
+            android:valueTo="1"
+            android:repeatCount="3"
+            android:valueType="floatType" />
+            </set>
+    </aapt:attr>
+    </target>
+
+</animated-vector>
+

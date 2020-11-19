@@ -48,7 +48,7 @@
         android:transitionName="@string/title"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="1"
-        tools:listitem="@layout/item_sticker"/>
+        tools:listitem="@layout/item_sticker" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -58,8 +58,8 @@
         android:alpha="0.95"
         app:backgroundTint="@color/night_sky"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="@dimen/fifty"
-        android:src="@drawable/ic_add_black_24dp"
+        android:layout_marginBottom="@dimen/sixty"
+        android:src="@drawable/ic_plus"
         app:layout_behavior="com.bankmtk.neuromemory.ui.common.FABBehavior"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/alert_button"
@@ -67,10 +67,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="normal"
-        android:alpha="0.7"
-        android:layout_marginBottom="@dimen/thirty_five"
+        android:alpha="0.95"
+        android:layout_marginBottom="@dimen/sixty"
         android:layout_marginEnd="@dimen/fifty"
-        android:src="@drawable/ic_visibility_black_24dp"
+        android:src="@drawable/ic_visible_alert"
         android:layout_gravity="bottom|end"
         android:backgroundTint="@color/black"
         android:contentDescription="@string/app_name"/>
@@ -91,7 +91,7 @@
         android:id="@+id/main_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fabSize="mini"
+        app:fabSize="normal"
         android:alpha="0.50"
         android:layout_marginBottom="@dimen/five"
         android:layout_marginEnd="@dimen/twenty"

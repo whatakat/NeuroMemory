@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+<vector android:autoMirrored="true" android:height="100dp"
+    android:viewportHeight="100" android:viewportWidth="100"
+    android:width="100dp">
+    <group android:name="line_one" android:pivotY="50" android:pivotX="50">
+        <path android:fillColor="#FFFFFF" android:pathData="M58.29,98.892A49.59,49.59 0,0 1,42.076 98.953L42.905,93.833A44.404,44.404 135,0 0,57.423 93.779Z"/>
+
+    </group>
+    <group android:name="line_two" android:pivotY="50" android:pivotX="50">
+        <path android:fillColor="#FFFFFF" android:pathData="M57.89,91.517A42.26,42.26 135,0 1,41.569 91.41L42.421,87.225A37.989,37.989 45,0 0,57.093 87.321Z"/>
+
+    </group>
+    <group android:name="line_three" android:pivotY="50" android:pivotX="50">
+        <path android:fillColor="#FFFFFF" android:pathData="M30.836,26.778A30.108,30.108 135,0 1,49.457 19.897L49.486,21.52A28.484,28.484 0,0 0,31.87 28.03Z"/>
+
+    </group>
+    <group android:name="line_four" android:pivotY="50" android:pivotX="50">
+        <path android:fillColor="#FFFDFD" android:pathData="M35.296,82.692A35.847,35.847 45,1 1,62.386 83.639L61.666,81.682A33.761,33.761 135,1 0,36.151 80.79Z"/>
+    </group>
+</vector>
+    </aapt:attr>
+
+    <target android:name="line_one">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="1800"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="-360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="line_two">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="2200"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="line_three">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="3200"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="-360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+    <target android:name="line_four">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="2600"
+                android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="0"
+                android:valueTo="360"
+                android:repeatCount="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+</animated-vector>

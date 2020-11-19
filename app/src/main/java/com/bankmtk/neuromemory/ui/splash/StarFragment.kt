@@ -6,6 +6,8 @@ import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Path
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -86,6 +88,10 @@ class StarFragment: Fragment() {
             startActivity(intent)
             mButton!!.isEnabled = false
             mButton!!.alpha = 0.10F
+        }
+        val drawablePointB: Drawable =  mButton!!.drawable
+        if (drawablePointB is Animatable){
+            drawablePointB.start()
         }
         return view
     }
