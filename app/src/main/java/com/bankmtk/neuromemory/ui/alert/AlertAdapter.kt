@@ -1,5 +1,7 @@
 package com.bankmtk.neuromemory.ui.alert
 
+import android.graphics.drawable.Animatable
+import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
@@ -50,6 +52,10 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     private fun setAnimation(viewToAnimate: View,){
         val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_zoom_in)
         viewToAnimate.startAnimation(animation)
+        val drawableRing: Drawable? =  viewToAnimate.ring!!.drawable
+        if (drawableRing is Animatable){
+            drawableRing.start()
+        }
     }
 
     inner class StickViewHolder(override val containerView: View):

@@ -2,6 +2,7 @@ package com.bankmtk.neuromemory.ui.alert
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.AnimationDrawable
@@ -218,15 +219,20 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             android.os.Handler().postDelayed({startActivity(getStartIntent(this))},1000)
 
         }else {
-            val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_SHORT)
-            myToast.setGravity(Gravity.CENTER, 0,200)
+            val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_LONG)
+            myToast.setGravity(Gravity.CENTER_HORIZONTAL, 0,0)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
-            myImage.setImageResource(R.drawable.ic_verified_user_black_24dp)
+            myImage.setImageResource(R.drawable.ic_icon_ok_complete)
             toastContainer.addView(myImage,0)
+            toastContainer.setBackgroundColor(Color.TRANSPARENT)
             //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
             //toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
+            val drawableComplete: Drawable =  myImage.drawable
+            if (drawableComplete is Animatable) {
+                drawableComplete.start()
+            }
         }
     }
 
