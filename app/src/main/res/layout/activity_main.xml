@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        android:alpha="0.9">
+        android:alpha="0.7">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/thirty"
-            android:background="#32B1A643"
+            android:background="@color/black"
             app:title="@string/sticker"
             app:titleTextColor="@color/bright_sun">
             <FrameLayout
@@ -36,8 +36,9 @@
     </com.google.android.material.appbar.AppBarLayout>
     <ImageView
         android:id="@+id/title_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="400dp"
+        android:layout_height="800dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView

@@ -97,6 +97,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
+                if (myTTS!=null){
+                    myTTS!!.stop()
+                    myTTS!!.shutdown()
+                }
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
                     animationDrawableAlert?.start()
@@ -113,9 +117,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                         //Thread { animationDrawableAlert?.start() }.start()
                     }
                     true ->{
-                        myTTS!!.stop()
-                        myTTS!!.shutdown()
-                        statusSp = false
+
+                            statusSp = false
+
+
                     }
                 }
             }

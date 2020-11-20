@@ -60,7 +60,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private val bundle = Bundle()
     private var st:View?=null
     private var statusSp:Boolean = false
-    private var animationDrawable: AnimationDrawable? = null
+    private var animationDrawable: Animatable? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,9 +72,9 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(alert_button_play)
 
         val imageView = findViewById<ImageView>(R.id.title_background)
-        imageView.setBackgroundResource(R.drawable.title_animation)
+        imageView.setBackgroundResource(R.drawable.ic_main_ring)
 
-        animationDrawable = imageView.background as AnimationDrawable
+        animationDrawable = imageView.background as Animatable
 
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener {
@@ -249,7 +249,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         listTitleName.map { tit->if(!menu!!.isContains(tit)) menu.add(tit) }.let { true }
-
         return super.onPrepareOptionsMenu(menu)
     }
 
