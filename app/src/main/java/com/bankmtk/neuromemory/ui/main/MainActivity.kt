@@ -10,7 +10,6 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.Animatable
-import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -21,9 +20,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.*
@@ -33,8 +30,6 @@ import com.bankmtk.neuromemory.ui.splash.SplashActivity
 import com.bankmtk.neuromemory.ui.sticker.StickerActivity
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.activity_stick.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.jetbrains.anko.alert
@@ -72,7 +67,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(alert_button_play)
 
         val imageView = findViewById<ImageView>(R.id.title_background)
-        imageView.setBackgroundResource(R.drawable.ic_main_ring)
+        imageView.setBackgroundResource(R.drawable.ic_main_earth)
 
         animationDrawable = imageView.background as Animatable
 
@@ -112,7 +107,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                             myTTS!!.stop()
                             myTTS!!.shutdown()
                             statusSp = false
-                            animationDrawable?.stop()
+                            //animationDrawable?.stop()
                             showOut(alert_button_play)
                             view.fabVolume.setImageLevel(0)
 
@@ -133,10 +128,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                     }
 
                 }
-
-
             }
-
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
                 if (itemView.langOneI.alpha > 0F) {
@@ -146,6 +138,9 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 }
             }
         })
+//        if (isHaveItem(adapter.stickers)){
+//            notifyUser()}
+
         myRecycler.adapter = adapter
         snapHelper.attachToRecyclerView(myRecycler)
         fab.setOnClickListener { openStickerScreen(null) }
@@ -179,7 +174,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         listTitleName =data.map { item->item.title }.toSortedSet()
         adapter.stickers = data
         if (isHaveItem(adapter.stickers)){
-            notifyUser()
             alert_visible.setImageLevel(1)
         }else{
             alert_visible.setImageLevel(0)
@@ -268,15 +262,15 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
 private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
-    if (selectedTitle == "All items") {
-        if (data != null) {
-            adapter.stickers = data
-        }
-    } else {
+//    if (selectedTitle == "All items") {
+//        if (data != null) {
+//            adapter.stickers = data
+//        }
+//    } else {
         adapter.stickers = data?.filter {
             it.title==selectedTitle
         } as List
-    }
+ //   }
     adapter.notifyDataSetChanged()
 }
 
@@ -299,6 +293,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
     override fun onPause() {
         super.onPause()
+        if (isHaveItem(adapter.stickers)){
+            notifyUser()}
         overridePendingTransition(R.anim.slidein, R.anim.slideout)
     }
 
@@ -380,7 +376,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
                 .setSmallIcon(R.drawable.notify_back)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.notify_back))
                 .setContentIntent(pendingIntent)
-
         }
         notificationManager.notify(1234, builder.build())
     }
@@ -398,7 +393,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
                 startActivity(ttsLoadIntent)
             }
         }
-
     }
 
     override fun onInit(status: Int) {
@@ -411,6 +405,4 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
             myTTS!!.shutdown()
         }
     }
-
-
 }

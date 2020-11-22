@@ -24,13 +24,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="1"
+            android:src="@drawable/ic_background_main_item"
             android:contentDescription="@string/app_name" />
         <ImageView
             android:id="@+id/pulse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.4"
-            android:src="@drawable/alert_animation_icon"
             android:contentDescription="@string/app_name" />
         <TextView
             android:id="@+id/titleStick"
@@ -40,10 +40,11 @@
             android:layout_marginTop="@dimen/three"
             android:layout_marginEnd="@dimen/three"
             tools:text="@string/title"
+            android:alpha="0.5"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="@color/bright_sun"
-            android:background="@color/night_sky"
+            android:textColor="@color/night_sky"
+            android:background="@color/bright_sun"
             android:transitionName="@string/title"/>
 
         <TextView
@@ -52,7 +53,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/text"
-            android:textColor="@color/black"
+            android:textColor="@color/bright_sun"
             android:textSize="13sp"
             android:visibility="visible"
             android:layout_below="@id/titleStick"/>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector android:autoMirrored="true" android:height="100dp"
+            android:viewportHeight="100" android:viewportWidth="200"
+            android:width="200dp">
+            <group android:name="ring_one" android:pivotX="100" android:pivotY="50">
+                <path android:fillAlpha="0.7" android:fillColor="#FFFFFF" android:pathData="M100,50m-83.795,33.15a90.114,90.114 113.416,1 0,167.59 -66.299a90.114,90.114 113.416,1 0,-167.59 66.299ZM100,50m-79.986,31.643a86.018,86.018 113.416,0 1,159.973 -63.286a86.018,86.018 113.416,0 1,-159.973 63.286Z"/>
+            </group>
+            <group android:name="ring_two" android:pivotX="100" android:pivotY="50">
+                <path android:fillAlpha="0.8" android:fillColor="#FFFFFF" android:pathData="M99.982,49.97m-85.219,50.81a99.217,99.217 104.195,1 0,170.439 -101.62a99.217,99.217 104.195,1 0,-170.439 101.62ZM99.982,49.97m-81.663,48.69a95.077,95.077 104.195,0 1,163.327 -97.38a95.077,95.077 104.195,0 1,-163.327 97.38Z"/>
+            </group>
+            <group android:name="ring_three" android:pivotX="100" android:pivotY="50">
+                <path android:fillAlpha="0.9" android:fillColor="#FFFFFF" android:pathData="M100,50m-85.187,81.503a117.896,117.896 91.266,1 0,170.373 -163.006a117.896,117.896 91.266,1 0,-170.373 163.006ZM100,50m-81.802,78.265a113.212,113.212 91.266,0 1,163.604 -156.529a113.212,113.212 91.266,0 1,-163.604 156.529Z"/>
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="ring_one">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "together">
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="1"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="1"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="ring_two">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "together">
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="1"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="1"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="ring_three">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "together">
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="1"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="800"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleX"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="1"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

@@ -65,8 +65,8 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 langOneI.text = sticker.langOne
                 langTwoI.text = sticker.langTwo
                 status_star.setImageLevel(sticker.progressSt)
-                itemView.titleStick.setTextColor(sticker.color.getColorInt(itemView.context))
-                itemView.langOneI.setTextColor(sticker.color.getColorInt(itemView.context))
+                itemView.titleStick.setBackgroundColor(sticker.color.getColorInt(itemView.context))
+                //itemView.langOneI.setTextColor(sticker.color.getColorInt(itemView.context))
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
                 itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemOkClick(sticker) }  }
                 //itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(sticker) }  }

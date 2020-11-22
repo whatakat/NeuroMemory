@@ -6,19 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="false"
-    android:background="@color/white"
+    android:background="@color/night_sky"
     tools:context=".ui.main.MainActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        android:alpha="0.9">
+        android:alpha="0.7">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/thirty"
-            android:background="#32B1A643"
+            android:background="@color/black"
             app:title="@string/sticker"
             app:titleTextColor="@color/bright_sun">
             <FrameLayout
@@ -37,8 +37,9 @@
 
     <ImageView
         android:id="@+id/title_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="800dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView

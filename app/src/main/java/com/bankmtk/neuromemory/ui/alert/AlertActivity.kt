@@ -50,7 +50,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawableAlert: AnimationDrawable? = null
-    private var animationDrawablePulse: AnimationDrawable? = null
+    //private var animationDrawablePulse: AnimationDrawable? = null
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,15 +117,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                         //Thread { animationDrawableAlert?.start() }.start()
                     }
                     true ->{
-
                             statusSp = false
-
-
                     }
                 }
             }
-
-
         })
         myRecycler.adapter = adapter
     }
@@ -160,11 +155,15 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
         view.startAnimation(animationAlertBack)
 
-        val alertImageViewPulse = view.pulse
-        alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
+        //val alertImageViewPulse = view.pulse
+        //alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
 
-        animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
-        animationDrawablePulse!!.start()
+        //animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
+        //animationDrawablePulse!!.start()
+        val drawablePulse: Drawable? =  view.pulse!!.drawable
+        if (drawablePulse is Animatable ){
+            drawablePulse.start()
+        }
 
         view.titleStick.animate().alpha(0.16F)
         view.langTwoI.animate().alpha(1F)
@@ -202,7 +201,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.fabOk.animate().alpha(0F).duration = 800
         view.fabVolume.animate().alpha(0F).duration = 800
         view.langTwoI.visibility = View.GONE//del
-        animationDrawablePulse!!.stop()
+        //animationDrawablePulse!!.stop()
         //super.animateViewCancel(view)
     }
     @ExperimentalCoroutinesApi

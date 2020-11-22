@@ -51,7 +51,7 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
             langOneI.text = sticker.langOne
             langTwoI.text = sticker.langTwo
             status_star.setImageLevel(sticker.progressSt)
-            itemView.langOneI.setTextColor(sticker.color.getColorInt(itemView.context))
+            itemView.titleStick.setBackgroundColor(sticker.color.getColorInt(itemView.context))
             itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
             itemView.setOnLongClickListener{consume { onItemClickListener.onItemLongClick(sticker) }}
             itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(itemView) }  }
