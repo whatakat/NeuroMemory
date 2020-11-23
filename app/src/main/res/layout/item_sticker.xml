@@ -6,9 +6,9 @@
     android:id="@+id/cardView"
     android:layout_width="220dp"
     android:layout_height="220dp"
-    android:layout_marginStart="90dp"
-    card_view:cardElevation="@dimen/twenty"
-    android:layout_marginTop="350dp"
+    card_view:cardElevation="@dimen/five"
+    android:layout_marginStart="@dimen/hundred"
+    android:layout_marginTop="@dimen/seventy_five"
     card_view:cardCornerRadius="110dp"
     android:alpha="0.9"
     android:backgroundTint="@color/black"
@@ -16,11 +16,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical"
         android:alpha="1"
-        android:background="@drawable/neurom_stickb"
-        android:backgroundTint="@color/white"
         >
         <ImageView
             android:id="@+id/ring"

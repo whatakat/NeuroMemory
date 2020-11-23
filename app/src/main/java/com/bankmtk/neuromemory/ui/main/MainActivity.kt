@@ -365,14 +365,14 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
             builder = Notification.Builder(this, channelId)
                 .setContentTitle("Status:")
-                .setContentText("confirm items")
+                .setContentText("Neuron is waiting for confirmation")
                 .setSmallIcon(R.drawable.notify_back)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.notify_back))
                 .setContentIntent(pendingIntent)
         } else{
             builder = Notification.Builder(this)
                 .setContentTitle("Status:")
-                .setContentText("confirm items")
+                .setContentText("Neuron is waiting for confirmation")
                 .setSmallIcon(R.drawable.notify_back)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.notify_back))
                 .setContentIntent(pendingIntent)

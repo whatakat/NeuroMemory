@@ -49,7 +49,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private val bundle = Bundle()
     private var st:View?=null
     private var statusSp:Boolean = false
-    private var animationDrawableAlert: AnimationDrawable? = null
+    private var animationDrawableAlert: Animatable? = null
     //private var animationDrawablePulse: AnimationDrawable? = null
 
     @ExperimentalCoroutinesApi
@@ -58,11 +58,11 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
         val alertImageView = findViewById<ImageView>(R.id.alert_title_background)
-        alertImageView.setBackgroundResource(R.drawable.title_animation_alert)
+        alertImageView.setBackgroundResource(R.drawable.ic_main_alert)//R.drawable.title_animation_alert
 
 
 
-        animationDrawableAlert = alertImageView.background as AnimationDrawable
+        animationDrawableAlert = alertImageView.background as Animatable
 
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
 
@@ -149,10 +149,11 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             myTTS!!.shutdown()
             statusSp = false
         }
+        animationDrawableAlert?.stop()
     }
 
     override fun animateView(view: View) {
-        val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
+        val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_in)
         view.startAnimation(animationAlertBack)
 
         //val alertImageViewPulse = view.pulse
@@ -189,7 +190,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     }
 
     override fun animateViewCancel(view: View) {
-        val animationAlertFront = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
+        val animationAlertFront = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_in)
         view.startAnimation(animationAlertFront)
         view.titleStick.animate().alpha(1F)
         view.status_star.animate().alpha(1F)
@@ -220,8 +221,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
 
         if (isHaveItem(adapter.stickers)){
-            android.os.Handler().postDelayed({startActivity(getStartIntent(this))},1000)
-
+             android.os.Handler().postDelayed({startActivity(getStartIntent(this))},1000)
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_LONG)
             myToast.setGravity(Gravity.CENTER_HORIZONTAL, 0,0)
