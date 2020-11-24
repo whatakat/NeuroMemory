@@ -79,7 +79,10 @@
 
 
     <group android:name="ring1" android:pivotX="125" android:pivotY="125">
-        <path android:fillAlpha="0.01" android:fillColor="#FFFFFF" android:pathData="M125,125m-35.738,2.749a35.844,35.844 130.601,1 0,71.477 -5.498a35.844,35.844 130.601,1 0,-71.477 5.498ZM125,125m-30.324,2.333a30.414,30.414 130.601,0 1,60.649 -4.665a30.414,30.414 130.601,0 1,-60.649 4.665Z"/>
+        <path android:fillAlpha="0.5" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
+    </group>
+    <group android:name="ring2" android:pivotX="125" android:pivotY="125">
+        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
     </group>
     <group android:name="atom" android:pivotX="110" android:pivotY="100">
         <path android:fillAlpha="0.4" android:fillColor="#fcf9f9" android:pathData="M75.26,125.88C75.26,126.73 74.59,127.42 73.76,127.42C72.93,127.42 72.25,126.73 72.25,125.88C72.25,125.04 72.93,124.35 73.76,124.35C74.59,124.35 75.26,125.04 75.26,125.88Z"/>
@@ -98,21 +101,65 @@
             <objectAnimator
                 android:interpolator="@android:anim/linear_interpolator"
                 android:propertyName="scaleY"
-                android:valueFrom="0"
-                android:valueTo="1"
+                android:valueFrom="0.09"
+                android:valueTo="0.13"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="7600"
+                android:duration="12600"
                 android:valueType="floatType"/>
                 <objectAnimator
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="scaleX"
-                    android:valueFrom="0"
-                    android:valueTo="1"
+                    android:valueFrom="0.09"
+                    android:valueTo="0.13"
                     android:repeatCount="infinite"
                     android:repeatMode="restart"
-                    android:duration="7600"
+                    android:duration="6600"
                     android:valueType="floatType"/>
+                <objectAnimator
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:repeatCount="infinite"
+                    android:repeatMode="restart"
+                    android:duration="600"
+                    android:valueType="floatType"/>
+
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="ring2">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "together">
+                <objectAnimator
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.09"
+                    android:valueTo="0.13"
+                    android:repeatCount="infinite"
+                    android:repeatMode="restart"
+                    android:duration="5600"
+                    android:valueType="floatType"/>
+                <objectAnimator
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.09"
+                    android:valueTo="0.13"
+                    android:repeatCount="infinite"
+                    android:repeatMode="restart"
+                    android:duration="10600"
+                    android:valueType="floatType"/>
+                <objectAnimator
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="-360"
+                    android:repeatCount="infinite"
+                    android:repeatMode="restart"
+                    android:duration="600"
+                    android:valueType="floatType"/>
+
             </set>
         </aapt:attr>
     </target>
@@ -125,7 +172,7 @@
                 android:valueTo="-360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="15400"
+                android:duration="25400"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -138,7 +185,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="15400"
+                android:duration="25400"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -151,7 +198,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="14600"
+                android:duration="24600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -164,7 +211,7 @@
                 android:valueTo="-360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="10600"
+                android:duration="20600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -255,7 +302,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="16600"
+                android:duration="6600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -268,7 +315,7 @@
                 android:valueTo="-360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="15600"
+                android:duration="5600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -281,7 +328,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="16600"
+                android:duration="6600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -294,7 +341,7 @@
                 android:valueTo="-360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="14600"
+                android:duration="4600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>
@@ -307,7 +354,7 @@
                 android:valueTo="360"
                 android:repeatCount="infinite"
                 android:repeatMode="restart"
-                android:duration="13600"
+                android:duration="3600"
                 android:valueType="floatType"/>
         </aapt:attr>
     </target>

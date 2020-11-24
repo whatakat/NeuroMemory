@@ -7,10 +7,10 @@
     android:layout_width="220dp"
     android:layout_height="220dp"
     card_view:cardElevation="@dimen/five"
-    android:layout_marginStart="@dimen/hundred"
+    android:layout_marginStart="@dimen/seventy_five"
     android:layout_marginTop="@dimen/seventy_five"
     card_view:cardCornerRadius="110dp"
-    android:alpha="0.9"
+    android:alpha="0.7"
     android:backgroundTint="@color/black"
     >
     <RelativeLayout
@@ -31,7 +31,7 @@
             android:id="@+id/pulse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.1"
+            android:alpha="0.2"
             android:src="@drawable/ic_background_main_item"
             android:contentDescription="@string/app_name" />
         <TextView

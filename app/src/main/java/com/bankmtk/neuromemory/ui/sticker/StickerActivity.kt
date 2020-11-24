@@ -134,7 +134,9 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     }
 
     override fun renderData(data: StickerViewState.StickerData) {
-        if (data.isDeleted) finish()
+        if (data.isDeleted) {
+            finish()
+        }
         this.sticker = data.sticker
         data.sticker?.let { color = it.color }
         initView()
@@ -232,6 +234,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         }
     }
 
+
     private fun setToolbarColor(color: Color){
         toolbar.setBackgroundColor(color.getColorInt(this))
     }
@@ -255,6 +258,6 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
 
     override fun onPause() {
         super.onPause()
-        overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
+       // overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
     }
 }
