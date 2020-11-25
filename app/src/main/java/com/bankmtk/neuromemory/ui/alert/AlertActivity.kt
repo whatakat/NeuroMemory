@@ -50,7 +50,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawableAlert: Animatable? = null
-    //private var animationDrawablePulse: AnimationDrawable? = null
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -156,11 +155,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_in)
         view.startAnimation(animationAlertBack)
 
-        //val alertImageViewPulse = view.pulse
-        //alertImageViewPulse.setBackgroundResource(R.drawable.alert_animation_icon)
-
-        //animationDrawablePulse = alertImageViewPulse.background as AnimationDrawable
-        //animationDrawablePulse!!.start()
         val drawablePulse: Drawable? =  view.pulse!!.drawable
         if (drawablePulse is Animatable ){
             drawablePulse.start()

@@ -76,8 +76,6 @@
 </group>
 
 
-
-
     <group android:name="ring1" android:pivotX="125" android:pivotY="125">
         <path android:fillAlpha="0.5" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
     </group>
@@ -135,7 +133,7 @@
                 <objectAnimator
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="scaleY"
-                    android:valueFrom="0.09"
+                    android:valueFrom="0.10"
                     android:valueTo="0.13"
                     android:repeatCount="infinite"
                     android:repeatMode="restart"
@@ -144,7 +142,7 @@
                 <objectAnimator
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="scaleX"
-                    android:valueFrom="0.09"
+                    android:valueFrom="0.10"
                     android:valueTo="0.13"
                     android:repeatCount="infinite"
                     android:repeatMode="restart"
@@ -373,15 +371,36 @@
     </target>
     <target android:name="dipstick_back">
         <aapt:attr name="android:animation">
+            <set android:ordering = "together">
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="scaleY"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:repeatCount="0"
+                android:repeatMode="restart"
+                android:duration="1600"
+                android:valueType="floatType"/>
+            <objectAnimator
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="scaleX"
+                android:valueFrom="0"
+                android:valueTo="1"
+                android:repeatCount="0"
+                android:repeatMode="restart"
+                android:duration="1600"
+                android:valueType="floatType"/>
+
             <objectAnimator
                 android:interpolator="@android:anim/linear_interpolator"
                 android:propertyName="rotation"
                 android:valueFrom="0"
                 android:valueTo="360"
-                android:repeatCount="1"
+                android:repeatCount="4"
                 android:repeatMode="restart"
-                android:duration="600"
+                android:duration="200"
                 android:valueType="floatType"/>
+            </set>
         </aapt:attr>
     </target>
 
