@@ -7,10 +7,10 @@
     android:viewportHeight="200" android:viewportWidth="100"
     android:width="100dp">
     <group android:name="atom_one" android:pivotX="50" android:pivotY="100">
-        <path android:fillAlpha="0.9" android:fillColor="#D8D8D8" android:pathData="M48.871,100.077m-0.412,0a0.412,0.412 0,1 1,0.824 0a0.412,0.412 0,1 1,-0.824 0"/>
+        <path android:fillAlpha="1" android:fillColor="#D8D8D8" android:pathData="M48.871,100.077m-0.412,0a0.412,0.412 0,1 1,0.824 0a0.412,0.412 0,1 1,-0.824 0"/>
     </group>
     <group android:name="atom_two" android:pivotX="50" android:pivotY="100">
-        <path android:fillAlpha="0.95" android:fillColor="#D8D8D8" android:pathData="M51.171,100.055m-0.412,0a0.412,0.412 0,1 1,0.824 0a0.412,0.412 0,1 1,-0.824 0"/>
+        <path android:fillAlpha="1" android:fillColor="#D8D8D8" android:pathData="M51.171,100.055m-0.412,0a0.412,0.412 0,1 1,0.824 0a0.412,0.412 0,1 1,-0.824 0"/>
     </group>
 
     <group android:name="stars" android:pivotX="50" android:pivotY="100">
@@ -860,11 +860,17 @@
     </group>
     <group android:name="shadow" android:pivotX="50" android:pivotY="100">
         <path android:fillAlpha="0.95" android:fillColor="#000000" android:pathData="M50,100m-0.854,0a0.854,0.854 0,1 1,1.708 0a0.854,0.854 0,1 1,-1.708 0"/>
+        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M48.859,102.506A2.754,2.754 0,0 1,48.914 97.47L48.981,97.624A2.586,2.586 0,0 0,48.929 102.353Z"/>
+        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M51.018,97.423A2.771,2.771 0,0 1,51.162 102.516L51.091,102.363A2.603,2.603 0,0 0,50.956 97.58Z"/>
+    </group>
+    <group android:name="shadow_pie" android:pivotX="50" android:pivotY="100">
+        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M48.859,102.506A2.754,2.754 0,0 1,48.914 97.47L48.981,97.624A2.586,2.586 0,0 0,48.929 102.353Z"/>
+        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M51.018,97.423A2.771,2.771 0,0 1,51.162 102.516L51.091,102.363A2.603,2.603 0,0 0,50.956 97.58Z"/>
     </group>
 
 <group android:name="cell" android:pivotX="50" android:pivotY="100">
-    <path android:fillAlpha="0.4" android:fillColor="#FFFFFF" android:pathData="M50,100m-0.022,0a0.022,0.022 0,1 1,0.044 0a0.022,0.022 0,1 1,-0.044 0"/>
-    <path android:fillAlpha="0.05" android:fillColor="#F8F7F7" android:pathData="M50,100m-0.469,0a0.469,0.469 0,1 1,0.938 0a0.469,0.469 0,1 1,-0.938 0"/>
+    <path android:fillAlpha="0.9" android:fillColor="#FFFFFF" android:pathData="M50,100m-0.022,0a0.022,0.022 0,1 1,0.044 0a0.022,0.022 0,1 1,-0.044 0"/>
+    <path android:fillAlpha="0.45" android:fillColor="#F8F7F7" android:pathData="M50,100m-0.469,0a0.469,0.469 0,1 1,0.938 0a0.469,0.469 0,1 1,-0.938 0"/>
 </group>
 </vector>
     </aapt:attr>
@@ -910,7 +916,7 @@
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="4900"
+                    android:duration="2900"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="rotation"
                     android:valueFrom="0"
@@ -924,7 +930,7 @@
         <aapt:attr name="android:animation">
             <set android:ordering = "together">
                 <objectAnimator
-                    android:duration="4000"
+                    android:duration="3500"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
                     android:valueFrom="-30"
@@ -932,7 +938,7 @@
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="4000"
+                    android:duration="3500"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="-30"
@@ -962,11 +968,11 @@
                     android:repeatCount="1"
                     android:valueType="floatType" />
             <objectAnimator
-                android:duration="600"
+                android:duration="1200"
                 android:interpolator="@android:anim/linear_interpolator"
                 android:propertyName="rotation"
                 android:valueFrom="0"
-                android:valueTo="-180"
+                android:valueTo="-360"
                 android:repeatCount="0"
                 android:valueType="floatType" />
             </set>
@@ -981,7 +987,7 @@
                     android:propertyName="scaleY"
                     android:valueFrom="0"
                     android:valueTo="200"
-                    android:repeatCount="0"
+                    android:repeatCount="2"
                     android:valueType="floatType" />
                 <objectAnimator
                     android:duration="1400"
@@ -989,36 +995,82 @@
                     android:propertyName="scaleX"
                     android:valueFrom="0"
                     android:valueTo="200"
-                    android:repeatCount="0"
+                    android:repeatCount="2"
                     android:valueType="floatType" />
                 <objectAnimator
                     android:duration="900"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="rotation"
                     android:valueFrom="0"
-                    android:valueTo="160"
-                    android:repeatCount="0"
+                    android:valueTo="360"
+                    android:repeatCount="2"
                     android:valueType="floatType" />
             </set>
         </aapt:attr>
     </target>
     <target android:name="shadow">
         <aapt:attr name="android:animation">
-            <set android:ordering = "together">
+            <set android:ordering = "sequentially">
                 <objectAnimator
                     android:duration="1500"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
                     android:valueFrom="0"
-                    android:valueTo="120"
+                    android:valueTo="0"
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="1500"
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="80"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="500"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="0"
-                    android:valueTo="120"
+                    android:valueTo="80"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="shadow_pie">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="600"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="10"
+                    android:valueTo="7"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleX"
+                    android:valueFrom="10"
+                    android:valueTo="7"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1900"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="360"
                     android:repeatCount="0"
                     android:valueType="floatType" />
             </set>
