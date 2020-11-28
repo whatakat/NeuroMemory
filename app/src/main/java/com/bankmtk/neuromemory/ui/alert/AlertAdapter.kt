@@ -50,7 +50,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
 
     }
     private fun setAnimation(viewToAnimate: View,){
-        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_zoom_in)
+        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_alert_zoom_in)
         viewToAnimate.startAnimation(animation)
         val drawableRing: Drawable? =  viewToAnimate.ring!!.drawable
         if (drawableRing is Animatable){

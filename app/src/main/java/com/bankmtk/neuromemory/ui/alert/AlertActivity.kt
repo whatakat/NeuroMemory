@@ -103,6 +103,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
                     animationDrawableAlert?.start()
+                 //   Thread { animationDrawableAlert?.start() }.start()
                 }else{
                     animateViewCancel(itemView)
                 }
@@ -113,7 +114,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
-                        //Thread { animationDrawableAlert?.start() }.start()
+
                     }
                     true ->{
                             statusSp = false
@@ -152,7 +153,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     }
 
     override fun animateView(view: View) {
-        val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_in)
+        val animationAlertBack = AnimationUtils.loadAnimation(this,R.anim.sticker_alert_zoom_in)
         view.startAnimation(animationAlertBack)
 
         val drawablePulse: Drawable? =  view.pulse!!.drawable
@@ -211,7 +212,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             }
         }
         finish()
-        overridePendingTransition(R.anim.alert_slideout,R.anim.alert_slidein)
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
 
         if (isHaveItem(adapter.stickers)){
@@ -225,7 +225,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             toastContainer.addView(myImage,0)
             toastContainer.setBackgroundColor(Color.TRANSPARENT)
             //toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
-            //toastContainer.setBackgroundColor(Color.TRANSPARENT)
             myToast.show()
             val drawableComplete: Drawable =  myImage.drawable
             if (drawableComplete is Animatable) {

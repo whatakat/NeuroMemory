@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="false"
+    android:background="@color/black"
     tools:context=".ui.alert.AlertActivity">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -23,8 +24,8 @@
     </com.google.android.material.appbar.AppBarLayout>
     <ImageView
         android:id="@+id/alert_title_background"
-        android:layout_width="400dp"
-        android:layout_height="800dp"
+        android:layout_width="600dp"
+        android:layout_height="1200dp"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name" />
 
