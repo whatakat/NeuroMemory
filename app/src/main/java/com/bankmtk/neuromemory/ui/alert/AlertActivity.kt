@@ -102,7 +102,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 }
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
-                    animationDrawableAlert?.start()
+                     animationDrawableAlert?.start()
                  //   Thread { animationDrawableAlert?.start() }.start()
                 }else{
                     animateViewCancel(itemView)
