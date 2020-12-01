@@ -32,10 +32,23 @@
         android:contentDescription="@string/app_name"
         android:src="@drawable/light_b" />
     <ImageView
+        android:id="@+id/tree"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/one_eighty"
+        android:layout_gravity="bottom"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/tree"/>
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:src="@drawable/web_land"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_new_year"
         android:scaleType="fitXY"/>
     <ImageView
         android:id="@+id/stars"
@@ -122,13 +135,6 @@
         android:layout_height="300dp"
         android:layout_gravity="top|end"
         android:contentDescription="@string/app_name"/>
-    <ImageView
-        android:id="@+id/tree"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/one_eighty"
-        android:layout_gravity="bottom"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/tree"/>
     <ImageView
         android:id="@+id/starCenter"
         android:layout_width="@dimen/twenty"
