@@ -41,6 +41,13 @@
         android:layout_height="400dp"
         android:layout_gravity="center"
         android:contentDescription="@string/app_name" />
+    <ImageView
+        android:id="@+id/title_background_two"
+        android:layout_width="400dp"
+        android:layout_height="800dp"
+        android:layout_gravity="center"
+        android:alpha="0.7"
+        android:contentDescription="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myRecycler"

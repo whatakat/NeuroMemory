@@ -9,6 +9,7 @@
     card_view:cardElevation="@dimen/five"
     android:layout_marginStart="@dimen/seventy_five"
     android:layout_marginTop="@dimen/seventy_five"
+    android:layout_marginEnd="150dp"
     card_view:cardCornerRadius="110dp"
     android:alpha="0.95"
     android:backgroundTint="@color/black"

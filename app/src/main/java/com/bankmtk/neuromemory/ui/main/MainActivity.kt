@@ -56,6 +56,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawable: Animatable? = null
+    private var animationDrawableCenter: Animatable? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +71,10 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         imageView.setBackgroundResource(R.drawable.ic_main_earth)
 
         animationDrawable = imageView.background as Animatable
+        val imageViewCenter = findViewById<ImageView>(R.id.title_background_two)
+        imageViewCenter.setBackgroundResource(R.drawable.ic_main_earth_two)
+
+        animationDrawableCenter = imageViewCenter.background as Animatable
 
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener {
@@ -84,13 +89,13 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
-                        animationDrawable?.start()
+                        animationDrawableCenter?.start()
                         showIn(alert_button_play)
                         view.fabVolume.setImageLevel(1)
                         statusSp = true
 
                         val myToast = Toast.makeText(this@MainActivity, R.string.play, Toast.LENGTH_LONG)
-                        myToast.setGravity(Gravity.TOP, 0, 400)
+                        myToast.setGravity(Gravity.CENTER, 0, 0)
                         val toastContainer = myToast.view as LinearLayout
                         val myImage = ImageView(this@MainActivity)
                         myImage.setImageResource(R.drawable.ic_play)
@@ -112,7 +117,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                             view.fabVolume.setImageLevel(0)
 
                             val myToast = Toast.makeText(this@MainActivity, R.string.stop, Toast.LENGTH_SHORT)
-                            myToast.setGravity(Gravity.TOP, 0, 400)
+                            myToast.setGravity(Gravity.CENTER, 0, 0)
                             val toastContainer = myToast.view as LinearLayout
                             val myImage = ImageView(this@MainActivity)
                             myImage.setImageResource(R.drawable.ic_stop)
@@ -153,6 +158,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 if (drawablePlus is Animatable){
                     drawablePlus.start()
                 }
+                animationDrawable?.start()
 
                 showIn(alert_button)
                 val drawableEye: Drawable =  alert_button.drawable
@@ -160,6 +166,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                     drawableEye.start()
                 }
             } else {
+                animationDrawable?.start()
                 showOut(fab)
                 showOut(alert_button)
             }
@@ -195,7 +202,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
          }else
          {
              val myToast = Toast.makeText(this, R.string.no_active_tasks, Toast.LENGTH_LONG)
-             myToast.setGravity(Gravity.TOP, 0, 200)
+             myToast.setGravity(Gravity.CENTER, 0, 0)
              val toastContainer = myToast.view as LinearLayout
              val myImage = ImageView(this)
              myImage.setImageResource(R.drawable.ic_no_item_visible)
@@ -216,7 +223,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             myTTS!!.speak(i.langTwo, TextToSpeech.QUEUE_ADD, bundle, "speakText")
         }
         val myToast = Toast.makeText(this@MainActivity, R.string.all_elements, Toast.LENGTH_SHORT)
-        myToast.setGravity(Gravity.TOP, 0, 400)
+        myToast.setGravity(Gravity.CENTER, 0, 0)
         val toastContainer = myToast.view as LinearLayout
         val myImage = ImageView(this@MainActivity)
         myImage.setImageResource(R.drawable.ic_inclusive)
