@@ -103,7 +103,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
                      animationDrawableAlert?.start()
-                 //   Thread { animationDrawableAlert?.start() }.start()
                 }else{
                     animateViewCancel(itemView)
                 }
@@ -196,9 +195,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.fabOk.hide()
         view.fabOk.animate().alpha(0F).duration = 800
         view.fabVolume.animate().alpha(0F).duration = 800
-        view.langTwoI.visibility = View.GONE//del
-        //animationDrawablePulse!!.stop()
-        //super.animateViewCancel(view)
+        view.langTwoI.visibility = View.GONE
     }
     @ExperimentalCoroutinesApi
     private fun stickerOk(sticker: Sticker?){
