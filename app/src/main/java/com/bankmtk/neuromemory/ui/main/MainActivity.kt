@@ -69,11 +69,10 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
         val imageView = findViewById<ImageView>(R.id.title_background)
         imageView.setBackgroundResource(R.drawable.ic_main_earth)
-
         animationDrawable = imageView.background as Animatable
+
         val imageViewCenter = findViewById<ImageView>(R.id.title_background_two)
         imageViewCenter.setBackgroundResource(R.drawable.ic_main_earth_two)
-
         animationDrawableCenter = imageViewCenter.background as Animatable
 
 
@@ -112,7 +111,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                             myTTS!!.stop()
                             myTTS!!.shutdown()
                             statusSp = false
-                            //animationDrawable?.stop()
                             showOut(alert_button_play)
                             view.fabVolume.setImageLevel(0)
 
@@ -143,8 +141,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 }
             }
         })
-//        if (isHaveItem(adapter.stickers)){
-//            notifyUser()}
 
         myRecycler.adapter = adapter
         snapHelper.attachToRecyclerView(myRecycler)
