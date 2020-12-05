@@ -50,6 +50,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
     private var st:View?=null
     private var statusSp:Boolean = false
     private var animationDrawableAlert: Animatable? = null
+    private var animationDrawableAlertNeurons: Animatable? = null
 
     @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +58,13 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         setSupportActionBar(toolbar)
         overridePendingTransition(R.anim.alert_slidein,R.anim.alert_slideout)
         val alertImageView = findViewById<ImageView>(R.id.alert_title_background)
-        alertImageView.setBackgroundResource(R.drawable.ic_main_alert)//R.drawable.title_animation_alert
-
-
-
+        alertImageView.setBackgroundResource(R.drawable.ic_main_alert_neurom)//R.drawable.title_animation_alert
         animationDrawableAlert = alertImageView.background as Animatable
+        animationDrawableAlert?.start()
+
+        val alertImageViewNeurons = findViewById<ImageView>(R.id.alert_title_background_neurons)
+        alertImageViewNeurons.setBackgroundResource(R.drawable.ic_main_alert)//R.drawable.title_animation_alert
+        animationDrawableAlertNeurons = alertImageViewNeurons.background as Animatable
 
         adapter = AlertAdapter(object : AlertAdapter.OnItemClickListener{
 
@@ -102,7 +105,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 }
                 if (itemView.langOneI.visibility == View.VISIBLE){
                     animateView(itemView)
-                     animationDrawableAlert?.start()
+                     animationDrawableAlertNeurons?.start()
                 }else{
                     animateViewCancel(itemView)
                 }
