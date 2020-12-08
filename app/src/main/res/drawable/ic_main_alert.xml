@@ -485,18 +485,18 @@
         <aapt:attr name="android:animation">
             <set android:ordering = "together">
                 <objectAnimator
-                    android:duration="2900"
+                    android:duration="7900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
-                    android:valueFrom="3"
+                    android:valueFrom="0"
                     android:valueTo="20"
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="2900"
+                    android:duration="7900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
-                    android:valueFrom="3"
+                    android:valueFrom="0"
                     android:valueTo="20"
                     android:repeatCount="0"
                     android:valueType="floatType" />

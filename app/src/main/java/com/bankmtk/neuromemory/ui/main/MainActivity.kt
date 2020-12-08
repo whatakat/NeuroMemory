@@ -74,7 +74,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         val imageViewCenter = findViewById<ImageView>(R.id.title_background_two)
         imageViewCenter.setBackgroundResource(R.drawable.ic_main_earth_two)
         animationDrawableCenter = imageViewCenter.background as Animatable
-        animationDrawableCenter?.start()
 
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener {
@@ -168,6 +167,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 showOut(alert_button)
             }
         }
+        animationDrawableCenter?.start()
 
     }
 
