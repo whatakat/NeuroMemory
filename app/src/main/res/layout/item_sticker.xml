@@ -32,7 +32,7 @@
             android:id="@+id/pulse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.2"
+            android:alpha="0.1"
             android:src="@drawable/ic_background_main_item"
             android:contentDescription="@string/app_name" />
         <TextView

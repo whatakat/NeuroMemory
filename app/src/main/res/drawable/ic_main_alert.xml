@@ -285,7 +285,7 @@
         <path android:fillColor="#FFFEFE" android:pathData="M47.262,101.593m-0.069,0a0.072,0.069 90,1 1,0.139 0a0.072,0.069 90,1 1,-0.139 0"/>
         <path android:fillColor="#FFFEFE" android:pathData="M54.717,99.97m-0.069,0a0.072,0.069 90,1 1,0.139 0a0.072,0.069 90,1 1,-0.139 0"/>
         <path android:fillColor="#FFFEFE" android:pathData="M49.673,103.159m-0.069,0a0.072,0.069 90,1 1,0.139 0a0.072,0.069 90,1 1,-0.139 0"/>
-        <path android:fillAlpha="0.02" android:fillColor="#FFFEFE" android:pathData="M51.462,97.093m-0.278,0a0.288,0.278 90,1 1,0.556 0a0.288,0.278 90,1 1,-0.556 0"/>
+        <path android:fillAlpha="1" android:fillColor="#FFFEFE" android:pathData="M51.462,97.093m-0.278,0a0.288,0.278 90,1 1,0.556 0a0.288,0.278 90,1 1,-0.556 0"/>
         <path android:fillColor="#FF000000"
             android:pathData="M47.255,101.593L50.036,99.97"
             android:strokeAlpha="0.23"  android:strokeColor="#FFFFFF" android:strokeWidth="0.01"/>
@@ -488,7 +488,7 @@
                     android:duration="2900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
-                    android:valueFrom="0"
+                    android:valueFrom="3"
                     android:valueTo="20"
                     android:repeatCount="0"
                     android:valueType="floatType" />
@@ -496,7 +496,7 @@
                     android:duration="2900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
-                    android:valueFrom="0"
+                    android:valueFrom="3"
                     android:valueTo="20"
                     android:repeatCount="0"
                     android:valueType="floatType" />
