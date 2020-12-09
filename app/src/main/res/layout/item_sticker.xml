@@ -11,8 +11,7 @@
     android:layout_marginTop="@dimen/seventy_five"
     android:layout_marginEnd="150dp"
     card_view:cardCornerRadius="110dp"
-    android:alpha="0.95"
-    android:backgroundTint="@color/black"
+    android:backgroundTint="@color/fui_transparent"
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,6 +41,7 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/fifty"
             tools:text="@string/title"
+
             android:textSize="12sp"
             android:textStyle="bold"
             android:textColor="@color/night_sky"

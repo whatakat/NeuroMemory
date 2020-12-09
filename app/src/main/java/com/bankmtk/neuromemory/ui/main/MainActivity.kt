@@ -42,7 +42,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     override val model:MainViewModel by viewModel()
     override val layoutRes: Int= R.layout.activity_main
     private lateinit var adapter: MainAdapter
-    private var  snapHelper = LinearSnapHelper()
+    //private var  snapHelper = LinearSnapHelper()
 
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
@@ -143,7 +143,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         })
 
         myRecycler.adapter = adapter
-        snapHelper.attachToRecyclerView(myRecycler)
+       // snapHelper.attachToRecyclerView(myRecycler)//fixation position
         fab.setOnClickListener { openStickerScreen(null) }
 
         main_button!!.setOnClickListener { v->

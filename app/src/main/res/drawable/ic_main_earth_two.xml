@@ -5277,7 +5277,7 @@
         <aapt:attr name="android:animation">
             <set android:ordering = "together">
                 <objectAnimator
-                    android:duration="900"
+                    android:duration="2900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
                     android:valueFrom="1"
@@ -5285,7 +5285,7 @@
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="900"
+                    android:duration="2900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="1"
@@ -5293,7 +5293,7 @@
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="900"
+                    android:duration="2900"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="rotation"
                     android:valueFrom="0"
@@ -5396,7 +5396,7 @@
         <aapt:attr name="android:animation">
             <set android:ordering = "together">
                 <objectAnimator
-                    android:duration="550"
+                    android:duration="1550"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
                     android:valueFrom="0"
@@ -5404,7 +5404,7 @@
                     android:repeatCount="2"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="550"
+                    android:duration="1550"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="0"
@@ -5419,7 +5419,7 @@
         <aapt:attr name="android:animation">
             <set android:ordering = "together">
                 <objectAnimator
-                    android:duration="2000"
+                    android:duration="4000"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
                     android:valueFrom="0"
@@ -5427,11 +5427,11 @@
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="2000"
+                    android:duration="14000"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="0"
-                    android:valueTo="1"
+                    android:valueTo="0.2"
                     android:repeatCount="0"
                     android:valueType="floatType" />
             </set>
