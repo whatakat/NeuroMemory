@@ -5266,7 +5266,7 @@
                 <path android:fillAlpha="0.95" android:fillColor="#FFFFFF" android:pathData="M108.252,110.004m-0.517,0a0.522,0.517 90,1 1,1.034 0a0.522,0.517 90,1 1,-1.034 0"/>
             </group>
             <group android:name="ring_one" android:pivotY="100" android:pivotX="50">
-                <path android:fillAlpha="0.5" android:fillColor="#FFFFFF" android:pathData="M50,100m-136.04,92.089a164.278,164.278 100.905,1 0,272.08 -184.178a164.278,164.278 100.905,1 0,-272.08 184.178ZM50,100m-133.793,90.568a161.565,161.565 100.905,0 1,267.587 -181.136a161.565,161.565 100.905,0 1,-267.587 181.136Z"/>
+                <path android:fillAlpha="0.05" android:fillColor="#FFFFFF" android:pathData="M50,100m-136.04,92.089a164.278,164.278 100.905,1 0,272.08 -184.178a164.278,164.278 100.905,1 0,-272.08 184.178ZM50,100m-133.793,90.568a161.565,161.565 100.905,0 1,267.587 -181.136a161.565,161.565 100.905,0 1,-267.587 181.136Z"/>
             </group>
 
 
@@ -5427,7 +5427,7 @@
                     android:repeatCount="0"
                     android:valueType="floatType" />
                 <objectAnimator
-                    android:duration="14000"
+                    android:duration="4000"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="0"

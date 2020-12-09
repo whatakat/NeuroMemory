@@ -466,18 +466,18 @@
 
     </group>
     <group android:name="shadow" android:pivotX="50" android:pivotY="100">
-        <path android:fillAlpha="0.35" android:fillColor="#FFFFFF" android:pathData="M50,100m-0.854,0a0.854,0.854 0,1 1,1.708 0a0.854,0.854 0,1 1,-1.708 0"/>
-        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M48.859,102.506A2.754,2.754 0,0 1,48.914 97.47L48.981,97.624A2.586,2.586 0,0 0,48.929 102.353Z"/>
-        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M51.018,97.423A2.771,2.771 0,0 1,51.162 102.516L51.091,102.363A2.603,2.603 0,0 0,50.956 97.58Z"/>
+        <path android:fillAlpha="0.05" android:fillColor="#FFFFFF" android:pathData="M50,100m-0.854,0a0.854,0.854 0,1 1,1.708 0a0.854,0.854 0,1 1,-1.708 0"/>
+        <path android:fillAlpha="0.3" android:fillColor="#FFFFFF" android:pathData="M48.859,102.506A2.754,2.754 0,0 1,48.914 97.47L48.981,97.624A2.586,2.586 0,0 0,48.929 102.353Z"/>
+        <path android:fillAlpha="0.3" android:fillColor="#FFFFFF" android:pathData="M51.018,97.423A2.771,2.771 0,0 1,51.162 102.516L51.091,102.363A2.603,2.603 0,0 0,50.956 97.58Z"/>
     </group>
     <group android:name="shadow_pie" android:pivotX="50" android:pivotY="100">
-        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M48.859,102.506A2.754,2.754 0,0 1,48.914 97.47L48.981,97.624A2.586,2.586 0,0 0,48.929 102.353Z"/>
-        <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M51.018,97.423A2.771,2.771 0,0 1,51.162 102.516L51.091,102.363A2.603,2.603 0,0 0,50.956 97.58Z"/>
+        <path android:fillAlpha="0.5" android:fillColor="#FFFFFF" android:pathData="M48.859,102.506A2.754,2.754 0,0 1,48.914 97.47L48.981,97.624A2.586,2.586 0,0 0,48.929 102.353Z"/>
+        <path android:fillAlpha="0.5" android:fillColor="#FFFFFF" android:pathData="M51.018,97.423A2.771,2.771 0,0 1,51.162 102.516L51.091,102.363A2.603,2.603 0,0 0,50.956 97.58Z"/>
     </group>
 
 <group android:name="cell" android:pivotX="50" android:pivotY="100">
     <path android:fillAlpha="1" android:fillColor="#FFFFFF" android:pathData="M50,100m-0.022,0a0.022,0.022 0,1 1,0.044 0a0.022,0.022 0,1 1,-0.044 0"/>
-    <path android:fillAlpha="0.45" android:fillColor="#F8F7F7" android:pathData="M50,100m-0.469,0a0.469,0.469 0,1 1,0.938 0a0.469,0.469 0,1 1,-0.938 0"/>
+    <path android:fillAlpha="0.05" android:fillColor="#F8F7F7" android:pathData="M50,100m-0.469,0a0.469,0.469 0,1 1,0.938 0a0.469,0.469 0,1 1,-0.938 0"/>
 </group>
 </vector>
     </aapt:attr>
@@ -618,6 +618,14 @@
                     android:propertyName="scaleX"
                     android:valueFrom="0"
                     android:valueTo="20"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="900"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="180"
                     android:repeatCount="0"
                     android:valueType="floatType" />
             </set>

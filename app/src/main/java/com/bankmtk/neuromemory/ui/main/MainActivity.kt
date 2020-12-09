@@ -88,7 +88,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                         val checkIntent = Intent()
                         checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
                         startActivityForResult(checkIntent, 1)
-                        animationDrawableCenter?.start()
                         showIn(alert_button_play)
                         view.fabVolume.setImageLevel(1)
                         statusSp = true
