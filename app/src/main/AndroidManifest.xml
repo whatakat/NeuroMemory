@@ -18,7 +18,8 @@
         <activity
             android:name=".ui.alert.AlertActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <activity android:name=".ui.sticker.StickerActivity" />
+        <activity android:name=".ui.sticker.StickerActivity"
+            android:theme="@style/FirebaseUI.Transparent"/>
         <activity
             android:name=".ui.splash.StarActivity"
             android:theme="@style/SplashTheme" />

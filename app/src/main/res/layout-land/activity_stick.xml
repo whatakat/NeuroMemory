@@ -8,7 +8,8 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@color/colorAccent">
+        android:background="@color/colorAccent"
+        android:alpha="0.8">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -19,7 +20,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:alpha="0.8">
 
         <LinearLayout
             android:layout_width="match_parent"
