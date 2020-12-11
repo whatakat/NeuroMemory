@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -36,8 +37,8 @@ class MainAdapter(private val onItemClickListener: OnItemClickListener)
             Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
     }
     private fun setAnimation(viewToAnimate: View){
-   //         val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_zoom_in)
-  //          viewToAnimate.startAnimation(animation)
+            val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_zoom_in)
+            viewToAnimate.startAnimation(animation)
         val drawableRing: Drawable? =  viewToAnimate.ring!!.drawable
         if (drawableRing is Animatable){
             drawableRing.start()

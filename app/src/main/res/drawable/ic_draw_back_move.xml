@@ -2323,7 +2323,7 @@
                 android:valueTo="-1"
                 android:repeatCount="0"
                 android:repeatMode="restart"
-                android:duration="1600"
+                android:duration="900"
                 android:valueType="floatType"/>
             <objectAnimator
                 android:interpolator="@android:anim/linear_interpolator"
@@ -2332,7 +2332,7 @@
                 android:valueTo="-1"
                 android:repeatCount="0"
                 android:repeatMode="restart"
-                android:duration="1600"
+                android:duration="900"
                 android:valueType="floatType"/>
 
             <objectAnimator

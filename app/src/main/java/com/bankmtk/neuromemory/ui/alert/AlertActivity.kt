@@ -218,7 +218,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
              android.os.Handler().postDelayed({startActivity(getStartIntent(this))},1000)
         }else {
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_LONG)
-            myToast.setGravity(Gravity.CENTER_HORIZONTAL, 0,0)
+            myToast.setGravity(Gravity.END, 0,450)
             val toastContainer = myToast.view as LinearLayout
             val myImage = ImageView(this)
             myImage.setImageResource(R.drawable.ic_icon_ok_complete)
