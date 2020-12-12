@@ -37,7 +37,7 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleY"
                     android:valueFrom="-1"
-                    android:valueTo="2"
+                    android:valueTo="1"
                     android:repeatCount="2"
                     android:valueType="floatType" />
                 <objectAnimator
@@ -45,7 +45,7 @@
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"
                     android:propertyName="scaleX"
                     android:valueFrom="-1"
-                    android:valueTo="2"
+                    android:valueTo="1"
                     android:repeatCount="2"
                     android:valueType="floatType" />
             </set>

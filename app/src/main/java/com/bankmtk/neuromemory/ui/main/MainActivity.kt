@@ -18,6 +18,7 @@ import android.view.*
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -57,6 +58,8 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var statusSp:Boolean = false
     private var animationDrawable: Animatable? = null
     private var animationDrawableCenter: Animatable? = null
+    private var animationDrawableBack: Animatable? = null
+    private var textViewBack:TextView? =null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,6 +69,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(fab)
         init(alert_button)
         init(alert_button_play)
+        textViewBack= findViewById(R.id.count_neurons)
 
         val imageView = findViewById<ImageView>(R.id.title_background)
         imageView.setBackgroundResource(R.drawable.ic_main_earth)
@@ -74,6 +78,11 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         val imageViewCenter = findViewById<ImageView>(R.id.title_background_two)
         imageViewCenter.setBackgroundResource(R.drawable.ic_main_earth_two)
         animationDrawableCenter = imageViewCenter.background as Animatable
+
+        val imageViewBack = findViewById<ImageView>(R.id.title_background_neurom)
+        imageViewBack.setBackgroundResource(R.drawable.ic_main_earth_back)
+        animationDrawableBack = imageViewBack.background as Animatable
+
 
 
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener {
@@ -167,6 +176,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             }
         }
         animationDrawableCenter?.start()
+        animationDrawableBack?.start()
 
     }
 
@@ -176,6 +186,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         if (data==null) return
         listTitleName =data.map { item->item.title }.toSortedSet()
         adapter.stickers = data
+        textViewBack!!.text =data.size.toString()
         if (isHaveItem(adapter.stickers)){
             alert_visible.setImageLevel(1)
         }else{
@@ -189,6 +200,9 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
      fun alertMe(view: View){
          val alertIntent = Intent(this, AlertActivity::class.java)
          if (isHaveItem(adapter.stickers)){
+             animationDrawableCenter?.stop()
+             animationDrawable?.stop()
+             animationDrawableBack?.stop()
              startActivity(alertIntent)
              if (myTTS!=null){
                  myTTS!!.stop()
@@ -294,8 +308,18 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
             }
     }
 
+    override fun onResume() {
+        animationDrawableCenter?.start()
+        animationDrawable?.start()
+        animationDrawableBack?.start()
+        super.onResume()
+    }
+
     override fun onPause() {
         super.onPause()
+        animationDrawableCenter?.stop()
+        animationDrawable?.stop()
+        animationDrawableBack?.stop()
         if (isHaveItem(adapter.stickers)){
             notifyUser()}
         overridePendingTransition(R.anim.slidein, R.anim.slideout)
