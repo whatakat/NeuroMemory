@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Animatable
 import android.os.Build
 import android.os.Bundle
 import android.speech.RecognizerIntent
@@ -36,6 +37,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
     override val layoutRes: Int = R.layout.activity_stick
     private var sticker: Sticker? = null
     private var color: Color = Color.WHITE
+    private var animationScan: Animatable? = null
 
     companion object{
         private val EXTRA_STICKER = StickerActivity::class.java.name+"extra.STICKER"
@@ -51,6 +53,12 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
             overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
+        val imageView = findViewById<ImageView>(R.id.scan)
+        imageView.setBackgroundResource(R.drawable.ic_scan)
+        animationScan = imageView.background as Animatable
+        animationScan?.start()
+
+
         speech.setOnClickListener {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
             intent.putExtra(

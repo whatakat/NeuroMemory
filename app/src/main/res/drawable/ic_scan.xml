@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+<vector android:autoMirrored="true" android:height="200dp"
+    android:viewportHeight="200" android:viewportWidth="100"
+    android:width="100dp">
+    <group android:name="line" android:pivotX="50" android:pivotY="100">
+        <path android:fillAlpha="0.1" android:fillColor="#fcfcb7" android:pathData="M25,46.88L0,0L50,0L100,0L75,46.88L50,93.75L25,46.88Z"/>
+        <path android:fillAlpha="0" android:fillColor="#FF000000"
+            android:pathData="M25,46.88L0,0L50,0L100,0L75,46.88L50,93.75L25,46.88Z"
+            android:strokeAlpha="0.2" android:strokeColor="#fcfcb7" android:strokeWidth="1"/>
+        <path android:fillAlpha="0.4" android:fillColor="#fcfcb7" android:pathData="M-1.87,-3.12L101.87,-3.12L101.87,3.13L-1.87,3.13L-1.87,-3.12Z"/>
+    </group>
+    <group android:name="line_scan" android:pivotX="50" android:pivotY="100">
+        <path android:fillAlpha="1" android:fillColor="#fcfcb7" android:pathData="M-1.87,-3.12L101.87,-3.12L101.87,3.13L-1.87,3.13L-1.87,-3.12Z"/>
+    </group>
+
+</vector>
+    </aapt:attr>
+    <target android:name="line">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+
+                <objectAnimator
+                    android:duration="900"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="500"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="-1"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="-1"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="0"
+                    android:valueTo="1"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="200"
+                    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+                    android:propertyName="scaleY"
+                    android:valueFrom="1"
+                    android:valueTo="0"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+
+            </set>
+        </aapt:attr>
+    </target>
+    <target android:name="line_scan">
+        <aapt:attr name="android:animation">
+            <set android:ordering = "sequentially">
+                <objectAnimator
+                    android:duration="1300"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="200"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="1300"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="translateY"
+                    android:valueFrom="200"
+                    android:valueTo="-20"
+                    android:repeatCount="0"
+                    android:valueType="floatType" />
+
+
+            </set>
+        </aapt:attr>
+    </target>
+
+</animated-vector>
