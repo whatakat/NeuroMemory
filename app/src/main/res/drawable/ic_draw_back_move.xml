@@ -2297,10 +2297,10 @@
 
 
     <group android:name="ring1" android:pivotX="125" android:pivotY="125">
-        <path android:fillAlpha="0.1" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
+        <path android:fillAlpha="0.05" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
     </group>
     <group android:name="ring2" android:pivotX="125" android:pivotY="125">
-        <path android:fillAlpha="0.1" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
+        <path android:fillAlpha="0.05" android:fillColor="#FFFFFF" android:pathData="M125,125m-103.485,67.712a123.669,123.669 101.802,1 0,206.969 -135.424a123.669,123.669 101.802,1 0,-206.969 135.424ZM125,125m-102.648,67.165a122.669,122.669 101.802,0 1,205.296 -134.329a122.669,122.669 101.802,0 1,-205.296 134.329Z"/>
     </group>
     <group android:name="atom" android:pivotX="110" android:pivotY="100">
         <path android:fillAlpha="0.4" android:fillColor="#fcf9f9" android:pathData="M75.26,125.88C75.26,126.73 74.59,127.42 73.76,127.42C72.93,127.42 72.25,126.73 72.25,125.88C72.25,125.04 72.93,124.35 73.76,124.35C74.59,124.35 75.26,125.04 75.26,125.88Z"/>
@@ -2320,7 +2320,7 @@
                 android:interpolator="@android:anim/linear_interpolator"
                 android:propertyName="scaleY"
                 android:valueFrom="20"
-                android:valueTo="-1"
+                android:valueTo="-0.5"
                 android:repeatCount="0"
                 android:repeatMode="restart"
                 android:duration="900"
@@ -2329,7 +2329,7 @@
                 android:interpolator="@android:anim/linear_interpolator"
                 android:propertyName="scaleX"
                 android:valueFrom="20"
-                android:valueTo="-1"
+                android:valueTo="-0.5"
                 android:repeatCount="0"
                 android:repeatMode="restart"
                 android:duration="900"
@@ -2357,17 +2357,9 @@
                     android:valueTo="-1"
                     android:repeatCount="infinite"
                     android:repeatMode="restart"
-                    android:duration="12600"
+                    android:duration="62600"
                     android:valueType="floatType"/>
-                <objectAnimator
-                    android:interpolator="@android:anim/linear_interpolator"
-                    android:propertyName="scaleX"
-                    android:valueFrom="1"
-                    android:valueTo="-1"
-                    android:repeatCount="infinite"
-                    android:repeatMode="restart"
-                    android:duration="6600"
-                    android:valueType="floatType"/>
+
                 <objectAnimator
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="rotation"
@@ -2384,23 +2376,15 @@
     <target android:name="ring2">
         <aapt:attr name="android:animation">
             <set android:ordering = "together">
-                <objectAnimator
-                    android:interpolator="@android:anim/linear_interpolator"
-                    android:propertyName="scaleY"
-                    android:valueFrom="0.95"
-                    android:valueTo="1"
-                    android:repeatCount="infinite"
-                    android:repeatMode="restart"
-                    android:duration="5600"
-                    android:valueType="floatType"/>
+
                 <objectAnimator
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="scaleX"
-                    android:valueFrom="0.95"
-                    android:valueTo="0.99"
+                    android:valueFrom="1"
+                    android:valueTo="-1"
                     android:repeatCount="infinite"
                     android:repeatMode="restart"
-                    android:duration="10600"
+                    android:duration="62600"
                     android:valueType="floatType"/>
                 <objectAnimator
                     android:interpolator="@android:anim/linear_interpolator"

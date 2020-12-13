@@ -55,14 +55,46 @@
         android:layout_gravity="end"
         android:alpha="0.5"
         android:contentDescription="@string/app_name" />
-    <TextView
-        android:id="@+id/count_neurons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/hundred"
-        android:layout_marginEnd="@dimen/fifty"
+    <ImageView
+        android:id="@+id/title_background_number_one"
+        android:layout_width="@dimen/fifteen"
+        android:layout_height="@dimen/fifteen"
+        android:layout_marginTop="@dimen/ninety"
+        android:layout_marginEnd="@dimen/fifteen"
         android:layout_gravity="end"
-        android:text="@string/size"/>
+        android:alpha="0.5"
+        android:src="@drawable/number_list"
+        android:contentDescription="@string/app_name" />
+    <ImageView
+        android:id="@+id/title_background_number_two"
+        android:layout_width="@dimen/fifteen"
+        android:layout_height="@dimen/fifteen"
+        android:layout_marginTop="@dimen/ninety"
+        android:layout_marginEnd="@dimen/thirty"
+        android:layout_gravity="end"
+        android:alpha="0.45"
+        android:src="@drawable/number_list"
+        android:contentDescription="@string/app_name" />
+    <ImageView
+        android:id="@+id/title_background_number_three"
+        android:layout_width="@dimen/fifteen"
+        android:layout_height="@dimen/fifteen"
+        android:layout_marginTop="@dimen/ninety"
+        android:layout_marginEnd="@dimen/forty_five"
+        android:layout_gravity="end"
+        android:alpha="0.4"
+        android:src="@drawable/number_list"
+        android:contentDescription="@string/app_name" />
+    <ImageView
+        android:id="@+id/title_background_number_four"
+        android:layout_width="@dimen/fifteen"
+        android:layout_height="@dimen/fifteen"
+        android:layout_marginTop="@dimen/ninety"
+        android:layout_marginEnd="@dimen/sixty"
+        android:layout_gravity="end"
+        android:alpha="0.35"
+        android:src="@drawable/number_list"
+        android:contentDescription="@string/app_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myRecycler"

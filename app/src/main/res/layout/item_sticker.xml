@@ -6,7 +6,7 @@
     android:id="@+id/cardView"
     android:layout_width="220dp"
     android:layout_height="220dp"
-    card_view:cardElevation="@dimen/five"
+    card_view:cardElevation="@dimen/fifteen"
     android:layout_marginStart="@dimen/seventy_five"
     android:layout_marginTop="@dimen/seventy_five"
     android:layout_marginEnd="150dp"
@@ -29,16 +29,19 @@
             android:contentDescription="@string/app_name" />
         <ImageView
             android:id="@+id/pulse"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/hundred"
+            android:layout_height="@dimen/hundred"
             android:alpha="0.1"
             android:src="@drawable/ic_background_main_item"
+            android:layout_marginTop="@dimen/sixty"
+            android:layout_marginStart="@dimen/sixty"
+
             android:contentDescription="@string/app_name" />
         <TextView
             android:id="@+id/titleStick"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginStart="@dimen/twenty"
             android:layout_marginTop="@dimen/fifty"
             tools:text="@string/title"
 

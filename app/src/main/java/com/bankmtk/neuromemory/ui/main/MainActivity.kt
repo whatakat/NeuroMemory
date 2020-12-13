@@ -59,7 +59,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var animationDrawable: Animatable? = null
     private var animationDrawableCenter: Animatable? = null
     private var animationDrawableBack: Animatable? = null
-    private var textViewBack:TextView? =null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +68,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(fab)
         init(alert_button)
         init(alert_button_play)
-        textViewBack= findViewById(R.id.count_neurons)
 
         val imageView = findViewById<ImageView>(R.id.title_background)
         imageView.setBackgroundResource(R.drawable.ic_main_earth)
@@ -186,7 +184,10 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         if (data==null) return
         listTitleName =data.map { item->item.title }.toSortedSet()
         adapter.stickers = data
-        textViewBack!!.text =data.size.toString()
+        title_background_number_one?.setImageLevel(data.size%10)
+        title_background_number_two?.setImageLevel((data.size/10)%10)
+        title_background_number_three?.setImageLevel((data.size/100)%10)
+        title_background_number_four?.setImageLevel((data.size/1000)%10)
         if (isHaveItem(adapter.stickers)){
             alert_visible.setImageLevel(1)
         }else{
@@ -287,6 +288,10 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         adapter.stickers = data?.filter {
             it.title==selectedTitle
         } as List
+    title_background_number_one?.setImageLevel(adapter.stickers.size%10)
+    title_background_number_two?.setImageLevel((adapter.stickers.size/10)%10)
+    title_background_number_three?.setImageLevel((adapter.stickers.size/100)%10)
+    title_background_number_four?.setImageLevel((adapter.stickers.size/1000)%10)
  //   }
     adapter.notifyDataSetChanged()
 }

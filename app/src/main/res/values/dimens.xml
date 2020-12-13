@@ -2,13 +2,19 @@
 <resources>
     <dimen name="three">3dp</dimen>
     <dimen name="five">5dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
     <dimen name="twenty">20dp</dimen>
-    <dimen name="two_five">25dp</dimen>
+    <dimen name="twenty_five">25dp</dimen>
     <dimen name="thirty">30dp</dimen>
     <dimen name="thirty_five">35dp</dimen>
+    <dimen name="forty">40dp</dimen>
+    <dimen name="forty_five">45dp</dimen>
     <dimen name="fifty">50dp</dimen>
+    <dimen name="fifty_five">55dp</dimen>
     <dimen name="sixty">60dp</dimen>
     <dimen name="seventy_five">75dp</dimen>
+    <dimen name="ninety">90dp</dimen>
     <dimen name="hundred">100dp</dimen>
     <dimen name="one_eighty">180dp</dimen>
 </resources>
