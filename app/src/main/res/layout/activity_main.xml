@@ -62,7 +62,7 @@
         android:layout_marginTop="@dimen/ninety"
         android:layout_marginEnd="@dimen/fifteen"
         android:layout_gravity="end"
-        android:alpha="0.5"
+        android:alpha="0.8"
         android:src="@drawable/number_list"
         android:contentDescription="@string/app_name" />
     <ImageView
@@ -72,7 +72,7 @@
         android:layout_marginTop="@dimen/ninety"
         android:layout_marginEnd="@dimen/thirty"
         android:layout_gravity="end"
-        android:alpha="0.45"
+        android:alpha="0.75"
         android:src="@drawable/number_list"
         android:contentDescription="@string/app_name" />
     <ImageView
@@ -82,7 +82,7 @@
         android:layout_marginTop="@dimen/ninety"
         android:layout_marginEnd="@dimen/forty_five"
         android:layout_gravity="end"
-        android:alpha="0.4"
+        android:alpha="0.7"
         android:src="@drawable/number_list"
         android:contentDescription="@string/app_name" />
     <ImageView
@@ -92,7 +92,7 @@
         android:layout_marginTop="@dimen/ninety"
         android:layout_marginEnd="@dimen/sixty"
         android:layout_gravity="end"
-        android:alpha="0.35"
+        android:alpha="0.65"
         android:src="@drawable/number_list"
         android:contentDescription="@string/app_name" />
 

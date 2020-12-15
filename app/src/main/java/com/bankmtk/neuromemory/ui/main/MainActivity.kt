@@ -160,6 +160,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                 if (drawablePlus is Animatable){
                     drawablePlus.start()
                 }
+                animationDrawable?.stop()
                 animationDrawable?.start()
 
                 showIn(alert_button)
@@ -190,6 +191,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         title_background_number_four?.setImageLevel((data.size/1000)%10)
         if (isHaveItem(adapter.stickers)){
             alert_visible.setImageLevel(1)
+            notifyUser()
         }else{
             alert_visible.setImageLevel(0)
         }
@@ -201,9 +203,9 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
      fun alertMe(view: View){
          val alertIntent = Intent(this, AlertActivity::class.java)
          if (isHaveItem(adapter.stickers)){
-             animationDrawableCenter?.stop()
-             animationDrawable?.stop()
-             animationDrawableBack?.stop()
+//             animationDrawableCenter?.stop()
+//             animationDrawable?.stop()
+//             animationDrawableBack?.stop()
              startActivity(alertIntent)
              if (myTTS!=null){
                  myTTS!!.stop()
@@ -314,19 +316,17 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun onResume() {
-        animationDrawableCenter?.start()
-        animationDrawable?.start()
-        animationDrawableBack?.start()
+//        animationDrawableCenter?.start()
+//        animationDrawable?.start()
+//        animationDrawableBack?.start()
         super.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        animationDrawableCenter?.stop()
-        animationDrawable?.stop()
-        animationDrawableBack?.stop()
-        if (isHaveItem(adapter.stickers)){
-            notifyUser()}
+//        animationDrawableCenter?.stop()
+//        animationDrawable?.stop()
+//        animationDrawableBack?.stop()
         overridePendingTransition(R.anim.slidein, R.anim.slideout)
     }
 
@@ -340,6 +340,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun animateView(view: View) {
+        animationDrawableCenter?.stop()
+        animationDrawable?.stop()
         val animationBack = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
         view.startAnimation(animationBack)
         view.fabVolume.hide()
@@ -355,6 +357,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     }
 
     override fun animateViewCancel(view: View) {
+        animationDrawableCenter?.start()
+        animationDrawable?.start()
         val animationFront = AnimationUtils.loadAnimation(this,R.anim.sticker_zoom_out)
         view.startAnimation(animationFront)
         view.fabVolume.animate().alpha(0.2F)

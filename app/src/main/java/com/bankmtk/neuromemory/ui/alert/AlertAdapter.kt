@@ -1,13 +1,9 @@
 package com.bankmtk.neuromemory.ui.alert
 
-import android.graphics.drawable.Animatable
-import android.graphics.drawable.Drawable
-import android.os.Handler
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
@@ -20,43 +16,30 @@ import java.util.*
 class AlertAdapter(private val onItemClickListener: OnItemClickListener)
     : RecyclerView.Adapter<AlertAdapter.StickViewHolder>() {
     var stickers: List<Sticker> = listOf()
-        set(value){
-            val valueDate : MutableList<Sticker> = mutableListOf()
-            var ind  =0
-            for (i in value.indices){
-                if (value[i].lastChanged<Date()){
-                    valueDate.add(ind,value[i])
-                    ind++
-                }
-            }
-            field = valueDate
-            notifyDataSetChanged()
-
+       set(value){
+    field = value.filter { date->date.lastChanged<Date() }
+    notifyDataSetChanged()
 }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StickViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view  = inflater.inflate(R.layout.item_sticker,parent,false)
         return StickViewHolder(view)
     }
-
    override fun getItemCount()=stickers.size
-
-
 
     override fun onBindViewHolder(holder: StickViewHolder, position: Int){
             holder.bind(stickers[position])
-            Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
-
-
+            //Handler().postDelayed({setAnimation(holder.containerView)},position.toLong())
     }
-    private fun setAnimation(viewToAnimate: View,){
-        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_alert_zoom_in)
-        viewToAnimate.startAnimation(animation)
-        val drawableRing: Drawable? =  viewToAnimate.ring!!.drawable
-        if (drawableRing is Animatable){
-            drawableRing.start()
-        }
-    }
+//    private fun setAnimation(viewToAnimate: View,){
+//        val animation = AnimationUtils.loadAnimation(viewToAnimate.context, R.anim.sticker_alert_zoom_in)
+//        viewToAnimate.startAnimation(animation)
+//        val drawableRing: Drawable? =  viewToAnimate.ring!!.drawable
+//        if (drawableRing is Animatable){
+//            drawableRing.start()
+//        }
+//    }
 
     inner class StickViewHolder(override val containerView: View):
         RecyclerView.ViewHolder(containerView), LayoutContainer {

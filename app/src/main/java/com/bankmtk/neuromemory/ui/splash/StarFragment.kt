@@ -94,6 +94,7 @@ class StarFragment: Fragment() {
             drawablePointB.start()
         }
         return view
+
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -267,6 +268,7 @@ class StarFragment: Fragment() {
         super.onResume()
         mButton!!.isEnabled = true
         onDestroy()
+
     }
 
     companion object {
