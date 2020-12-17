@@ -189,9 +189,8 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         title_background_number_two?.setImageLevel((data.size/10)%10)
         title_background_number_three?.setImageLevel((data.size/100)%10)
         title_background_number_four?.setImageLevel((data.size/1000)%10)
-        if (isHaveItem(adapter.stickers)){
+        if (isHaveItem(data)){
             alert_visible.setImageLevel(1)
-            notifyUser()
         }else{
             alert_visible.setImageLevel(0)
         }
@@ -328,6 +327,11 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 //        animationDrawable?.stop()
 //        animationDrawableBack?.stop()
         overridePendingTransition(R.anim.slidein, R.anim.slideout)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (isHaveItem(adapter.stickers)) notifyUser()
     }
 
     override fun onDestroy() {

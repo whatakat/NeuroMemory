@@ -198,8 +198,10 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
             }
         }
         toast("Next date ${nextChange(sticker!!.progressSt).format()}")
-       onBackPressed()
-        if (!isHaveItem(adapter.stickers)){
+        onBackPressed()
+        if (isHaveItem(adapter.stickers)){
+           android.os.Handler().postDelayed({startActivity(getStartIntent(this))},3000)
+        }else{
             val myToast = Toast.makeText(this,R.string.time_completed, Toast.LENGTH_LONG)
             myToast.setGravity(Gravity.END, 0,450)
             val toastContainer = myToast.view as LinearLayout
@@ -213,8 +215,6 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 drawableComplete.start()
             }
             finish()
-        }else{
-            android.os.Handler().postDelayed({startActivity(getStartIntent(this))},3000)
         }
     }
 
