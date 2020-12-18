@@ -293,7 +293,7 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     title_background_number_two?.setImageLevel((adapter.stickers.size/10)%10)
     title_background_number_three?.setImageLevel((adapter.stickers.size/100)%10)
     title_background_number_four?.setImageLevel((adapter.stickers.size/1000)%10)
- //   }
+
     adapter.notifyDataSetChanged()
 }
 
@@ -314,12 +314,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
             }
     }
 
-    override fun onResume() {
-//        animationDrawableCenter?.start()
-//        animationDrawable?.start()
-//        animationDrawableBack?.start()
-        super.onResume()
-    }
 
     override fun onPause() {
         super.onPause()
