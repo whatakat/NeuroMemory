@@ -27,8 +27,8 @@
         android:id="@+id/meteorite2"
         android:layout_marginTop="80dp"
         android:layout_gravity="center|top"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/meteorite" />
     <ImageView

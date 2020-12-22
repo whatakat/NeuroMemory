@@ -76,7 +76,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                     statusSp = false
                 }
             }
-//            override fun onItemSpeakClick(view: View) {
+            override fun onItemSpeakClick(view: View) {
 //                when (statusSp){
 //                    false ->{
 //                        st = view
@@ -87,12 +87,15 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
 //                        //Thread { animationDrawableAlert?.start() }.start()
 //                    }
 //                    true ->{
-//                        myTTS!!.stop()
-//                        myTTS!!.shutdown()
-//                        statusSp = false
+                if (myTTS!=null){
+                    myTTS!!.stop()
+                    myTTS!!.shutdown()
+                    statusSp = false
+                }
+
 //                    }
 //                }
-//            }
+            }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun onItemClick(itemView: View) {
@@ -161,7 +164,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.langOneI.visibility = View.INVISIBLE
         view.fabOk.alpha = 0F
         view.fabOk.animate().alpha(0.6F)
-        view.fabVolume.animate().alpha(0F)
+        view.fabVolume.animate().alpha(0.5F)
         view.fabOk.show()
         val drawable: Drawable =  view.fabOk.drawable
         if (drawable is Animatable ){

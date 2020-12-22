@@ -119,7 +119,8 @@ class StarFragment: Fragment() {
         pathL.cubicTo(695F,1925F, 560F,1885F,780F, 560F)
         val pathM = Path()
         pathM.cubicTo(520F,1930F, 500F,200F,520F, 1930F)
-        pathM.cubicTo(1F,1F, 1F,1F,-10F, -10F)
+        pathM.cubicTo(10F,50F, 150F,50F,10F, 50F)
+        pathM.cubicTo(200F,50F, 1F,50F,10F, 50F)
 
         val path1 = Path()
         path1.cubicTo(520F,1900F, 500F,200F,350F, 1900F)
