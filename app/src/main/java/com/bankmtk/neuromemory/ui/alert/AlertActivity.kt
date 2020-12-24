@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Animatable
-import android.graphics.drawable.AnimatedVectorDrawable
-import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -17,27 +15,21 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.format
 import com.bankmtk.neuromemory.ui.base.BaseActivity
-import com.bankmtk.neuromemory.ui.main.MainActivity
 import com.bankmtk.neuromemory.ui.main.MainViewModel
 import com.bankmtk.neuromemory.ui.sticker.StickerViewModel
-import kotlinx.android.synthetic.main.activity_alert.*
 import kotlinx.android.synthetic.main.activity_main.myRecycler
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.item_sticker.*
 import kotlinx.android.synthetic.main.item_sticker.view.*
 import kotlinx.android.synthetic.main.item_sticker.view.fabOk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
-import kotlin.time.toDuration
 
 class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener {
 
@@ -77,24 +69,11 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
                 }
             }
             override fun onItemSpeakClick(view: View) {
-//                when (statusSp){
-//                    false ->{
-//                        st = view
-//                        statusSp=true
-//                        val checkIntent = Intent()
-//                        checkIntent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
-//                        startActivityForResult(checkIntent, 1)
-//                        //Thread { animationDrawableAlert?.start() }.start()
-//                    }
-//                    true ->{
                 if (myTTS!=null){
                     myTTS!!.stop()
                     myTTS!!.shutdown()
                     statusSp = false
                 }
-
-//                    }
-//                }
             }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
