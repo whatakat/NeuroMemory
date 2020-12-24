@@ -71,7 +71,7 @@ abstract class BaseActivity<T> : AppCompatActivity(), CoroutineScope {
         startActivityForResult(
             AuthUI.getInstance()
                 .createSignInIntentBuilder()
-                .setLogo(R.drawable.tree)
+                .setLogo(R.drawable.ic_st_nine)
                 .setTheme(R.style.LoginStyle)
                 .setAvailableProviders(providers)
                 .build(),
