@@ -5,6 +5,9 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -25,6 +28,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.*
+import com.bankmtk.neuromemory.service.MyJobService
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
@@ -60,6 +64,18 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     private var animationDrawableCenter: Animatable? = null
     private var animationDrawableBack: Animatable? = null
 
+    companion object{
+        fun getStartIntent(context: Context) = Intent(
+            context,
+            MainActivity::class.java
+        )
+        private const val TAG = "MainActivity"
+        private const val SUCCESS_KEY = "SUCCESS"
+        private const val FAILED_KEY = "FAILED"
+        private const val JOB_ID = 123123
+        private const val PERIODIC_TIME: Long =  1000
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +84,8 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(fab)
         init(alert_button)
         init(alert_button_play)
+        scheduleJob()
+
 
         val imageView = findViewById<ImageView>(R.id.title_background)
         imageView.setBackgroundResource(R.drawable.ic_main_earth)
@@ -179,6 +197,31 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
     }
 
+    private fun scheduleJob() {
+        val componentName = ComponentName(this, MyJobService::class.java)
+        val info = JobInfo.Builder(JOB_ID, componentName)
+            .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+            .setRequiresDeviceIdle(false)
+            .setRequiresCharging(true)
+            .setPersisted(true)
+            .setPeriodic(PERIODIC_TIME)
+            .build()
+
+        val jobScheduler: JobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+        val resultCode = jobScheduler.schedule(info)
+        val isJobScheduledSuccess = resultCode == JobScheduler.RESULT_SUCCESS
+        if (isJobScheduledSuccess){
+            val myToast = Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT)
+            myToast.setGravity(Gravity.CENTER, 0, 0)
+            val toastContainer = myToast.view as LinearLayout
+            val myImage = ImageView(this)
+            myImage.setImageResource(R.drawable.ic_inclusive)
+            toastContainer.addView(myImage, 0)
+            toastContainer.setBackgroundColor(Color.TRANSPARENT)
+            myToast.show()
+        }
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun renderData(data: List<Sticker>?) {
@@ -249,13 +292,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         //myTTS!!.playSilentUtterance(1000,2,"Silence")
     }
 
-
-    companion object{
-        fun getStartIntent(context: Context) = Intent(
-            context,
-            MainActivity::class.java
-        )
-    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         return MenuInflater(this).inflate(R.menu.menu_main, menu).let { true }
     }

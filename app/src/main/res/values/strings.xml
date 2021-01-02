@@ -33,4 +33,5 @@
     <string name="stop">stop</string>
     <string name="all_elements">All neurons</string>
     <string name="size">size</string>
+    <string name="success">success</string>
 </resources>
