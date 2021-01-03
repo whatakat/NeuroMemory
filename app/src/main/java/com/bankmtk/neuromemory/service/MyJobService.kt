@@ -23,14 +23,7 @@ class MyJobService: JobService() {
         Thread(Runnable {
             kotlin.run {
                 for (i: Int in 0 until 9) {
-                    val myToast = Toast.makeText(this, R.string.all_elements, Toast.LENGTH_SHORT)
-                    myToast.setGravity(Gravity.CENTER, 0, 0)
-                    val toastContainer = myToast.view as LinearLayout
-                    val myImage = ImageView(this)
-                    myImage.setImageResource(R.drawable.ic_inclusive)
-                    toastContainer.addView(myImage, 0)
-                    toastContainer.setBackgroundColor(Color.TRANSPARENT)
-                    myToast.show()
+
                     if (jobCanceled) {
                         return@run
                     }
