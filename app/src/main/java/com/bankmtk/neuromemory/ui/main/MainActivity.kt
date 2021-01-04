@@ -210,16 +210,16 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         val jobScheduler: JobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
         val resultCode = jobScheduler.schedule(info)
         val isJobScheduledSuccess = resultCode == JobScheduler.RESULT_SUCCESS
-        if (isJobScheduledSuccess){
-            val myToast = Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT)
-            myToast.setGravity(Gravity.CENTER, 0, 0)
-            val toastContainer = myToast.view as LinearLayout
-            val myImage = ImageView(this)
-            myImage.setImageResource(R.drawable.ic_inclusive)
-            toastContainer.addView(myImage, 0)
-            toastContainer.setBackgroundColor(Color.TRANSPARENT)
-            myToast.show()
-        }
+//        if (isJobScheduledSuccess){
+//            val myToast = Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT)
+//            myToast.setGravity(Gravity.CENTER, 0, 0)
+//            val toastContainer = myToast.view as LinearLayout
+//            val myImage = ImageView(this)
+//            myImage.setImageResource(R.drawable.ic_inclusive)
+//            toastContainer.addView(myImage, 0)
+//            toastContainer.setBackgroundColor(Color.TRANSPARENT)
+//            myToast.show()
+//        }
     }
 
 
