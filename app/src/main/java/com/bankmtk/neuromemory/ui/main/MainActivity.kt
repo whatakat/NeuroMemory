@@ -205,11 +205,11 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             .setRequiresCharging(true)
             .setPersisted(true)
             .setPeriodic(PERIODIC_TIME)
-            .build()
 
         val jobScheduler: JobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        val resultCode = jobScheduler.schedule(info)
-        val isJobScheduledSuccess = resultCode == JobScheduler.RESULT_SUCCESS
+        jobScheduler.schedule(info.build())
+        //val resultCode = jobScheduler.schedule(info)
+       // val isJobScheduledSuccess = resultCode == JobScheduler.RESULT_SUCCESS
 //        if (isJobScheduledSuccess){
 //            val myToast = Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT)
 //            myToast.setGravity(Gravity.CENTER, 0, 0)

@@ -30,7 +30,7 @@ class MyJobService: JobService() {
     private var jobCanceled : Boolean = false
 
     private fun doBackgroundWork(p0: JobParameters?) {
-        Thread(Runnable {
+        Thread{
             kotlin.run {
                 for (i: Int in 0 until 9) {
                     notifyUser()
@@ -42,12 +42,12 @@ class MyJobService: JobService() {
                 }
                 //jobFinished(p0, false)
             }
-        }).start()
+        }.start()
     }
 
     override fun onStartJob(p0: JobParameters?): Boolean {
-        //doBackgroundWork(p0)
-        notifyUser()
+        doBackgroundWork(p0)
+        //notifyUser()
         return true
     }
 
@@ -65,7 +65,7 @@ class MyJobService: JobService() {
     }
 
     private fun notifyUser(){
-        notificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val intent = Intent(applicationContext, AlertActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             applicationContext,
