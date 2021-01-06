@@ -21,7 +21,6 @@ import android.view.*
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -84,8 +83,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         init(fab)
         init(alert_button)
         init(alert_button_play)
-        scheduleJob()
-
 
         val imageView = findViewById<ImageView>(R.id.title_background)
         imageView.setBackgroundResource(R.drawable.ic_main_earth)
@@ -362,6 +359,11 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     override fun onStop() {
         super.onStop()
         if (isHaveItem(adapter.stickers)) notifyUser()
+    }
+
+    override fun onResume() {
+        scheduleJob()
+        super.onResume()
     }
 
     override fun onDestroy() {
