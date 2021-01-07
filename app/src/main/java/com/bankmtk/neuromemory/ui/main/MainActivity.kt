@@ -5,9 +5,6 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.app.job.JobInfo
-import android.app.job.JobScheduler
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -27,7 +24,6 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.*
-import com.bankmtk.neuromemory.service.MyJobService
 import com.bankmtk.neuromemory.ui.alert.AlertActivity
 import com.bankmtk.neuromemory.ui.base.BaseActivity
 import com.bankmtk.neuromemory.ui.splash.SplashActivity
@@ -68,11 +64,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
             context,
             MainActivity::class.java
         )
-        private const val TAG = "MainActivity"
-        private const val SUCCESS_KEY = "SUCCESS"
-        private const val FAILED_KEY = "FAILED"
-        private const val JOB_ID = 123123
-        private const val PERIODIC_TIME: Long =  1000
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -194,30 +185,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
 
     }
 
-    private fun scheduleJob() {
-        val componentName = ComponentName(this, MyJobService::class.java)
-        val info = JobInfo.Builder(JOB_ID, componentName)
-            .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
-            .setRequiresDeviceIdle(false)
-            .setRequiresCharging(true)
-            .setPersisted(true)
-            .setPeriodic(PERIODIC_TIME)
-
-        val jobScheduler: JobScheduler = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        jobScheduler.schedule(info.build())
-        //val resultCode = jobScheduler.schedule(info)
-       // val isJobScheduledSuccess = resultCode == JobScheduler.RESULT_SUCCESS
-//        if (isJobScheduledSuccess){
-//            val myToast = Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT)
-//            myToast.setGravity(Gravity.CENTER, 0, 0)
-//            val toastContainer = myToast.view as LinearLayout
-//            val myImage = ImageView(this)
-//            myImage.setImageResource(R.drawable.ic_inclusive)
-//            toastContainer.addView(myImage, 0)
-//            toastContainer.setBackgroundColor(Color.TRANSPARENT)
-//            myToast.show()
-//        }
-    }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -361,10 +328,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         if (isHaveItem(adapter.stickers)) notifyUser()
     }
 
-    override fun onResume() {
-        scheduleJob()
-        super.onResume()
-    }
 
     override fun onDestroy() {
         super.onDestroy()
