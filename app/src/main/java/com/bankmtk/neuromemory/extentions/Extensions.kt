@@ -4,10 +4,8 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.core.view.contains
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Color
 import java.text.SimpleDateFormat
