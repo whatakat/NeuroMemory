@@ -14,14 +14,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.*
-import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.fragment.app.Fragment
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.ui.main.MainActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_splash.*
 
 class StarFragment: Fragment() {
     private var mButton: FloatingActionButton? =null
