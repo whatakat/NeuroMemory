@@ -42,6 +42,7 @@ class AlertAdapter(private val onItemClickListener: OnItemClickListener)
                 itemView.setOnClickListener{onItemClickListener.onItemClick(itemView)}
                 itemView.fabOk.setOnClickListener {consume { onItemClickListener.onItemOkClick(sticker) }  }
                 itemView.fabVolume.setOnClickListener {consume { onItemClickListener.onItemSpeakClick(itemView) }  }
+                itemView.fabVolume.setImageLevel(1)
         }
         private inline fun consume(function:()->Unit):Boolean{
             function()
