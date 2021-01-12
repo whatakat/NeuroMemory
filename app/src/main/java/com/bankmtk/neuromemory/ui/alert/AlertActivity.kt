@@ -143,7 +143,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.langOneI.visibility = View.INVISIBLE
         view.fabOk.alpha = 0F
         view.fabOk.animate().alpha(0.6F)
-        view.fabVolume.animate().alpha(0.5F)
+        view.fabVolume.animate().alpha(0.3F)
         view.fabOk.show()
         val drawable: Drawable =  view.fabOk.drawable
         if (drawable is Animatable ){
@@ -165,7 +165,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.langOneI.visibility = View.VISIBLE
         view.fabOk.hide()
         view.fabOk.animate().alpha(0F).duration = 800
-        view.fabVolume.animate().alpha(0F).duration = 800
+        view.fabVolume.animate().alpha(0.1F).duration = 800
         view.langTwoI.visibility = View.GONE
     }
     @ExperimentalCoroutinesApi
