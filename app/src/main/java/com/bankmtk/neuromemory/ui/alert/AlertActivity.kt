@@ -165,7 +165,7 @@ class AlertActivity:BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener 
         view.langOneI.visibility = View.VISIBLE
         view.fabOk.hide()
         view.fabOk.animate().alpha(0F).duration = 800
-        view.fabVolume.animate().alpha(0.1F).duration = 800
+        view.fabVolume.animate().alpha(0.08F).duration = 800
         view.langTwoI.visibility = View.GONE
     }
     @ExperimentalCoroutinesApi
