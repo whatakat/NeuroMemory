@@ -20,7 +20,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.LinearSnapHelper
 import com.bankmtk.neuromemory.R
 import com.bankmtk.neuromemory.data.model.Sticker
 import com.bankmtk.neuromemory.extentions.*
