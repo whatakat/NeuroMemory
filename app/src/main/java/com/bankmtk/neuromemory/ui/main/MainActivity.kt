@@ -86,13 +86,10 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         imageViewBack.setBackgroundResource(R.drawable.ic_main_earth_back)
         animationDrawableBack = imageViewBack.background as Animatable
 
-
-
         adapter = MainAdapter(object : MainAdapter.OnItemClickListener {
             override fun onItemLongClick(sticker: Sticker) {
                 openStickerScreen(sticker)
             }
-
             override fun onItemSpeakClick(view: View) {
                 when (statusSp) {
                     false -> {
@@ -138,9 +135,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
                                 drawableStop.start()
                             }
                         }
-
                     }
-
                 }
             }
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -181,10 +176,7 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         }
         animationDrawableCenter?.start()
         animationDrawableBack?.start()
-
     }
-
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun renderData(data: List<Sticker>?) {
@@ -208,9 +200,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
      fun alertMe(view: View){
          val alertIntent = Intent(this, AlertActivity::class.java)
          if (isHaveItem(adapter.stickers)){
-//             animationDrawableCenter?.stop()
-//             animationDrawable?.stop()
-//             animationDrawableBack?.stop()
              startActivity(alertIntent)
              if (myTTS!=null){
                  myTTS!!.stop()
@@ -273,10 +262,8 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
         return when(item.title.toString()){
             "Logout" -> showLogoutDialog().let { true }
              else->  updateSearch(item.title.toString(), adapter.stickers).let { true }
-
         }
     }
-
 
 private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
 
@@ -292,7 +279,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
     title_background_number_two?.setImageLevel((adapter.stickers.size/10)%10)
     title_background_number_three?.setImageLevel((adapter.stickers.size/100)%10)
     title_background_number_four?.setImageLevel((adapter.stickers.size/1000)%10)
-
     adapter.notifyDataSetChanged()
 }
 
@@ -313,12 +299,8 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
             }
     }
 
-
     override fun onPause() {
         super.onPause()
-//        animationDrawableCenter?.stop()
-//        animationDrawable?.stop()
-//        animationDrawableBack?.stop()
         overridePendingTransition(R.anim.slidein, R.anim.slideout)
     }
 
@@ -326,7 +308,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         super.onStop()
         if (isHaveItem(adapter.stickers)) notifyUser()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -351,7 +332,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         view.langTwoI.visibility = View.VISIBLE
         view.langTwoI.rotationY = 180F
         view.status_star.animate().alpha(0.16F)
-
     }
 
     override fun animateViewCancel(view: View) {
@@ -434,7 +414,6 @@ private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
         if (status == TextToSpeech.SUCCESS) {
             myTTS!!.speak(st!!.langOneI.text, TextToSpeech.QUEUE_ADD, bundle, "speakText")
             myTTS!!.speak(st!!.langTwoI.text, TextToSpeech.QUEUE_ADD, bundle, "speakText")
-
         } else if (status == TextToSpeech.ERROR) {
             myTTS!!.shutdown()
         }
