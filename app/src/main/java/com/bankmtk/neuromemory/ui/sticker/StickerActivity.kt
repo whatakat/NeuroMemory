@@ -263,9 +263,4 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
         textTwo.removeTextChangedListener(textChangeListener)
 
     }
-
-    override fun onPause() {
-        super.onPause()
-       // overridePendingTransition(R.anim.sticker_zoom_in,R.anim.sticker_zoom_out)
-    }
 }
