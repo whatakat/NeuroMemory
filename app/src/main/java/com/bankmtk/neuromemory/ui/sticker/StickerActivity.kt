@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color.TRANSPARENT
 import android.graphics.drawable.Animatable
 import android.os.Build
 import android.os.Bundle
@@ -180,7 +181,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
           val myImage = ImageView(this)
           myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
           toastContainer.addView(myImage,0)
-          toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+          toastContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
           myToast.show()
       }
 
@@ -227,7 +228,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
             val myImage = ImageView(this)
             myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
             toastContainer.addView(myImage,0)
-            toastContainer.setBackgroundColor(ContextCompat.getColor(this,R.color.night_sky))
+            toastContainer.setBackgroundColor(TRANSPARENT)
             myToast.show()
             return
         }
