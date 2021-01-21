@@ -181,7 +181,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
           val myImage = ImageView(this)
           myImage.setImageResource(R.drawable.ic_error_outline_black_24dp)
           toastContainer.addView(myImage,0)
-          toastContainer.setBackgroundColor(android.graphics.Color.TRANSPARENT)
+          toastContainer.setBackgroundColor(TRANSPARENT)
           myToast.show()
       }
 
