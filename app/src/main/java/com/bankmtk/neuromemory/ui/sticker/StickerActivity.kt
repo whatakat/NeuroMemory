@@ -175,7 +175,7 @@ class StickerActivity: BaseActivity<StickerViewState.StickerData>() {
           i = Intent.createChooser(i, getString(R.string.report))
           startActivity(i)
       } catch (e: Exception){
-          val myToast = Toast.makeText(this,R.string.error, Toast.LENGTH_SHORT)
+          val myToast = Toast.makeText(this,R.string.error, Toast.LENGTH_LONG)
           myToast.setGravity(Gravity.CENTER, 0,200)
           val toastContainer = myToast.view as LinearLayout
           val myImage = ImageView(this)
