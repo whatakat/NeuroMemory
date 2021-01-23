@@ -259,7 +259,7 @@ class StarFragment: Fragment() {
         animatorSet.start()
         mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow
-        mButton!!.alpha = 0.30F
+        mButton!!.alpha = 0.20F
 
     }
 
