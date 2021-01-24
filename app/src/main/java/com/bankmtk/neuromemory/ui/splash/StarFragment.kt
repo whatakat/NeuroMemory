@@ -259,15 +259,13 @@ class StarFragment: Fragment() {
         animatorSet.start()
         mLightView!!.alpha = 0.70F
         mLightView!!.animation = rotateArrow
-        mButton!!.alpha = 0.20F
-
+        mButton!!.alpha = 0.30F
     }
 
     override fun onResume() {
         super.onResume()
         mButton!!.isEnabled = true
         onDestroy()
-
     }
 
     companion object {
@@ -276,6 +274,4 @@ class StarFragment: Fragment() {
             return StarFragment()
         }
     }
-
-
 }
