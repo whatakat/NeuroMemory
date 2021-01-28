@@ -266,12 +266,6 @@ class MainActivity : BaseActivity<List<Sticker>?>(), TextToSpeech.OnInitListener
     }
 
 private fun updateSearch(selectedTitle: String?, data: List<Sticker>?) {
-
-//    if (selectedTitle == "All items") {
-//        if (data != null) {
-//            adapter.stickers = data
-//        }
-//    } else {
         adapter.stickers = data?.filter {
             it.title==selectedTitle
         } as List
